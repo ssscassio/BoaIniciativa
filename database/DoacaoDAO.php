@@ -98,7 +98,7 @@ class DoacaoDAO
     try{
       $sql = Sql::getInstance()->editarDoacaoSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-      $stmt->bindParam(1,$doacao->getSituacao());
+      $stmt->bindParam(1,$doacao->getConfirmado());
       $stmt->bindParam(2,$doacao->getData());
       $stmt->bindParam(3,$doacao->getAtendente());
       $stmt->bindParam(4,$doacao->getIdDoacao());

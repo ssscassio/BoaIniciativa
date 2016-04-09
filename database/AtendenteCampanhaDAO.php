@@ -21,14 +21,18 @@ class AtendenteCampanhaDAO {
     return self::$instance;
   }
 
-  //confirma o convite do atendente para uma campanha
-  public function confirmaAtendente($cpfAtendente, $idCampanha){
-
-  }
 
   //deleta um convite de ser atendente em uma campanha
   public function deletarAtendente ($cpfAtendente, $idCampanha){
-
+    try {
+      $sql = Sql::getInstance()->deletarAtendenteCampanhaSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1, $idCampanha);
+      $stmt->bindParam(2, $cpfAtendente);
+      $stmt->execute();
+    } catch (Exception $e) {
+      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
   }
 
   public function listarCampanhasAtendente($usuarioCpf){

@@ -17,13 +17,13 @@ class Campanha{
 	private $imagem;			//imagem associada a campanha
 	private $tags; 				//tag que permite que a campanha seja classificada na barra lateral da aplicação
 	private $criadorDaCampanha; //atributo que permite identificar qual conta do paypal será associada a campanha
-	private $metaData; 			#por definição se for finalizar por meta, repassar true, se finalizar por Data, repassar false
+	private $finalizapordata; 			#por definição se for finalizar por meta, repassar true, se finalizar por Data, repassar false
 	private $dataFim;			//data de termino da campanha
 	private $valores = array();
 
     //construtor da classe
     public function __construct($idCampanha, $nome, $descricao, $dataDeInicio,
-      $imagem, $cpfCriador, $metaData, $dataFim){
+      $imagem, $cpfCriador, $finalizapordata, $dataFim){
 
         $this->idCampanha = $idCampanha;
         $this->dataDeInicio = $dataDeInicio;
@@ -31,14 +31,14 @@ class Campanha{
         $this->nome = $nome;
         $this->descricao = $descricao;
         $this->dataFim = $dataFim;
-        $this->metaData = $metaData;
+        $this->finalizapordata = $finalizapordata;
         $this->criadorDaCampanha = $cpfCriador;
 				$this->verificarFimCampanha();
     }
 
 
     public function verificarFimCampanha(){
-			if ($this->metaData){
+			if ($this->$finalizapordata){
 
 				$hoje = date('d/m/Y');
 				if(strtotime($hoje) < strtotime($this->getDataFim())){
@@ -46,7 +46,7 @@ class Campanha{
     		}
     		else{
 					#dataFim
-    			$this->status = false;//Finalizada    			
+    			$this->status = false;//Finalizada
     		}
     	}
     }
@@ -129,11 +129,11 @@ class Campanha{
     	$this->tags = $tag;
     }
 
-    public function getMetaData(){
-    	return $this->metaData;
+    public function getFinalizaPorData(){
+    	return $this->finalizapordata;
     }
-    public function setMetaData($metaData){
-    	$this->metaData = $metaData;
+    public function setFinalizaPorData($finalizapordata){
+    	$this->finalizapordata = $finalizapordata;
     }
 
     public function setIdCampanha($idCampanha){

@@ -32,7 +32,7 @@ class CampanhaDAO
       $stmt->bindParam(5, $campanha->getDescricao());
       $stmt->bindParam(6, $campanha->getTituloAgradecimento());
       $stmt->bindParam(7, $campanha->getAgradecimento());
-      $stmt->bindParam(8, $campanha->getMetaData());
+      $stmt->bindParam(8, $campanha->getFinalizaPorData());
       $stmt->bindParam(9, $campanha->getCriadorDaCampanha());
       $stmt->execute();
 

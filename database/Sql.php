@@ -111,6 +111,10 @@ class Sql
     return "SELECT * FROM {$this->schema}.{$this->atendeCampanhaTable} WHERE {$this->atendeCampanhaIdCampanha} = ? and {$this->atendeCampanhaCPF} = ?";
   }
 
+  public function deletarAtendenteCampanhaSQL(){
+    return "DELETE FROM {$this->schema}.{$this->atendeCampanhaTable} WHERE {$this->atendeCampanhaIdCampanha} = ? and {$this->atendeCampanhaCPF} = ?";
+  }
+
 
   /**Atributos da tabela de Campanha**/
   private $campanhaTable = "campanha";
@@ -127,7 +131,7 @@ class Sql
 
     public function adicionarCampanhaSQL(){
       return "INSERT INTO {$this->schema}.{$this->campanhaTable} ({$this->campanhaNome}, {$this->campanhaInicio}, {$this->campanhaFim}, {$this->campanhaImagem}, {$this->campanhaDescricao},
-        {$this->campanhaTituloAgradecimento}, {$this->campanhaMensagemAgradecimento}, {$this->campanhaMetadata}, {$this->criadorCPF}) VALUES (?,?,?,?,?,?,?,?,?)";
+        {$this->campanhaTituloAgradecimento}, {$this->campanhaMensagemAgradecimento}, {$this->campanhaFinalizaPorData}, {$this->criadorCPF}) VALUES (?,?,?,?,?,?,?,?,?)";
     }
 
     public function listarCampanhasSQL(){
@@ -268,11 +272,11 @@ class Sql
 	    return "DELETE FROM {$this->schema}.{$this->doacaoTable} WHERE {$this->doacaoCpfDoador} = ? and {$this->doacaoIdCampanha} = ?";
 	}
     public function adicionarDoacaoSQL(){
-      return "INSERT INTO {$this->schema}.{$this->doacaoTable} ({$this->doacaoSituacao},{$this->doacaoData},{$this->doacaoAtendenteConfirma},{$this->doacaoIdCampanha},{$this->doacaoCpfDoador}) VALUES (FALSE,?,NULL,?,?)";
+      return "INSERT INTO {$this->schema}.{$this->doacaoTable} ({$this->doacaoConfirmado},{$this->doacaoData},{$this->doacaoAtendenteConfirma},{$this->doacaoIdCampanha},{$this->doacaoCpfDoador}) VALUES (FALSE,?,NULL,?,?)";
     }
 
     public function editarDoacaoSQL(){
-      return "UPDATE {$this->schema}.{$this->doacaoTable} SET {$this->doacaoSituacao} = ?, {$this->doacaoData} = ?, {$this->doacaoAtendenteConfirma} = ? WHERE {$this->doacaoId} = ?";
+      return "UPDATE {$this->schema}.{$this->doacaoTable} SET {$this->doacaoConfirmado} = ?, {$this->doacaoData} = ?, {$this->doacaoAtendenteConfirma} = ? WHERE {$this->doacaoId} = ?";
     }
     public function buscarDoacoesDaCampanhaSQL(){
       return "SELECT * FROM {$this->schema}.{$this->doacaoTable} WHERE {$this->doacaoIdCampanha} = ?";
@@ -396,7 +400,7 @@ class Sql
     private $pontoLongitude = "longitude";
 
     public function adicionarPontoSQL(){
-      return "INSERT INTO {$this->schema}.{$this->pontoTable} ({$this->pontoCEP}, {$this->pontoEstado}, {$this->pontoBairro}, {$this->pontoCidade}, {$this->pontoLogradouro}, {$this->pontoNumero}, {$this->pontoComplemento}) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      return "INSERT INTO {$this->schema}.{$this->pontoTable} ({$this->pontoCEP}, {$this->pontoEstado}, {$this->pontoBairro}, {$this->pontoCidade}, {$this->pontoLogradouro}, {$this->pontoNumero}, {$this->pontoComplemento}, {$this->pontoLatitude}, {$this->pontoLongitude}) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     public function buscarPontoCidadeSQL(){
@@ -547,6 +551,19 @@ class Sql
 
       public function verificarUsuarioCadastradoSQL(){
         return "SELECT * FROM {$this->schema}.{$this->usuarioTable} WHERE {$this->usuarioEmail} = ? OR {$this->usuarioCPF} = ?";
+      }
+
+      public function adicionarNovoUsuariomd5SQL(){
+      return "INSERT INTO {$this->schema}.{$this->usuarioTable} ({$this->usuarioCPF}, {$this->usuarioSexo}, {$this->usuarioNascimento},
+        {$this->usuarioEmail}, {$this->usuarioSenha}, {$this->usuarioNome}, {$this->usuarioClassificacao}, {$this->usuarioCEP}, {$this->usuarioEstado}, {$this->usuarioBairro},
+        {$this->usuarioCidade}, {$this->usuarioLogradouro}, {$this->usuarioNumero},{$this->usuarioComplemento}, {$this->usuarioBloqueado},{$this->usuarioDataBloqueio},{$this->usuarioFoto},{$this->usuarioLatitude},{$this->usuarioLongitude}) VALUES (?,?,?,?,md5(?),?,?,?,?,?,?,?,?,?, DEFAULT, NULL,?,?,?)";
+      }
+
+      public function adicionarCadastroRapidomd5SQL(){
+        return "INSERT INTO {$this->schema}.{$this->usuarioTable} ({$this->usuarioCPF},{$this->usuarioEmail},{$this->usuarioSenha}) VALUES (?,?,md5(?))";
+      }
+      public function editarSenhamd5SQL(){
+        return "UPDATE {$this->schema}.{$this->usuarioTable} SET {$this->$usuarioSenha}=md5(?) WHERE {$this->usuarioCPF} = ?";
       }
 
     }

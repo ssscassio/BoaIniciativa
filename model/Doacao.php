@@ -10,16 +10,16 @@ class Doacao
 
   private $idDoacao;
   private $data;
-  private $situacao;
+  private $confirmado;
   private $idCampanha;
   private $atendenteconfirma;
   private $cpfDoador;
 
-  public function __construct($idDoacao, $cpfDoador, $situacao, $data, $idCampanha)
+  public function __construct($idDoacao, $cpfDoador, $confirmado, $data, $idCampanha)
   {
     $this->idDoacao = $idDoacao;
     $this->cpfDoador = $cpfDoador;
-    $this->situacao = $situacao;
+    $this->confirmado = $confirmado;
     $this->idCampanha = $idCampanha;
     $this->data = $data;
   }
@@ -27,7 +27,7 @@ class Doacao
   public function confirmarDoacao($atendenteconfirma){
     if(empty($this->atendenteconfirma)){
       $this->atendenteconfirma = $atendenteconfirma;
-      $this->situacao = true;
+      $this->confirmado = true;
       return (new DoacaoDAO)->editarDoacao($this); //Conseguiu efetuar operação de associar atendente
     }
     return false;//Doacao já tee atendente associado
@@ -57,8 +57,8 @@ class Doacao
   public function getData(){
     return $this->data;
   }
-  public function getSituacao(){
-    return $this->situacao;
+  public function getConfirmado(){
+    return $this->cofirmado;
   }
   public function getIdCampanha(){
     return $this->idCampanha;
