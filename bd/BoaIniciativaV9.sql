@@ -70,7 +70,7 @@ CREATE TABLE BoaIniciativa.Usuario (
     bloqueado boolean DEFAULT false NOT NULL,
     dataBloqueio date,
     latitude double precision,
-    longitude double precision
+    longitude double precision,
 
     CONSTRAINT emailUsuario UNIQUE (email)
 );
