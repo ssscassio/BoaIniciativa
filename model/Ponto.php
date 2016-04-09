@@ -13,7 +13,8 @@ class Ponto{
 	private $logradouro;
 	private $numero;
 	private $complemento;
-
+	private $latitude;
+	private $longitude;
 
 
 	public function __construct($cep, $estado, $bairro, $cidade,  $logradouro, $numero, $complemento){
@@ -26,7 +27,22 @@ class Ponto{
 		$this->complemento = $complemento;
 	}
 
-	
+	public function setLatitude($latitude){
+		$this->latitude = $latitude;
+	}
+
+	public function setLatitude($longitude){
+		$this->longitude = $longitude;
+	}
+
+	public function getLatitude(){
+		return $this->latitude;
+	}
+
+	public function getlongitude(){
+		return $this->longitude;
+	}
+
 	public function setIdPonto($idponto){
 		$this->idponto = $idponto;
 	}
