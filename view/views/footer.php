@@ -1,25 +1,4 @@
 <!-- Footer -->
-<!--
-<div class="container-fluid navbar-inverse" >
-  <footer class="container" >
-    <div class="well">
-        <div class="row">
-            <div class="col-md-8">
-                <h4>Ajude-nos a continuar funcionando. Faça uma contribuição ao Boa Iniciativa!</h4>
-            </div>
-            <div class="col-md-4">
-                <a class="btn btn-lg btn-default btn-block" href="#">Ajude o BoaIniciativa</a>
-            </div>
-        </div>
-    </div>
-      <div class="row" style="backgroud-color:#fff;">
-          <div class="col-lg-12 text-center" >
-              <h5 style="color:#fff;">Copyright &copy; 2015. Boa Iniciativa. Developed by Eniac Corporation Ltda.</h5>
-          </div>
-      </div>
-  </footer>
-</div>
--->
 
 <!-- jQuery -->
 <!--
@@ -73,3 +52,6 @@
         </div>
     </div>
 </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  
