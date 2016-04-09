@@ -38,7 +38,7 @@ class Campanha{
 
 
     public function verificarFimCampanha(){
-			if ($this->$finalizapordata){
+			if ($this->finalizapordata){
 
 				$hoje = date('d/m/Y');
 				if(strtotime($hoje) < strtotime($this->getDataFim())){

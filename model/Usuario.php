@@ -39,7 +39,7 @@
 			$this->latitude = $latitude;
 		}
 
-		public function setLatitude($longitude){
+		public function setLongitude($longitude){
 			$this->longitude = $longitude;
 		}
 
@@ -47,10 +47,10 @@
 			return $this->latitude;
 		}
 
-		public function getlongitude(){
+		public function getLongitude(){
 			return $this->longitude;
 		}
-		
+
 		public function getCpf(){
 			return $this->cpf;
 		}

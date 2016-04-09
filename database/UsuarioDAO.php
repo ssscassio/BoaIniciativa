@@ -3,7 +3,7 @@
 
 require_once('ConexaoDB.php');
 require_once("Sql.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativa/BoaIniciativaV2/"."model/Usuario.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/Usuario.php");
 /**
 * Classe referente a Personificação do Usuario do Banco de Dados
 */
@@ -102,7 +102,7 @@ class UsuarioDAO{
     $usuario = new Usuario($linha['nome'],$linha['cpf'],$linha['email'],$linha['senha'],$linha['foto'],$linha['sexo'],$linha['datanascimento'],$endereco,$linha['classificacao'],
     $linha['bloqueado'],$linha['databloqueio']);
     $usuario->setLatitude($linha['latitude']);
-    $usuario->setLongitue($linha['longitude']);
+    $usuario->setLongitude($linha['longitude']);
 
     return $usuario;
   }

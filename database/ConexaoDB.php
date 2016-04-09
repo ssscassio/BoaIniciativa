@@ -27,7 +27,7 @@ class ConexaoDB{
 			$servidor = "localhost";
 			$usuario = "postgres";
 			$senha ="12345";
-			$dbname = "boaini_BoaIniciativa";
+			$dbname = "BoaIniciativa";
 			$porta = "5432";
 
 			try{

@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativa/BoaIniciativaV2/"."model/MaterialDoado.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/MaterialDoado.php");
 require_once('ConexaoDB.php');
 require_once("Sql.php");
 

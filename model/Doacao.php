@@ -2,8 +2,8 @@
 /**
 * Classe que tem as informacoes de uma doacao
 */
-require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativa/BoaIniciativaV2/"."database/DoacaoDAO.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativa/BoaIniciativaV2/"."database/DoacaoMaterialDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/DoacaoDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/DoacaoMaterialDAO.php");
 
 class Doacao
 {

@@ -1,7 +1,7 @@
 <?php
-  require('MaterialDAO.php');
-  require('../model/Meta.php');
-  
+  require_once('MaterialDAO.php');
+  require_once('../model/Meta.php');
+
   require_once('../database/CampanhaDAO.php');
   require_once("Sql.php");
 
@@ -15,7 +15,7 @@
 	public function __construct(){
 
 	}
-	
+
 	public static function getInstance() {
 	    if (!isset(self::$instance))
 		  self::$instance = new MetaDAO();
@@ -27,9 +27,9 @@
 		$meta = new Meta($linha['idcampanha'], $linha['codcaterial'], $linha['quantidade']);
 		return $meta;
 	}
-	
+
     public function adicionarMeta($meta){//Colocar para passar model Meta
-		
+
 		try{
 			$sql = Sql::getInstance()->adicionarMetaSQL();
 			$stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
@@ -83,10 +83,10 @@
 		$campanhaDAO = new CampanhaDAO();//Pode remover
 
 		while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
-			$meta = new Meta($linha['idcampanha'], $linha['codmaterial'], $linha['quantidade']);		
+			$meta = new Meta($linha['idcampanha'], $linha['codmaterial'], $linha['quantidade']);
 			$arrayMetas[]=$meta;
 		}
-		
+
 		return $arrayMetas;
 
       }catch (Exception $e){

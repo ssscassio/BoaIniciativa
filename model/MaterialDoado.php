@@ -1,6 +1,6 @@
 <?php
 
-	include 'Material.php';
+	require_once('Material.php');
 	/**
 	* Esta classe é referente ao Material de Doação tendo ela um valor associado(Quantidade)
 	*/
