@@ -12,7 +12,7 @@
     <?php
 
       require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AdministradorFacade.php");
-      CassioAdministradorFacade::getInstance()->verUsuario($_GET['cpf']);
+      AdministradorFacade::getInstance()->verUsuario($_GET['cpf']);
 
     ?>
 

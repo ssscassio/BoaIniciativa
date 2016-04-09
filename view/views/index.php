@@ -19,19 +19,19 @@
       <div class="item active">
         <div class="fill" style="background-image:url('http://lorempixel.com/1900/1080/people/1');"></div>
         <div class="carousel-caption">
-          <button type="button" class="btn btn-primary btn-lg"name="button">Começar a Doar</button>
+          <a  href="login.php" class="btn btn-primary btn-lg">Começar a doar</a>
         </div>
       </div>
       <div class="item">
         <div class="fill" style="background-image:url('http://lorempixel.com/1900/1080/people/2');"></div>
         <div class="carousel-caption">
-          <button type="button" class="btn btn-primary btn-lg"name="button">Ver Campanhas</button>
+          <a  href="listarcampanhas.php" class="btn btn-primary btn-lg">Ver Campanhas</a>
         </div>
       </div>
       <div class="item">
         <div class="fill" style="background-image:url('http://lorempixel.com/1900/1080/people/3');"></div>
         <div class="carousel-caption">
-          <button type="button" class="btn btn-primary btn-lg"name="button">Iniciar uma Campanha</button>
+          <a  href="login.php" class="btn btn-primary btn-lg">Iniciar uma campanha</a>
         </div>
       </div>
     </div>
@@ -163,10 +163,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="../js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 
     <!-- Script to Activate the Carousel -->
     <script>
@@ -180,16 +180,16 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="assets/js/vendor/holder.min.js"></script>
+    <script src="../assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 
     <!-- Scripts -->
     <a href="#0" class="cd-top">Top</a>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="js/main.js"></script> <!-- Gem jQuery -->
+    <script src="../js/main.js"></script> <!-- Gem jQuery -->
 
     <script type="text/javascript">
     $(document).ready(function () {

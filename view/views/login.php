@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <form method="POST" action="sessao.php">
+        <form method="POST" action="rotas.php">
           <div class="form-group">
             <label >Seu CPF</label>
             <input type="text" class="form-control" name="cpf" required data-validation-required-message="Por favor, digite seu CPF." placeholder="Ex.: 00000000000" required>
@@ -35,7 +35,7 @@
             <label for="exampleInputPassword1">Senha</label>
             <input type="password" class="form-control" name="senha" placeholder="Password" required>
           </div>
-          <button type="submit" name="login" class="btn btn-primary">Entrar</button>
+          <button type="submit" name="botaoLogar" class="btn btn-primary">Entrar</button>
         </form>
 
         <br>
