@@ -1,0 +1,12 @@
+.header-background{
+  background-color: #009688;
+}
+
+#logo{
+  align-items: center;
+  background-repeat: no-repeat;
+  width: 20%;
+    margin-left: auto;
+    margin-right: 10em;
+    margin-top: -3em;
+}

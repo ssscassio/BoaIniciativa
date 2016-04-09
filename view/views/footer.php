@@ -1,4 +1,34 @@
+<!-- Footer -->
+<!--
+<div class="container-fluid navbar-inverse" >
+  <footer class="container" >
+    <div class="well">
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Ajude-nos a continuar funcionando. Faça uma contribuição ao Boa Iniciativa!</h4>
+            </div>
+            <div class="col-md-4">
+                <a class="btn btn-lg btn-default btn-block" href="#">Ajude o BoaIniciativa</a>
+            </div>
+        </div>
+    </div>
+      <div class="row" style="backgroud-color:#fff;">
+          <div class="col-lg-12 text-center" >
+              <h5 style="color:#fff;">Copyright &copy; 2015. Boa Iniciativa. Developed by Eniac Corporation Ltda.</h5>
+          </div>
+      </div>
+  </footer>
+</div>
+-->
 
+<!-- jQuery -->
+<!--
+<script src="js/jquery.js"></script>
+ -->
+<!-- Bootstrap Core JavaScript -->
+<!--
+<script src="js/bootstrap.min.js"></script>
+-->
 <link rel="stylesheet" href="assets/owlcarousel/owl.theme.css"> <!-- interfere no footer -->
 <link href="css/style.css" rel="stylesheet">
 

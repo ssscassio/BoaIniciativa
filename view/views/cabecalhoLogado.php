@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../img/logobi.png">
-
-    <title>Boa Iniciativa</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../css/modern-business.css" rel="stylesheet">
-    <link href="../css/bootstrap-lavish.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/owlcarousel/owl.carousel.css"> <!-- arrumacao e acho que animacao do slide -->
-
-
-    <!-- Custom Fonts -->
-    <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../css/style.css" rel="stylesheet"> <!-- IMPORTANTE ! SE TIRAR ISSO NAO FICA COMO BARRA LATERAL! -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<?php
-session_start();
-
-if( !(isset($_SESSION['cpf'])) && !(isset ($_SESSION['senha'])) ){//Verifica se já está logado
-  header('location:index.php');
-}
-
-?>
 
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -71,7 +28,8 @@ if( !(isset($_SESSION['cpf'])) && !(isset ($_SESSION['senha'])) ){//Verifica se 
           </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="atendente.php">Painel Atendente</a></li>
+                <li><a href="visualizarPerfil.php">Visualizar Perfil</a></li>
+                <li><a href="CriarCampanha.php">Crie uma campanha</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
         </div>
