@@ -7,7 +7,7 @@
           </div>
           <div class="col-md-4">
               <a class="btn btn-lg btn-default btn-block" href="#">Ajude o boa Iniciativa</a>
-          </div>
+            </div>
       </div>
   </div>
     <div class="row">
@@ -16,3 +16,5 @@
         </div>
     </div>
 </footer>
+
+</html>
