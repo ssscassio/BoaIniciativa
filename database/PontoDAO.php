@@ -24,6 +24,8 @@ require_once('../model/Ponto.php');
     private function popularPonto($row){
       $ponto = new Ponto($row['cep'],$row['estado'],$row['bairro'],$row['cidade'],$row['logradouro'],$row['numero'],$row['complemento']);
       $ponto->setIdPonto((int) $row['idponto']);
+      $ponto->setLatitude($row['latitude']);
+      $ponto->setLongitude($row['longitude']);
       return $ponto;
     }
 
@@ -38,6 +40,8 @@ require_once('../model/Ponto.php');
             $stmt->bindParam(5,$ponto->getLogradouro());
             $stmt->bindParam(6,$ponto->getNumero());
             $stmt->bindParam(7,$ponto->getComplemento());
+            $stmt->bindParam(8,$ponto->getLatitude());
+            $stmt->bindParam(9,$ponto->getLongitude());
 
             $stmt->execute();
             return ConexaoDB::getConexaoPDO()->lastInsertId("BoaIniciativa.ponto_idponto_seq");

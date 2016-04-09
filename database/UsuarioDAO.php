@@ -41,6 +41,42 @@ class UsuarioDAO{
     $stmt->bindParam(13,$endereco["numero"]);
     $stmt->bindParam(14,$endereco["complemento"]);
     $stmt->bindParam(15,$usuario->getFoto());
+    $stmt->bindParam(16, $usuario->getLatitude());
+    $stmt->bindParam(17, $usuario->getlongitude());
+
+    $stmt->execute();
+
+    if($stmt->errorCode() != "00000"){//Bloco de erro
+      echo "Erro código". $stmt->errorCode(). ":";
+      var_dump($stmt->errorInfo());
+    }else{
+      return true;
+    }
+
+  }
+
+  public function adicionarNovoUsuariomd5($usuario){
+
+    $sql = Sql::getInstance()->adicionarNovoUsuariomd5SQL();
+    $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+    $endereco = $usuario->getEndereco();
+    $stmt->bindParam(1,$usuario->getCpf());
+    $stmt->bindParam(2,$usuario->getSexo());
+    $stmt->bindParam(3,$usuario->getDataNascimento());
+    $stmt->bindParam(4,$usuario->getEmail());
+    $stmt->bindParam(5,$usuario->getSenha());
+    $stmt->bindParam(6,$usuario->getNome());
+    $stmt->bindParam(7,$usuario->getClassificacao());
+    $stmt->bindParam(8,$endereco["cep"]);
+    $stmt->bindParam(9,$endereco["estado"]);
+    $stmt->bindParam(10,$endereco["bairro"]);
+    $stmt->bindParam(11,$endereco["cidade"]);
+    $stmt->bindParam(12,$endereco["logradouro"]);
+    $stmt->bindParam(13,$endereco["numero"]);
+    $stmt->bindParam(14,$endereco["complemento"]);
+    $stmt->bindParam(15,$usuario->getFoto());
+    $stmt->bindParam(16, $usuario->getLatitude());
+    $stmt->bindParam(17, $usuario->getlongitude());
 
     $stmt->execute();
 
@@ -65,6 +101,8 @@ class UsuarioDAO{
     //$nome, $cpf, $email, $senha, $foto, $sexo, $dataNascimento, $endereco, $classificacao, $bloqueado, $dataBloqueio
     $usuario = new Usuario($linha['nome'],$linha['cpf'],$linha['email'],$linha['senha'],$linha['foto'],$linha['sexo'],$linha['datanascimento'],$endereco,$linha['classificacao'],
     $linha['bloqueado'],$linha['databloqueio']);
+    $usuario->setLatitude($linha['latitude']);
+    $usuario->setLongitue($linha['longitude']);
 
     return $usuario;
   }
@@ -77,6 +115,22 @@ class UsuarioDAO{
       $stmt->bindParam(1,$cpf);
       $stmt->bindParam(2,$email);
       $stmt->bindParam(3,Criptografar::hash($usuario->getSenha()));
+
+      $stmt->execute();
+    }catch(Exception $e){
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+
+  }
+
+  public function adicionarCadastroRapidomd5($cpf, $email, $senha){
+
+    try{
+      $sql = Sql::getInstance()->adicionarCadastroRapidomd5SQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1,$cpf);
+      $stmt->bindParam(2,$email);
+      $stmt->bindParam(3,$usuario->getSenha());
 
       $stmt->execute();
     }catch(Exception $e){
@@ -104,7 +158,7 @@ class UsuarioDAO{
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1,$email);
       $stmt->execute();
-      return $this->popularUsuario($stmt->fetch(PDO::FETCH_ASSOC));
+      return UsuarioDAO::getInstance()->popularUsuario($stmt->fetch(PDO::FETCH_ASSOC));
     } catch (Exception $e){
       echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
     }
@@ -118,7 +172,7 @@ class UsuarioDAO{
       echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
     }
   }
-  public function autenticarUsuarioSEMHASH($cpf, $senha){
+  public function autenticarUsuariomd5($cpf, $senha){
     try{
       $sql = Sql::getInstance()->autenticarUsuarioSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
@@ -151,6 +205,8 @@ class UsuarioDAO{
       $stmt->bindParam(12, $endereco[5]);
       $stmt->bindParam(13, $endereco[6]);
       $stmt->bindParam(14, $usuario->getCpf());
+      $stmt->bindParam(15, $usuario->getLatitude());
+      $stmt->bindParam(16, $usuario->getlongitude());
 
       return $stmt->execute();
     }catch (Excepetion $e){
@@ -162,7 +218,20 @@ class UsuarioDAO{
     try{
       $sql = Sql::getInstance()->editarSenhaSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-      $stmt->bindParam(1, Criptografar::hash($usuario->getSenha()));
+      $stmt->bindParam(1, Criptografar::hash($senha));
+      $stmt->bindParam(2, $cpf);
+
+      $stmt->execute();
+    }catch (Excepetion $e){
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+  }
+
+  public function editarSenhamd5($senha, $cpf){
+    try{
+      $sql = Sql::getInstance()->editarSenhamd5SQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1, $senha);
       $stmt->bindParam(2, $cpf);
 
       $stmt->execute();
