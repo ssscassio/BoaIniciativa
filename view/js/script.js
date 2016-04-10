@@ -1,11 +1,28 @@
 $(document).ready(function(){
 
+  $("#editarPerfil").hide();
+  $("#editarSenha").hide();
+  $("#excluirConta").hide();
+
+
   $("#botaoEditarPerfil").click(function(){
-    teste = "<p>Teste</p>"
+    $("#editarPerfil").show();
+    $("#editarSenha").hide();
+    $("excluirConta").hide();
 
+  });
 
+  $("#botaoEditarSenha").click(function(){
+    $("#editarPerfil").hide();
+    $("#editarSenha").show();
+    $("#excluirConta").hide();
 
-    $("#escolhaPerfil").html(teste);
+  });
+
+  $("#botaoExcluirConta").click(function(){
+    $("#editarPerfil").hide();
+    $("#editarSenha").hide();
+    $("#excluirConta").show();
 
   });
 

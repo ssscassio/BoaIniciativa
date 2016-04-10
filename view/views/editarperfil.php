@@ -1,59 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+<?php
+$usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
+$endereco = $usuario->getEndereco();
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>BoaIniciativa</title>
-
-  <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link href="css/modern-business.css" rel="stylesheet">
-  <link href="css/bootstrap-lavish.css" rel="stylesheet">
-
-
-  <!-- Custom Fonts -->
-  <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <?php
-  //verifica se a sessao ja est� criada
-  /**session_start();
-
-  if( !(isset($_SESSION['cpf'])) && !(isset ($_SESSION['senha'])) ){
-    header('location:index.php'); //caso n�o esteja, redireciona o usu�rio para a p�gina de index
-  }
-  */
-  ?>
-
-</head>
-<body>
-<?php include("cabecalhoLogado.php");?>
-  <?php
-  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."/database/UsuarioDAO.php");
-
-  var_dump ($_POST['usuario']);
-
-  $usuario = UsuarioDAO::getInstance()->buscarUsuario("71472525191");
-  $endereco = array();
-  $endereco = $usuario->getEndereco();
-  ?>
-
-
-<br><br><br>
-
+ ?>
   <div class="container">
     <div class="row">
 	<br>
@@ -71,6 +21,7 @@
 
 		<div class="panel panel-default col-lg-6">
         <h4 class="page-header">Informações do Usuário</h4>
+          <input type="hidden" class="form-control" NAME="cpf" value="<?php echo $usuario->getCpf();?>">
 
           <div class="form-group">
             <label>Nome Completo</label>
@@ -81,12 +32,13 @@
             <input type="email" class="form-control" NAME="email" placeholder="Email" value="<?php echo $usuario->getEmail();?>">
           </div>
           <div class="form-group">
-            <label>Sexo</label>
-            <input type="text" class="form-control" NAME="sexo" placeholder="Sexo" value="<?php echo $usuario->getSexo();?>">
+            <label>Sexo: *</label><br>
+            <input type="radio" name="sexo" value="male" <?php if($usuario->getSexo()=="M")  echo "checked";?>> Homem<br>
+            <input type="radio" name="sexo" value="female"<?php if($usuario->getSexo()=="F")  echo "checked";?>> Mulher<br>
           </div>
           <div class="form-group">
             <label>Data de Nascimento</label>
-            <input type="date" class="form-control" NAME="nascimento" placeholder="Data de Nascimento" value = "<?php echo $usuario->getDataNascimento();?>">
+            <input type="date" class="form-control" NAME="nascimento" placeholder="Data de Nascimento" value = "<?php echo date("d/m/Y", strtotime($usuario->getDataNascimento()));?>">
           </div>
         </div>
 
@@ -120,8 +72,36 @@
             </div>
             <div class="form-group">
               <label>Complemento</label>
-              <input type="text" class="form-control" name="complemento" required  value="<?php echo $endereco['complemento']?>">
+              <input type="text" class="form-control" name="complemento" value="<?php echo $endereco['complemento']?>">
           </div>
+
+<?php
+  $l = $endereco['logradouro'];
+  $n = $endereco['numero'];
+  $b = $endereco['bairro'];
+  $c = $endereco['cidade'];
+  $enderecoJunto = "$l, $n, $b, $c";
+   ?>
+          <script type='text/javascript'>
+            var
+
+            var endereco = "<?php echo $enderecoJunto;?>";
+            var postos = new Array(endereco);
+            var geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode({ 'address': postos[0]}, function(results, status){
+              //se status ok
+              if (status = google.maps.GeocoderStatus.OK){
+                //pega o retorno que ehlat e long
+                var lat = results[0].geometry.location.lat();
+                var lng = results[0].geometry.location.lng();
+              }
+            });
+
+              document.getElementById('latitude').value = lat;
+              document.getElementById('longitude').value = lng;
+
+          </script>
 
           </div>
 
@@ -135,7 +115,3 @@
 
   </div>
   </div>
-
-<?php include("footer.php");?>
-</body>
-</html>

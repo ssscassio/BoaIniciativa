@@ -539,7 +539,7 @@ class Sql
         return "UPDATE {$this->schema}.{$this->usuarioTable} SET {$this->usuarioSexo}=?, {$this->usuarioNascimento}=?,  {$this->usuarioFoto}=?,
         {$this->usuarioEmail}=?, {$this->usuarioNome}=?, {$this->usuarioClassificacao}=?, {$this->usuarioCEP}=?,
         {$this->usuarioEstado}=?, {$this->usuarioBairro}=?, {$this->usuarioCidade}=?, {$this->usuarioLogradouro}=?, {$this->usuarioNumero}=?,
-        {$this->usuarioComplemento}=? WHERE {$this->usuarioCPF} = ?";
+        {$this->usuarioComplemento}=?, {$this->usuarioLatitude}=?, {$this->usuarioLongitude}=? WHERE {$this->usuarioCPF} = ?";
       }
 
       public function editarSenhaSQL(){

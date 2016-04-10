@@ -197,16 +197,16 @@ class UsuarioDAO{
       $stmt->bindParam(4, $usuario->getEmail());
       $stmt->bindParam(5, $usuario->getNome());
       $stmt->bindParam(6, $usuario->getClassificacao());
-      $stmt->bindParam(7, $endereco[0]);
-      $stmt->bindParam(8, $endereco[1]);
-      $stmt->bindParam(9, $endereco[2]);
-      $stmt->bindParam(10, $endereco[3]);
-      $stmt->bindParam(11, $endereco[4]);
-      $stmt->bindParam(12, $endereco[5]);
-      $stmt->bindParam(13, $endereco[6]);
-      $stmt->bindParam(14, $usuario->getCpf());
-      $stmt->bindParam(15, $usuario->getLatitude());
-      $stmt->bindParam(16, $usuario->getlongitude());
+      $stmt->bindParam(7, $endereco["cep"]);
+      $stmt->bindParam(8, $endereco["estado"]);
+      $stmt->bindParam(9, $endereco["bairro"]);
+      $stmt->bindParam(10, $endereco["cidade"]);
+      $stmt->bindParam(11, $endereco["logradouro"]);
+      $stmt->bindParam(12, $endereco["numero"]);
+      $stmt->bindParam(13, $endereco["complemento"]);
+      $stmt->bindParam(14, $usuario->getLatitude());
+      $stmt->bindParam(15, $usuario->getLongitude());
+      $stmt->bindParam(16, $usuario->getCpf());
 
       return $stmt->execute();
     }catch (Excepetion $e){

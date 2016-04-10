@@ -55,6 +55,9 @@
 			return $this->cpf;
 		}
 
+		public function setEndereco($endereco){
+			$this->endereco = $endereco;
+		}
 		public function getBloqueado(){
 			return $this->bloqueado;
 		}

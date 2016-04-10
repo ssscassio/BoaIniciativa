@@ -43,13 +43,14 @@
           <script src="../js/jquery.js"></script>
           <script type"text/script" src="../js/script.js"></script>
           <div class="row">
-    <!--        <form method="POST" action="editarperfil.php">
+            <!--
+          <form method="POST" action="editarperfil.php">
               <div class="col-xs-6 col-md-4">
                 <input type="hidden" name="usuario" value="<?php// echo $usuario ?>"
                 <button type="submit" name="botaoEditarPerfil" class="btn btn-info btn-block">Editar Perfil</button>
                 <hr>
               </div>
-            </form> -->
+            </form>
             <div class="col-xs-6 col-md-4">
               <a name="editarperfil" class="btn btn-info btn-block" href="editarperfil.php">Editar Perfil</a>
               <hr>
@@ -61,9 +62,9 @@
             <div class="col-xs-6 col-md-4">
               <a name="editarperfil" class="btn btn-danger btn-block" href="excluirconta.php">Excluir Conta</a>
               <hr>
-            </div>
-      <!--      <div class="col-xs-6 col-md-4">
-              <button type="button" id="botaoEditarPerfil" class="btn btn-info btn-block" name="botaoEditarSenha">Editar Perfil</button>
+            </div>-->
+            <div class="col-xs-6 col-md-4">
+              <button type="button" id="botaoEditarPerfil" class="btn btn-info btn-block" name="botaoEditarPerfil">Editar Perfil</button>
 
             </div>
             <div class="col-xs-6 col-md-4">
@@ -71,12 +72,21 @@
             </div>
             <div class="col-xs-6 col-md-4">
                 <button type="button" id="botaoExcluirConta" class="btn btn-danger btn-block" name="botaoExcluirConta"> Excluir Conta</button>
-            </div> -->
+            </div>
           </div>
           <div class="row">
-            <div class="panel" id="escolhaPerfil">
-
+            <div class="panel" id="editarPerfil">
+              <?php include('editarperfil.php'); ?>
             </div>
+
+              <div class="panel" id="editarSenha">
+                <?php include('editarsenha.php'); ?>
+              </div>
+
+                <div class="panel" id="excluirConta">
+                  <?php include('excluirconta.php'); ?>
+                </div>
+
           </div>
           <div class="row">
             <h4 class="page-header">Endereço</h4>

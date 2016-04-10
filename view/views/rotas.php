@@ -1,6 +1,6 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AdministradorFacade.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AdministradorFacade.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 
 if(isset($_POST['botaoLogar'])){
@@ -72,10 +72,11 @@ if(isset($_POST['botaoLogar'])){
     }
     header('location:index.php');
   }
-}else if(isset($_POST['botaoEditar']){
-  if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['sexo']) && isset($_POST['nascimento']) && isset($_POST['cep'])
+}else if(isset($_POST['botaoEditar'])){
+  if(isset($_POST['cpf']) &&isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['sexo']) && isset($_POST['nascimento']) && isset($_POST['cep'])
   && isset($_POST['estado']) && isset($_POST['bairro']) && isset($_POST['cidade']) &&isset($_POST['logradouro']) && isset($_POST['numero']) && isset($_POST['complemento'])){
 
+    $cpf = $_POST['cpf'];
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $sexo = ($_POST['sexo']=='male')? 'M': 'F';
@@ -84,21 +85,21 @@ if(isset($_POST['botaoLogar'])){
     $estado = $_POST['estado'];
     $bairro = $_POST['bairro'];
     $cidade = $_POST['cidade'];
-    $longradouro = $_POST['logradouro'];
+    $logradouro = $_POST['logradouro'];
     $numero = $_POST['numero'];
     $complemento = $_POST['complemento'];
-    echo "Tudo certo para cadastrar";
-    $confirmacao = UsuarioFacade::getInstance()->editarPerfil($nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento);
+
+
+    $confirmacao = UsuarioFacade::getInstance()->editarPerfil($cpf,$nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento);
+
+    var_dump($confirmacao);
     if($confirmacao){
-      header('location:perfil.php');
-      echo "Usuario editado com sucesso";
+      header('location:perfil.php');//funcionou
     }else{
-      header('location:perfil.php');
-      echo "Erro ao editar";
+      header('location:perfil.php');//nao funcionou
     }
   }else{
-    header('location:editarperfil.php');
-    echo "Preencha todos os campos";
+      header('location:editarperfil.php'); //falta informações
   }
 
 

@@ -53,9 +53,29 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioCo
     return False; //Usuario Não Deletado
   }
 
-  function editarPerfil($nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento){
-    $controller = new UsuarioController();
-    return $controller->editarPerfil($nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento);
+  function editarPerfil($cpf,$nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento){
+      $usuario = UsuarioDAO::getInstance()->buscarUsuario($cpf);
+      $usuario->setNome($nome);
+      $usuario->setEmail($email);
+      $usuario->setSexo($sexo);
+      $usuario->setDataNascimento($nascimento);
+      $endereco = array();
+      $endereco['cep'] = $cep;
+      $endereco['estado'] = $estado;
+      $endereco['bairro'] = $bairro;
+      $endereco['cidade'] = $cidade;
+      $endereco['logradouro'] = $logradouro;
+      $endereco['numero'] = $numero;
+      $endereco['complemento'] = $complemento;
+      $l = $endereco['logradouro'];
+      $n = $endereco['numero'];
+      $b = $endereco['bairro'];
+      $c = $endereco['cidade'];
+      $enderecoJunto = "$l, $n, $b, $c";
+
+      $usuario->setEndereco($endereco);
+
+    return UsuarioDAO::getInstance()->editarPerfil($usuario);
   }
 
 
