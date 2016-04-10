@@ -72,5 +72,35 @@ if(isset($_POST['botaoLogar'])){
     }
     header('location:index.php');
   }
+}else if(isset($_POST['botaoEditar']){
+  if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['sexo']) && isset($_POST['nascimento']) && isset($_POST['cep'])
+  && isset($_POST['estado']) && isset($_POST['bairro']) && isset($_POST['cidade']) &&isset($_POST['logradouro']) && isset($_POST['numero']) && isset($_POST['complemento'])){
+
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $sexo = ($_POST['sexo']=='male')? 'M': 'F';
+    $nascimento = $_POST['nascimento'];
+    $cep = $_POST['cep'];
+    $estado = $_POST['estado'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $longradouro = $_POST['logradouro'];
+    $numero = $_POST['numero'];
+    $complemento = $_POST['complemento'];
+    echo "Tudo certo para cadastrar";
+    $confirmacao = UsuarioFacade::getInstance()->editarPerfil($nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento);
+    if($confirmacao){
+      header('location:perfil.php');
+      echo "Usuario editado com sucesso";
+    }else{
+      header('location:perfil.php');
+      echo "Erro ao editar";
+    }
+  }else{
+    header('location:editarperfil.php');
+    echo "Preencha todos os campos";
+  }
+
+
 }
 ?>

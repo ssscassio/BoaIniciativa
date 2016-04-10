@@ -1,8 +1,9 @@
 $(document).ready(function(){
 
   $("#botaoEditarPerfil").click(function(){
-    var teste = "<p>Test</p> "+
-    "Alguma coisa na mesma linha.";
+    teste = "<p>Teste</p>"
+
+
 
     $("#escolhaPerfil").html(teste);
 

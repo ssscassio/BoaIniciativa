@@ -52,6 +52,14 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioCo
     }
     return False; //Usuario Não Deletado
   }
+
+  function editarPerfil($nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento){
+    $controller = new UsuarioController();
+    return $controller->editarPerfil($nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento);
+  }
+
+
+
 }
 
 

@@ -27,6 +27,14 @@ class  UsuarioController
   public function buscarUsuario($cpf){
     return UsuarioDAO::getInstance()->buscarUsuario($cpf);
   }
+
+  function editarPerfil($usuario){ //Função responsavel por editar o perfil do usuario
+    if(UsuarioDAO::getInstance()->verificaUsuarioCadastrado($usuario->getCpf(), $usuario->getEmail())){
+      UsuarioDAO::getInstance()->editarPerfil($usuario);
+    }else{
+      return false; //SUBSTITUIR POR UMA EXCEPTION
+    }
+  }
 }
 
  ?>
