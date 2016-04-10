@@ -7,7 +7,15 @@
           <hr>
         </div>
         <div class="col-xs-6 col-md-12">
-          <a name="historico" class="btn btn-primary btn-block" href="historicodoacoes.php">Minhas Campanhas</a>
+          <a name="historico" class="btn btn-primary btn-block" href="campativa.php">Campanhas Ativas</a>
+          <hr>
+        </div>
+        <div class="col-xs-6 col-md-12">
+          <a name="historico" class="btn btn-primary btn-block" href="campfinalizada.php">Campanhas Finalizadas</a>
+          <hr>
+        </div>
+        <div class="col-xs-6 col-md-12">
+          <a name="historico" class="btn btn-primary btn-block" href="todascamp.php">Todas as Campanhas</a>
           <hr>
         </div>
       </div>
