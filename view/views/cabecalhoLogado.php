@@ -21,7 +21,7 @@
    <link href="../css/modern-business.css" rel="stylesheet">
    <link href="../css/bootstrap-lavish.css" rel="stylesheet">
    <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
+   <script src="../js/jquery-1.12.3.min.js" type="text/javascript"></script>
    <script src="../js/modernizr.js"></script> <!-- Modernizr -->
 
    <!-- Custom Fonts -->
@@ -62,7 +62,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
           <ul class="nav navbar-nav navbar-left">
-            <form class="navbar-form" method="GET" action="pesquisa.php">
+            <form class="navbar-form" method="POST" action="pesquisa.php">
               <div class="input-group">
                 <input class="form-control" type="text" name="busca"  placeholder="Buscar...">
                   <div class="input-group-btn">
@@ -71,10 +71,19 @@
               </div>
             </form>
           </ul>
+<?php
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 
+  $usuario = UsuarioDAO::getInstance()->buscarUsuario($_SESSION['cpf']);
+  $nome = $usuario->getNome();
+  $nome = explode(" ", $nome, -1);
+  $primeiroNome = $nome[0];
+ ?>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="visualizarPerfil.php">Visualizar Perfil</a></li>
-                <li><a href="CriarCampanha.php">Crie uma campanha</a></li>
+                <li><a href="criador.php">Criação</a></li>
+                <li><a href="doador.php">Doação</a></li>
+                <li><a href="atendente.php">Atendimento</a></li>
+                <li><a href="perfil.php"><?php echo $primeiroNome; ?></a></li>
                 <li><a href="logout.php">Logout</a></li>
 
             </ul>

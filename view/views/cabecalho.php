@@ -29,6 +29,7 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
   <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
   <script src="../js/modernizr.js"></script> <!-- Modernizr -->
+  <script src="../js/jquery-1.12.3.min.js" type="text/javascript"></script>
 
   <!-- Custom Fonts -->
   <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -58,7 +59,7 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-left">
-        <form class="navbar-form" method="GET" action="pesquisa.php">
+        <form class="navbar-form" method="POST" action="pesquisa.php">
           <div class="input-group">
             <input class="form-control" type="text" name="busca"  placeholder="Buscar...">
             <div class="input-group-btn">

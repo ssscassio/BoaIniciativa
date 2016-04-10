@@ -33,16 +33,9 @@ if(isset($_POST['botaoLogar'])){
   if(isset($_POST['idCampanha']) && isset($_POST['cpfUsuario'])){
     $idCampanha= $_POST['idCampanha'];
     $cpfUsuario= $_POST['cpfUsuario'];//Substituir para verificação da sessão
-    CassioUsuarioFacade::getInstance()->efetuarDoacao($idCampanha,$cpfUsuario);
+    UsuarioFacade::getInstance()->efetuarDoacao($idCampanha,$cpfUsuario);
   }else{
     echo "Preencha todos os campos";
-  }
-}else if(isset( $_POST['bloquearUsuario'])){
-  if(isset($_POST['cpfUsuarioBloquear'])){
-    $cpfUsuarioBloquear = $_POST['cpfUsuarioBloquear'];
-    CassioUsuarioFacade::getInstance()->bloquearUsuario($cpfUsuarioBloquear);
-  }else{
-    echo "Escolha um usuario para bloquear";
   }
 }else if(isset($_POST['botaoCadastrar'])){
   if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, mover para Home
@@ -65,7 +58,7 @@ if(isset($_POST['botaoLogar'])){
       $numero = $_POST['numero'];
       $complemento = $_POST['complemento'];
       echo "Tudo certo para cadastrar";
-      $confirmacao = CassioSistemaFacade::getInstance()->cadastrarNovoUsuario($nome,$cpf,$email,$senha,$nascimento,$cep,$estado,$bairro,$cidade,$longradouro,$numero,$complemento,$sexo);
+      $confirmacao = SistemaFacade::getInstance()->cadastrarNovoUsuario($nome,$cpf,$email,$senha,$nascimento,$cep,$estado,$bairro,$cidade,$longradouro,$numero,$complemento,$sexo);
       if($confirmacao){
         header('location:index.php');
         echo "Usuario Cadastrado com sucesso";
