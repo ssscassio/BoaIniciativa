@@ -65,9 +65,9 @@
             <form class="navbar-form" method="POST" action="pesquisa.php">
               <div class="input-group">
                 <input class="form-control" type="text" name="busca"  placeholder="Buscar...">
-                  <div class="input-group-btn">
-                      <button class="btn btn-default" name="" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                  </div>
+                <div class="input-group-btn">
+                  <button class="btn btn-default" name="" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
               </div>
             </form>
           </ul>
