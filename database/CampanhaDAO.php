@@ -57,6 +57,24 @@ class CampanhaDAO
     }
   }
 
+  public function buscarCampanhasDestaque($quantidade){
+    try{
+      $sql = Sql::getInstance()->buscarCampanhasDestaqueSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+
+      $stmt->execute();
+      $listaCampanha = array();
+
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $listaCampanha[] = CampanhaDAO::getInstance()->popularCampanha($row);
+      }
+
+      return $listaCampanha;
+    }catch (Exception $e){
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+  }
+
   public function buscarIdCampanha($nomeCampanha){
     try{
       return $this->procurarCampanha($nomeCampanha)->getIdCampanha();

@@ -178,6 +178,12 @@ class Sql
       return "DELETE FROM {$this->schema}.{$this->campanhaTable} WHERE {$this->campanhaId} = ?";
     }
 
+
+    public function buscarCampanhasDestaqueSQL(){
+      return "SELECT * FROM {$this->schema}.{$this->campanhaTable} WHERE ({$this->campanhaId}) IN (SELECT ({$this->doacaoIdCampanha}) FROM {$this->schema}.{$this->doacaoTable} GROUP BY {$this->doacaoIdCampanha} ORDER BY COUNT({$this->doacaoIdCampanha}) desc limit 3)";
+    }
+
+
     /** Atributos da Tabela de Convidados**/
     private $convidadoTable = "convidado";
     private $convidadoEmail = "email";
@@ -523,7 +529,7 @@ class Sql
       }
 
       public function autenticarUsuarioSQL(){
-        return "SELECT * FROM {$this->schema}.{$this->usuarioTable} WHERE {$this->usuarioCPF} = ? AND {$this->usuarioSenha} = ? AND {$this->usuarioBloqueado} = 'FALSE'";
+        return "SELECT * FROM {$this->schema}.{$this->usuarioTable} WHERE {$this->usuarioCPF} = ? AND {$this->usuarioSenha} = md5(?) AND {$this->usuarioBloqueado} = 'FALSE'";
       }
 
       public function editarPerfilSQL(){

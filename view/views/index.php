@@ -2,8 +2,13 @@
 <body>
 
   <?php
-  include("cabecalho.php");
+  if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
+    header("location:home.php");
+  }else{
+    include('cabecalho.php');
+  }
   ?>
+
 
   <!-- Header Carousel -->
   <header id="myCarousel" class="carousel slide">
@@ -54,7 +59,7 @@
         <h1 class="page-header">Sobre o Boa Iniciativa</h2>
         </div>
         <div class="col-md-6">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+          <p><h4>Este é um site dedicado a permitir doações entre pessoas que precisam e pessoas que queiram ajudar. Se você é um deles, junte-se a nós. Aqui você poderá criar suas próprias campanhas, realizar doações e até mesmo participar como atendente em um posto de doação de uma campanha existente. Infinitas possibilidades, infinitas maneiras de ajudar melhorar a vida de alguém. <br>Boa Iniciativa, muito mais que um gesto! </h4></p>
         </div>
         <div class="col-md-6">
           <img class="img-responsive" src="../img/logobi.png" alt="">
@@ -68,45 +73,41 @@
             Campanhas em Destaque
           </h2>
         </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4>Boa Iniciativa</h4>
-            </div>
-            <div class="panel-body">
-              <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/700/450/people/" alt="">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-              <a href="#" class="btn btn-primary">Ver Campanha</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4>Campanha para Mariana</h4>
-            </div>
-            <div class="panel-body">
-              <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/700/450/people/5" alt="">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-              <a href="#" class="btn btn-primary">Ver Campanha</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4>Campanha contra Corrupção</h4>
-            </div>
-            <div class="panel-body">
-              <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/700/450/people/6" alt="">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-              <a href="#" class="btn btn-primary">Ver Campanha</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.row -->
+<?php
 
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
+
+    $arraybusca = CampanhaDAO::getInstance()->buscarCampanhasDestaque(4);
+    for($i = 0 ; $i < 3 ; $i++){
+      $campanha = $arraybusca[$i];
+
+ ?>
+
+        <div class="col-md-4 col-xs-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4><?php echo $campanha->getNome();?></h4>
+            </div>
+            <div class="panel-body">
+              <img class="img-resposive img-portfolio container-fluid img-hover" src="
+              <?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
+                  echo "../img/logobi.png";
+              }else{
+                echo $campanha->getImagem();
+              } ?>
+              " alt="">
+              <p><?php echo $campanha->getDescricao(); ?></p>
+              <a href="visualizarCampanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary">Ver Campanha</a>
+            </div>
+          </div>
+        </div>
+
+
+
+      <!-- /.row -->
+<?php } //final do loop for
+?>
+      </div>
       <!-- Portfolio Section -->
       <div class="row">
         <div class="col-lg-12">

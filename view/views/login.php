@@ -3,8 +3,6 @@
 
 
   <?php
-  session_start();
-
   if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se já está logado
     header('location:home.php');
   }

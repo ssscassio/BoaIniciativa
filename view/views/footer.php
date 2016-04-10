@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer>
+<footer class='row container-fluid'>
   <div class="well">
       <div class="row">
           <div class="col-md-8">
@@ -16,5 +16,3 @@
         </div>
     </div>
 </footer>
-
-</html>
