@@ -15,6 +15,7 @@
 
    <!-- Bootstrap Core CSS -->
    <link href="../css/bootstrap.min.css" rel="stylesheet">
+   <link href="../css/bootstrap.css" rel="stylesheet">
 
    <!-- Custom CSS -->
    <link href="../css/modern-business.css" rel="stylesheet">
@@ -74,10 +75,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="visualizarPerfil.php">Visualizar Perfil</a></li>
                 <li><a href="CriarCampanha.php">Crie uma campanha</a></li>
-
-                <li>
-                  <a href="logout.php">Logout</a>
-                </li>
+                <li><a href="logout.php">Logout</a></li>
 
             </ul>
         </div>

@@ -180,9 +180,12 @@ class Sql
 
 
     public function buscarCampanhasDestaqueSQL(){
-      return "SELECT * FROM {$this->schema}.{$this->campanhaTable} WHERE ({$this->campanhaId}) IN (SELECT ({$this->doacaoIdCampanha}) FROM {$this->schema}.{$this->doacaoTable} GROUP BY {$this->doacaoIdCampanha} ORDER BY COUNT({$this->doacaoIdCampanha}) desc limit 3)";
+      return "SELECT * FROM {$this->schema}.{$this->campanhaTable} WHERE ({$this->campanhaId}) IN (SELECT ({$this->doacaoIdCampanha}) FROM {$this->schema}.{$this->doacaoTable} GROUP BY {$this->doacaoIdCampanha} ORDER BY COUNT({$this->doacaoIdCampanha}) desc limit ?)";
     }
 
+    public function buscarCampanhasAleatoriasSQL(){
+      return " SELECT * FROM {$this->schema}.{$this->campanhaTable} ORDER BY RANDOM() LIMIT ?";
+    }
 
     /** Atributos da Tabela de Convidados**/
     private $convidadoTable = "convidado";

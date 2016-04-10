@@ -89,13 +89,13 @@
               <h4><?php echo $campanha->getNome();?></h4>
             </div>
             <div class="panel-body">
-              <img class="img-resposive img-portfolio container-fluid img-hover" src="
+              <img class="img-responsive img-portfolio" src="
               <?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
                   echo "../img/logobi.png";
               }else{
                 echo $campanha->getImagem();
               } ?>
-              " alt="">
+              ">
               <p><?php echo $campanha->getDescricao(); ?></p>
               <a href="visualizarCampanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary">Ver Campanha</a>
             </div>
@@ -113,36 +113,25 @@
         <div class="col-lg-12">
           <h2 class="page-header">Outras Campanhas</h2>
         </div>
-        <div class="col-md-4 col-sm-6">
-          <a href="#">
-            <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/500/300/food/1" alt="">
+
+        <?php
+          require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
+          $arraybusca = CampanhaDAO::getInstance()->buscarCampanhasAleatorias(6);
+          for($i = 0 ; $i < 6 ; $i++){
+            $campanha = $arraybusca[$i];
+
+         ?>
+        <div class="col-xs-4">
+          <a href="campanha?campanha=<?php echo $campanha->getIdCampanha(); ?>">
+            <img class="img-responsive img-portfolio img-hover" src="<?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
+                echo "../img/logobi.png";
+            }else{
+              echo $campanha->getImagem();
+            } ?>
+            " alt="<?php echo $campanha->getNome();?>">
           </a>
         </div>
-        <div class="col-md-4 col-sm-6">
-          <a href="#">
-            <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/500/300/animals/2" alt="">
-          </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <a href="#">
-            <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/500/300/food/3" alt="">
-          </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <a href="#">
-            <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/500/300/animals/" alt="">
-          </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <a href="#">
-            <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/500/300/animals/5" alt="">
-          </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-          <a href="#">
-            <img class="img-responsive img-portfolio img-hover" src="http://lorempixel.com/500/300/food/4" alt="">
-          </a>
-        </div>
+        <?php } ?>
       </div>
       <!-- /.row -->
 

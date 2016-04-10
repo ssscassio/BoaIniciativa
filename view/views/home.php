@@ -46,6 +46,46 @@
     </div>
 
   </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h2 class="page-header">
+        Campanhas em Destaque
+      </h2>
+    </div>
+<?php
 
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
+
+$arraybusca = CampanhaDAO::getInstance()->buscarCampanhasDestaque(4);
+for($i = 0 ; $i < 3 ; $i++){
+  $campanha = $arraybusca[$i];
+
+?>
+
+    <div class="col-md-4 col-xs-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4><?php echo $campanha->getNome();?></h4>
+        </div>
+        <div class="panel-body">
+          <img class="img-responsive img-portfolio" src="
+          <?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
+              echo "../img/logobi.png";
+          }else{
+            echo $campanha->getImagem();
+          } ?>
+          ">
+          <p><?php echo $campanha->getDescricao(); ?></p>
+          <a href="visualizarCampanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary">Ver Campanha</a>
+        </div>
+      </div>
+    </div>
+
+
+
+  <!-- /.row -->
+<?php } //final do loop for
+?>
+  </div>
 </body>
 <?php include ('footer.php'); ?>

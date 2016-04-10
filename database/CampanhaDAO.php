@@ -61,7 +61,26 @@ class CampanhaDAO
     try{
       $sql = Sql::getInstance()->buscarCampanhasDestaqueSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1,$quantidade);
+      $stmt->execute();
+      $listaCampanha = array();
 
+      while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $listaCampanha[] = CampanhaDAO::getInstance()->popularCampanha($row);
+      }
+
+      return $listaCampanha;
+    }catch (Exception $e){
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+  }
+
+  public function buscarCampanhasAleatorias($quantidade){
+  
+    try{
+      $sql = Sql::getInstance()->buscarCampanhasAleatoriasSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1,$quantidade);
       $stmt->execute();
       $listaCampanha = array();
 
