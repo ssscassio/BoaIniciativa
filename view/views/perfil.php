@@ -43,13 +43,17 @@
           <script src="../js/jquery.js"></script>
           <script type"text/script" src="../js/script.js"></script>
           <div class="row">
-            <form method="POST" action="editarperfil.php">
+    <!--        <form method="POST" action="editarperfil.php">
               <div class="col-xs-6 col-md-4">
-                <input type="hidden" name="usuario" value="<?php echo $usuario ?>">
+                <input type="hidden" name="usuario" value="<?php// echo $usuario ?>"
                 <button type="submit" name="botaoEditarPerfil" class="btn btn-info btn-block">Editar Perfil</button>
                 <hr>
               </div>
-            </form>
+            </form> -->
+            <div class="col-xs-6 col-md-4">
+              <a name="editarperfil" class="btn btn-info btn-block" href="editarperfil.php">Editar Perfil</a>
+              <hr>
+            </div>
             <div class="col-xs-6 col-md-4">
               <a name="editarperfil" class="btn btn-info btn-block" href="editarsenha.php">Editar Senha</a>
               <hr>
