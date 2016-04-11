@@ -17,7 +17,7 @@
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
-              <h1 class="page-header">Criar Nova Campanha
+              <h1 class="page-header">Criar Campanha
               </h1>
             </div>
           </div>
@@ -38,10 +38,6 @@
                 <input type="text" class="form-control" name="possiveisArrecadacoes" required placeholder="Arrecadação">
               </div>
               <div class="form-group">
-                <label>Data de Início da Campanha <font color="red">*</font></label>
-                <input type="date" class="form-control" name="dataInicio" required placeholder="Formato: dd/mm/aaaa">
-              </div>
-              <div class="form-group">
                 <label>Data Final da campanha <font color="red">*</font></label>
                 <input type="date" class="form-control" name="dataFim" required placeholder="Formato: dd/mm/aaaa">
               </div>
@@ -50,8 +46,12 @@
                 <input type="date" class="form-control" name="dataMeta" placeholder="Formato: dd/mm/aaaa">
               </div>
               <div class="form-group">
-                <label>Agradecimento padrão<font color="red">*</font></label>
-                <input type="text" class="form-control" name="agradecimento" required placeholder="Agradecimento da campanha">
+                <label>TITULO: Agradecimento padrão<font color="red">*</font></label>
+                <input type="text" class="form-control" name="agradecimentotitulo" required placeholder="título do agradecimento">
+              </div>
+              <div class="form-group">
+                <label>MENSAGEM: Agradecimento padrão<font color="red">*</font></label>
+                <input type="text" class="form-control" name="agradecimentomensagem" required placeholder="mensagem do agradecimento">
               </div>
               <div class="form-group">
                 <label>Imagem da campanha</label>
