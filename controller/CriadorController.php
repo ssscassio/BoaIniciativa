@@ -21,7 +21,7 @@ class  CriadorController
   public function listarCampanhasAtivas($cpf){
     $todascampanhas = CampanhaDAO::getInstance()->buscarCampanhaPorCriador($cpf);
     $campanhasativas = array();
-    for($i = 0 ; $i < count($todascampanhas) ; $i++){
+    for($i = 0 ; $i < sizeof($todascampanhas) ; $i++){
       if($todascampanhas[$i]->getStatus()  == true){//se está ativa
         $campanhasativas[] = $todascampanhas[$i];
       }
