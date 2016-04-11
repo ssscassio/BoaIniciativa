@@ -1,18 +1,3 @@
-<?php include_once("cabecalhologado.php"); ?>
-
-<br><br><br><br>
-<div class="container">
-
-
-<div class="row">
-
-  <?php include_once("painelCriador.php"); ?>
-
-  <div class="col-md-9 panel panel-default">
-
-
-    <body>
-      <div>
 
         <div class="col-md-12">
           <div class="row">
@@ -62,14 +47,3 @@
           </form>
           <br>
         </div>
-
-      </div>
-  </div>
-</div>
-
-</div>
-<?php include_once("footer.php"); ?>
-
-  <?php include_once("footer.php"); ?>
-
-</body>

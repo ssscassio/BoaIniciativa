@@ -3,19 +3,17 @@
   </h2>
       <div class="row">
         <div class="col-xs-6 col-md-12">
-          <a name="doacoesativas" class="btn btn-primary btn-block" href="criarcampanha.php">Criar Campanha</a>
+          <button type="button" id="botaocriarCampanha" class="btn btn-primary btn-block" name="criarCampanha">Criar Campanha</button>
           <hr>
         </div>
         <div class="col-xs-6 col-md-12">
-          <a name="historico" class="btn btn-primary btn-block" href="campativa.php">Campanhas Ativas</a>
-          <hr>
+          <button type="button" id="botaocampanhasAtivas" class="btn btn-primary btn-block" name="campanhasAtivas">Campanhas Ativas</button>
         </div>
         <div class="col-xs-6 col-md-12">
-          <a name="historico" class="btn btn-primary btn-block" href="campfinalizada.php">Campanhas Finalizadas</a>
-          <hr>
+          <button type="button" id="botaocampanhasFinalizadas" class="btn btn-primary btn-block" name="campanhasFinalizadas">Campanhas Finalizadas</button>
         </div>
         <div class="col-xs-6 col-md-12">
-          <a name="historico" class="btn btn-primary btn-block" href="todascamp.php">Todas as Campanhas</a>
+          <button type="button" id="botaotodasCampanhas" class="btn btn-primary btn-block" name="todasCampanhas">Todas Campanhas</button>
           <hr>
         </div>
       </div>
