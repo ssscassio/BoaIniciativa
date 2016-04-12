@@ -3,17 +3,17 @@
   </h2>
       <div class="row">
         <div class="col-xs-6 col-md-12">
-          <button type="button" id="botaocriarCampanha" class="btn btn-primary btn-block" name="criarCampanha">Criar Campanha</button>
+          <a href="criarcampanha.php" class="btn btn-primary btn-block" name="criarCampanha">Criar Campanha</a>
           <hr>
         </div>
         <div class="col-xs-6 col-md-12">
-          <button type="button" id="botaocampanhasAtivas" class="btn btn-primary btn-block" name="campanhasAtivas">Campanhas Ativas</button>
+          <a href="listarcampanhas.php?tipo=criador&filtro=ativas" type="button" id="botaocampanhasAtivas" class="btn btn-primary btn-block" name="campanhasAtivas">Campanhas Ativas</a>
         </div>
         <div class="col-xs-6 col-md-12">
-          <button type="button" id="botaocampanhasFinalizadas" class="btn btn-primary btn-block" name="campanhasFinalizadas">Campanhas Finalizadas</button>
+          <a href="listarcampanhas.php?tipo=criador&filtro=finalizadas" type="button" id="botaocampanhasFinalizadas" class="btn btn-primary btn-block" name="campanhasFinalizadas">Campanhas Finalizadas</a>
         </div>
         <div class="col-xs-6 col-md-12">
-          <button type="button" id="botaotodasCampanhas" class="btn btn-primary btn-block" name="todasCampanhas">Todas Campanhas</button>
+          <a href="listarcampanhas.php?tipo=criador&filtro=todas" type="button" id="botaotodasCampanhas" class="btn btn-primary btn-block" name="todasCampanhas">Todas Campanhas</a>
           <hr>
         </div>
       </div>

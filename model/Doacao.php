@@ -58,7 +58,7 @@ class Doacao
     return $this->data;
   }
   public function getConfirmado(){
-    return $this->cofirmado;
+    return $this->confirmado;
   }
   public function getIdCampanha(){
     return $this->idCampanha;

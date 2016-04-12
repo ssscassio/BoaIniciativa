@@ -18,17 +18,28 @@ class  CriadorController
     return self::$instance;
   }
 
-  public function listarCampanhasAtivas($cpf){
+  public function listarCampanhas($cpf, $filtro){
     $todascampanhas = CampanhaDAO::getInstance()->buscarCampanhaPorCriador($cpf);
-    $campanhasativas = array();
-    for($i = 0 ; $i < sizeof($todascampanhas) ; $i++){
-      if($todascampanhas[$i]->getStatus()  == true){//se está ativa
-        $campanhasativas[] = $todascampanhas[$i];
+      if($filtro == "ativas"){
+          $campanhasativas = array();
+          for($i = 0 ; $i < sizeof($todascampanhas) ; $i++){
+            if($todascampanhas[$i]->getStatus()  == true){//se está ativa
+              $campanhasativas[] = $todascampanhas[$i];
+            }
+          }
+          return $campanhasativas;
+      }else if ($filtro == "finalizadas"){
+        $campanhasfinalizadas = array();
+        for($i = 0 ; $i < sizeof($todascampanhas) ; $i++){
+          if($todascampanhas[$i]->getStatus()  == false){//se está finalizada
+            $campanhasfinalizadas[] = $todascampanhas[$i];
+          }
+        }
+        return $campanhasfinalizadas;
+      }else {// se não for nem ativa nem finalizada ou o filtro for errado
+        return $todascampanhas;
       }
-    }
-    return $campanhasativas;
-  } //fecha o function
-
+    }//fecha a funcao
 }
 
  ?>

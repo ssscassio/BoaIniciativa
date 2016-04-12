@@ -1,4 +1,19 @@
 
+<?php
+
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorController.php");
+include("cabecalhologado.php");
+?>
+<br><br><br><br>
+<div class="container">
+<div class="row">
+
+
+<?php
+include("painelCriador.php");
+
+  echo '<div class="col-md-9">';
+?>
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-12">
@@ -47,3 +62,8 @@
           </form>
           <br>
         </div>
+</div>
+</div>
+</div>
+
+<?php include("footer.php"); ?>

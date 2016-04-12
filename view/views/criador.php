@@ -16,16 +16,7 @@
   <div class="col-md-9 panel panel-default" id="criarcampanha">
     <?php include("criarcampanha.php"); ?>
   </div>
-  <div class="col-md-9 panel panel-default" id="campativa">
-    <?php include("campativa.php"); ?>
-  </div>
-  <div class="col-md-9 panel panel-default" id="campfinalizada">
-    <?php include("campfinalizada.php"); ?>
-  </div>
-  <div class="col-md-9 panel panel-default" id="todascamp">
-    <?php include("todascamp.php"); ?>
-  </div>
-
+  
 </div>
 
 </div>
