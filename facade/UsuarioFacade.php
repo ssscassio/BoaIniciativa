@@ -78,6 +78,10 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioCo
     return UsuarioDAO::getInstance()->editarPerfil($usuario);
   }
 
+  public function verCampanha ($idcampanha){
+    return UsuarioController::getInstance()->verCampanha($idcampanha);
+  }
+
 
 
 }

@@ -35,6 +35,10 @@ class  UsuarioController
       return false; //SUBSTITUIR POR UMA EXCEPTION
     }
   }
+
+  public function verCampanha ($idcampanha){
+    return $campanha = CampanhaDAO::getInstance()->buscarCampanha($idcampanha);
+  }
 }
 
  ?>

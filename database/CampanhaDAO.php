@@ -76,7 +76,7 @@ class CampanhaDAO
   }
 
   public function buscarCampanhasAleatorias($quantidade){
-  
+
     try{
       $sql = Sql::getInstance()->buscarCampanhasAleatoriasSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);

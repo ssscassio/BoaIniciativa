@@ -2,6 +2,7 @@
 <?php
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/DoadorController.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
 include("cabecalhologado.php");
 ?>
 <br><br><br><br>
@@ -17,6 +18,9 @@ include("painelDoador.php");
 
     if ($_GET['tipo'] == 'doador') {
       $doacoes = DoadorController::getInstance()->listarDoacoes($_SESSION['cpf'], $_GET['filtro']);
+    //  $codmaterial = array();
+    //  $codmaterial = DoacaoMaterialDAO::getInstance()->listarMateriaisDaDoacao($doacao->getIdDoacao()); //codigo do materialCod
+
 
       if(sizeof($doacoes) == 0){?>
         <div class="alert alert-danger row alert-dismissible" role="alert" style="margin:10px 0px 10px 0px;">
@@ -42,15 +46,40 @@ include("painelDoador.php");
 
         echo '<div class="list-group">';
         for($i = 0; $i <sizeof($doacoes); $i++){
+          $campanha = CampanhaDAO::getInstance()->buscarCampanha($doacoes[$i]->getIdCampanha());
           ?>
           <div class="list-group-item row">
+            <div class="col-xs-6">
+              <?php if($campanha->getImagem() == "" || $campanha == "default.jpg"){
+                echo '<img src="../img/logobi.png" class="img-responsive img-rounded" alt="" />';
+              }else{
+                echo '<img src="'.$campanha->getImagem().'" class="img-responsive img-rounded" alt="" />';
+              } ?>
+              <div class="text-center">
+                  <span class="label <?php if($campanha->getStatus())
+                                            {echo 'label-info"> Ativa';
+                                            }else{
+                                              echo 'label-danger"> Finalizada';
+                                            }?>
+                                          </span>
+              </div>
+            </div>
             <div class="col-xs-6 text-center">
            <div class="row panel panel-primary">
-             <label class=""> Data:</label> <?php echo date("d/m/Y", strtotime($doacoes[$i]->getData())); ?>
+             <label class=""> Nome da campanha:</label> <?php echo $campanha->getNome(); ?>
+           </div>
+           <div class="row panel panel-primary">
+             <label class=""> Data Inicio:</label> <?php echo date("d/m/Y", strtotime($campanha->getDataInicio())); ?>
+           </div>
+           <div class="row panel panel-primary">
+             <label class=""> Data Fim:</label> <?php echo date("d/m/Y", strtotime($campanha->getDataFim())); ?>
+           </div>
+           <div class="row panel panel-primary">
+             <label class=""> Data da doação:</label> <?php echo date("d/m/Y", strtotime($doacoes[$i]->getData())); ?>
            </div>
          </div>
          <div class="col-xs-6 col-md-6 text-center">
-           <a href="campanha.php?id=<?php echo $doacoes[$i]->getIdCampanha(); ?>" class="btn btn-primary btn-block" style="margin:5px 0px 5px 0px;"> Ver Campanha </a>
+           <a href="visualizarCampanha.php?id=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary btn-block" style="margin:5px 0px 5px 0px;"> Ver Campanha </a>
          </div>
 
           </div>
