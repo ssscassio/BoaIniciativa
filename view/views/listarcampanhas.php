@@ -52,7 +52,7 @@ include("painelCriador.php");
                 echo '<img src="'.$campanhas[$i]->getImagem().'" class="img-responsive img-rounded" alt="" />';
               } ?>
               <div class="text-center">
-                  <span class="label <?php if($campanhas[$i]->getStatus)
+                  <span class="label <?php if($campanhas[$i]->getStatus())
                                             {echo 'label-info"> Ativa';
                                             }else{
                                               echo 'label-danger"> Finalizada';

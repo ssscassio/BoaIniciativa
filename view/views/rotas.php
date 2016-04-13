@@ -1,5 +1,6 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AdministradorFacade.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/AtendenteController.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 
@@ -92,16 +93,50 @@ if(isset($_POST['botaoLogar'])){
 
     $confirmacao = UsuarioFacade::getInstance()->editarPerfil($cpf,$nome,$email,$sexo,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento);
 
-    var_dump($confirmacao);
     if($confirmacao){
       header('location:perfil.php');//funcionou
     }else{
       header('location:perfil.php');//nao funcionou
     }
   }else{
-      header('location:editarperfil.php'); //falta informações
+      header('location:perfil.php'); //falta informações
   }
 
 
+}else if(isset($_POST['botaoConfirmarParticipacao'])){
+  $cpf = $_POST['cpf'];
+  $idCampanha = $_POST['idCampanha'];
+
+  $confirmacao = AtendenteController::getInstance()->confirmarParticipacao($cpf,$idCampanha);
+
+
+  if($confirmacao){
+    header('location:campanhasAtendente.php');//funcionou
+  }else{
+    header('location:convitesatendente.php');//nao funcionou
+  }
+}else if(isset($_POST['botaoCancelarParticipacao'])){
+  $cpf = $_POST['cpf'];
+  $idCampanha = $_POST['idCampanha'];
+
+  $confirmacao = AtendenteController::getInstance()->cancelarParticipacao($cpf,$idCampanha);
+
+
+  if($confirmacao){
+    header('location:convitesatendente.php');//funcionou
+  }else{
+    header('location:campanhasAtendente.php');//nao funcionou
+  }
+}else if(isset($_POST['botaoCadastroRapido'])){
+  $cpf = $_POST['cpf'];
+  $senha = $_POST['password'];
+  $email = $_POST['email'];
+
+  $confirmacao = AtendenteController::getInstance()->cadastroRapido($cpf,$email,$senha);
+  if($confirmacao){
+    header('location:cadastrorapido.php');//funcionou
+  }else{
+    header('location:cadastrorapido.php');//nao funcionou
+  }
 }
 ?>

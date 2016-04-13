@@ -73,17 +73,18 @@
           </ul>
 <?php
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
-
   $usuario = UsuarioDAO::getInstance()->buscarUsuario($_SESSION['cpf']);
-  $nome = $usuario->getNome();
-  $nome = explode(" ", $nome, -1);
-  $primeiroNome = $nome[0];
+  if($usuario->getNome() != null){
+    $nome = $usuario->getNome();
+    $nome = explode(" ", $nome, -1);
+    $primeiroNome = $nome[0];
+  }
  ?>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="criador.php">Criação</a></li>
                 <li><a href="doador.php">Doação</a></li>
                 <li><a href="atendente.php">Atendimento</a></li>
-                <li><a href="perfil.php"><?php echo $primeiroNome; ?></a></li>
+                <li><a href="perfil.php"><?php if(isset($primeiroNome)){echo $primeiroNome;}else{echo "Sem Nome";} ?></a></li>
                 <li><a href="logout.php">Logout</a></li>
 
             </ul>

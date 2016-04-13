@@ -130,7 +130,7 @@ class UsuarioDAO{
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1,$cpf);
       $stmt->bindParam(2,$email);
-      $stmt->bindParam(3,$usuario->getSenha());
+      $stmt->bindParam(3,$senha);
 
       $stmt->execute();
     }catch(Exception $e){

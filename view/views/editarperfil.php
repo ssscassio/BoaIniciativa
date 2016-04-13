@@ -1,5 +1,6 @@
 
 <?php
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioController.php");
 $usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
 $endereco = $usuario->getEndereco();
 
@@ -25,11 +26,11 @@ $endereco = $usuario->getEndereco();
 
           <div class="form-group">
             <label>Nome Completo</label>
-            <input type="text" class="form-control" NAME="nome" required  placeholder="Nome Completo" value="<?php echo $usuario->getNome();?>">
+            <input type="text" class="form-control" NAME="nome" placeholder="Nome Completo" value="<?php echo $usuario->getNome();?>">
           </div>
           <div class="form-group">
             <label>E-mail</label>
-            <input type="email" class="form-control" NAME="email" placeholder="Email" value="<?php echo $usuario->getEmail();?>">
+            <input type="email" class="form-control" NAME="email" required placeholder="Email" value="<?php echo $usuario->getEmail();?>">
           </div>
           <div class="form-group">
             <label>Sexo: *</label><br>
@@ -48,27 +49,27 @@ $endereco = $usuario->getEndereco();
             <h4 class="page-header">Endereço</h4>
             <div class="form-group">
               <label>CEP</label>
-              <input type="text" class="form-control" name="cep" required  value="<?php echo $endereco['cep']?>">
+              <input type="text" class="form-control" name="cep"  value="<?php echo $endereco['cep']?>">
             </div>
             <div class="form-group">
               <label>Estado</label>
-              <input type="text" class="form-control" name="estado" required  value="<?php echo $endereco['estado']?>">
+              <input type="text" class="form-control" name="estado" value="<?php echo $endereco['estado']?>">
             </div>
             <div class="form-group">
               <label>Bairro</label>
-              <input type="text" class="form-control" name="bairro" required value="<?php echo $endereco['bairro']?>">
+              <input type="text" class="form-control" name="bairro" value="<?php echo $endereco['bairro']?>">
             </div>
             <div class="form-group">
               <label>Cidade</label>
-              <input type="text" class="form-control" name="cidade" required value="<?php echo $endereco['cidade']?>">
+              <input type="text" class="form-control" name="cidade" value="<?php echo $endereco['cidade']?>">
             </div>
             <div class="form-group">
               <label>Logradouro</label>
-              <input type="text" class="form-control" name="logradouro" required  value="<?php echo $endereco['logradouro']?>">
+              <input type="text" class="form-control" name="logradouro" value="<?php echo $endereco['logradouro']?>">
             </div>
             <div class="form-group">
               <label>Numero</label>
-              <input type="number" class="form-control" name="numero" required value="<?php echo $endereco['numero']?>">
+              <input type="number" class="form-control" name="numero" value="<?php echo $endereco['numero']?>">
             </div>
             <div class="form-group">
               <label>Complemento</label>
@@ -83,7 +84,6 @@ $endereco = $usuario->getEndereco();
   $enderecoJunto = "$l, $n, $b, $c";
    ?>
           <script type='text/javascript'>
-            var
 
             var endereco = "<?php echo $enderecoJunto;?>";
             var postos = new Array(endereco);

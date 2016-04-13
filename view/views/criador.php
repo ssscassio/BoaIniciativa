@@ -13,10 +13,8 @@
     <h3 style="text-align:right;">A solidariedade estimula a gentileza e gera mais saúde.
         - Anônimo.</h3>
   </div>
-  <div class="col-md-9 panel panel-default" id="criarcampanha">
-    <?php include("criarcampanha.php"); ?>
-  </div>
   
+
 </div>
 
 </div>

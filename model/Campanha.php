@@ -48,7 +48,10 @@ class Campanha{
 					#dataFim
     			$this->status = false;//Finalizada
     		}
-    	}
+    	}else{
+				$this->status = true;
+			}
+
     }
 
 

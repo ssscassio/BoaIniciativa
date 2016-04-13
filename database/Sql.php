@@ -96,7 +96,24 @@ class Sql
   private $confirmado = "confirmado";
 
   public function listarCampanhasAtendenteSQL(){
-    return "SELECT * FROM {$this->schema}.{$this->atendeCampanhaTable} WHERE {$this->atendeCampanhaCPF} = ?";
+    return "SELECT * FROM {$this->schema}.{$this->atendeCampanhaTable} WHERE {$this->atendeCampanhaCPF} = ? AND {$this->confirmado} = true";
+  }
+
+  public function autenticarAtendenteSQL(){
+    return "SELECT * FROM {$this->schema}.{$this->atendeCampanhaTable} WHERE {$this->atendeCampanhaCPF} = ? AND {$this->atendeCampanhaIdCampanha} = ? AND {$this->confirmado} = true";
+
+  }
+
+  public function listarConfirmacoesPendentesSQL(){
+    return "SELECT * FROM {$this->schema}.{$this->atendeCampanhaTable} WHERE {$this->atendeCampanhaCPF} = ? AND {$this->confirmado} = false";
+  }
+
+  public function aceitarConviteSQL(){
+    return "UPDATE {$this->schema}.{$this->atendeCampanhaTable} SET {$this->confirmado} = true WHERE {$this->atendeCampanhaCPF} = ? AND {$this->atendeCampanhaIdCampanha} = ?";
+  }
+
+  public function cancelarConviteSQL(){
+    return "UPDATE {$this->schema}.{$this->atendeCampanhaTable} SET {$this->confirmado} = false WHERE {$this->atendeCampanhaCPF} = ? AND {$this->atendeCampanhaIdCampanha} = ?";
   }
 
   public function listarAtendentesCampanhaSQL(){
@@ -520,7 +537,7 @@ class Sql
       }
 
       public function adicionarCadastroRapidoSQL(){
-        return "INSERT INTO {$this->schema}.{$this->usuarioTable} ({$this->usuarioCPF},{$this->usuarioEmail},{$this->usuarioSenha}) VALUES (?,?,?)";
+        return "INSERT INTO {$this->schema}.{$this->usuarioTable} ({$this->usuarioCPF},{$this->usuarioFoto},{$this->usuarioEmail},{$this->usuarioSenha}) VALUES (?, 'default.jpg' ,?,?)";
       }
 
       public function buscarUsuarioSQL(){
@@ -569,7 +586,7 @@ class Sql
       }
 
       public function adicionarCadastroRapidomd5SQL(){
-        return "INSERT INTO {$this->schema}.{$this->usuarioTable} ({$this->usuarioCPF},{$this->usuarioEmail},{$this->usuarioSenha}) VALUES (?,?,md5(?))";
+        return "INSERT INTO {$this->schema}.{$this->usuarioTable} ({$this->usuarioCPF},{$this->usuarioFoto},{$this->usuarioEmail},{$this->usuarioSenha}) VALUES (?,'default.jpg',?,md5(?))";
       }
       public function editarSenhamd5SQL(){
         return "UPDATE {$this->schema}.{$this->usuarioTable} SET {$this->$usuarioSenha}=md5(?) WHERE {$this->usuarioCPF} = ?";

@@ -35,6 +35,70 @@ class AtendenteCampanhaDAO {
     }
   }
 
+  public function autenticarAtendente($cpf, $idCampanha){
+    try {
+      $sql = Sql::getInstance()->autenticarAtendenteSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1, $cpf);
+      $stmt->bindParam(2, $idCampanha);
+      $stmt->execute();
+      return ($stmt->rowCount() > 0);
+    } catch (Exception $e) {
+      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+
+
+  }
+  public function listarConfirmacoesPendentes($usuarioCpf){
+    try{
+      $sql = Sql::getInstance()->listarConfirmacoesPendentesSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1,$usuarioCpf);
+      $stmt->execute();
+
+      if($stmt->rowCount()==0)
+      return null;
+
+      $arrayCampanhas = array();
+
+      while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $campanha = CampanhaDAO::getInstance()->buscarCampanha($linha['idcampanha']);
+        $arrayCampanhas[]=$campanha;
+      }
+
+      return $arrayCampanhas;
+
+    }catch (Exception $e){
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+  }
+
+  public function confirmarParticipacaoAtendente($usuarioCpf, $idCampanha){
+    try {
+    $sql = Sql::getInstance()->aceitarConviteSQL();
+    $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+    $stmt->bindParam(1,$usuarioCpf);
+    $stmt->bindParam(2,$idCampanha);
+    return $stmt->execute();
+
+    } catch (Exception $e) {
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+  }
+
+  public function cancelarParticipacaoAtendente($usuarioCpf, $idCampanha){
+    try {
+    $sql = Sql::getInstance()->cancelarConviteSQL();
+    $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+    $stmt->bindParam(1,$usuarioCpf);
+    $stmt->bindParam(2,$idCampanha);
+    return $stmt->execute();
+
+    } catch (Exception $e) {
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+  }
+
   public function listarCampanhasAtendente($usuarioCpf){
     try{
       $sql = Sql::getInstance()->listarCampanhasAtendenteSQL();

@@ -8,10 +8,13 @@
         </div>
         <div class="col-xs-6 col-md-12">
           <a href="listarcampanhas.php?tipo=criador&filtro=ativas" type="button" id="botaocampanhasAtivas" class="btn btn-primary btn-block" name="campanhasAtivas">Campanhas Ativas</a>
+          <hr>
         </div>
         <div class="col-xs-6 col-md-12">
           <a href="listarcampanhas.php?tipo=criador&filtro=finalizadas" type="button" id="botaocampanhasFinalizadas" class="btn btn-primary btn-block" name="campanhasFinalizadas">Campanhas Finalizadas</a>
+          <hr>
         </div>
+
         <div class="col-xs-6 col-md-12">
           <a href="listarcampanhas.php?tipo=criador&filtro=todas" type="button" id="botaotodasCampanhas" class="btn btn-primary btn-block" name="todasCampanhas">Todas Campanhas</a>
           <hr>
