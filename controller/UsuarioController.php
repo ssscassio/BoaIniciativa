@@ -37,7 +37,7 @@ class  UsuarioController
   }
 
   public function verCampanha ($idcampanha){
-    $campanha = CampanhaDAO::getInstance()->buscarCampanha($idcampanha);
+    return $campanha = CampanhaDAO::getInstance()->buscarCampanha($idcampanha);
   }
 }
 

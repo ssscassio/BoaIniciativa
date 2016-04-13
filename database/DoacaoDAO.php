@@ -24,10 +24,10 @@ class DoacaoDAO
 
   public function popularDoacao($linha){
       $doacao =new Doacao($linha['iddoacao'],
+                        $linha['doadorcpf'],
                         $linha['confirmado'],
                         $linha['data'],
-                        $linha['idcampanha'],
-                        $linha['doadorcpf']);
+                        $linha['idcampanha']);
               $doacao->setAtendente($linha['atendenteconfirma']);
       return $doacao;
   }

@@ -18,7 +18,6 @@ include("painelDoador.php");
 
     if ($_GET['tipo'] == 'doador') {
       $doacoes = DoadorController::getInstance()->listarDoacoes($_SESSION['cpf'], $_GET['filtro']);
-
     //  $codmaterial = array();
     //  $codmaterial = DoacaoMaterialDAO::getInstance()->listarMateriaisDaDoacao($doacao->getIdDoacao()); //codigo do materialCod
 

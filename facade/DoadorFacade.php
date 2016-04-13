@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorController.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/DoadorController.php");
 
   class DoadorFacade{
 
@@ -17,7 +17,11 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
     }
 
   public function listarDoacoes($cpf, $filtro){
-    return DoadorController::getInstance()->listarDoacoesAtivas($cpf, $filtro);
+    return DoadorController::getInstance()->listarDoacoes($cpf, $filtro);
+  }
+
+  public function doar($idcampanha, $doadorcpf){
+    return DoadorController::getInstance()->adicionarDoacao($idcampanha, $doadorcpf);
   }
 
   }
