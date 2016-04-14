@@ -294,6 +294,9 @@ class Sql
     private $doacaoIdCampanha = "idcampanha";
     private $doacaoCpfDoador = "doadorcpf";
 
+  public function excluirDoacao(){
+    return "DELETE FROM {$this->schema}.{$this->doacaoTable} WHERE {$this->doacaoId} = ?";
+  }
 	public function excluirDoacaoPendente(){
 	    return "DELETE FROM {$this->schema}.{$this->doacaoTable} WHERE {$this->doacaoCpfDoador} = ? and {$this->doacaoIdCampanha} = ?";
 	}

@@ -52,7 +52,11 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.php">BoaIniciativa</a>
+      <div class="navbar-brand">
+          <a href="index.php">        <img class="img-responsive"  style="height:40px; weight:40px;" src="../img/logobi.png" alt="">
+          </a>
+        </div>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,6 +75,9 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="login.php">Login/Cadastro</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="sobre.php">Sobre</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->

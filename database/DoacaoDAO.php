@@ -78,7 +78,6 @@ class DoacaoDAO
 
   public function adicionarDoacao($doacao){
     try{
-
       $sql = Sql::getInstance()->adicionarDoacaoSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1,$doacao->getData());
@@ -159,6 +158,21 @@ class DoacaoDAO
         echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
         }
     }
+
+  public function excluirDoacao($idDoacao){
+    try {
+      $sql = Sql::getInstance()->excluirDoacao();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1, $idDoacao);
+      $stmt->execute();
+
+      $doacao = DoacaoDAO::getInstance()->buscarDoacaoPorId($idDoacao);
+      return ($doacao->getIdDoacao() != null);
+    } catch (Exception $e) {
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
+    }
+  }
 
 	public function excluirDoacaoPendente($idCampanha, $cpfUsuario){ // em edição por Jussara return boolean
 	try {

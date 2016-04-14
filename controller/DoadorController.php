@@ -42,9 +42,14 @@ class  DoadorController
   }
 
   public function adicionarDoacao($idcampanha, $doadorcpf){
-    date_default_timezone_set("America/Bahia");
-    $doacao = new Doacao(null, date_default_timezone_get(), FALSE, $idcampanha, NULL, $doadorcpf);
+    $data = date('d/m/Y');
+    $doacao = new Doacao(null, $doadorcpf, FALSE, $data, $idcampanha);
     return DoacaoDAO::getInstance()->adicionarDoacao($doacao);
+  }
+
+  public function cancelarDoacao($idDoacao){
+    return DoacaoDAO::getInstance()->excluirDoacao($idDoacao);
+    
   }
 
 

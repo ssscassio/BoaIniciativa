@@ -81,7 +81,17 @@ include("painelDoador.php");
          <div class="col-xs-6 col-md-6 text-center">
            <a href="visualizarCampanha.php?id=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary btn-block" style="margin:5px 0px 5px 0px;"> Ver Campanha </a>
          </div>
-
+        <?php
+        if(!$doacoes[$i]->getConfirmado()){ ?>
+         <div class="col-xs-6 col-md-6 text-center">
+           <form action="rotas.php" method="post">
+             <input type="hidden" name="idDoacao" value="<?php echo $doacoes[$i]->getIdDoacao() ?>">
+             <input type="submit" name="botaoCancelarDoacao" class="btn btn-primary btn-block" value="Cancelar Doação">
+           </form>
+         </div>
+         <?php
+        }
+        ?>
           </div>
 
 <?php

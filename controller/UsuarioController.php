@@ -39,6 +39,17 @@ class  UsuarioController
   public function verCampanha ($idcampanha){
     return $campanha = CampanhaDAO::getInstance()->buscarCampanha($idcampanha);
   }
+
+  public function enviarDenuncia($idCampanha, $motivo, $descricao, $cpf){
+    $denuncia = new Denuncia(null, $idCampanha, $motivo, $descricao, $cpf);
+    if(DenunciaDAO::getInstance()->adicionarDenuncia($denuncia) == null){
+      return false;
+    }else{
+    return true;      
+    }
+
+
+  }
 }
 
  ?>

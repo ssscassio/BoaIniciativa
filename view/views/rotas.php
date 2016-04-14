@@ -1,6 +1,7 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AdministradorFacade.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/AtendenteController.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/DoadorController.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 
@@ -138,5 +139,24 @@ if(isset($_POST['botaoLogar'])){
   }else{
     header('location:cadastrorapido.php');//nao funcionou
   }
+}else if(isset($_POST['botaoCancelarDoacao'])){
+
+  $idDoacao = $_POST['idDoacao'];
+
+   $confirmacao = DoadorController::getInstance()->cancelarDoacao($idDoacao);
+
+   if($confirmacao){
+     header('location:doador.php');//funcionou
+   }else{
+     header('location:doador.php');//nao funcionou
+   }
+}else if(isset($_POST['botaoEnviarDenuncia'])){
+  $idCampanha = $_POST['idCampanha'];
+  $motivo = $_POST['motivo'];
+  $descricao = $_POST['descricao'];
+  $cpf =$_POST['cpf'];
+  $confirmacao = UsuarioController::getInstance()->enviarDenuncia($idCampanha, $motivo, $descricao, $cpf);
+
+  header('location:doador.php');
 }
 ?>

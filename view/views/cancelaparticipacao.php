@@ -14,9 +14,9 @@
       include("painelDoador.php");
 
       echo '<div class="col-md-9">';
-      if(isset($_GET['idCampanha']) && isset($_GET['doadorcpf'])){
+      if(isset($_GET['cpfdoador']) && isset($_GET['doadorcpf'])){
 
-      $idInsercao = DoadorFacade::getInstance()->doar($_GET['idCampanha'], $_GET['doadorcpf']);
+      $idInsercao = DoadorFacade::getInstance()->cancelarParticipacao($_GET['idCampanha'], $_GET['doadorcpf']);
       ?>
       <div class="col-lg-6">
           <h2 class="page-header">

@@ -9,7 +9,20 @@
   }
   ?>
 
+<div class="container">
+  <div class="row">
+    <div class=" container">
+      <div class="col-md-2">
+          <img class="img-responsive" style="margin:20px;" src="../img/logobi.png" alt="">
+        </div>
 
+        <div class="col-md-8">
+          <p><h2>Muito mais que um gesto! </h2></p>
+        </div>
+
+      </div>
+    </div>
+</div>
   <!-- Header Carousel -->
   <header id="myCarousel" class="carousel slide">
     <!-- Indicators -->
@@ -54,17 +67,7 @@
   <!-- Page Content -->
   <div class="container">
     <!-- Features Section -->
-    <div class="row">
-      <div class="col-lg-12">
-        <h1 class="page-header">Sobre o Boa Iniciativa</h2>
-        </div>
-        <div class="col-md-6">
-          <p><h4>Este é um site dedicado a permitir doações entre pessoas que precisam e pessoas que queiram ajudar. Se você é um deles, junte-se a nós. Aqui você poderá criar suas próprias campanhas, realizar doações e até mesmo participar como atendente em um posto de doação de uma campanha existente. Infinitas possibilidades, infinitas maneiras de ajudar melhorar a vida de alguém. <br>Boa Iniciativa, muito mais que um gesto! </h4></p>
-        </div>
-        <div class="col-md-6">
-          <img class="img-responsive" src="../img/logobi.png" alt="">
-        </div>
-      </div>
+
       <!-- /.row -->
       <!-- Marketing Icons Section -->
       <div class="row">

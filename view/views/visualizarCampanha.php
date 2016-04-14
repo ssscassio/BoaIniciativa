@@ -56,12 +56,35 @@ include("cabecalhologado.php");
             <br/>
           </div>
 
+          <script type="text/javascript" src="../js/campanha.js"></script>
+
           <div class="container-fluid panel panel-success col-md-6" style="padding:20px;">
             <h2 class="page-header">Ações</h2>
-            <a href="">Ver criador</a><br/>
+            <a href="usuario.php?cpfcriador=<?php echo $campanha->getCriadorCpf();?>">Ver criador</a><br/>
             <a href="">Convidar Amigo</a><br/>
-            <a href="">Cancelar Participação</a><br/>
-            <a href="">Denunciar</a><br/>
+            <a id="botaoDenunciar">Denunciar</a>
+            <div class="panel panel-primary" id="formDenuncia" >
+              <form action="rotas.php" method="post">
+                <input type="hidden" name="idCampanha" value="<?php echo $campanha->getIdCampanha(); ?>">
+                <input type="hidden" name="cpf" value="<?php echo $_SESSION['cpf']; ?>">
+                <div class="form-group col-md-12">
+                  <label>Motivo</label><br>
+                  <input type="radio" name="motivo" value="nomeMotivo1" checked> Motivo 1 <br>
+                  <input type="radio" name="motivo" value="nomeMotivo2"> Motivo 2 <br>
+                </div>
+                <div class="form-group col-md-12">
+                  <label>Descrição</label>
+                  <input type="text-area" class="form-control" name="descricao" required placeholder="Descricao">
+                </div>
+                <div class="row text-center">
+                  <div class="col-md-6">
+                    <input type="submit" class="btn btn-primary btn-block" style="margin:5px 0px 5px 0px;" name="botaoEnviarDenuncia" value="Denunciar">
+                  </div>
+                </div>
+              </form>
+
+            </div>
+
           </div>
         </div>
 
