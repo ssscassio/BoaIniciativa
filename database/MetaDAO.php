@@ -1,8 +1,6 @@
 <?php
   require_once('MaterialDAO.php');
-  require_once('../model/Meta.php');
-
-  require_once('../database/CampanhaDAO.php');
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/Meta.php");
   require_once("Sql.php");
 
   /**
@@ -23,8 +21,8 @@
 	}
 
 
-	public function popularMeta($inha){
-		$meta = new Meta($linha['idcampanha'], $linha['codcaterial'], $linha['quantidade']);
+	public function popularMeta($linha){
+		$meta = new Meta($linha['idcampanha'], $linha['codmaterial'], $linha['quantidade']);
 		return $meta;
 	}
 
@@ -33,7 +31,7 @@
 		try{
 			$sql = Sql::getInstance()->adicionarMetaSQL();
 			$stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-		    $stmt->bindParam(1, $meta->getCodMaterial());
+		  $stmt->bindParam(1, $meta->getCodMaterial());
 			$stmt->bindParam(2, $meta->getIdCampanha());
 			$stmt->bindParam(3, $meta->getQuantidade());
 
@@ -73,14 +71,13 @@
         $sql = Sql::getInstance()->buscarmetasCampanhaSQL();
         $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
         $stmt->bindParam(1,$idCampanha);
-        $stmt->execute(array($idCampanha));
+        $stmt->execute();
 
 		if($stmt->rowCount()==0){
 			return null;
 		}
 
 		$arrayMetas = array();
-		$campanhaDAO = new CampanhaDAO();//Pode remover
 
 		while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
 			$meta = new Meta($linha['idcampanha'], $linha['codmaterial'], $linha['quantidade']);

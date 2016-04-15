@@ -4,6 +4,8 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/DoacaoDAO.p
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/AtendenteCampanhaDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MaterialDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MetaDAO.php");
 
 
 /**
@@ -78,6 +80,19 @@ public function cadastroRapido($cpf,$email,$senha){
     return $campanhas;
   }
 
+  public function listarMateriaisCampanha($idCampanha){
+    $metas =array();
+    $metas = MetaDAO::getInstance()->buscarMetasCampanha($idCampanha);
+    $materiais = array();
+    for ($i=0; $i < sizeof($metas); $i++) {
+      $materiais[] = MaterialDAO::getInstance()->buscarMaterial($metas[$i]->getCodMaterial());
+    }
+
+    return $materiais;
+  }
+  public function listarMateriais(){
+    return MaterialDAO::getInstance()->listarMateriais();
+  }
   public function listarConvitesPendentes($cpf){
     return AtendenteCampanhaDAO::getInstance()->listarConfirmacoesPendentes($cpf);
   }

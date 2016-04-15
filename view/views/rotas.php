@@ -158,5 +158,20 @@ if(isset($_POST['botaoLogar'])){
   $confirmacao = UsuarioController::getInstance()->enviarDenuncia($idCampanha, $motivo, $descricao, $cpf);
 
   header('location:doador.php');
+}else if(isset($_POST['botaoConfirmarDoacao'])){
+  $quantidade_itens = $_POST['quantidade_itens'];
+
+    for ( $x = 1; $x <= $quantidade_itens ; $x++ ){
+
+        $item = $_POST["material$x"];
+        $quantidade = $_POST["quantidade$x"];
+        echo $item;
+        echo "  -  ";
+        echo $quantidade;
+        echo "\n";
+        //aqui seu código com o uso dos valores capturados
+    }
+
+
 }
 ?>
