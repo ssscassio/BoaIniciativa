@@ -24,12 +24,6 @@
           <div class="col-md-7 panel-primary panel container">
             <h3 class="page-header"> Informações Pessoais</h3>
             <div class="col-xs-12">
-              <label class=""> CPF:</label> <?php echo $usuario->getCpf(); ?>
-            </div>
-            <div class="col-xs-12">
-              <label class=""> Email:</label> <?php echo $usuario->getEmail(); ?>
-            </div>
-            <div class="col-xs-12">
               <label class=""> Sexo: </label> <?php if ($usuario->getSexo() =="M") {
                 echo "Masculino";
               }else{
@@ -40,20 +34,11 @@
               <label class=""> Data de Nascimento:</label> <?php echo date("d/m/Y", strtotime($usuario->getDataNascimento())); ?>
             </div>
           </div>
+
+      </div>
           <div class="row">
             <h4 class="page-header">Endereço</h4>
-            <div class="col-md-12">
-              <label class=""> Cep:</label>  <?php echo $endereco['cep']; ?>
-            </div>
-            <div class="col-md-4">
-              <label class=""> Estado:</label> <?php echo $endereco['estado']; ?>
-            </div>
-            <div class="col-md-4">
-              <label class=""> Cidade:</label> <?php echo $endereco['cidade']; ?>
-            </div>
-            <div class="col-md-4">
-              <label class=""> Bairro:</label>  <?php echo $endereco['bairro']; ?>
-            </div>
+          </div>
             <?php
             $l = $endereco['logradouro'];
             $n = $endereco['numero'];
@@ -99,7 +84,6 @@
             }
             </script>
             <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBtrcCnCC71lEBRbj-hM5KwlHcSppnenBI&callback=initialize" async defer></script>
-<hr>
 <div class="row ">
   <div class="container" style="width: 650px; height: 300px;">
     <div id="map" style=" height: 100%; width: 100%;"></div>
@@ -107,9 +91,7 @@
 
 </div>
 <br><br>
-<hr>
-          </div>
-        </div>
+
 
       </div>
       <div class="panel container ">

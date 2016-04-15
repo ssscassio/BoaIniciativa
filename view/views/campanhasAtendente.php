@@ -13,7 +13,7 @@ include("cabecalhologado.php");
         require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/AtendenteController.php");
         $campanhas = AtendenteController::getInstance()->listarCampanhas($_SESSION['cpf']);//Listar Campanhas que atende
 
-        echo '<div class="col-md-9">';
+        echo '<div class="col-md-9 panel panel-default">';
 
         if(sizeof($campanhas) == 0){
           echo '<div class="alert alert-info row alert-dismissible" role="alert" style="margin:10px 0px 10px 0px;">

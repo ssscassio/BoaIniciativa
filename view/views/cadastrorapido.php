@@ -7,7 +7,7 @@ include("cabecalhologado.php");
 
 <?php include("painelAtendente.php"); ?>
 
-<div class="col-md-9 panel">
+<div class="col-md-9 panel panel-default">
 
   <div class="row">
     <div class="col-lg-12">

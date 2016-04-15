@@ -46,6 +46,17 @@ public function cadastroRapido($cpf,$email,$senha){
     }
   }
 
+  public function buscarDoacoesPendentesNaCampanha($cpf,$idCampanha){
+    $todasdoacoes = DoacaoDAO::getInstance()->buscarDoacaoNaCampanha($cpf,$idCampanha);
+    $doacoespendentes = array();
+    for($i = 0 ; $i < sizeof($todasdoacoes) ; $i++){
+      if($todasdoacoes[$i]->getConfirmado()  == false){//se não foi confirmado
+        $doacoespendentes[] = $todasdoacoes[$i];
+      }
+    }
+    return $doacoespendentes;
+  }
+
   public function numConvitesPendentes($cpf){
     $campanhas = AtendenteCampanhaDAO::getInstance()->listarConfirmacoesPendentes($cpf);
     if($campanhas == null){

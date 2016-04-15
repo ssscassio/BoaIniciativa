@@ -315,6 +315,10 @@ class Sql
       return "SELECT * FROM {$this->schema}.{$this->doacaoTable}  WHERE {$this->doacaoCpfDoador} = ?";
     }
 
+    public function buscarDoacaoNaCampanhaSQL(){
+      return "SELECT * FROM {$this->schema}.{$this->doacaoTable}  WHERE {$this->doacaoCpfDoador} = ? AND {$this->doacaoIdCampanha} = ?";
+    }
+
     public function buscarDoacaoPorIdSQL(){
       return "SELECT * FROM {$this->schema}.{$this->doacaoTable}  WHERE {$this->doacaoId} = ?";
     }

@@ -174,19 +174,28 @@ class DoacaoDAO
     }
   }
 
-	public function excluirDoacaoPendente($idCampanha, $cpfUsuario){ // em edição por Jussara return boolean
+	public function buscarDoacaoNaCampanha($cpfUsuario, $idCampanha){
 	try {
-      $sql = Sql::getInstance()->excluirDoacaoPendente();
+      $sql = Sql::getInstance()->buscarDoacaoNaCampanhaSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1, $cpfUsuario);
       $stmt->bindParam(2, $idCampanha);
       $stmt->execute();
 
-      if($stmt->errorCode() != "00000"){
-        return false;
+
+      if($stmt->rowCount()==0){
+        return null;
       }
 
-	  return true;
+      $arrayDoacoes = array();
+
+      while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $doacao = $this->popularDoacao($linha);
+        $arrayDoacoes[] = $doacao;
+      }
+
+    return $arrayDoacoes;
+
 
     } catch (Exception $e) {
       echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
