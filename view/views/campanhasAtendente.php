@@ -1,15 +1,17 @@
 <?php
 include("cabecalhologado.php");
 ?>
-<br><br><br><br>
+<br><br>
 <div class="container">
 <div class="row">
-
+  <!--Painel Atendente-->
+  <div class="col-md-3 panel panel-default" style="padding:0px 10px 20px 10px;">
+    <?php include_once("painelAtendente.php"); ?>
+  </div>
 
 
 <?php
 
-  include_once("painelAtendente.php");
         require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/AtendenteController.php");
         $campanhas = AtendenteController::getInstance()->listarCampanhas($_SESSION['cpf']);//Listar Campanhas que atende
 

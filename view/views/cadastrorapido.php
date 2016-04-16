@@ -1,11 +1,14 @@
 <?php
 include("cabecalhologado.php");
 ?>
-<br><br><br><br>
+<br><br>
 <div class="container">
 <div class="row">
 
-<?php include("painelAtendente.php"); ?>
+  <!--Painel Atendente-->
+  <div class="col-md-3 panel panel-default" style="padding:0px 10px 20px 10px;">
+    <?php include_once("painelAtendente.php"); ?>
+  </div>
 
 <div class="col-md-9 panel panel-default">
 

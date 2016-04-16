@@ -1,38 +1,16 @@
 
+<?php include('cabecalho.php'); //Adição do cabeçalho?>
+
 <body>
 
-  <?php
-  if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
-    header("location:home.php");
-  }else{
-    include('cabecalho.php');
-  }
-  ?>
-
-<div class="container">
-  <div class="row">
-    <div class=" container">
-      <div class="col-md-2">
-          <img class="img-responsive" style="margin:20px;" src="../img/logobi.png" alt="">
-        </div>
-
-        <div class="col-md-8">
-          <p><h2>Muito mais que um gesto! </h2></p>
-        </div>
-
-      </div>
-    </div>
-</div>
-  <!-- Header Carousel -->
   <header id="myCarousel" class="carousel slide">
-    <!-- Indicators -->
+
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
 
-    <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
         <div class="fill" style="background-image:url('http://lorempixel.com/1900/1080/people/1');"></div>
@@ -54,7 +32,6 @@
       </div>
     </div>
 
-    <!-- Controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
       <span class="icon-prev"></span>
     </a>
@@ -63,28 +40,23 @@
     </a>
   </header>
 
-
-  <!-- Page Content -->
   <div class="container">
-    <!-- Features Section -->
 
-      <!-- /.row -->
-      <!-- Marketing Icons Section -->
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="page-header">
-            Campanhas em Destaque
-          </h2>
-        </div>
-<?php
+    <div class="row">
+      <div class="col-lg-12">
+        <h2 class="page-header">
+          Campanhas em Destaque
+        </h2>
+      </div>
+      <?php
 
-  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
+      require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
 
-    $arraybusca = CampanhaDAO::getInstance()->buscarCampanhasDestaque(4);
-    for($i = 0 ; $i < 3 ; $i++){
-      $campanha = $arraybusca[$i];
+      $arraybusca = CampanhaDAO::getInstance()->buscarCampanhasDestaque(4);
+      for($i = 0 ; $i < 3 ; $i++){
+        $campanha = $arraybusca[$i];
 
- ?>
+        ?>
 
         <div class="col-md-4 col-xs-6">
           <div class="panel panel-default">
@@ -94,7 +66,7 @@
             <div class="panel-body">
               <img class="img-responsive img-portfolio" src="
               <?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
-                  echo "../img/logobi.png";
+                echo "../img/logobi.png";
               }else{
                 echo $campanha->getImagem();
               } ?>
@@ -107,9 +79,9 @@
 
 
 
-      <!-- /.row -->
-<?php } //final do loop for
-?>
+        <!-- /.row -->
+        <?php } //final do loop for
+        ?>
       </div>
       <!-- Portfolio Section -->
       <div class="row">
@@ -118,100 +90,57 @@
         </div>
 
         <?php
-          require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
-          $arraybusca = CampanhaDAO::getInstance()->buscarCampanhasAleatorias(6);
-          for($i = 0 ; $i < 6 ; $i++){
-            $campanha = $arraybusca[$i];
+        require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
+        $arraybusca = CampanhaDAO::getInstance()->buscarCampanhasAleatorias(6);
+        for($i = 0 ; $i < 6 ; $i++){
+          $campanha = $arraybusca[$i];
 
-         ?>
-        <div class="col-xs-4">
-          <a href="campanha?campanha=<?php echo $campanha->getIdCampanha(); ?>">
-            <img class="img-responsive img-portfolio img-hover" src="<?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
+          ?>
+          <div class="col-xs-4">
+            <a href="campanha?campanha=<?php echo $campanha->getIdCampanha(); ?>">
+              <img class="img-responsive img-portfolio img-hover" src="<?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
                 echo "../img/logobi.png";
-            }else{
-              echo $campanha->getImagem();
-            } ?>
-            " alt="<?php echo $campanha->getNome();?>">
-          </a>
+              }else{
+                echo $campanha->getImagem();
+              } ?>
+              " alt="<?php echo $campanha->getNome();?>">
+            </a>
+          </div>
+          <?php } ?>
         </div>
-        <?php } ?>
+        <!-- /.row -->
+        <hr>
+
+
+
+
       </div>
-      <!-- /.row -->
 
 
+      <!-- jQuery -->
+      <script src="../js/jquery.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="../js/bootstrap.min.js"></script>
+      <!-- Bootstrap core JavaScript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.min.js"><\/script>')</script>
+      <script src="../dist/js/bootstrap.min.js"></script>
+      <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+      <script src="../assets/js/vendor/holder.min.js"></script>
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
 
-      <hr>
+      <!-- Scripts -->
 
-      <!-- Call to Action Section -->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script src="../js/main.js"></script> <!-- Gem jQuery -->
 
+      <script type="text/javascript" src="../js/index.js"> </script>
 
+    </body>
 
-      <hr>
-
-      <?php
-      include('footer.php');
-
-      ?>
+    <div class="container">
+      <?php include('footer.php');?>
     </div>
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-      interval: 5000 //changes the speed
-    })
-    </script>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
-
-    <!-- Scripts -->
-    <a href="#0" class="cd-top">Top</a>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="../js/main.js"></script> <!-- Gem jQuery -->
-
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var trigger = $('.hamburger'),
-      overlay = $('.overlay'),
-      isClosed = false;
-
-      trigger.click(function () {
-        hamburger_cross();
-      });
-
-      function hamburger_cross() {
-
-        if (isClosed == true) {
-          overlay.hide();
-          trigger.removeClass('is-open');
-          trigger.addClass('is-closed');
-          isClosed = false;
-        } else {
-          overlay.show();
-          trigger.removeClass('is-closed');
-          trigger.addClass('is-open');
-          isClosed = true;
-        }
-      }
-
-      $('[data-toggle="offcanvas"]').click(function () {
-        $('#wrapper').toggleClass('toggled');
-      });
-    });
-    </script>
-  </body>

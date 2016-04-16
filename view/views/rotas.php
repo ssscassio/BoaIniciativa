@@ -114,7 +114,7 @@ if(isset($_POST['botaoLogar'])){
   if($confirmacao){
     header('location:campanhasAtendente.php');//funcionou
   }else{
-    header('location:convitesatendente.php');//nao funcionou
+    header('location:convites-atendente.php');//nao funcionou
   }
 }else if(isset($_POST['botaoCancelarParticipacao'])){
   $cpf = $_POST['cpf'];
@@ -124,7 +124,7 @@ if(isset($_POST['botaoLogar'])){
 
 
   if($confirmacao){
-    header('location:convitesatendente.php');//funcionou
+    header('location:convites-atendente.php');//funcionou
   }else{
     header('location:campanhasAtendente.php');//nao funcionou
   }

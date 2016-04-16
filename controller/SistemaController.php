@@ -1,7 +1,7 @@
 <?php
 
-require_once("../database/UsuarioDAO.php");
-require_once("../model/Usuario.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
 
 /**
  *
@@ -39,6 +39,10 @@ class CassioSistemaController
     $usuariobusca = UsuarioDAO::getInstance()->buscarUsuario($cpf);
     return ($usuariobusca->getCpf() != null);
 
+  }
+
+  public function buscarCampanha($idCampanha){
+    return CampanhaDAO::getInstance()->buscarCampanha($idCampanha);
   }
 
 

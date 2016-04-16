@@ -40,11 +40,11 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
   <![endif]-->
-
 </head>
+
+<!--Nav bar-->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -52,16 +52,12 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="navbar-brand">
-          <a href="index.php">        <img class="img-responsive"  style="height:40px; weight:40px;" src="../img/logobi.png" alt="">
-          </a>
+      <div class="nav navbar-brand">
+          <a href="index.php">BoaIniciativa</a>
         </div>
-
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
       <ul class="nav navbar-nav navbar-left">
         <form class="navbar-form" method="POST" action="pesquisa.php">
           <div class="input-group">
@@ -72,7 +68,6 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
           </div>
         </form>
       </ul>
-
       <ul class="nav navbar-nav navbar-right">
         <li><a href="login.php">Login/Cadastro</a></li>
       </ul>
@@ -80,7 +75,6 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
         <li><a href="sobre.php">Sobre</a></li>
       </ul>
     </div>
-    <!-- /.navbar-collapse -->
   </div>
-  <!-- /.container -->
 </nav>
+<!--Fim da nav bar-->
