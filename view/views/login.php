@@ -34,6 +34,7 @@
             <input type="password" class="form-control" name="senha" placeholder="Password" required>
           </div>
           <button type="submit" name="botaoLogar" class="btn btn-primary">Entrar</button>
+          <div><a href="recuperarSenha.php">Esqueci minha senha</a></div>
         </form>
 
         <br>
