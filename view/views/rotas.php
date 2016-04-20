@@ -159,18 +159,25 @@ if(isset($_POST['botaoLogar'])){
 
   header('location:doador.php');
 }else if(isset($_POST['botaoConfirmarDoacao'])){
-  $quantidade_itens = $_POST['quantidade_itens'];
 
+    $idDoacao = $_POST['idDoacao'];
+    echo $idDoacao;
+
+    $quantidade_itens = $_POST['quantidade_itens'];
+    $materiaisDoados = array();
     for ( $x = 1; $x <= $quantidade_itens ; $x++ ){
 
         $item = $_POST["material$x"];
         $quantidade = $_POST["quantidade$x"];
-        echo $item;
-        echo "  -  ";
-        echo $quantidade;
-        echo "\n";
-        //aqui seu código com o uso dos valores capturados
+        $materiaisDoados[$item]+=$quantidade;
     }
+    unset($_POST['botaoConfirmarDoacao']);
+    unset($_POST['quantidade_itens']);
+    unset($_POST['idDoacao']);
+
+    AtendenteController::getInstance()->receberMateriais($idDoacao, $materiaisDoados);
+
+    header('location:atendente.php');
 
 
 }

@@ -14,9 +14,11 @@ if(isset($_GET['campanha'])){
   <div class="container">
     <div class="row">
 
+      <div class="col-md-3 panel panel-default" style="padding:0px 10px 20px 10px;">
+        <?php          include("painelAtendente.php"); ?>
+      </div>
 
       <?php
-      include("painelAtendente.php");
       echo '<div class="col-md-9 panel panel-default">';
       if($autenticacao){//Usuario atende na campanha
         ?>
@@ -93,19 +95,9 @@ if(isset($_GET['campanha'])){
                   $('#SelecaoMateriais').hide();
 
                   $( "input[type=radio]" ).on( "click", function(){
+                    $('#idDoacao').val($("input[type=radio]").val());
                     $('#SelecaoMateriais').show();
                   });
-
-                  $('#cpfUsuario').inputmask('999.999.999-99', {
-                    "onincomplete": function () {
-                      console.log("incompleto");
-                    },
-                    "oncomplete": function () {
-                      console.log("completo");
-                    }
-                  });
-
-
 
                 });
 
@@ -144,7 +136,8 @@ if(isset($_GET['campanha'])){
                   </table>
                   <!--Irá armazenar a quantidade de linhas-->
                   <input type="hidden" value="1" name="quantidade_itens" />
-                  <input type="hidden" name="botaoConfirmarDoacao"/>
+                  <input type="hidden" id="idDoacao" name="idDoacao" value=""/>
+                  <input type="hidden" name="botaoConfirmarDoacao" value="">
                 </form>
 
                 <script type="text/javascript">

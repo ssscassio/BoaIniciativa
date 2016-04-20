@@ -80,6 +80,13 @@ public function cadastroRapido($cpf,$email,$senha){
     return $campanhas;
   }
 
+  public function receberMateriais($idDoacao,$materiaisDoados){
+
+    foreach ($materiaisDoados as $key => $value) {
+      DoacaoMaterialDAO::getInstance()->adicionarMaterialDoacao($idDoacao,$key, $value);
+    }
+    
+  }
   public function listarMateriaisCampanha($idCampanha){
     $metas =array();
     $metas = MetaDAO::getInstance()->buscarMetasCampanha($idCampanha);
