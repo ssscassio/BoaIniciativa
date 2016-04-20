@@ -40,8 +40,7 @@
 
             ?>
 
-
-            <h4><?php echo $criadas->getNome(); ?></h4><br/>
+            <h4><a href="visualizarCampanha.php?id=<?php echo $criadas->getIdCampanha(); ?>"><?php echo $criadas->getNome(); ?></h4><br/></a>
 
 
             <?php } //final do loop for
@@ -73,7 +72,7 @@
               ?>
 
 
-              <h4><?php echo $nomecampanha->getNome(); ?></h4><br/>
+              <h4><a href="visualizarCampanha.php?id=<?php echo $nomecampanha->getIdCampanha(); ?>"><?php echo $nomecampanha->getNome(); ?></h4><br/></a>
 
 
               <?php } //final do loop for
