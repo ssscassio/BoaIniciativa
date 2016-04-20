@@ -82,7 +82,9 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioCo
     return UsuarioController::getInstance()->verCampanha($idcampanha);
   }
 
-
+  public function editarSenha($senha,$cpf){
+    UsuarioController::getInstance()->editarSenha($senha,$cpf);
+  }
 
 }
 

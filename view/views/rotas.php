@@ -4,6 +4,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/Atendente
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/DoadorController.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."PHPMailer/PHPMailerAutoload.php");
 
 if(isset($_POST['botaoLogar'])){
   session_start();
@@ -178,5 +179,76 @@ if(isset($_POST['botaoLogar'])){
     AtendenteController::getInstance()->confirmarDoacao($idDoacao,$_POST['cpfAtendente']);
 
 
+}else if(isset($_POST['botaoSenha'])){
+session_start();
+if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, mover para Home
+    $senhaAtual = $_SESSION['senha'];
+    $senhaForm = $_POST['senha'];
+    $novaSenha = $_POST['novasenha'];
+    if($senhaAtual == $senhaForm){
+      UsuarioFacade::getInstance()->editarSenha($novaSenha,$_SESSION['cpf']);
+      echo 'OK';
+      header('location:perfil.php');//colocar confirmação na tela de alteração       
+    }
+    else{
+      echo 'Senha Invalida';//colocar que senha está errada!
+    }
+}else{
+    header('location:index.php');
+}
+}else if(isset($_POST['botaoRecuperarSenha'])){
+  $cpf = $_POST["cpf"];
+  $user = UsuarioDAO::getInstance()->buscarUsuario($cpf);
+  $senha = rand(100000,999999);
+  UsuarioFacade::getInstance()->editarSenha($senha, $cpf);
+  $nome = $user->getNome();
+  $email = $user->getEmail();
+  // Instância do objeto PHPMailer
+  $mail = new PHPMailer;
+  // Configura para envio de e-mails usando SMTP
+  $mail->isSMTP();
+  // Servidor SMTP
+  $mail->Host = 'smtp.gmail.com';
+  // Usar autenticação SMTP
+  $mail->SMTPAuth = true;
+  // Usuário da conta
+  $mail->Username = 'boainiciativa@gmail.com';
+  // Senha da conta
+  $mail->Password = 'MP4F9W6C8VHTCCTT7M7RY7K3Y';
+  // Tipo de encriptação que será usado na conexão SMTP
+  $mail->SMTPSecure = 'ssl';
+  // Porta do servidor SMTP
+  $mail->Port = 465;
+  // Informa se vamos enviar mensagens usando HTML
+  $mail->IsHTML(true);
+  // Email do Remetente
+  $mail->From = 'boainiciativa@gmail.com';
+  // Nome do Remetente
+  $mail->FromName = 'Boa Iniciativa';
+  // Endereço do e-mail do destinatário
+  $mail->addAddress($email);
+  // Assunto do e-mail
+  $mail->Subject = 'Recuperacao de Senha';
+  // Mensagem que vai no corpo do e-mail
+  $mail->Body = '<h1>Recuperacao de Senha</h1><br>
+  <p> Caro(a) ';
+  $mail->Body .= $nome;
+  $mail->Body .=',<br> Consta em nosso sistema a sua solicitacao de recuperacao de senha.<br>Segue os seus dados:<br><br><br>';
+  $mail->Body .= 'CPF: '.$cpf.'.<br> Senha: '.$senha.'.<br><br><br>';
+  $mail->Body .= 'Caso nao tenha feito esta solicitacao, por favor ignorar este e-mail. Favor nao responder essa mensagem!<br>
+  Obrigado!<br>
+  Equipe do Boa Iniciativa.<br></p>';
+  // Envia o e-mail e captura o sucesso ou erro
+  if($mail->Send()){ 
+    //echo 'Recuperação de senha enviada com sucesso'; MOSTRAR CONFIRMAÇÃO DE SENHA ALTERADA
+      //echo 'Recuperação enviada para '+ $email +' com sucesso !';
+     header('location:index.php');
+  }
+  else{
+      //echo 'Erro ao enviar Email:'; MOSTRAR QUE CONTA NÃO EXISTE
+    if($mail->ErrorInfo){
+      //echo 'Conta Inexistente';
+    }
+  }
 }
 ?>

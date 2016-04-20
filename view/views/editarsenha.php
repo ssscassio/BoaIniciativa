@@ -16,7 +16,7 @@ $endereco = $usuario->getEndereco();
             <div class="row">
               <div class="form-group col-md-6">
                 <label>Senha anterior: </label>
-                <input type="text" class="form-control" NAME="senha" required  placeholder="Senha anterior">
+                <input type="password" class="form-control" NAME="senha" required  placeholder="Senha anterior">
               </div>
               <div class="col-md-6" id="senhaAnteriorMensagem">
 
@@ -25,7 +25,7 @@ $endereco = $usuario->getEndereco();
             <div class="row">
               <div class="form-group col-md-6">
                 <label>Nova senha: </label>
-                <input type="text" class="form-control" NAME="novasenha" required  placeholder="Nova senha">
+                <input type="password" class="form-control" NAME="novasenha" required  placeholder="Nova senha">
               </div>
               <div class="col-md-6" id="mensagemSenha">
 
@@ -34,7 +34,7 @@ $endereco = $usuario->getEndereco();
             <div class="row">
               <div class="col-md-6 form-group">
                 <label>Confirmar senha:</label>
-                <input type="text" class="form-control" NAME="confsenha" required placeholder="Confirmar senha">
+                <input type="password" class="form-control" NAME="confsenha" required placeholder="Confirmar senha" oninput="validaSenha(this)">
               </div>
               <div class="col-md-6" id="mensagemConfSenha">
 
@@ -47,7 +47,15 @@ $endereco = $usuario->getEndereco();
           </form>
           <br>
       </div>
-
+      <!--<script type="text/javascript">
+          function validaSenha (input){ 
+            if (input.value != document.getElementById('novasenha').value) {
+            input.setCustomValidity('Repita a senha corretamente');
+            } else {
+              input.setCustomValidity('');
+            }
+          }
+      </script>-->
       <script type="text/javascript">
 
         $(document).ready(function(){
