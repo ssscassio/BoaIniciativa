@@ -22,7 +22,7 @@ if(isset($_POST['cpf']) && isset($_POST['senha'])){
             <label >Seu CPF<font color="FF0000">*</font></label>
             <input type="text" class="form-control" name="cpf" required data-validation-required-message="Por favor, digite seu CPF." placeholder="Ex.: 00000000000" required>
           </div>
-          <button type="submit" name="BotaoRecuperarSenha" class="btn btn-primary">Recuperar</button>
+          <button type="submit" name="botaoRecuperarSenha" class="btn btn-primary">Recuperar</button>
           <br><br>
         </form>
         </div>

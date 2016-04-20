@@ -567,7 +567,7 @@ class Sql
       }
 
       public function editarSenhaSQL(){
-        return "UPDATE {$this->schema}.{$this->usuarioTable} SET {$this->$usuarioSenha}=? WHERE {$this->usuarioCPF} = ?";
+        return "UPDATE {$this->schema}.{$this->usuarioTable} SET {$this->usuarioSenha}=? WHERE {$this->usuarioCPF} = ?";
       }
 
       public function deletarUsuarioSQL(){
