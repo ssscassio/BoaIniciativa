@@ -180,5 +180,21 @@ if(isset($_POST['botaoLogar'])){
     header('location:atendente.php');
 
 
+}else if(isset($_POST['botaoSenha'])){
+session_start();
+if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, mover para Home
+    $senhaAtual = $_SESSION['senha'];
+    $senhaForm = $_POST['senha'];
+    $novaSenha = $_POST['novasenha'];
+    if($senhaAtual == $senhaForm){
+      UsuarioFacade::getInstance()->editarSenha($novaSenha,$_SESSION['cpf']);
+      header('location:perfil.php');//colocar confirmação na tela de alteração       
+    }
+    else{
+      //colocar que senha está errada!
+    }
+}else{
+    header('location:index.php');
+}
 }
 ?>

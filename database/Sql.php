@@ -596,7 +596,7 @@ class Sql
         return "INSERT INTO {$this->schema}.{$this->usuarioTable} ({$this->usuarioCPF},{$this->usuarioFoto},{$this->usuarioEmail},{$this->usuarioSenha}) VALUES (?,'default.jpg',?,md5(?))";
       }
       public function editarSenhamd5SQL(){
-        return "UPDATE {$this->schema}.{$this->usuarioTable} SET {$this->$usuarioSenha}=md5(?) WHERE {$this->usuarioCPF} = ?";
+        return "UPDATE {$this->schema}.{$this->usuarioTable} SET {$this->usuarioSenha}=md5(?) WHERE {$this->usuarioCPF} = ?";
       }
 
     }

@@ -50,6 +50,10 @@ class  UsuarioController
 
 
   }
+
+  public function editarSenha($senha,$cpf){
+    UsuarioDAO::getInstance()->editarSenhamd5($senha, $cpf);
+  }
 }
 
  ?>
