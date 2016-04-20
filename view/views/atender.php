@@ -82,7 +82,7 @@ if(isset($_GET['campanha'])){
                   ?>
                   <td> <?php echo $doacoes[$i]->getData(); ?></td>
                   <td>
-                    <input type="radio" name="doacao" value="<?php echo $doacoes[$i]->getIdDoacao(); ?>"> Selecionar<br>
+                    <button id="doacao" name="doacao" class="btn btn-primary btn-block" value="<?php echo $doacoes[$i]->getIdDoacao(); ?>"> Selecionar</button>
                   </td>
 
                   <?php
@@ -94,8 +94,8 @@ if(isset($_GET['campanha'])){
                 $(document).ready(function(){
                   $('#SelecaoMateriais').hide();
 
-                  $( "input[type=radio]" ).on( "click", function(){
-                    $('#idDoacao').val($("input[type=radio]").val());
+                  $( "#doacao" ).on( "click", function(){
+                    $('#doacaoId').val($("#doacao").val());
                     $('#SelecaoMateriais').show();
                   });
 
@@ -136,7 +136,8 @@ if(isset($_GET['campanha'])){
                   </table>
                   <!--Irá armazenar a quantidade de linhas-->
                   <input type="hidden" value="1" name="quantidade_itens" />
-                  <input type="hidden" id="idDoacao" name="idDoacao" value=""/>
+                  <input type="hidden" id="doacaoId" name="idDoacao"/>
+                  <input type="hidden"  name="cpfAtendente" value="<?php echo $_SESSION['cpf']; ?>"/>
                   <input type="hidden" name="botaoConfirmarDoacao" value="">
                 </form>
 

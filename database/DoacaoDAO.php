@@ -106,6 +106,19 @@ class DoacaoDAO
     }catch (Excepetion $e){
       echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
     }
+  }
+
+  public function confirmarDoacao( $dataConfirmacao, $cpfAtendente, $idDoacao){
+    try {
+        $sql = Sql::getInstance()->confirmarDoacaoSQL();
+        $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+        $stmt->bindParam(1,$dataConfirmacao);
+        $stmt->bindParam(2,$cpfAtendente);
+        $stmt->bindParam(3,$idDoacao);
+    } catch (Exception $e) {
+      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+    }
+
 
 
   }

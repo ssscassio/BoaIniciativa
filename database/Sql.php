@@ -307,6 +307,10 @@ class Sql
     public function editarDoacaoSQL(){
       return "UPDATE {$this->schema}.{$this->doacaoTable} SET {$this->doacaoConfirmado} = ?, {$this->doacaoData} = ?, {$this->doacaoAtendenteConfirma} = ? WHERE {$this->doacaoId} = ?";
     }
+
+    public function confirmarDoacaoSQL(){
+      return "UPDATE {$this->schema}.{$this->doacaoTable} SET {$this->doacaoConfirmado} = TRUE, {$this->doacaoData} = ?, {$this->doacaoAtendenteConfirma} = ? WHERE {$this->doacaoId} = ?";
+    }
     public function buscarDoacoesDaCampanhaSQL(){
       return "SELECT * FROM {$this->schema}.{$this->doacaoTable} WHERE {$this->doacaoIdCampanha} = ?";
     }

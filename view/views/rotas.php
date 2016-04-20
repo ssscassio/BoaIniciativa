@@ -161,8 +161,7 @@ if(isset($_POST['botaoLogar'])){
 }else if(isset($_POST['botaoConfirmarDoacao'])){
 
     $idDoacao = $_POST['idDoacao'];
-    echo $idDoacao;
-
+    $cpf = $_POST['cpfAtendente'];
     $quantidade_itens = $_POST['quantidade_itens'];
     $materiaisDoados = array();
     for ( $x = 1; $x <= $quantidade_itens ; $x++ ){
@@ -176,8 +175,7 @@ if(isset($_POST['botaoLogar'])){
     unset($_POST['idDoacao']);
 
     AtendenteController::getInstance()->receberMateriais($idDoacao, $materiaisDoados);
-
-    header('location:atendente.php');
+    AtendenteController::getInstance()->confirmarDoacao($idDoacao,$_POST['cpfAtendente']);
 
 
 }

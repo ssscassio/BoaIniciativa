@@ -85,8 +85,14 @@ public function cadastroRapido($cpf,$email,$senha){
     foreach ($materiaisDoados as $key => $value) {
       DoacaoMaterialDAO::getInstance()->adicionarMaterialDoacao($idDoacao,$key, $value);
     }
-    
+
   }
+
+  public function confirmarDoacao($idDoacao, $atendenteConfirma){
+    $data = date('d/m/Y');
+    DoacaoDAO::getInstance()->confirmarDoacao($data,$atendenteConfirma, $idDoacao);
+  }
+
   public function listarMateriaisCampanha($idCampanha){
     $metas =array();
     $metas = MetaDAO::getInstance()->buscarMetasCampanha($idCampanha);
