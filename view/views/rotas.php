@@ -189,10 +189,11 @@ if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, m
     $novaSenha = $_POST['novasenha'];
     if($senhaAtual == $senhaForm){
       UsuarioFacade::getInstance()->editarSenha($novaSenha,$_SESSION['cpf']);
+      echo 'OK';
       header('location:perfil.php');//colocar confirmação na tela de alteração       
     }
     else{
-      //colocar que senha está errada!
+      echo 'Senha Invalida';//colocar que senha está errada!
     }
 }else{
     header('location:index.php');
