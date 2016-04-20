@@ -110,11 +110,15 @@ class DoacaoDAO
 
   public function confirmarDoacao( $dataConfirmacao, $cpfAtendente, $idDoacao){
     try {
-        $sql = Sql::getInstance()->confirmarDoacaoSQL();
+        $confirmado = "TRUE";
+        $sql = Sql::getInstance()->editarDoacaoSQL();
         $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-        $stmt->bindParam(1,$dataConfirmacao);
-        $stmt->bindParam(2,$cpfAtendente);
-        $stmt->bindParam(3,$idDoacao);
+        $stmt->bindParam(1, $confirmado);
+        $stmt->bindParam(2,$dataConfirmacao);
+        $stmt->bindParam(3,$cpfAtendente);
+        $stmt->bindParam(4,$idDoacao);
+        $stmt->execute();
+
     } catch (Exception $e) {
       echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
     }
