@@ -127,7 +127,7 @@
                   } ?>
                   ">
                   <p><?php echo $campanha->getDescricao(); ?></p>
-                  <a href="visualizarCampanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary">Ver Campanha</a>
+                  <a href="visualizarCampanha.php?id=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary">Ver Campanha</a>
                 </div>
               </div>
             </div>
