@@ -33,13 +33,13 @@ class UsuarioDAO{
     $stmt->bindParam(5,Criptografar::hash($usuario->getSenha()));
     $stmt->bindParam(6,$usuario->getNome());
     $stmt->bindParam(7,$usuario->getClassificacao());
-    $stmt->bindParam(8,$endereco["cep"]);
-    $stmt->bindParam(9,$endereco["estado"]);
-    $stmt->bindParam(10,$endereco["bairro"]);
-    $stmt->bindParam(11,$endereco["cidade"]);
-    $stmt->bindParam(12,$endereco["logradouro"]);
-    $stmt->bindParam(13,$endereco["numero"]);
-    $stmt->bindParam(14,$endereco["complemento"]);
+    $stmt->bindParam(8,$endereco[0]);
+    $stmt->bindParam(9,$endereco[1]);
+    $stmt->bindParam(10,$endereco[2]);
+    $stmt->bindParam(11,$endereco[3]);
+    $stmt->bindParam(12,$endereco[4]);
+    $stmt->bindParam(13,$endereco[5]);
+    $stmt->bindParam(14,$endereco[6]);
     $stmt->bindParam(15,$usuario->getFoto());
     $stmt->bindParam(16, $usuario->getLatitude());
     $stmt->bindParam(17, $usuario->getlongitude());
@@ -101,8 +101,8 @@ class UsuarioDAO{
     //$nome, $cpf, $email, $senha, $foto, $sexo, $dataNascimento, $endereco, $classificacao, $bloqueado, $dataBloqueio
     $usuario = new Usuario($linha['nome'],$linha['cpf'],$linha['email'],$linha['senha'],$linha['foto'],$linha['sexo'],$linha['datanascimento'],$endereco,$linha['classificacao'],
     $linha['bloqueado'],$linha['databloqueio']);
-    $usuario->setLatitude($linha['latitude']);
-    $usuario->setLongitude($linha['longitude']);
+   // $usuario->setLatitude($linha['latitude']);
+   // $usuario->setLongitude($linha['longitude']);
 
     return $usuario;
   }
