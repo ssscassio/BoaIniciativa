@@ -4,7 +4,7 @@ if(isset($_POST['cpf']) && isset($_POST['senha'])){
 	header('location:home.php');
 }
 ?>
-<br><br><br>
+<br><br>
   <div class="container">
     <div class="row">
       <div class="col-lg-12 panel panel-default">
@@ -30,4 +30,3 @@ if(isset($_POST['cpf']) && isset($_POST['senha'])){
      </div>
     </div>
    <?php include("footer.php"); ?>
-

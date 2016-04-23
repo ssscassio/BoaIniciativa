@@ -18,16 +18,19 @@ if(isset($_POST['botaoLogar'])){
     if ($autenticado){
       $_SESSION['cpf'] = $cpf;
       $_SESSION['senha'] = $senha;
-      echo "<div class='alert alert-success'> <strong>Usuario logado com sucesso!</strong></div>";
+      $atualiza = true;
+      $val =  "<div class='alert alert-success'> <strong>Usuario logado com sucesso!</strong></div>";
     }else{
       unset($_SESSION['cpf']);
       unset($_SESSION['senha']);
+        $atualiza = false;
       if($usuario->getCpf() == ""){
-        echo "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Usuario não cadastrado</div>";
+        $val = "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Usuario não cadastrado</div>";
       }else{
-        echo "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Senha incorreta</div>";
+        $val = "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Senha incorreta</div>";
       }
     }
+    echo json_encode( array( 'mensagem' => $val, 'atualiza' => $atualiza) );
   }
 }else if ( isset( $_POST['doarCampanha'] )) {//Apertou o botão de doar para Campanha no formulário
   if(isset($_POST['idCampanha']) && isset($_POST['cpfUsuario'])){

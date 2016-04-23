@@ -57,8 +57,13 @@ $(document).ready(function(){
          url: "../views/rotas.php",
          type: 'POST',
          data: { cpf: cpf, senha: senha, botaoLogar: "botaoLogar"},
+         dataType : "json",
          success: function(data){
-           $('#loginerror').html(data);
+           var mensagem = data.mensagem;
+           $('#loginerror').html(mensagem);
+           if(data.atualiza){
+             location.href="../views/home.php";
+           }
          }
        });
        return false;

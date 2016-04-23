@@ -30,7 +30,7 @@
           </div>
             <input type="submit" name="botaoLogar" class="btn btn-primary" value="Entrar">
         </form>
-
+        
         <div><a href="recuperarSenha.php">Esqueci minha senha</a></div>
 
         <br>
