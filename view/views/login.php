@@ -1,20 +1,13 @@
 <?php include("cabecalho.php"); ?>
 <body>
 
+  <br><br>
+  <script type="text/javascript" src="../js/login.js"></script>
+  <script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
 
-  <?php
-  if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se já está logado
-    header('location:home.php');
-  }
-
-  ?>
-
-  <br><br><br>
-
-  <div class="container">
+<div class="container">
     <div class="row">
-      <div class="col-lg-12 panel panel-default">
-    </div>
+
     <div class="row">
       <div class="col-lg-6 panel panel-default">
         <div class="row">
@@ -24,20 +17,24 @@
           </div>
         </div>
 
-        <form method="POST" action="rotas.php">
+        <form id="formlogin" method="POST" >
           <div class="form-group">
-            <label >Seu CPF</label>
-            <input type="text" class="form-control" name="cpf" required data-validation-required-message="Por favor, digite seu CPF." placeholder="Ex.: 00000000000" required>
+            <label>Seu CPF: <font color="FF0000">*</font> </label>
+              <input id="cpflogin" type="text" class="form-control" name="cpf" placeholder="Ex.: 00000000000">
+            <div id="cpfloginerror" ></div>
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Senha</label>
-            <input type="password" class="form-control" name="senha" placeholder="Password" required>
+            <label>Senha: <font color="FF0000">*</font></label>
+            <input id="senhalogin" type="password" class="form-control" name="senha" placeholder="Password">
+            <div id="senhaloginerror"></div>
           </div>
-          <button type="submit" name="botaoLogar" class="btn btn-primary">Entrar</button>
-          <div><a href="recuperarSenha.php">Esqueci minha senha</a></div>
+            <input type="submit" name="botaoLogar" class="btn btn-primary" value="Entrar">
         </form>
 
+        <div><a href="recuperarSenha.php">Esqueci minha senha</a></div>
+
         <br>
+        <div id="loginerror"></div>
       </div>
 
 
@@ -62,7 +59,8 @@
           </div>
           <div class="form-group">
             <label> Senha</label>
-            <input type="password" class="form-control" name="password" require placeholder="Password">
+            <input id="senhacadastro"type="password" class="form-control" name="password" require placeholder="Password">
+            <div id="senhacadastroerror"></div>
           </div>
           <div class="form-group">
             <label>E-mail</label>
@@ -70,7 +68,7 @@
           </div>
           <div class="form-group">
             <label>Data de Nascimento</label>
-            <input type="date" class="form-control" name="nascimento" require placeholder="Data de Nascimento">
+            <input type="date" class="form-control" name="nascimento" require placeholder="dd/mm/yyyy">
           </div>
           <div class="form-group">
           <label>Sexo</label><br>
@@ -119,7 +117,10 @@
   </div>
 </div>
 
+<div class="container">
   <?php include("footer.php"); ?>
+</div>
+
 
 
 

@@ -8,28 +8,25 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."PHPMailer/PHPMailerA
 
 if(isset($_POST['botaoLogar'])){
   session_start();
-  if(isset($_POST['cpf']) && isset($_POST['senha'])){
+    if(isset($_POST['cpf']) && isset($_POST['senha'])){
     $cpf = $_POST['cpf'];
     $senha =  $_POST['senha'];
-
-
-
-
-    $cpf = $_POST['cpf'];
-    $senha =  $_POST['senha'];
-    echo $cpf;
-    echo $senha;
 
     $autenticado = UsuarioDAO::getInstance()->autenticarUsuariomd5($cpf, $senha);
+    $usuario = UsuarioDAO::getInstance()->buscarUsuario($cpf);
+
     if ($autenticado){
       $_SESSION['cpf'] = $cpf;
       $_SESSION['senha'] = $senha;
-      header('location:home.php');
+      echo "<div class='alert alert-success'> <strong>Usuario logado com sucesso!</strong></div>";
     }else{
       unset($_SESSION['cpf']);
       unset($_SESSION['senha']);
-      header('location:index.php');
-
+      if($usuario->getCpf() == ""){
+        echo "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Usuario não cadastrado</div>";
+      }else{
+        echo "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Senha incorreta</div>";
+      }
     }
   }
 }else if ( isset( $_POST['doarCampanha'] )) {//Apertou o botão de doar para Campanha no formulário
@@ -188,7 +185,7 @@ if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, m
     if($senhaAtual == $senhaForm){
       UsuarioFacade::getInstance()->editarSenha($novaSenha,$_SESSION['cpf']);
       echo 'OK';
-      header('location:perfil.php');//colocar confirmação na tela de alteração       
+      header('location:perfil.php');//colocar confirmação na tela de alteração
     }
     else{
       echo 'Senha Invalida';//colocar que senha está errada!
@@ -239,7 +236,7 @@ if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, m
   Obrigado!<br>
   Equipe do Boa Iniciativa.<br></p>';
   // Envia o e-mail e captura o sucesso ou erro
-  if($mail->Send()){ 
+  if($mail->Send()){
     //echo 'Recuperação de senha enviada com sucesso'; MOSTRAR CONFIRMAÇÃO DE SENHA ALTERADA
       //echo 'Recuperação enviada para '+ $email +' com sucesso !';
      header('location:index.php');
