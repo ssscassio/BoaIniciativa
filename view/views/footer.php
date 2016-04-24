@@ -1,6 +1,10 @@
 <!-- Footer -->
 <footer class='row container-fluid'>
+
   <div class="well">
+    <div class="row" style="text-align: center;">
+      <a href="index.php"><img src="../img/logobi.png" alt="BoaIniciativa" style="width: 115px;"/></a>
+    </div>
       <div class="row">
           <div class="col-md-8">
               <p>Ajude-nos a continuar funcionando. Faça uma contribuição ao Boa Iniciativa!</p>

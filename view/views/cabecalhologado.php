@@ -9,7 +9,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="">
    <meta name="author" content="">
-   <link rel="shortcut icon" href="../img/logobi.png">
+   <link rel="shortcut icon" href="../img/Header.png">
 
    <title>BoaIniciativa</title>
 
@@ -55,7 +55,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href="index.php">BoaIniciativa</a>
+          <a class="navbar-brand" href="home.php"><img src="../img/logobi.png" style="width: 180px;" /></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

@@ -16,12 +16,13 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href="../img/logobi.png">
+  <link rel="shortcut icon" href="../img/Header.png">
 
   <title>BoaIniciativa</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap.css" rel="stylesheet">
 
   <!-- Custom CSS -->
   <link href="../css/modern-business.css" rel="stylesheet">
@@ -52,9 +53,7 @@ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <div class="nav navbar-brand">
-          <a href="index.php">BoaIniciativa</a>
-        </div>
+          <a class="navbar-brand" href="index.php"><img src="../img/logobi.png" style="width: 180px;" /></a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

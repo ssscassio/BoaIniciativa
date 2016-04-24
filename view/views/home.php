@@ -85,7 +85,7 @@
             </script>
             <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBtrcCnCC71lEBRbj-hM5KwlHcSppnenBI&callback=initialize" async defer></script>
 <div class="row ">
-  <div class="container" style="width: 650px; height: 300px;">
+  <div class="container" style="height:300px; max-width:650px; padding:50px 0px 0px 0px;">
     <div id="map" style=" height: 100%; width: 100%;"></div>
   </div>
 
@@ -139,4 +139,6 @@
 
         </div>
       </body>
+<div class="container">
       <?php include ('footer.php'); ?>
+</div>

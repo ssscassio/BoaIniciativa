@@ -24,7 +24,6 @@ include("painelDoador.php");
 
       if(sizeof($doacoes) == 0){?>
         <div class="alert alert-danger row alert-dismissible" role="alert" style="margin:10px 0px 10px 0px;">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <strong>Desculpe!</strong> Não conseguimos encontrar o que você está procurando.
         </div>
 
@@ -109,6 +108,9 @@ include("painelDoador.php");
   </div>
 </div>
   </div>
+
+<div class="container">
   <?php
   include("footer.php");
  ?>
+</div>
