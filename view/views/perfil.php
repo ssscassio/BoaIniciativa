@@ -1,15 +1,28 @@
 <body>
 
   <?php
-  include('cabecalhologado.php');
+  include('cabecalhoLogado.php');
   ?>
+<script>
+function funcao1(){
 
+	decisao = confirm("Você deseja realmente excluir seu perfil? Pense bem, você não poderá recupera-lo se continuar.");
+		
+	if (decisao){
+		window.location="excluirPerfil.php"
+	} 
+}
+</script>
   <?php
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioController.php");
   $usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
+  
+  $usuario->getNome();
   $endereco = $usuario->getEndereco();?>
 
   <script type="text/javascrip" src="../js/mapa.js"></script>
+  <link href="../css/bootstrap-fileupload.min.css" rel="stylesheet" />
+
   <br><br>
 
       <div class="container panel">
@@ -18,19 +31,15 @@
           <h2 class="page-header"><?php echo $usuario->getNome(); ?></h2>
         </div>
         <div class="row col-xs-12">
-          <div class="row">
-
           <div class="col-md-5" >
-            <img class="img-responsive img-rounded" style="margin:15px;" src="
-            <?php if($usuario->getFoto()=="" || $usuario->getFoto()=="default.jpg"){
-              echo "../img/usuario.png";
-            }else{
-              echo $usuario->getFoto();
-            } ?>
-            ">
-          </div>
+		  <center>
+            <img height="320" width="320"src="<?php echo $usuario->getFoto();?>" alt="" />
+          </center>
+		  
+		</div>
           <div class="col-md-7 panel-primary panel container">
             <h3 class="page-header"> Informações Pessoais</h3>
+			<font size="3" face="Arial">
             <div class="col-xs-12">
               <label class=""> CPF:</label> <?php echo $usuario->getCpf(); ?>
             </div>
@@ -47,7 +56,17 @@
             <div class="col-xs-12">
               <label class=""> Data de Nascimento:</label> <?php echo date("d/m/Y", strtotime($usuario->getDataNascimento())); ?>
             </div>
-          </div>
+			</font>
+			
+            <div class="col-xs-12">
+			    <br>
+				<img src="../img\camera.jpg" width="30" height="30"> <font size="2" face="Arial Black">Editar Foto</font>
+				<form enctype="multipart/form-data" action="editarFoto.php" method="POST">
+					<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+					<input name="userfile" type="file" /><br>
+					<input type="submit" value="Alterar Foto" />
+				</form> 
+			</div>
           </div>
           <script src="../js/jquery.js"></script>
           <script type"text/script" src="../js/script.js"></script>
@@ -80,8 +99,9 @@
               <button type="button" id="botaoEditarSenha" class="btn btn-info btn-block" name="botaoEditarSenha">Editar Senha</button>
             </div>
             <div class="col-xs-6 col-md-4">
-                <button type="button" id="botaoExcluirConta" class="btn btn-danger btn-block" name="botaoExcluirConta"> Excluir Conta</button>
-            </div>
+                <button type="button" onclick="funcao1()" id="botaoExcluirConta" class="btn btn-danger btn-block" name="botaoExcluirConta" value="Excluir Perfil "> Excluir Conta</button>
+				
+			</div>
           </div>
           <div class="row">
             <div class="panel" id="editarPerfil">

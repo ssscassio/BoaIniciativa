@@ -18,7 +18,7 @@ $endereco = $usuario->getEndereco();
           </div>
         </div>
 
-        <form method="post" action="rotas.php" name="formedicao">
+        <form enctype="multipart/form-data" method="post" action="ed_Perfil.php" name="formedicao">
 
 		<div class="panel panel-default col-lg-6">
         <h4 class="page-header">Informações do Usuário</h4>
@@ -34,13 +34,24 @@ $endereco = $usuario->getEndereco();
           </div>
           <div class="form-group">
             <label>Sexo: *</label><br>
-            <input type="radio" name="sexo" value="male" <?php if($usuario->getSexo()=="M")  echo "checked";?>> Homem<br>
-            <input type="radio" name="sexo" value="female"<?php if($usuario->getSexo()=="F")  echo "checked";?>> Mulher<br>
+            <input type="radio" name="sexo" value="M" <?php if($usuario->getSexo()=="M")  echo "checked";?>> Homem<br>
+            <input type="radio" name="sexo" value="F"<?php if($usuario->getSexo()=="F")  echo "checked";?>> Mulher<br>
           </div>
           <div class="form-group">
             <label>Data de Nascimento</label>
-            <input type="date" class="form-control" NAME="nascimento" placeholder="Data de Nascimento" value = "<?php echo date("d/m/Y", strtotime($usuario->getDataNascimento()));?>">
-          </div>
+            <input type="date" class="form-control" NAME="nascimento" placeholder="Data de Nascimento" value = "<?php echo $usuario->getDataNascimento();?>">
+
+		  </div>
+		  
+		                                                                                                 
+          <img src="../img\camera.jpg" width="30" height="30"> <font size="2" face="Arial Black">Carregar nova foto </font> 
+		  
+			<!-- MAX_FILE_SIZE deve preceder o campo input -->
+			<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+			<!-- O Nome do elemento input determina o nome da array $_FILES -->
+			<input name="userfile" type="file" /><br>
+			<!--<input type="submit" value="Alterar Foto" /> -->
+
         </div>
 
 
@@ -64,7 +75,7 @@ $endereco = $usuario->getEndereco();
               <input type="text" class="form-control" name="cidade" value="<?php echo $endereco['cidade']?>">
             </div>
             <div class="form-group">
-              <label>Logradouro</label>
+              <label>Logradouro</label> 
               <input type="text" class="form-control" name="logradouro" value="<?php echo $endereco['logradouro']?>">
             </div>
             <div class="form-group">
