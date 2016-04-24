@@ -3,6 +3,7 @@
 
   <br><br>
   <script type="text/javascript" src="../js/login.js"></script>
+  <script type="text/javascript" src="../js/cadastro.js"></script>
   <script src="../js/jquery.maskedinput.js" type="text/javascript"></script>
 
 <div class="container">
@@ -18,19 +19,28 @@
         </div>
 
         <form id="formlogin" method="POST" >
-          <div class="form-group">
-            <label>Seu CPF: <font color="FF0000">*</font> </label>
-              <input id="cpflogin" type="text" class="form-control" name="cpf" placeholder="Ex.: 00000000000">
-            <div id="cpfloginerror" ></div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Seu CPF: <font color="FF0000">*</font> </label>
+                <input id="cpflogin" type="text" class="form-control" name="cpf" placeholder="Ex.: 00000000000">
+              </div>
+            </div>
+            <div class="col-md-6" id="cpfloginerror" ></div>
           </div>
-          <div class="form-group">
-            <label>Senha: <font color="FF0000">*</font></label>
-            <input id="senhalogin" type="password" class="form-control" name="senha" placeholder="Password">
-            <div id="senhaloginerror"></div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Senha: <font color="FF0000">*</font></label>
+                <input id="senhalogin" type="password" class="form-control" name="senha" placeholder="Password">
+              </div>
+            </div>
+            <div class="col-md-6" id="senhaloginerror"></div>
           </div>
+
             <input type="submit" name="botaoLogar" class="btn btn-primary" value="Entrar">
         </form>
-        
+
         <div><a href="recuperarSenha.php">Esqueci minha senha</a></div>
 
         <br>
@@ -46,29 +56,39 @@
           </div>
         </div>
 
-        <form method="post" action="rotas.php" id="formcadastro" name="formcadastro">
+        <form method="post" id="formcadastro" name="formcadastro">
           <div class="panel panel-default col-lg-6">
             <h4 class="page-header">Informações da conta</h4>
           <div class="form-group">
             <label>Nome Completo</label>
-            <input type="text" class="form-control" name="nome" required  placeholder="Nome Completo">
+            <input id="nomecadastro"type="text" class="form-control" name="nome" placeholder="Nome Sobrenome">
+            <div id="nomecadastroerror"></div>
           </div>
           <div class="form-group">
             <label >Seu CPF</label>
-            <input type="number" class="form-control" name="cpf" required  placeholder="CPF">
+            <input id="cpfcadastro" type="number" class="form-control" name="cpf" placeholder="99988877711">
+            <div id="cpfcadastroerror"></div>
           </div>
           <div class="form-group">
-            <label> Senha</label>
-            <input id="senhacadastro"type="password" class="form-control" name="password" require placeholder="Password">
+            <label id="senhacadastroteste"> Senha</label>
+            <input id="senhacadastro"type="password" class="form-control" name="password" require placeholder="Digite sua senha">
+            <div id="senhaforca"></div>
             <div id="senhacadastroerror"></div>
           </div>
           <div class="form-group">
+            <label> Repetir Senha</label>
+            <input id="repetirsenhacadastro" type="password" class="form-control" name="repetirpassword" require placeholder="Repetir sua senha">
+            <div id="repetirsenhacadastroerror"></div>
+          </div>
+          <div class="form-group">
             <label>E-mail</label>
-            <input type="email" class="form-control" name="email" require placeholder="Email">
+            <input id="emailcadastro" type="email" class="form-control" name="email" require placeholder="email@email.com">
+            <div id="emailcadastroerror"></div>
           </div>
           <div class="form-group">
             <label>Data de Nascimento</label>
-            <input type="date" class="form-control" name="nascimento" require placeholder="dd/mm/yyyy">
+            <input id="nascimentocadastro" type="date" class="form-control" name="nascimento" require placeholder="dd/mm/aaaa">
+            <div id="nascimentocadastroerror"></div>
           </div>
           <div class="form-group">
           <label>Sexo</label><br>
@@ -81,34 +101,34 @@
             <h4 class="page-header">Endereço</h4>
             <div class="form-group">
               <label>CEP</label>
-              <input type="text" class="form-control" name="cep" required  >
+              <input type="text" class="form-control" name="cep" required  placeholder="Informe seu CEP" >
             </div>
             <div class="form-group">
               <label>Estado</label>
-              <input type="text" class="form-control" name="estado" required  >
+              <input type="text" class="form-control" name="estado" required  placeholder="Informe seu Estado" >
             </div>
             <div class="form-group">
               <label>Bairro</label>
-              <input type="text" class="form-control" name="bairro" required >
+              <input type="text" class="form-control" name="bairro" required placeholder="Informe seu Bairro">
             </div>
             <div class="form-group">
               <label>Cidade</label>
-              <input type="text" class="form-control" name="cidade" required >
+              <input type="text" class="form-control" name="cidade" required placeholder="Informe sua Cidade">
             </div>
             <div class="form-group">
               <label>Logradouro</label>
-              <input type="text" class="form-control" name="longradouro" required  >
+              <input type="text" class="form-control" name="longradouro" required  placeholder="Informe sua Rua">
             </div>
             <div class="form-group">
               <label>Numero</label>
-              <input type="number" class="form-control" name="numero" required >
+              <input type="number" class="form-control" name="numero" required placeholder="Número de sua Casa">
             </div>
             <div class="form-group">
               <label>Complemento</label>
-              <input type="text" class="form-control" name="complemento" required  >
+              <input type="text" class="form-control" name="complemento" placeholder=" ex.: Casa/ Apt ..." >
           </div>
           </div>
-          <input type="submit" name="botaoCadastrar" class="btn btn-primary" value="Criar nova conta!">
+          <input id="cadastrar" type="submit" name="botaoCadastrar" class="btn btn-primary" value="Criar nova conta!">
         </form>
         <br>
       </div>

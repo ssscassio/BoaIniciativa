@@ -18,18 +18,6 @@ $(document).ready(function(){
   });
 
 
-  $("#senhacadastro").on("input", function(){
-    var forca = verificaSenha('senhacadastro');
-
-    var colorStyle = verificaColorSenha(forca);
-    if($("#senhacadastro").val() == ""){
-      $('#senhacadastroerror').fadeOut(300);
-    }else{
-      $('#senhacadastroerror').html("<div class='progress'><div class='progress-bar "+colorStyle+"' role='progressbar' aria-valuenow='"+forca+"' aria-valuemin='0' aria-valuemax='100' style='width:"+forca+"%'></div></div>");
-      $('#senhacadastroerror').fadeIn();
-    }
-
-  });
 
   $('#formlogin').submit(function(){
      var valido = true;
@@ -66,52 +54,14 @@ $(document).ready(function(){
            }
          }
        });
-       return false;
-     }else{
-       return false;
      }
+
+    return false;
+
 
   });
 
 });
-
-
-
-function verificaColorSenha(forca){
-  var classColor;
-  if(forca  <= 0){
-    classColor = "progress-bar-danger";
-  }else if( forca <70){
-    classColor = "progress-bar-warning";
-  }else{
-      classColor = "progress-bar-success";
-  }
-  return classColor;
-}
-
-
-function verificaSenha(tiposenha){
-  senha = document.getElementById(tiposenha).value;
-	var forca = 0;
-	if((senha.length >= 4) && (senha.length <= 7)){
-		forca += 10;
-	}else if(senha.length>7){
-		forca += 25;
-	}
-	if(senha.match(/[a-z]+/)){
-		forca += 10;
-	}
-	if(senha.match(/[A-Z]+/)){
-		forca += 20;
-	}
-	if(senha.match(/d+/)){
-		forca += 20;
-	}
-	if(senha.match(/W+/)){
-		forca += 25;
-	}
-  return forca;
-}
 
 
 function validarCPF(cpf) {
