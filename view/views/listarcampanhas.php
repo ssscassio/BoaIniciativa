@@ -46,7 +46,7 @@ include("painelCriador.php");
           <div class="list-group-item row">
             <div class="col-xs-6">
               <?php if($campanhas[$i]->getImagem() == "" || $campanhas[$i] == "default.jpg"){
-                echo '<img src="../img/logobi.png" class="img-responsive img-rounded" alt="" />';
+                echo '<img src="../img/campanha.png" class="img-responsive img-rounded" alt="" />';
 
               }else{
                 echo '<img src="'.$campanhas[$i]->getImagem().'" class="img-responsive img-rounded" alt="" />';

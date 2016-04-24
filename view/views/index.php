@@ -13,19 +13,19 @@
 
     <div class="carousel-inner">
       <div class="item active">
-        <div class="fill" style="background-image:url('http://lorempixel.com/1900/1080/people/1');"></div>
+        <div class="fill" style="background-image:url('../img/comece_doar.png');"></div>
         <div class="carousel-caption">
           <a  href="login.php" class="btn btn-primary btn-lg">Começar a doar</a>
         </div>
       </div>
       <div class="item">
-        <div class="fill" style="background-image:url('http://lorempixel.com/1900/1080/people/2');"></div>
+        <div class="fill" style="background-image:url('../img/ver_campanhas');"></div>
         <div class="carousel-caption">
           <a  href="listarcampanhas.php" class="btn btn-primary btn-lg">Ver Campanhas</a>
         </div>
       </div>
       <div class="item">
-        <div class="fill" style="background-image:url('http://lorempixel.com/1900/1080/people/3');"></div>
+        <div class="fill" style="background-image:url('../img/iniciar_campanha.png');"></div>
         <div class="carousel-caption">
           <a  href="login.php" class="btn btn-primary btn-lg">Iniciar uma campanha</a>
         </div>
@@ -66,7 +66,7 @@
             <div class="panel-body">
               <img class="img-responsive img-portfolio" src="
               <?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
-                echo "../img/logobi.png";
+                echo "../img/campanha.png";
               }else{
                 echo $campanha->getImagem();
               } ?>
@@ -99,7 +99,7 @@
           <div class="col-xs-4">
             <a href="campanha?campanha=<?php echo $campanha->getIdCampanha(); ?>">
               <img class="img-responsive img-portfolio img-hover" src="<?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
-                echo "../img/logobi.png";
+                echo "../img/campanha.png";
               }else{
                 echo $campanha->getImagem();
               } ?>

@@ -32,7 +32,7 @@ include("cabecalhologado.php");
               <div class="col-xs-6 col-md-4">
                 <img src="<?php
                 if($campanhas[$i]->getImagem() =="default" || $campanhas[$i]->getImagem()== "default.jpg" || $campanhas[$i]->getImagem() ==""){
-                  echo '../img/logobi.png';
+                  echo '../img/campanha.png';
                 }else{
                   echo $campanhas[$i]->getImagem();
                 }?>

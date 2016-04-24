@@ -47,7 +47,7 @@ $i=0;
                   <div class="panel-body">
                       <img class="img-responsive img-portfolio container-fluid img-hover" src="
                       <?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
-                          echo "img/logobi.png";
+                          echo "img/campanha.png";
                       }else{
                         echo $campanha->getImagem();
                       } ?>
