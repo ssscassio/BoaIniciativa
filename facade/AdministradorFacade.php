@@ -127,7 +127,7 @@ echo '</div>';
 echo'<div class="row">
       <img src="';
       if($campanha->getImagem()=="default" || $campanha->getImagem()==""){
-        echo 'img/logobi.png';
+        echo 'img/campanha.png';
       }else{
         echo $campanha->getImagem();
       }

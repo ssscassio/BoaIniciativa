@@ -19,7 +19,13 @@
         </div>
         <div class="row col-xs-12">
           <div class="col-md-5" >
-            <img src="../img/logobi.png" class="img-responsive img-circle" alt="" />
+            <img class="img-responsive img-rounded" style="margin:15px;" src="
+            <?php if($usuario->getFoto()=="" || $usuario->getFoto()=="default.jpg"){
+              echo "../img/usuario.png";
+            }else{
+              echo $usuario->getFoto();
+            } ?>
+            ">
           </div>
           <div class="col-md-7 panel-primary panel container">
             <h3 class="page-header"> Informações Pessoais</h3>

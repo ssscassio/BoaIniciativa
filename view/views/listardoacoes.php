@@ -51,7 +51,7 @@ include("painelDoador.php");
           <div class="list-group-item row">
             <div class="col-xs-6">
               <?php if($campanha->getImagem() == "" || $campanha == "default.jpg"){
-                echo '<img src="../img/logobi.png" class="img-responsive img-rounded" alt="" />';
+                echo '<img src="../img/campanha.png" class="img-responsive img-rounded" alt="" />';
               }else{
                 echo '<img src="'.$campanha->getImagem().'" class="img-responsive img-rounded" alt="" />';
               } ?>
