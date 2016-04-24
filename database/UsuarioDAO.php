@@ -138,13 +138,14 @@ class UsuarioDAO{
     }
 
   }
-
+  
   public function buscarUsuario($cpf){
     try{
       $sql = Sql::getInstance()->buscarUsuarioSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1,$cpf);
       $stmt->execute();
+	  	  
       return UsuarioDAO::getInstance()->popularUsuario($stmt->fetch(PDO::FETCH_ASSOC));
     } catch (Exception $e){
       echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
@@ -191,6 +192,7 @@ class UsuarioDAO{
       $sql = Sql::getInstance()->editarPerfilSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $endereco = $usuario->getEndereco();
+	  
       $stmt->bindParam(1, $usuario->getSexo());
       $stmt->bindParam(2, $usuario->getDataNascimento());
       $stmt->bindParam(3, $usuario->getFoto());
@@ -208,7 +210,7 @@ class UsuarioDAO{
       $stmt->bindParam(15, $usuario->getLongitude());
       $stmt->bindParam(16, $usuario->getCpf());
 
-      return $stmt->execute();
+      return $stmt->execute();	
     }catch (Excepetion $e){
       echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
     }
@@ -247,6 +249,21 @@ class UsuarioDAO{
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1, $cpf);
       $stmt->execute();
+	     
+		if($stmt->errorCode() != "00000"){//Bloco de erro
+		  echo "Erro código". $stmt->errorCode(). "<br><br>";
+print "<pre>======================================================= \n";
+var_dump($stmt->errorInfo());
+print "=======================================================================</pre>";
+		}else echo "okk";
+		
+	  // Verfica
+      $sql = Sql::getInstance()->buscarUsuarioSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1,$cpf);
+      $stmt->execute();	  
+      return ($stmt->rowCount() >= 0);
+	  
     } catch (Exception $e) {
       echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
     }
