@@ -1,6 +1,6 @@
 <?php include_once("cabecalhologado.php"); ?>
 
-<br><br><br><br>
+<br><br>
 <div class="container">
 
 <script type="text/javascript" src="../js/criador.js"></script>
@@ -13,7 +13,7 @@
     <h3 style="text-align:right;">A solidariedade estimula a gentileza e gera mais saúde.
         - Anônimo.</h3>
   </div>
-  
+
 
 </div>
 

@@ -1,6 +1,6 @@
 <?php include_once("cabecalhologado.php"); ?>
 
-<br><br><br><br>
+<br><br>
 <div class="container">
 
 

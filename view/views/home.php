@@ -1,7 +1,7 @@
 <body>
 
   <?php
-  include('cabecalhoLogado.php');
+  include('cabecalhologado.php');
   ?>
 
   <?php

@@ -1,7 +1,7 @@
 <body>
 
   <?php
-  include('cabecalhoLogado.php');
+  include('cabecalhologado.php');
   ?>
 
   <?php
@@ -18,6 +18,8 @@
           <h2 class="page-header"><?php echo $usuario->getNome(); ?></h2>
         </div>
         <div class="row col-xs-12">
+          <div class="row">
+
           <div class="col-md-5" >
             <img class="img-responsive img-rounded" style="margin:15px;" src="
             <?php if($usuario->getFoto()=="" || $usuario->getFoto()=="default.jpg"){
@@ -45,6 +47,7 @@
             <div class="col-xs-12">
               <label class=""> Data de Nascimento:</label> <?php echo date("d/m/Y", strtotime($usuario->getDataNascimento())); ?>
             </div>
+          </div>
           </div>
           <script src="../js/jquery.js"></script>
           <script type"text/script" src="../js/script.js"></script>
