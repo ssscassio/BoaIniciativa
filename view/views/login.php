@@ -17,6 +17,7 @@
             </h1>
           </div>
         </div>
+          <div class="col-md-12">
 
         <form id="formlogin" method="POST" >
           <div class="row">
@@ -46,6 +47,7 @@
         <br>
         <div id="loginerror"></div>
       </div>
+  </div>
 
 
       <div class="col-lg-6 panel panel-default">
