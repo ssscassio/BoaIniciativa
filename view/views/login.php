@@ -60,38 +60,38 @@
           <div class="panel panel-default col-lg-6">
             <h4 class="page-header">Informações da conta</h4>
           <div class="form-group">
-            <label>Nome Completo</label>
-            <input id="nomecadastro"type="text" class="form-control" name="nome" placeholder="Nome Sobrenome">
+            <label>Nome Completo: <font color="FF0000">*</font> </label>
+            <input id="nomecadastro"type="text" class="form-control" name="nome" require placeholder="Nome Sobrenome">
             <div id="nomecadastroerror"></div>
           </div>
           <div class="form-group">
-            <label >Seu CPF</label>
-            <input id="cpfcadastro" type="number" class="form-control" name="cpf" placeholder="99988877711">
+            <label >CPF: <font color="FF0000">*</font> </label>
+            <input id="cpfcadastro" type="number" class="form-control" name="cpf" require placeholder="99988877711">
             <div id="cpfcadastroerror"></div>
           </div>
           <div class="form-group">
-            <label id="senhacadastroteste"> Senha</label>
+            <label> Senha : <font color="FF0000">*</font> </label>
             <input id="senhacadastro"type="password" class="form-control" name="password" require placeholder="Digite sua senha">
             <div id="senhaforca"></div>
             <div id="senhacadastroerror"></div>
           </div>
           <div class="form-group">
-            <label> Repetir Senha</label>
+            <label> Repetir Senha: <font color="FF0000">*</font> </label>
             <input id="repetirsenhacadastro" type="password" class="form-control" name="repetirpassword" require placeholder="Repetir sua senha">
             <div id="repetirsenhacadastroerror"></div>
           </div>
           <div class="form-group">
-            <label>E-mail</label>
+            <label>E-mail: <font color="FF0000">*</font> </label>
             <input id="emailcadastro" type="email" class="form-control" name="email" require placeholder="email@email.com">
             <div id="emailcadastroerror"></div>
           </div>
           <div class="form-group">
-            <label>Data de Nascimento</label>
+            <label>Data de Nascimento: <font color="FF0000">*</font> </label>
             <input id="nascimentocadastro" type="date" class="form-control" name="nascimento" require placeholder="dd/mm/aaaa">
             <div id="nascimentocadastroerror"></div>
           </div>
           <div class="form-group">
-          <label>Sexo</label><br>
+          <label>Sexo: <font color="FF0000">*</font> </label><br>
             <input type="radio" name="gender" value="male" checked> Homem<br>
             <input type="radio" name="gender" value="female"> Mulher<br>
           </div>
@@ -100,37 +100,49 @@
           <div class="panel panel-default col-lg-6">
             <h4 class="page-header">Endereço</h4>
             <div class="form-group">
-              <label>CEP</label>
-              <input type="text" class="form-control" name="cep" required  placeholder="Informe seu CEP" >
+              <label>CEP: <font color="FF0000">*</font> </label>
+              <input id="cepcadastro" type="text" class="form-control" name="cep"  placeholder="Informe seu CEP" >
+              <div id="cepcadastroerror"></div>
             </div>
             <div class="form-group">
-              <label>Estado</label>
-              <input type="text" class="form-control" name="estado" required  placeholder="Informe seu Estado" >
+              <label>Estado: <font color="FF0000">*</font> </label>
+              <input id="estadocadastro" type="text" class="form-control" name="estado" required  placeholder="Informe seu Estado" >
+              <div id="estadocadastroerror"></div>
             </div>
             <div class="form-group">
-              <label>Bairro</label>
-              <input type="text" class="form-control" name="bairro" required placeholder="Informe seu Bairro">
+              <label>Bairro: <font color="FF0000">*</font> </label>
+              <input id="bairrocadastro" type="text" class="form-control" name="bairro" required placeholder="Informe seu Bairro">
+              <div id="bairrocadastroerror"></div>
             </div>
             <div class="form-group">
-              <label>Cidade</label>
-              <input type="text" class="form-control" name="cidade" required placeholder="Informe sua Cidade">
+              <label>Cidade: <font color="FF0000">*</font> </label>
+              <input id="cidadecadastro" type="text" class="form-control" name="cidade" required placeholder="Informe sua Cidade">
+              <div id="cidadecadastroerror"></div>
             </div>
             <div class="form-group">
-              <label>Logradouro</label>
-              <input type="text" class="form-control" name="longradouro" required  placeholder="Informe sua Rua">
+              <label>Logradouro: <font color="FF0000">*</font> </label>
+              <input id="logradourocadastro" type="text" class="form-control" name="logradouro" required  placeholder="Informe sua Rua">
+              <div id="logradourocadastroerror"></div>
             </div>
             <div class="form-group">
-              <label>Numero</label>
-              <input type="number" class="form-control" name="numero" required placeholder="Número de sua Casa">
+              <label>Numero: <font color="FF0000">*</font> </label>
+              <input id="numerocadastro" type="number" class="form-control" name="numero" required placeholder="Número de sua Casa">
+              <div id="numerocadastroerror"></div>
             </div>
             <div class="form-group">
-              <label>Complemento</label>
-              <input type="text" class="form-control" name="complemento" placeholder=" ex.: Casa/ Apt ..." >
+              <label>Complemento: <font color="FF0000">*</font> </label>
+              <input id="complementocadastro" type="text" class="form-control" name="complemento" placeholder=" ex.: Casa/ Apt ..." >
+              <div id="complementocadastroerror"></div>
           </div>
           </div>
-          <input id="cadastrar" type="submit" name="botaoCadastrar" class="btn btn-primary" value="Criar nova conta!">
+          <div class="row">
+            <div class="col-md-12">
+              <input id="cadastrar" type="submit" name="botaoCadastrar" class="btn btn-primary" value="Criar nova conta!">
+            </div>
+          </div>
         </form>
         <br>
+        <div id="cadastroerror"></div>
       </div>
     </div>
 

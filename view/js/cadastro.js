@@ -1,17 +1,15 @@
 $(document).ready(function(){
 
-
-  $("#cadastrar").click(function(){
-  var valido = true;
-
   function verificarSenhasIguais(senha, repetirsenha){
     if ( repetirsenha === senha){
       $('#senhacadastroerror').empty();
       $('#senhacadastroerror').html('<p class="alert alert-success">Senhas conferem</p>');
+      $('#senhacadastroerror').fadeIn();
       $('#senhacadastroerror').fadeOut(1500);
       return true;
     } else {
       $('#senhacadastroerror').empty();
+      $('#senhacadastroerror').fadeIn();
       $('#senhacadastroerror').html('<p class="alert alert-warning" >Senhas não conferem</p>');
       return false;
     }
@@ -29,7 +27,8 @@ $(document).ready(function(){
       verificarSenhasIguais(senha,repetirsenha);
     });
 
-
+  $("#cadastrar").click(function(){
+  var valido = true;
 
    function verificarCamposVazios(IDCampo, IDerror, mensagem) {
         var val = $.trim($(IDCampo).val());
@@ -42,16 +41,60 @@ $(document).ready(function(){
         }
       }
 
-    verificarCamposVazios('#nomecadastro','#nomecadastroerror','Insira seu Nome e Sobrenome');
     verificarCamposVazios('#cpfcadastro','#cpfcadastroerror','Insira seu CPF');
+    valido = validarCPF($("#cpfcadastro").val());
+
+    verificarCamposVazios('#nomecadastro','#nomecadastroerror','Insira seu Nome e Sobrenome');
     verificarCamposVazios('#senhacadastro','#senhacadastroerror','Insira sua Senha');
     verificarCamposVazios('#repetirsenhacadastro','#repetirsenhacadastroerror','Repita sua Senha');
     verificarCamposVazios('#emailcadastro','#emailcadastroerror','Digite seu email');
     verificarCamposVazios('#nascimentocadastro','#nascimentocadastroerror','Informe sua data de nascimento');
+    verificarCamposVazios('#cepcadastro','#cepcadastroerror','Informe seu CEP');
+    verificarCamposVazios('#estadocadastro','#estadocadastroerror','Informe seu Estado');
+    verificarCamposVazios('#bairrocadastro','#bairrocadastroerror','Informe seu Bairro');
+    verificarCamposVazios('#cidadecadastro','#cidadecadastroerror','Informe sua Cidade');
+    verificarCamposVazios('#logradourocadastro','#logradourocadastroerror','Informe seu Logradouro');
+    verificarCamposVazios('#numerocadastro','#numerocadastroerror','Informe o numero de sua residencia');
+    verificarCamposVazios('#complementocadastro','#complementocadastroerror','Informe o complemento do seu Endereço');
 
-    if(!verifircarSenhasIguais($('#senhacadastro').val(),$('#repetirsenhacadastro').val())){
+    if(!verificarSenhasIguais($('#senhacadastro').val(),$('#repetirsenhacadastro').val())){
       valido = false;
     }
+
+
+
+    if(valido){//Caso os dados estejam corretos, ir para a pagina de validação
+      var formdata = {
+        'nome' : $('#nomecadastro').val(),
+        'cpf' :$('#cpfcadastro').val(),
+        'password' :$('#senhacadastro').val(),
+        'email' :$('#emailcadastro').val(),
+        'nascimento' :$('#nascimentocadastro').val(),
+        'gender' :$('input[name=gender]').val(),
+        'cep' :$('#cepcadastro').val(),
+        'estado' :$('#estadocadastro').val(),
+        'bairro' :$('#bairrocadastro').val(),
+        'cidade' :$('#cidadecadastro').val(),
+        'logradouro' :$('#logradourocadastro').val(),
+        'numero' :$('#numerocadastro').val(),
+        'complemento' :$('#complementocadastro').val(),
+        'botaoCadastrar' : 'botaoCadastrar'
+      };
+
+      $.ajax({
+        url: "../views/ajaxteste.php",
+        type: 'POST',
+        data: formdata,
+        dataType : "json",
+        success: function(data){
+          console.log(data);
+          $('#cadastroerror').html(mensagem);
+
+        }
+      });
+    }
+
+    return false;
 
   });
 
@@ -127,7 +170,7 @@ function verificaSenha(tiposenha){
 
 function verificaColorSenha(forca){
   var classColor;
-  if(forca  <= 0){
+  if(forca  <= 30){
     classColor = "progress-bar-danger";
   }else if( forca <70){
     classColor = "progress-bar-warning";

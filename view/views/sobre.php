@@ -6,6 +6,8 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
 }
 ?>
 
+<link href="../css/bootstrap-social.css" rel="stylesheet">
+
 <div class="container">
   <!--Sobre o boa Iniciativa-->
   <div class="row">
@@ -25,6 +27,9 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
   <div class="row">
     <div class="col-xs-12">
       <h2 class="page-header"> Sobre a equipe</h2>
+    </div>
+    <div class="col-xs-12">
+      Falar aqui sobre o pbl e dizer o motivo de ter criado o sistema(Como problema da disciplina)Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
     <!--Listagem dos membros-->
     <div class="container">
@@ -49,16 +54,23 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
             </p>
               <ul class="list-unstyled list-inline list-social-icons">
                 <li>
-                  <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+                  <a href="https://www.facebook.com/ssscassio"><i class="fa fa-facebook-square fa-2x"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                  <a href="https://br.linkedin.com/in/c√°ssio-silva-de-s√°-santos-6a7199104
+"><i class="fa fa-linkedin-square fa-2x"></i></a>
                 </li>
                 <li>
                   <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
                 </li>
                 <li>
                   <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                </li>
+                <li>
+                  <a href="https://github.com/ssscassio"><i class="fa fa-github-square fa-2x"></i></a>
+                </li>
+                <li>
+                  <a href="http://steamcommunity.com/id/ssscassio/"><i class="fa fa-steam-square fa-2x"></i></a>
                 </li>
               </ul>
             </div>

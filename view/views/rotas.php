@@ -45,7 +45,7 @@ if(isset($_POST['botaoLogar'])){
     header('location:home.php');
   }else{ //Usuario deslogado, pode cadastrar
     if(isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['nascimento']) && isset($_POST['cep'])
-    && isset($_POST['estado']) && isset($_POST['bairro']) && isset($_POST['cidade']) &&isset($_POST['longradouro']) && isset($_POST['numero']) && isset($_POST['complemento'])
+    && isset($_POST['estado']) && isset($_POST['bairro']) && isset($_POST['cidade']) &&isset($_POST['logradouro']) && isset($_POST['numero']) && isset($_POST['complemento'])
     && isset($_POST['gender'])){
       $sexo = ($_POST['gender']=='male')? 'M': 'F';
       $nome = $_POST['nome'];
@@ -57,11 +57,11 @@ if(isset($_POST['botaoLogar'])){
       $estado = $_POST['estado'];
       $bairro = $_POST['bairro'];
       $cidade = $_POST['cidade'];
-      $longradouro = $_POST['longradouro'];
+      $logradouro = $_POST['logradouro'];
       $numero = $_POST['numero'];
       $complemento = $_POST['complemento'];
       echo "Tudo certo para cadastrar";
-      $confirmacao = SistemaFacade::getInstance()->cadastrarNovoUsuario($nome,$cpf,$email,$senha,$nascimento,$cep,$estado,$bairro,$cidade,$longradouro,$numero,$complemento,$sexo);
+      $confirmacao = SistemaFacade::getInstance()->cadastrarNovoUsuario($nome,$cpf,$email,$senha,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento,$sexo);
       if($confirmacao){
         header('location:index.php');
         echo "Usuario Cadastrado com sucesso";

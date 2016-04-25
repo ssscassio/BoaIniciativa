@@ -26,8 +26,5 @@ $(document).ready(function () {
     $('#wrapper').toggleClass('toggled');
   });
 
-  $('.carousel').carousel({
-    interval: 5000 //changes the speed
-  })
-  
+
 });
