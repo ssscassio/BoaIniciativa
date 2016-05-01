@@ -78,7 +78,7 @@ include("painelDoador.php");
            </div>
          </div>
          <div class="col-xs-6 col-md-6 text-center">
-           <a href="visualizarCampanha.php?id=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary btn-block" style="margin:5px 0px 5px 0px;"> Ver Campanha </a>
+           <a href="campanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary btn-block" style="margin:5px 0px 5px 0px;"> Ver Campanha </a>
          </div>
         <?php
         if(!$doacoes[$i]->getConfirmado()){ ?>

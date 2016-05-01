@@ -16,7 +16,7 @@ include("cabecalhologado.php");
 
     <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
-    $id = $_GET['id'];
+    $id = $_GET['campanha'];
     $campanha = UsuarioFacade::getInstance()->verCampanha($id);
     ?>
     <div class="col-md-9 panel panel-default">

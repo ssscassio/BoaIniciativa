@@ -58,7 +58,7 @@
           <tbody>
             <tr>
               <td><?php echo $criadas->getNome(); ?></td>
-              <td><a href="visualizarCampanha.php?id=<?php echo $criadas->getIdCampanha(); ?>"> Ver Campanha </a></td>
+              <td><a href="campanha.php?campanha=<?php echo $criadas->getIdCampanha(); ?>"> Ver Campanha </a></td>
             </tr>
           </tbody>
           <?php } //fim do for ?>
@@ -98,7 +98,7 @@
                 <tr>
                   <td><?php echo $nomecampanha->getNome(); ?></td>
                   <td> <a href="usuario.php?cpf=<?php echo $nomecampanha->getCriadorCpf(); ?>"><?php echo $criador->getNome(); ?> </a></td>
-                  <td><a href="visualizarCampanha.php?id=<?php echo $nomecampanha->getIdCampanha(); ?>"> Ver Campanha </a></td>
+                  <td><a href="campanha.php?campanha=<?php echo $nomecampanha->getIdCampanha(); ?>"> Ver Campanha </a></td>
                 </tr>
               </tbody>
               <?php } //fim do for ?>

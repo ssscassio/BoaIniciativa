@@ -11,7 +11,7 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
 <div class="container">
   <!-- Marketing Icons Section -->
   <div class="row">
-      <form method="get" action="visualizarCampanha.php">
+      <form method="get" action="campanha.php">
           <div class="col-lg-12">
               <h2 class="page-header">
                 Resultado da Pesquisa
@@ -53,7 +53,7 @@ $i=0;
                       } ?>
                       ">
                       <p><?php echo $campanha->getDescricao(); ?></p>
-                      <a href="visualizarCampanha.php?campanha=<?php echo $campanha->getIdCampanha();; ?>" class="btn btn-primary">Ver Campanha</a>
+                      <a href="campanha.php?campanha=<?php echo $campanha->getIdCampanha();; ?>" class="btn btn-primary">Ver Campanha</a>
                   </div>
               </div>
           </div>
