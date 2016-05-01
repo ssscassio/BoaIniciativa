@@ -13,19 +13,19 @@
 
     <div class="carousel-inner">
       <div class="item active">
-        <div class="fill" style="background-image:url('../img/comece_doar.png');"></div>
+        <div class="fill" style="background-image:url('../img/comecedoar.png');"></div>
         <div class="carousel-caption">
           <a  href="login.php" class="btn btn-primary btn-lg">Começar a doar</a>
         </div>
       </div>
       <div class="item">
-        <div class="fill" style="background-image:url('../img/ver_campanhas');"></div>
+        <div class="fill" style="background-image:url('../img/vercampanhas.png');"></div>
         <div class="carousel-caption">
           <a  href="listarcampanhas.php" class="btn btn-primary btn-lg">Ver Campanhas</a>
         </div>
       </div>
       <div class="item">
-        <div class="fill" style="background-image:url('../img/iniciar_campanha.png');"></div>
+        <div class="fill" style="background-image:url('../img/iniciarcampanha.png');"></div>
         <div class="carousel-caption">
           <a  href="login.php" class="btn btn-primary btn-lg">Iniciar uma campanha</a>
         </div>
