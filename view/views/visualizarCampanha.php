@@ -60,7 +60,7 @@ include("cabecalhologado.php");
 
           <div class="container-fluid panel panel-success col-md-6" style="padding:20px;">
             <h2 class="page-header">Ações</h2>
-            <a href="usuario.php?cpfcriador=<?php echo $campanha->getCriadorCpf();?>">Ver criador</a><br/>
+            <a href="usuario.php?cpf=<?php echo $campanha->getCriadorCpf();?>">Ver criador</a><br/>
             <a href="">Convidar Amigo</a><br/>
             <a id="botaoDenunciar">Denunciar</a>
             <div class="panel panel-primary" id="formDenuncia" >
