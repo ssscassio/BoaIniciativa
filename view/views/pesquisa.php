@@ -22,11 +22,11 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
 // nome, imagem e link da campanha
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
 
-if(empty($_POST['busca'])){
+if(empty($_GET['busca'])){
 echo "<h4>Por favor, digite o que deseja pesquisar.</h4>";
 $i=0;
 }else{
-  $arraybusca = CampanhaDAO::getInstance()->procurarCampanhaNome($_POST['busca']);
+  $arraybusca = CampanhaDAO::getInstance()->procurarCampanhaNome($_GET['busca']);
   if(empty($arraybusca)){
     echo "<h4>     Sinto muito. N√£o foram encontrados resultados.</h4>";
     $i=0;

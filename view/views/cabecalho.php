@@ -51,7 +51,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
-        <form class="navbar-form" method="POST" action="pesquisa.php">
+        <form class="navbar-form" method="GET" action="pesquisa.php">
           <div class="input-group">
             <input class="form-control" type="text" name="busca"  placeholder="Buscar...">
             <div class="input-group-btn">
