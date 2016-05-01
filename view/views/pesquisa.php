@@ -45,13 +45,13 @@ $i=0;
                       <h4><?php  echo $campanha->getNome();; ?></h4>
                   </div>
                   <div class="panel-body">
-                      <img class="img-responsive img-portfolio container-fluid img-hover" src="
+                      <img class="img-responsive img-portfolio" src="
                       <?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
-                          echo "img/campanha.png";
+                        echo "../img/campanha.png";
                       }else{
                         echo $campanha->getImagem();
                       } ?>
-                      " alt="">
+                      ">
                       <p><?php echo $campanha->getDescricao(); ?></p>
                       <a href="visualizarCampanha.php?campanha=<?php echo $campanha->getIdCampanha();; ?>" class="btn btn-primary">Ver Campanha</a>
                   </div>

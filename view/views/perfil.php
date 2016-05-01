@@ -7,16 +7,16 @@
 function funcao1(){
 
 	decisao = confirm("Você deseja realmente excluir seu perfil? Pense bem, você não poderá recupera-lo se continuar.");
-		
+
 	if (decisao){
 		window.location="excluirPerfil.php"
-	} 
+	}
 }
 </script>
   <?php
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioController.php");
   $usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
-  
+
   $usuario->getNome();
   $endereco = $usuario->getEndereco();?>
 
@@ -35,7 +35,7 @@ function funcao1(){
 		  <center>
             <img height="320" width="320"src="<?php echo $usuario->getFoto();?>" alt="" />
           </center>
-		  
+
 		</div>
           <div class="col-md-7 panel-primary panel container">
             <h3 class="page-header"> Informações Pessoais</h3>
@@ -57,7 +57,7 @@ function funcao1(){
               <label class=""> Data de Nascimento:</label> <?php echo date("d/m/Y", strtotime($usuario->getDataNascimento())); ?>
             </div>
 			</font>
-			
+
             <div class="col-xs-12">
 			    <br>
 				<img src="../img\camera.jpg" width="30" height="30"> <font size="2" face="Arial Black">Editar Foto</font>
@@ -65,7 +65,7 @@ function funcao1(){
 					<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 					<input name="userfile" type="file" /><br>
 					<input type="submit" value="Alterar Foto" />
-				</form> 
+				</form>
 			</div>
           </div>
           <script src="../js/jquery.js"></script>
@@ -100,7 +100,7 @@ function funcao1(){
             </div>
             <div class="col-xs-6 col-md-4">
                 <button type="button" onclick="funcao1()" id="botaoExcluirConta" class="btn btn-danger btn-block" name="botaoExcluirConta" value="Excluir Perfil "> Excluir Conta</button>
-				
+
 			</div>
           </div>
           <div class="row">
