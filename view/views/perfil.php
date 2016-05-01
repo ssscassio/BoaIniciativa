@@ -17,8 +17,13 @@ function funcao1(){
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioController.php");
   $usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
   
-  $usuario->getNome();
-  $endereco = $usuario->getEndereco();?>
+  $endereco = $usuario->getEndereco();
+  
+  $fotoUsuario = $usuario->getFoto();
+  if (!file_exists($fotoUsuario)) {
+    $fotoUsuario = "../img\usuario.png";
+  } 
+  ?>
 
   <script type="text/javascrip" src="../js/mapa.js"></script>
   <link href="../css/bootstrap-fileupload.min.css" rel="stylesheet" />
@@ -33,7 +38,7 @@ function funcao1(){
         <div class="row col-xs-12">
           <div class="col-md-5" >
 		  <center>
-            <img height="320" width="320"src="<?php echo $usuario->getFoto();?>" alt="" />
+            <img height="320" width="320"src="<?php echo $fotoUsuario;?>" alt="" />
           </center>
 		  
 		</div>
