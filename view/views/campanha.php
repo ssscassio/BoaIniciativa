@@ -8,7 +8,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
  else{
   include("cabecalho.php");
  }
- 
+
 ?>
 <br><br><br><br>
 <div class="container">
@@ -24,6 +24,8 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
 
     <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
+    require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/SistemaController.php");
+
     $id = $_GET['campanha'];
     $campanha = UsuarioFacade::getInstance()->verCampanha($id);
     ?>
@@ -108,14 +110,62 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
           <center>
             <?php
             if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
-              $href = "doar.php?idCampanha=".$campanha->getIdCampanha()."&doadorcpf=".$_SESSION['cpf']; 
+              $href = "doar.php?idCampanha=".$campanha->getIdCampanha()."&doadorcpf=".$_SESSION['cpf'];
             }
-            else 
+            else{
               $href = "login.php";
+            }
             ?>
             <a href="<?php echo $href;?>" class="btn btn-primary col-xs-12 col-md-12 disable">Efetuar Doação</a>
           </center>
         </div>
+        <?php
+          if(SistemaController::getInstance()->verificarCampanhaMonetaria($campanha->getIdCampanha())){
+?>
+<!--Para doação monetária-->
+<?php $criador = UsuarioDAO::getInstance()->buscarUsuario($campanha->getCriadorCpf());
+  $valores = $campanha->getValores();?>
+<div class="panel panel-default">
+  <h2 class="page-header">Doacao Monetária</h2>
+  <!--
+  <div class="row">
+    <div class="col-md-3">
+      <button type="button" id="valor1" class="btn-primary btn btn-lg" value="<?php echo $valores[0].".00";?>" name="valor"><?php echo $valores[0]." R$"; ?></button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn-primary btn btn-lg" value="<?php echo $valores[1].".00";?>" name="valor"><?php echo $valores[1]." R$"; ?></button>
+    </div>
+    <div class="col-md-3">
+      <button type="button" class="btn-primary btn btn-lg" value="<?php echo $valores[2].".00";?>" name="valor"><?php echo $valores[2]." R$"; ?></button>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Valor a ser doado: <font color="FF0000">*</font></label>
+        <input id="valordoado" type="number" class="form-control" name="valordoado" placeholder="Valor da doação">
+      </div></div>
+  </div>
+-->
+<div class=" text-center img-responsive center-block ">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <input type="hidden" name="cmd" value="_donations">
+  <input type="hidden" name="business" value="<?php echo $criador->getEmail(); ?>">
+  <input type="hidden" name="lc" value="BR">
+  <input type="hidden" name="item_name" value="<?php echo $campanha->getNome(); ?>">
+  <input type="hidden" id="paypalvalue" name="amount" >
+  <input type="hidden" name="currency_code" value="BRL">
+  <input type="hidden" name="no_note" value="0">
+  <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+  <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+  <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+
+</div>
+
+<?php
+          }
+         ?>
+
 
 
 

@@ -145,10 +145,12 @@ class Sql
   private $campanhaMensagemAgradecimento = "mensagemagradecimento";
   private $campanhaFinalizaPorData = "finalizapordata";
   private $criadorCPF = "criadorcpf";
-
+  private $valor1 = "valor1";
+  private $valor2 = "valor2";
+  private $valor3 = "valor3";
     public function adicionarCampanhaSQL(){
       return "INSERT INTO {$this->schema}.{$this->campanhaTable} ({$this->campanhaNome}, {$this->campanhaInicio}, {$this->campanhaFim}, {$this->campanhaImagem}, {$this->campanhaDescricao},
-        {$this->campanhaTituloAgradecimento}, {$this->campanhaMensagemAgradecimento}, {$this->campanhaFinalizaPorData}, {$this->criadorCPF}) VALUES (?,?,?,?,?,?,?,?,?)";
+        {$this->campanhaTituloAgradecimento}, {$this->campanhaMensagemAgradecimento}, {$this->campanhaFinalizaPorData}, {$this->criadorCPF},{$this->valor1},{$this->valor2},{$this->valor3}) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     }
 
     public function listarCampanhasSQL(){

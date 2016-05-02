@@ -34,6 +34,11 @@ class CampanhaDAO
       $stmt->bindParam(7, $campanha->getAgradecimento());
       $stmt->bindParam(8, $campanha->getFinalizaPorData());
       $stmt->bindParam(9, $campanha->getCriadorDaCampanha());
+      $valores = $campanha->getValores();
+      $stmt->bindParam(10,$valores[0]);
+      $stmt->bindParam(11,$valores[1]);
+      $stmt->bindParam(12,$valores[2]);
+
       $stmt->execute();
 
       return ConexaoDB::getConexaoPDO()->lastInsertId('BoaIniciativa.campanha_idcampanha_seq');

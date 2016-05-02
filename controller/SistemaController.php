@@ -2,11 +2,13 @@
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MetaDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MaterialDAO.php");
 
 /**
  *
  */
-class CassioSistemaController
+class SistemaController
 {
 
   private static $instance;
@@ -17,7 +19,7 @@ class CassioSistemaController
 
   public static function getInstance() {
     if (!isset(self::$instance))
-      self::$instance = new CassioSistemaController();
+      self::$instance = new SistemaController();
     return self::$instance;
   }
 
@@ -43,6 +45,28 @@ class CassioSistemaController
 
   public function buscarCampanha($idCampanha){
     return CampanhaDAO::getInstance()->buscarCampanha($idCampanha);
+  }
+
+  public function verificarCampanhaMonetaria($idCampanha){
+    $materiais = SistemaController::getInstance()->listarMateriaisCampanha($idCampanha);
+    $isMonetaria = false;
+    for($i=0; $i < sizeof($materiais); $i++){
+      if($materiais[$i]->getNome() =="Dinheiro"){
+        $isMonetaria = true;
+      }
+    }
+    return $isMonetaria;
+  }
+
+  public function listarMateriaisCampanha($idCampanha){
+    $metas =array();
+    $metas = MetaDAO::getInstance()->buscarMetasCampanha($idCampanha);
+    $materiais = array();
+    for ($i=0; $i < sizeof($metas); $i++) {
+      $materiais[] = MaterialDAO::getInstance()->buscarMaterial($metas[$i]->getCodMaterial());
+    }
+
+    return $materiais;
   }
 
 

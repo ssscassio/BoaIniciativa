@@ -17,7 +17,7 @@ class Campanha{
 	private $imagem;			//imagem associada a campanha
 	private $tags; 				//tag que permite que a campanha seja classificada na barra lateral da aplicação
 	private $criadorDaCampanha; //atributo que permite identificar qual conta do paypal será associada a campanha
-	private $finalizapordata; 			#por definição se for finalizar por meta, repassar true, se finalizar por Data, repassar false
+	private $finalizapordata;
 	private $dataFim;			//data de termino da campanha
 	private $valores = array();
 
