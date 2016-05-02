@@ -4,6 +4,7 @@ $usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
 $endereco = $usuario->getEndereco();
 
  ?>
+ <script type="text/javascript" src="../js/cadastro.js"></script>
   <div class="container">
     <div class="row">
 	<br>
@@ -25,19 +26,15 @@ $endereco = $usuario->getEndereco();
             <div class="row">
               <div class="form-group col-md-6">
                 <label>Nova senha: </label>
-                <input type="password" class="form-control" NAME="novasenha" required  placeholder="Nova senha">
-              </div>
-              <div class="col-md-6" id="mensagemSenha">
-
-              </div>
+               <input id="senhacadastro"type="password" class="form-control" name="novasenha" required placeholder="Digite sua senha">
+            <div id="senhaforca"></div>
+            <div id="senhacadastroerror"></div>
             </div>
             <div class="row">
               <div class="col-md-6 form-group">
                 <label>Confirmar senha:</label>
-                <input type="password" class="form-control" NAME="confsenha" required placeholder="Confirmar senha" oninput="validaSenha(this)">
-              </div>
-              <div id="repetirsenhacadastroerror"></div>
-              <div class="col-md-6" id="mensagemConfSenha">
+                <input id="repetirsenhacadastro" type="password" class="form-control" name="repetirpassword" required placeholder="Repetir sua senha">
+            <div id="repetirsenhacadastroerror"></div>
 
               </div>
             </div>
