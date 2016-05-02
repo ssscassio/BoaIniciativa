@@ -1,5 +1,6 @@
 <?php
-if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se já está logado
+session_start();
+if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já está logado
   include("cabecalhologado.php");
 }else {
   include("cabecalho.php");
