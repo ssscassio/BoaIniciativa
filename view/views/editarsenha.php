@@ -36,6 +36,7 @@ $endereco = $usuario->getEndereco();
                 <label>Confirmar senha:</label>
                 <input type="password" class="form-control" NAME="confsenha" required placeholder="Confirmar senha" oninput="validaSenha(this)">
               </div>
+              <div id="repetirsenhacadastroerror"></div>
               <div class="col-md-6" id="mensagemConfSenha">
 
               </div>

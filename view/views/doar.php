@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/DoadorFacade.php");
   //require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
   include("cabecalhologado.php");

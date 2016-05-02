@@ -1,8 +1,14 @@
 
 <?php
-
+session_start();
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorController.php");
-include("cabecalhologado.php");
+ if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
+    include("cabecalhologado.php");
+ }
+ else{
+  include("cabecalho.php");
+ }
+ 
 ?>
 <br><br><br><br>
 <div class="container">
@@ -10,7 +16,9 @@ include("cabecalhologado.php");
 
 
     <?php
+    if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
     include("painelDoador.php");
+    }
 
     ?>
 
@@ -52,7 +60,7 @@ include("cabecalhologado.php");
             </div>
           </div>
         </div></div><div class="row">
-          <img src="img/logobi.png" class="img-rounded img-responsive center-block" alt="" />
+          <img src="../img/logobi.png" class="img-rounded img-responsive center-block" alt="" width="100px" height="100px" />
         </div>
         <div class="row">
           <div class="container-fluid panel panel-success col-md-6" style=" padding:20px;">
@@ -98,7 +106,14 @@ include("cabecalhologado.php");
 
         <div class="panel" style="padding:0px 10px 70px 10px;">
           <center>
-            <a href="doar.php?idCampanha=<?php echo $campanha->getIdCampanha();?>&doadorcpf=<?php echo $_SESSION['cpf'];?>" class="btn btn-primary col-xs-12 col-md-12 disable">Efetuar Doação</a>
+            <?php
+            if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
+              $href = "doar.php?idCampanha=".$campanha->getIdCampanha()."&doadorcpf=".$_SESSION['cpf']; 
+            }
+            else 
+              $href = "login.php";
+            ?>
+            <a href="<?php echo $href;?>" class="btn btn-primary col-xs-12 col-md-12 disable">Efetuar Doação</a>
           </center>
         </div>
 
