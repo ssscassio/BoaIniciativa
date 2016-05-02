@@ -64,32 +64,31 @@ $(document).ready(function(){
 
 
     if(valido){//Caso os dados estejam corretos, ir para a pagina de validação
-      var formdata = {
-        'nome' : $('#nomecadastro').val(),
-        'cpf' :$('#cpfcadastro').val(),
-        'password' :$('#senhacadastro').val(),
-        'email' :$('#emailcadastro').val(),
-        'nascimento' :$('#nascimentocadastro').val(),
-        'gender' :$('input[name=gender]').val(),
-        'cep' :$('#cepcadastro').val(),
-        'estado' :$('#estadocadastro').val(),
-        'bairro' :$('#bairrocadastro').val(),
-        'cidade' :$('#cidadecadastro').val(),
-        'logradouro' :$('#logradourocadastro').val(),
-        'numero' :$('#numerocadastro').val(),
-        'complemento' :$('#complementocadastro').val(),
-        'botaoCadastrar' : 'botaoCadastrar'
-      };
 
       $.ajax({
-        url: "../views/ajaxteste.php",
+        url: "../views/rotas.php",
         type: 'POST',
-        data: formdata,
+        data: {
+          nome : $('#nomecadastro').val(),
+          cpf : $('#cpfcadastro').val(),
+          password : $('#senhacadastro').val(),
+          email :$('#emailcadastro').val(),
+          nascimento :$('#nascimentocadastro').val(),
+          gender :$('input[name=gender]').val(),
+          cep :$('#cepcadastro').val(),
+          estado :$('#estadocadastro').val(),
+          bairro :$('#bairrocadastro').val(),
+          cidade :$('#cidadecadastro').val(),
+          logradouro :$('#logradourocadastro').val(),
+          numero : $('#numerocadastro').val(),
+          complemento : $('#complementocadastro').val(),
+          botaoCadastrar : 'botaoCadastrar'
+        },
         dataType : "json",
         success: function(data){
-          console.log(data);
+          var mensagem = data.mensagem;
+          console.log(mensagem);
           $('#cadastroerror').html(mensagem);
-
         }
       });
     }

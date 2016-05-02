@@ -1,7 +1,8 @@
 <?php
 
   require_once("Sql.php");
-  require_once("../model/Agradecimento.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/Agradecimento.php");
+
   /**
    * Classe que referece ao acesso a tabela AgradecimentoDAO
    */

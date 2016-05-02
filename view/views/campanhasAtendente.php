@@ -28,7 +28,7 @@ include("cabecalhologado.php");
           echo '<div class="list-group">';
           for ($i=sizeof($campanhas)-1; $i >=0 ; $i--) {
             ?>
-            <div class="list-group-item row">
+
               <div class="col-xs-6 col-md-4">
                 <img src="<?php
                 if($campanhas[$i]->getImagem() =="default" || $campanhas[$i]->getImagem()== "default.jpg" || $campanhas[$i]->getImagem() ==""){
@@ -85,8 +85,7 @@ include("cabecalhologado.php");
 ?>
 </div>
 </div>
-</div>
-</div>
 <?php
 include("footer.php");
 ?>
+</div>

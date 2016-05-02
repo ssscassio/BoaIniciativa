@@ -6,6 +6,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/AtendenteCampanhaDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MaterialDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MetaDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/AgradecimentoDAO.php");
 
 
 /**
@@ -91,8 +92,17 @@ public function cadastroRapido($cpf,$email,$senha){
   public function confirmarDoacao($idDoacao, $atendenteConfirma){
     $data = date('d/m/Y');
     DoacaoDAO::getInstance()->confirmarDoacao($data,$atendenteConfirma, $idDoacao);
+
+    enviarAgradecimento($idDoacao);
   }
 
+  public function enviarAgradecimento($idDoacao){
+    $doacao = DoacaoDAO::getInstance()->buscarDoacaoPorId($idDoacao);
+    $campanha = CampanhaDAO::getInstance()->buscarCampanha($doacao->getIdCampanha());
+
+    $agradecimento = Agradecimento($campanha->getTituloAgradecimento(),$doacao->getCpfDoador(), $campanha->getAgradecimento(), '../img/agradecimento.png', $campanha->getidCampanha());
+    AgradecimentoDAO::getInstance()->adicionarAgradecimento($agradecimento);
+  }
   public function listarMateriaisCampanha($idCampanha){
     $metas =array();
     $metas = MetaDAO::getInstance()->buscarMetasCampanha($idCampanha);

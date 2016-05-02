@@ -3,7 +3,7 @@ INSERT INTO BoaIniciativa.Administrador (cpf,sexo,datanascimento,email,senha,nom
 INSERT INTO BoaIniciativa.Administrador (cpf,sexo,datanascimento,email,senha,nome) Values ('14235499319','M','04-02-1990','teste@teste.com',md5('defaultpassword'),'Sys Admin');
 
 /* Inserindo Dados na tabela Usuário */
-INSERT INTO BoaIniciativa.Usuario (cpf,sexo,datanascimento,foto,email,senha,nome,classificacao,cep,estado,bairro,cidade,logradouro,numero,complemento,bloqueado,databloqueio, latitude, longitude) Values ('71472525191','M','09-07-1986','default.jpg','teste1@teste.com',md5('12345678'),'Zilmar Souza',2,'44002-488','Bahia','Muchila','Feira de Santana','Avenida Eduardo Fróes da Mota','361',null,false,null, -12.2317073, -38.9564264);
+INSERT INTO BoaIniciativa.Usuario (cpf,sexo,datanascimento,foto,email,senha,nome,classificacao,cep,estado,bairro,cidade,logradouro,numero,complemento,bloqueado,databloqueio, latitude, longitude) Values ('05727933595','M','09-07-1986','default.jpg','teste2@teste.com',md5('12345678'),'Cassio Teste',2,'44002-488','Bahia','Muchila','Feira de Santana','Avenida Eduardo Fróes da Mota','361',null,false,null, -12.2317073, -38.9564264);
 INSERT INTO BoaIniciativa.Usuario (cpf,sexo,datanascimento,foto,email,senha,nome,classificacao,cep,estado,bairro,cidade,logradouro,numero,complemento,bloqueado,databloqueio, latitude, longitude) Values ('63516160187','F','15-02-1981','default.jpg','teste@outlook.com',md5('876543211'),'Zilma Macedo',1,'44053-005','Bahia','Cruzeiro','Feira de Santana','Rua Santos Réis','232',null,false,null, -12.247549, -38.9725334);
 INSERT INTO BoaIniciativa.Usuario (cpf,sexo,datanascimento,foto,email,senha,nome,classificacao,cep,estado,bairro,cidade,logradouro,numero,complemento,bloqueado,databloqueio, latitude, longitude) Values ('56112645149','F','28-05-1990','default.jpg','teste@hotmail.com',md5('162537481'),'Zilene Araujo',2,'44001-001','Bahia','Centro','Feira de Santana','Rua Carlos Valadares','110','casa',false,null, -12.2484154, -38.960209);
 INSERT INTO BoaIniciativa.Usuario (cpf,sexo,datanascimento,foto,email,senha,nome,classificacao,cep,estado,bairro,cidade,logradouro,numero,complemento,bloqueado,databloqueio, latitude, longitude) Values ('17993741149','F','09-07-1980','default.jpg','teste@gmail.com',md5('876354231'),'Zanir Abdala',0,'44032-618','Bahia','Campo Limpo','Feira de Santana','Alameda Três','976','apartamento',false,null, -12.2248988, -38.9810742);
@@ -22,7 +22,7 @@ INSERT INTO BoaIniciativa.Usuario (cpf,sexo,datanascimento,foto,email,senha,nome
 INSERT INTO BoaIniciativa.Usuario (cpf,sexo,datanascimento,foto,email,senha,nome,classificacao,cep,estado,bairro,cidade,logradouro,numero,complemento,bloqueado,databloqueio, latitude, longitude) Values ('14142516351','M','20-12-1991','default.jpg','dl_ld@teste.com',md5('888888881'),'David Lucca',0,'44001-001','Bahia','Centro','Feira de Santana','Rua Carlos Valadares','300',null,true,'14-03-2016', -12.2284988, -38.9801742);
 
 /* Inserindo Dados na tabela Campanha */
-INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Aqueça outros corações','13-03-2016','23-06-2016','','Doação de cobertores para o inverno','Muito Obrigado','Agradecemos por sua participação em nossa campanha',null,null,null,true,71472525191);
+INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Aqueça outros corações','13-03-2016','23-06-2016','','Doação de cobertores para o inverno','Muito Obrigado','Agradecemos por sua participação em nossa campanha',null,null,null,true,05727933595);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Doe Alegria','01-04-2016','12-10-2016','','Doação de brinquedos para criaçã carentes','Obrigado','Sua doação foi fundamental. Obrigado',null,null,null,true,63516160187);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Doe Sangue','25-03-2016',null,'','Doação para manter banco de sangue','Muito Obrigado','Agradecemos por sua participação em nossa campanha',null,null,null,false,56112645149);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Alimente a vida','10-03-2016',null,'','Doação de alimentos para famílias carentes','Agradecemos','Obrigado por participar, continue nos ajudando',null,null,null,false,17993741149);
@@ -37,7 +37,7 @@ INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tit
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Doe Brinquedos','15-03-2016','11-10-2016','','Doação de brinquedos para crianças carentes','Agradecimento','Agradecemos sua solidariedade',null,null,null,true,15424215322);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Livros acadêmicos','15-03-2016',null,'','Doação de livros usados em bom estado','Nossa equipe agradece','Sua doação foi muito importante. Obrigado',null,null,null,false,15424215322);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Ajude o João','15-03-2016','29-03-2016','','João vai fazer uma cirurgia mas n ãotem condiçães de pagar.','Obrigado','Graças a você estamos mais perto de nossa meta',30,50,100,true,12323124132);
-INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Diversão Infantil','13-03-2016','30-04-2016','','Doação de brinquedos que estejam em bom estado','Agradecemos sua participação','Sua doação foi essencial',null,null,null,true,71472525191);
+INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Diversão Infantil','13-03-2016','30-04-2016','','Doação de brinquedos que estejam em bom estado','Agradecemos sua participação','Sua doação foi essencial',null,null,null,true,05727933595);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Todos contra a fome','14-03-2016',null,'','Doe dinheiro para a compra de alimentos para famílias necessitadas','Muito Obrigado','Agradecemos por sua participação em nossa campanha',10,30,50,false,17566432100);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Doação de Materiais de Limpeza','15-03-2016','20-04-2016','','Doe Vassouras, sabão em pó, sabão em barra, detergente, esponja de ação, etc.','Obrigado','Sua doação foi fundamental. Obrigado',null,null,null,true,12323124132);
 INSERT INTO BoaIniciativa.Campanha (nome,datainicio,datafim,imagem,descricao,tituloagradecimento,mensagemagradecimento,valor1,valor2,valor3,finalizapordata,criadorcpf) Values ('Cestas Básicas','13-03-2016','23-03-2016','','Ajude-nos a alimentar famílias carentes','Agradecemos','Obrigado por participar, continue nos ajudando',null,null,null,true,14314254322);
@@ -74,7 +74,7 @@ INSERT INTO BoaIniciativa.Agradecimento (titulo,mensagem,imagem,codcampanha,cpfu
 /* Inserindo Dados na tabela  Atendentecampanha */
 INSERT INTO BoaIniciativa.Atendentecampanha (idcampanha,cpfatendente) Values (1,'15243123455');
 INSERT INTO BoaIniciativa.Atendentecampanha (idcampanha,cpfatendente) Values (2,'14123234366');
-INSERT INTO BoaIniciativa.Atendentecampanha (idcampanha,cpfatendente) Values (3,'71472525191');
+INSERT INTO BoaIniciativa.Atendentecampanha (idcampanha,cpfatendente) Values (3,'05727933595');
 INSERT INTO BoaIniciativa.Atendentecampanha (idcampanha,cpfatendente) Values (4,'15424215322');
 INSERT INTO BoaIniciativa.Atendentecampanha (idcampanha,cpfatendente) Values (5,'12323124132');
 INSERT INTO BoaIniciativa.Atendentecampanha (idcampanha,cpfatendente) Values (6,'14314254322');
@@ -123,11 +123,11 @@ INSERT INTO BoaIniciativa.Convidado (classificacao,email) Values (0,'user3@teste
 INSERT INTO BoaIniciativa.Convidado (classificacao,email) Values (0,'user2@teste.com');
 
 /* Inserindo Dados na tabela Convite */
-INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (1,1,'14-03-2016','71472525191');
+INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (1,1,'14-03-2016','05727933595');
 INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (2,2,'15-03-2016','12134533212');
-INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (1,3,'14-03-2016','71472525191');
+INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (1,3,'14-03-2016','05727933595');
 INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (10,4,'19-03-2016','14123234366');
-INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (24,5,'22-03-2016','71472525191');
+INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (24,5,'22-03-2016','05727933595');
 INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (4,6,'20-03-2016','14314254322');
 INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (4,7,'20-03-2016','17566432100');
 INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (4,8,'20-03-2016','17566432100');
@@ -139,14 +139,14 @@ INSERT INTO BoaIniciativa.Convite (idcampanha,codconvidado,data,cpf) Values (24,
 /* Inserindo Dados na tabela Denuncia */
 INSERT INTO BoaIniciativa.Denuncia (idcampanha,motivo,descricao,cpf) Values (15,'Campanha Duvidosa','Não aparenta ser uma campanha real, a descrição me causa dúvidas','15243123455');
 INSERT INTO BoaIniciativa.Denuncia (idcampanha,motivo,descricao,cpf) Values (15,'Usuário Falso','O criador da campanha é um perfil falso','14123234366');
-INSERT INTO BoaIniciativa.Denuncia (idcampanha,motivo,descricao,cpf) Values (15,'Campanha Duvidosa','A descrição é muito incompleta e o usuário não aparenta ser de confiança','71472525191');
+INSERT INTO BoaIniciativa.Denuncia (idcampanha,motivo,descricao,cpf) Values (15,'Campanha Duvidosa','A descrição é muito incompleta e o usuário não aparenta ser de confiança','05727933595');
 INSERT INTO BoaIniciativa.Denuncia (idcampanha,motivo,descricao,cpf) Values (23,'Informações Incompletas','A descrição não aparenta ser confiável, os dados apresentados sao de se desconfiar','14231423144');
 INSERT INTO BoaIniciativa.Denuncia (idcampanha,motivo,descricao,cpf) Values (23,'Usuário Falso','O criador da campanha é um perfil falso tentando roubar dinheiro de possíveis doadores.','14314254322');
 INSERT INTO BoaIniciativa.Denuncia (idcampanha,motivo,descricao,cpf) Values (21,'Campanha Duvidosa','A descrição está muito incoerente, não há informações suficientes que comprovem a veracidade','14231423144');
 
 /* Inserindo Dados na tabela Doação */
 INSERT INTO BoaIniciativa.Doacao (confirmado,data,atendenteconfirma,idcampanha,doadorcpf) Values (true,'20-03-2016',null,1,'14123234366');
-INSERT INTO BoaIniciativa.Doacao (confirmado,data,atendenteconfirma,idcampanha,doadorcpf) Values (true,'25-03-2016','14123234366',2,'71472525191');
+INSERT INTO BoaIniciativa.Doacao (confirmado,data,atendenteconfirma,idcampanha,doadorcpf) Values (true,'25-03-2016','14123234366',2,'05727933595');
 INSERT INTO BoaIniciativa.Doacao (confirmado,data,atendenteconfirma,idcampanha,doadorcpf) Values (true,'21-03-2016','15424215322',4,'14231423144');
 INSERT INTO BoaIniciativa.Doacao (confirmado,data,atendenteconfirma,idcampanha,doadorcpf) Values (false,'22-03-2016',null,4,'56112645149');
 INSERT INTO BoaIniciativa.Doacao (confirmado,data,atendenteconfirma,idcampanha,doadorcpf) Values (false,'24-03-2016',null,24,'14123234366');

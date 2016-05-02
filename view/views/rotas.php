@@ -41,12 +41,14 @@ if(isset($_POST['botaoLogar'])){
     echo "Preencha todos os campos";
   }
 }else if(isset($_POST['botaoCadastrar'])){
+  $val ="";
   if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, mover para Home
     header('location:home.php');
   }else{ //Usuario deslogado, pode cadastrar
     if(isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['nascimento']) && isset($_POST['cep'])
     && isset($_POST['estado']) && isset($_POST['bairro']) && isset($_POST['cidade']) &&isset($_POST['logradouro']) && isset($_POST['numero']) && isset($_POST['complemento'])
     && isset($_POST['gender'])){
+      $confirma = true;
       $sexo = ($_POST['gender']=='male')? 'M': 'F';
       $nome = $_POST['nome'];
       $cpf = $_POST['cpf'];
@@ -60,20 +62,26 @@ if(isset($_POST['botaoLogar'])){
       $logradouro = $_POST['logradouro'];
       $numero = $_POST['numero'];
       $complemento = $_POST['complemento'];
-      echo "Tudo certo para cadastrar";
+      $usuario = UsuarioDAO::getInstance()->buscarUsuario($cpf);
+
+      if($usuario->getCpf() != ""){
+        $val .= "<div class='alert alert-warning'> <strong>Erro no cadastro!</strong> Cpf já utilizado</div>";
+        $confirma = false;
+      }
+      $usuario = UsuarioDAO::getInstance()->buscarUsuarioEmail($email);
+      if($usuario->getEmail() != ""){
+        $val .= "<div class='alert alert-warning'> <strong>Erro no cadastro!</strong> Email já utilizado</div>";
+        $confirma = false;
+      }
       $confirmacao = SistemaFacade::getInstance()->cadastrarNovoUsuario($nome,$cpf,$email,$senha,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento,$sexo);
       if($confirmacao){
-        header('location:index.php');
-        echo "Usuario Cadastrado com sucesso";
-      }else{
-        header('location:login.php');
-        echo "Erro ao cadastrar";
+        $val .= "<div class='alert alert-success'> <strong> Usuário cadastrado com sucesso!</strong> </div>";
       }
     }else{
-      header('location:login.php');
-      echo "Preencha todos os campos";
+      $val .= "<div class='alert alert-warning'> <strong>Erro no cadastro!</strong> Preencha todos os campos</div>";
     }
-    header('location:index.php');
+    unset($_POST);
+    echo json_encode( array( 'mensagem' => $val) );
   }
 }else if(isset($_POST['botaoEditar'])){
   if(isset($_POST['cpf']) &&isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['sexo']) && isset($_POST['nascimento']) && isset($_POST['cep'])
@@ -166,10 +174,13 @@ if(isset($_POST['botaoLogar'])){
     $quantidade_itens = $_POST['quantidade_itens'];
     $materiaisDoados = array();
     for ( $x = 1; $x <= $quantidade_itens ; $x++ ){
-
+        echo $_POST["material$x"];
+        echo  $_POST["quantidade$x"];
         $item = $_POST["material$x"];
         $quantidade = $_POST["quantidade$x"];
         $materiaisDoados[$item]+=$quantidade;
+        var_dump($materiaisDoados);
+
     }
     unset($_POST['botaoConfirmarDoacao']);
     unset($_POST['quantidade_itens']);

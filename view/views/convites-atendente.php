@@ -76,6 +76,8 @@
     </div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+<div class="container">
+  <?php
+  include("footer.php");
+  ?>
+</div>   
