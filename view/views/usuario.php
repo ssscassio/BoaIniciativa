@@ -2,7 +2,13 @@
 <body>
 
   <?php
-  include('cabecalhologado.php');
+  session_start();
+  if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
+    include("cabecalhologado.php");
+ }
+ else{
+  include("cabecalho.php");
+ }
   ?>
 
   <?php
