@@ -29,7 +29,12 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
     $id = $_GET['campanha'];
     $campanha = UsuarioFacade::getInstance()->verCampanha($id);
     ?>
-    <div class="col-md-9 panel panel-default">
+    <?php
+    if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
+      echo '<div class="col-md-9 panel panel-default">';
+    }else{
+      echo '<div class="col-md-12 panel panel-default">';
+    }?>
       <h2 class="page-header"><?php echo $campanha->getNome(); ?>
         <?php
         if($campanha->getStatus()){
@@ -79,15 +84,19 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
             <h2 class="page-header">Ações</h2>
             <a href="usuario.php?cpf=<?php echo $campanha->getCriadorCpf();?>">Ver criador</a><br/>
             <a href="">Convidar Amigo</a><br/>
-            <a id="botaoDenunciar">Denunciar</a>
+            <?php if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
+              echo '<a id="botaoDenunciar">Denunciar</a>';
+            } ?>
             <div class="panel panel-primary" id="formDenuncia" >
               <form action="rotas.php" method="post">
                 <input type="hidden" name="idCampanha" value="<?php echo $campanha->getIdCampanha(); ?>">
                 <input type="hidden" name="cpf" value="<?php echo $_SESSION['cpf']; ?>">
                 <div class="form-group col-md-12">
                   <label>Motivo</label><br>
-                  <input type="radio" name="motivo" value="nomeMotivo1" checked> Motivo 1 <br>
-                  <input type="radio" name="motivo" value="nomeMotivo2"> Motivo 2 <br>
+                  <input type="radio" name="motivo" value="Campanha Duvidosa" checked> Campanha Duvidosa <br>
+                  <input type="radio" name="motivo" value="Usuário Falso	"> Usuário Falso <br>
+                  <input type="radio" name="motivo" value="Informações Incompletas"> Informações Incompletas	<br>
+
                 </div>
                 <div class="form-group col-md-12">
                   <label>Descrição</label>
