@@ -29,4 +29,6 @@ if(isset($_POST['cpf']) && isset($_POST['senha'])){
         </div>
      </div>
     </div>
-   <?php include("footer.php"); ?>
+    <div class="container">
+      <?php include("footer.php"); ?>
+    </div>    
