@@ -89,7 +89,7 @@ class Campanha{
     }
 
 		public function setValores($valores){
-			$this->valores= $valores;
+			$this->valores = $valores;
 		}
 		public function getValores(){
 			return $this->valores;
