@@ -60,13 +60,16 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
         <div class="col-xs-6">
           <h3>Data de Fim: <?php echo date("d/m/Y", strtotime($campanha->getDataFim()));?></h3>
         </div>
-        <div class="col-xs-6">
-          <h3>Meta:</h3><div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-              70%
+      <?php  if(!($campanha->getFinalizaPorData())){?>
+          <div class="col-xs-6">
+            <h3>Meta:</h3><div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                70%
+              </div>
             </div>
           </div>
-        </div></div><div class="row">
+      <?php   } ?>
+        </div><div class="row">
           <img src="../img/logobi.png" class="img-rounded img-responsive center-block" alt="" width="100px" height="100px" />
         </div>
         <div class="row">
