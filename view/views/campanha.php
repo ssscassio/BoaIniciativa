@@ -117,7 +117,13 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
 
         <div class="panel" style="padding:0px 10px 70px 10px;">
           <center>
-            <?php
+          <?php
+            if(isset($_SESSION['cpf'])){
+              if($_SESSION['cpf'] && $campanha->getCriadorCpf()){
+                echo "<a href='editarCampanha.php?campanha=<?php echo $idCampanha;?>' class='btn btn-primary col-xs-12 col-md-12 disable'>Editar Campanha</a>";
+                echo "<a href='gerarRelatorio.php?campanha=<?php echo $idCampanha;?>' class='btn btn-primary col-xs-12 col-md-12 disable'>Gerar Relatórios</a>";
+              }
+            }
             if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
               $href = "doar.php?idCampanha=".$campanha->getIdCampanha()."&doadorcpf=".$_SESSION['cpf'];
             }
