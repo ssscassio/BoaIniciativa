@@ -4,6 +4,7 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
 }else {
   include("cabecalho.php");
 }
+
 ?>
 
 <br><br><br>
@@ -14,7 +15,7 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
       <form method="get" action="campanha.php">
           <div class="col-lg-12">
               <h2 class="page-header">
-                Resultado da Pesquisa
+                Resultado da Pesquisa:
               </h2>
           </div>
 
@@ -22,7 +23,40 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j√
 // nome, imagem e link da campanha
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/CampanhaDAO.php");
 
-if(empty($_GET['busca'])){
+if(isset($_GET['categoria'])){
+  $arrayCategoria = TagCampanhaDAO::getInstance()->buscarCampanhasPorTag($_GET['categoria']);
+  for ($i = 0; $i < count($arrayCategoria); $i++) { 
+    $campanha = $arrayCategoria[$i];
+
+    if ($i%3 == 0) echo '<div class="row">';
+
+?>
+<!-- Page Content -->
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4><?php $campanha->getNome();?></h4>
+          </div>
+          <div class="panel-body">
+            <img class="img-responsive img-portfolio" src="<?php if($campanha->getImagem()=="" || $campanha()=="default.jpg"){
+              echo "../img/campanha.png";
+            }else{
+              echo $campanha->getImagem();
+            }?>
+            ">
+            <p><?php echo $campanha->getDescricao(); ?></p>
+            <a href="campanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>" class="btn btn-primary">Ver Campanha</a>
+          </div>
+        </div>
+      </div>
+
+<?php
+
+  if($i%3==2) echo '</div>';
+    } //fecha o for
+  } //fecha o if
+
+else if(empty($_GET['busca'])){
 echo "<h4>Por favor, digite o que deseja pesquisar.</h4>";
 $i=0;
 }else{
@@ -42,7 +76,7 @@ $i=0;
           <div class="col-md-4">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                      <h4><?php  echo $campanha->getNome();; ?></h4>
+                      <h4><?php  echo $campanha->getNome(); ?></h4>
                   </div>
                   <div class="panel-body">
                       <img class="img-responsive img-portfolio" src="

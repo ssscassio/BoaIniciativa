@@ -43,7 +43,7 @@
   foreach ($tags as $value) {
     $id = $value->getIdTag();
     $nome = $value->getNome();
-    $menu .= "<li><a href='filtroCategorias.php?busca=$id'>$nome</a></li>";
+    $menu .= "<li><a href='pesquisa.php?categoria=$id'>$nome</a></li>";
   }
 
 ?>
