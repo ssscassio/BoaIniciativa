@@ -12,7 +12,7 @@
 
 <?php
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AlterarFotoFacade.php");
-  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/EditarPerfilFacade.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/SistemaFacade.php");
  
     if(isset($_POST['botaoEditar'])){
 	
@@ -39,7 +39,7 @@
 			       
 			//	($nome, $email, $senha, $usuario->getFoto(), $sexo, $nascimento, $usuario->getClassificacao(), $cep, $estado, $bairro, $cidade, $longradouro,$numero, $complemento, $cpf,  $usuario->getBloqueado(),$usuario->getDataBloqueio())
 						   
-			   $confirmacaoEditar = EditarPerfilFacade::getInstance()->editarPerfil($nome, $email, $usuario->getSenha(), 
+			   $confirmacaoEditar = SistemaFacade::getInstance()->editarPerfil($nome, $email, $usuario->getSenha(), 
 			   $usuario->getFoto(), $sexo, $nascimento, $usuario->getClassificacao(), $cep, $estado, $bairro, $cidade, 
 			   $longradouro,$numero, $complemento, $usuario->getCpf(),  $usuario->getBloqueado(),$usuario->getDataBloqueio(),
 			   $usuario->getLatitude(), $usuario->getLongitude());
@@ -59,10 +59,8 @@
 			   
 			    $uploaddir = "../uploads/".$usuario->getCpf();
 			    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-
 			    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-					AlterarFotoFacade::getInstance()->editarFoto($uploadfile,$usuario->getCpf()); // Colocar Sessão
-					//AlterarFotoFacade::getInstance()->editarFoto($uploadfile,$_SESSION['cpf']);	
+					AlterarFotoFacade::getInstance()->editarFoto($uploadfile,$usuario->getCpf());	
 				}
          }      
     }

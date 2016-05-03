@@ -1,6 +1,6 @@
 <?php
 
-require_once("../model/CampanhaTag.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/CampanhaTag.php");
 require_once("CampanhaDAO.php");
 require_once("Sql.php");
 /**
