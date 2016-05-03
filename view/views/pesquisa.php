@@ -1,4 +1,5 @@
 <?php
+session_start();
 if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se já está logado
   include("cabecalhologado.php");
 }else {
@@ -25,7 +26,7 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se j�
 
 if(isset($_GET['categoria'])){
   $arrayCategoria = TagCampanhaDAO::getInstance()->buscarCampanhasPorTag($_GET['categoria']);
-  for ($i = 0; $i < count($arrayCategoria); $i++) { 
+  for ($i = 0; $i < count($arrayCategoria); $i++) {
     $campanha = $arrayCategoria[$i];
 
     if ($i%3 == 0) echo '<div class="row">';
@@ -35,7 +36,7 @@ if(isset($_GET['categoria'])){
       <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4><?php $campanha->getNome();?></h4>
+            <h4><?php echo $campanha->getNome();?></h4>
           </div>
           <div class="panel-body">
             <img class="img-responsive img-portfolio" src="<?php if($campanha->getImagem()=="" || $campanha()=="default.jpg"){
@@ -122,4 +123,3 @@ if($i%3==2) echo '</div>';
    <br/>
    <br/>
 <?php include("footer.php"); ?>
-</html>

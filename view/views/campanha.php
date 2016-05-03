@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorController.php");
  if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
     include("cabecalhologado.php");

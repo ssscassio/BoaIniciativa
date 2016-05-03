@@ -1,4 +1,13 @@
+<?php
 
+if(!isset($_SESSION)){
+  session_start();
+}
+
+ if (!isset($_SESSION['cpf']) || !isset($_SESSION['senha'])) {
+     header("location:index.php");
+}
+ ?>
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -15,7 +24,7 @@
    <script src="../js/jquery-1.12.3.min.js" type="text/javascript"></script>
    <script src="../js/modernizr.js"></script> <!-- Modernizr -->
    <script src="../js/bootstrap.min.js"></script>
-   
+
 
    <!-- Bootstrap Core CSS -->
    <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -37,24 +46,7 @@
    <![endif]-->
 
  </head>
-<?php
-  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/CriadorFacade.php");
-  $menu = "";
-  $tags = CriadorFacade::getInstance()->listarTags();
-  foreach ($tags as $value) {
-    $id = $value->getIdTag();
-    $nome = $value->getNome();
-    $menu .= "<li><a href='pesquisa.php?categoria=$id'>$nome</a></li>";
-  }
 
- if(!isset($_SESSION)){
-    session_start();
-  }
- if (!isset($_SESSION['cpf']) && !isset($_SESSION['senha'])) {
-   header("location:index.php");
- }
-
-  ?>
 <!-- Navigation -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -83,26 +75,17 @@
             </form>
           </ul>
 
-        <div class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <?php echo $menu;?>
-            </ul>
-          </li>
-        </div>
-        <script type="text/javascript">
-          $('.dropdown-toggle').dropdown();
-        </script>
-<?php
-  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
-  $usuario = UsuarioDAO::getInstance()->buscarUsuario($_SESSION['cpf']);
-  if($usuario->getNome() != null){
-    $nome = $usuario->getNome();
-    $nome = explode(" ", $nome, -1);
-    $primeiroNome = $nome[0];
-  }
- ?>
+
+          <?php
+            require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
+            $usuario = UsuarioDAO::getInstance()->buscarUsuario($_SESSION['cpf']);
+            if($usuario->getNome() != null){
+              $nome = $usuario->getNome();
+              $nome = explode(" ", $nome, -1);
+              $primeiroNome = $nome[0];
+            }
+           ?>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="criador.php">Criação</a></li>
                 <li><a href="doador.php">Doação</a></li>
@@ -110,6 +93,28 @@
                 <li><a href="perfil.php"><?php if(isset($primeiroNome)){echo $primeiroNome;}else{echo "Sem Nome";} ?></a></li>
                 <li><a href="logout.php">Logout</a></li>
 
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <script type="text/javascript">
+              $('.dropdown-toggle').dropdown();
+              </script>
+              <?php
+                require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/CriadorFacade.php");
+                $menu = "";
+                $tags = CriadorFacade::getInstance()->listarTags();
+                foreach ($tags as $value) {
+                  $id = $value->getIdTag();
+                  $nome = $value->getNome();
+                  $menu .= "<li role='presentation'><a role='menuitem' href='pesquisa.php?categoria=$id'>$nome</a></li>";
+                }
+
+              ?>
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  <?php echo $menu;?>
+                </ul>
+              </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

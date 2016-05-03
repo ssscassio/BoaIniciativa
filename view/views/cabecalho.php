@@ -1,4 +1,9 @@
+<?php
 
+ if (isset($_SESSION['cpf']) && isset($_SESSION['senha'])) {
+     header("location:home.php");
+}
+ ?>
 
  <!DOCTYPE html>
  <html lang="pt">
@@ -24,7 +29,7 @@
   <link href="../css/bootstrap-lavish.css" rel="stylesheet">
   <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
-  
+
 
 
   <!-- Custom Fonts -->
@@ -38,20 +43,10 @@
   <![endif]-->
 </head>
 
-<?php
-  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/CriadorFacade.php");
-  $menu = "";
-  $tags = CriadorFacade::getInstance()->listarTags();
-  foreach ($tags as $value) {
-    $id = $value->getIdTag();
-    $nome = $value->getNome();
-    $menu .= "<li role='presentation'><a role='menuitem' href='pesquisa.php?categoria=$id'>$nome</a></li>";
-  }
-
-?>
 <!--Nav bar-->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -73,23 +68,34 @@
           </div>
         </form>
       </ul>
-      <div class="nav navbar-nav navbar-right">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="login.php">Login/Cadastro</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="sobre.php">Sobre</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <script type="text/javascript">
+        $('.dropdown-toggle').dropdown();
+        </script>
+        <?php
+          require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/CriadorFacade.php");
+          $menu = "";
+          $tags = CriadorFacade::getInstance()->listarTags();
+          foreach ($tags as $value) {
+            $id = $value->getIdTag();
+            $nome = $value->getNome();
+            $menu .= "<li role='presentation'><a role='menuitem' href='pesquisa.php?categoria=$id'>$nome</a></li>";
+          }
+
+        ?>
         <li class="dropdown">
           <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <?php echo $menu;?>
           </ul>
         </li>
-      </div>
-
-      <script type="text/javascript">
-      $('.dropdown-toggle').dropdown();
-      </script>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="login.php">Login/Cadastro</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="sobre.php">Sobre</a></li>
       </ul>
     </div>
   </div>
