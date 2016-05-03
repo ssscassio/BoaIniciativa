@@ -38,8 +38,8 @@
     $valores[1] = $_POST['valor2'];
     $valores[2] = $_POST['valor3'];
   }
-
-  $idCampanha = CriadorFacade::getInstance()->criarCampanha($nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
+$imagem = "default";
+  $idCampanha = CriadorFacade::getInstance()->criarCampanha($nome, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
   
 
 

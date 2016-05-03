@@ -52,9 +52,7 @@ class  CriadorController
   function verificaCampanhaCadastrada($nome){
     return CampanhaDAO::getInstance()->verificaCampanhaCadastrada($nome);
   }
-  function criarCampanha($campanha){
-    return CampanhaDAO::getInstance()->adicionarCampanha($campanha);
-  }
+ 
   function editarCampanha($campanha){
     CampanhaDAO::getInstance()->editarCampanha($campanha);
   }
@@ -77,11 +75,11 @@ class  CriadorController
   function cadastrarMetaMaterial($idCampanha, $codMaterial, $qtd){
     MetaDAO::getInstance()->adicionarMeta($idCampanha, $codMaterial, $qtd);
   }
-  function criarCampanha($nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria){
+  function criarCampanha($nome, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria){
     $campanha = new Campanha(null, $nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim);
     $campanha->setAgradecimento($agradecimento);
     $campanha->setTituloAgradecimento($titulo);
-    $campanha->setValores($valores)
+    $campanha->setValores($valores);
 
     $id = CampanhaDAO::getInstance()->adicionarCampanha($campanha);
     TagCampanhaDAO::getInstance()->associarCampanhaTag($categoria, $id);

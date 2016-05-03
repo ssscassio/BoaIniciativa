@@ -24,9 +24,6 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
     public function verificaCampanhaCadastrada($nome){
       return CriadorController::getInstance()->verificaCampanhaCadastrada($nome);
     }
-    public function criarCampanha($campanha){
-      return CriadorController::getInstance()->criarCampanha($campanha);
-    }
     public function editarCampanha($campanha){
       CriadorController::getInstance()->editarCampanha($campanha);
     }
@@ -50,7 +47,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
     public function cadastrarMetaMaterial($idCampanha, $codMaterial, $qtd){
       CriadorController::getInstance()->cadastrarMetaMaterial($idCampanha, $codMaterial, $qtd);
     }
-    public function criarCampanha($nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria){
+    public function criarCampanha($nome, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria){
       return CriadorController::getInstance()->criarCampanha($nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
     }
 

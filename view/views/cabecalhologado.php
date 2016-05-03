@@ -35,9 +35,16 @@
    <![endif]-->
 
  </head>
+<?php
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/CriadorFacade.php");
+  $menu = "";
+  $tags = CriadorFacade::getInstance()->listarTags();
+  foreach ($tags as $value) {
+    $id = $value->getIdTag();
+    $nome = $value->getNome();
+    $menu .= "<li><a href='filtroCategorias.php?busca=$id'>$nome</a></li>";
+  }
 
-
- <?php
  if(!isset($_SESSION)){
     session_start();
   }
@@ -73,6 +80,15 @@
               </div>
             </form>
           </ul>
+
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <?php echo $menu;?>
+            </ul>
+          </li>
+        </ul>
 <?php
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
   $usuario = UsuarioDAO::getInstance()->buscarUsuario($_SESSION['cpf']);
