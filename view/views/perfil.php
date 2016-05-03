@@ -70,7 +70,7 @@ if (!file_exists($fotoUsuario)) {
           <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
           <input name="userfile" type="file" /><br>
           <input type="submit" value="Alterar Foto" />
-        </form>
+        </form><br>
       </div>
     </div>
     <script src="../js/jquery.js"></script>
