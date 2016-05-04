@@ -244,13 +244,6 @@ class UsuarioDAO{
       $stmt->bindParam(1, $cpf);
       $stmt->execute();
 
-		if($stmt->errorCode() != "00000"){//Bloco de erro
-		  echo "Erro código". $stmt->errorCode(). "<br><br>";
-print "<pre>======================================================= \n";
-var_dump($stmt->errorInfo());
-print "=======================================================================</pre>";
-		}else echo "okk";
-
 	  // Verfica
       $sql = Sql::getInstance()->buscarUsuarioSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
