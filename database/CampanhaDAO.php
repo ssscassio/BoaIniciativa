@@ -156,10 +156,11 @@ class CampanhaDAO
       $sql = Sql::getInstance()->editarCampanhaSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1, $campanha->getNome());
-      $stmt->bindParam(2, $campanha->getDataFim());
-      $stmt->bindParam(3, $campanha->getDescricao());
-      $stmt->bindParam(4, $campanha->getImagem());
-      $stmt->bindParam(5, $campanha->getIdCampanha());
+      $stmt->bindParam(2, $campanha->getAgradecimento());
+      $stmt->bindParam(3, $campanha->getTituloAgradecimento());
+      $stmt->bindParam(4, $campanha->getDescricao());
+      $stmt->bindParam(5, $campanha->getImagem());
+      $stmt->bindParam(6, $campanha->getIdCampanha());
       $stmt->execute();
 
 

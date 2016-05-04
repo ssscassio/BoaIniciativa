@@ -39,7 +39,9 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
     public function listarMateriais(){
       return CriadorController::getInstance()->listarMateriais();
     }
-
+    public function buscarMaterial($codigo){
+      return CriadorController::getInstance()->buscarMaterial($codigo);
+    }
     public function cadastrarMaterial($nome, $medida){
       return CriadorController::getInstance()->cadastrarMaterial($nome, $medida);
     }
@@ -49,6 +51,22 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
     }
     public function criarCampanha($nome, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria){
       return CriadorController::getInstance()->criarCampanha($nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
+    }
+    public function editarMetas($codMaterial, $qtd, $idCampanha){
+      CriadorController::getInstance()->editarMetas($codMaterial, $qtd, $idCampanha);
+    }
+    public function adicionarAtendenteCampanha($idCampanha, $cpfAtendente){
+      CriadorController::getInstance()->adicionarAtendenteCampanha($idCampanha, $cpfAtendente);
+    }
+    public function listarAtendentesCampanha($idCampanha){
+      return CriadorController::getInstance()->listarAtendentesCampanha($idCampanha);
+    }
+    public function buscarMetasCampanha($idCampanha){
+      return CriadorController::getInstance()->buscarMetasCampanha($idCampanha);
+    }
+
+    public function excluirCampanha($idCampanha){
+      return CriadorController::getInstance()->excluirCampanha($idCampanha);      
     }
 
 

@@ -62,8 +62,17 @@ class  CriadorController
   function buscarCampanha($id){
     return CampanhaDAO::getInstance()->buscarCampanha($id);
   }
+  function adicionarAtendenteCampanha($idCampanha, $cpfAtendente){
+    AtendenteCampanhaDAO::getInstance()->adicionarAtendenteCampanha($idCampanha, $cpfAtendente);
+  }
+  function listarAtendentesCampanha($idCampanha){
+    return AtendenteCampanhaDAO::getInstance()->listarAtendentesCampanha($idCampanha);
+  }
   function buscarCriadorCampanha($cpf){
     return UsuarioDAO::getInstance()->buscarUsuario($cpf);
+  }
+  function buscarMetasCampanha($id){
+    return MetaDAO::getInstance()->buscarMetasCampanha($id);
   }
   function listarMateriais(){
     return MaterialDAO::getInstance()->listarMateriais();
@@ -85,6 +94,15 @@ class  CriadorController
     TagCampanhaDAO::getInstance()->associarCampanhaTag($categoria, $id);
     return $id;
   }
+  function buscarMaterial($codigo){
+    return MaterialDAO::getInstance()->buscarMaterial($codigo);
+  }
+
+  function excluirCampanha($idCampanha){
+
+    CampanhaDAO::getInstance()->deletarCampanha($idCampanha);
+  }
+
 
 }
 

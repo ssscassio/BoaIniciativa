@@ -178,8 +178,8 @@ class Sql
     }
 
     public function editarCampanhaSQL(){
-      return "UPDATE {$this->schema}.{$this->campanhaTable} SET {$this->campanhaNome} = ? ,{$this->campanhaFim} = ?, {$this->campanhaDescricao} = ?, {$this->campanhaImagem} = ? WHERE {$this->campanhaId} = ?";
-     }
+      return "UPDATE {$this->schema}.{$this->campanhaTable} SET {$this->campanhaNome} = ? ,{$this->campanhaMensagemAgradecimento} = ?, {$this->campanhaTituloAgradecimento} = ?, {$this->campanhaDescricao} = ?, {$this->campanhaImagem} = ? WHERE {$this->campanhaId} = ?";
+    }
 
     public function encerrarCampanhaSQL(){
       return "UPDATE {$this->schema}.{$this->campanhaTable} SET {$this->campanhaFim} = ? WHERE {$this->campanhaId} = ?";
@@ -401,6 +401,9 @@ class Sql
 
     public function validadeAdicionarMetaSQL(){
       return "SELECT * FROM {$this->schema}.{$this->metaTable} WHERE {$this->metaCodMaterial} = ? and {$this->metaIdCampanha} = ?";
+    }
+    public function removerMetaSQL(){
+      return "DELETE FROM {$this->schema}.{$this->metaTable} WHERE {$this->metaIdCampanha} = ?";
     }
 
     public function buscarmetasCampanhaSQL(){

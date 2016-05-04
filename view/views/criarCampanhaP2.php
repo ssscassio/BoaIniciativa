@@ -14,10 +14,10 @@
 
   if (isset($_POST['metaData'])){
     if ($_POST['metaData'] === 'meta') {
-      $metaOuData = true;
+      $metaOuData = false;
     }
     else if ($_POST['metaData'] === 'data'){
-      $metaOuData = false;
+      $metaOuData = true;
       $dataFim = $_POST['anoF'].'-'.$_POST['mesF'].'-'.$_POST['diaF'];
     }
   }
