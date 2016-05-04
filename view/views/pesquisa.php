@@ -113,13 +113,6 @@ if($i%3==2) echo '</div>';
 
 
 
-<br>
-<br><br><br><br>
-<br><br><br><br>
-<p>
-<p>
-<p>
-</p> </p> </p>
-   <br/>
-   <br/>
-<?php include("footer.php"); ?>
+<div class="container">
+  <?php include("footer.php"); ?>
+</div>

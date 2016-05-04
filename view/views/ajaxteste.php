@@ -1,3 +1,3 @@
 <?php
-print_r($_POST);
+echo json_encode( array( 'mensagem' => $_POST) );
  ?>

@@ -27,7 +27,7 @@ $(document).ready(function(){
       verificarSenhasIguais(senha,repetirsenha);
     });
 
-  $("#cadastrar").click(function(){
+  $("#formcadastro").submit(function(){
   var valido = true;
 
    function verificarCamposVazios(IDCampo, IDerror, mensagem) {
@@ -82,13 +82,11 @@ $(document).ready(function(){
           logradouro :$('#logradourocadastro').val(),
           numero : $('#numerocadastro').val(),
           complemento : $('#complementocadastro').val(),
-          botaoCadastrar : 'botaoCadastrar'
+          botaoCadastrar : "botaoCadastrar"
         },
         dataType : "json",
         success: function(data){
-          var mensagem = data.mensagem;
-          console.log(mensagem);
-          $('#cadastroerror').html(mensagem);
+          $('#cadastroerror').html(data.mensagem);
         }
       });
     }
