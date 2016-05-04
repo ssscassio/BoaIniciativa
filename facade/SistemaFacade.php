@@ -31,6 +31,11 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MaterialDAO
     $cep, $estado, $bairro, $cidade, $logadouro, $numero, $complemento, $cpf, $bloqueado, $dataBloqueio, $latitude, $longitude);
   }
 
+  public function printBotaoPaypal($idCampanha){
+
+    
+  }
+
   public function printProgressMeta($idCampanha){
     $doacoesNaCampanha = DoacaoDAO::getInstance()->buscarDoacoesDaCampanha($idCampanha);
     $metas = MetaDAO::getInstance()->buscarMetasCampanha($idCampanha);

@@ -117,67 +117,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
       </div>
     </div>
 
-    <?php 
-      $atendentes = CriadorFacade::getInstance()->listarAtendentesCampanha($id);
-      $lat = array();
-      $long = array();
-      for ($i = 0; $i < count($atendentes); $i++) { 
-        $usr = PerfilFacade::getInstance()->buscarUsuario($atendentes[$i]);
-        $lat = $usr->getLatitude();
-        $long = $usr->getLongitude();
-      }
-      $lat = implode("|", $lat);
-      $long = implode("|", $long);
-    ?>
 
-    <div id="mapaPostos"></div>
-
-
-    <script type='text/javascript'>
-      var map;
-      function initialize(){
-      var lat = "<?php echo $lat;?>";
-      lat = lat.split("|");
-      var lng = "<?php echo $long;?>";
-      lng = lng.split("|");
-      if(getLocation())
-        navigator.geolocation.getCurrentPosition(showPosition);
-      else{
-        var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
-        var options = {
-          zoom: 5,
-          center: latlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-      }
-      map = new google.maps.Map(document.getElementById("mapaPostos"), options);
-      for (var i = 0; i < lat.length; i++) {
-        marcacaoEndereco(lat[i], lng[i]);
-      };      
-
-      function getLocation(){
-        if(navigator.getLocation)   
-          return true;
-        else
-          return false;
-      }
-      function showPosition(position){
-        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var options = {
-          zoom: 5,
-          center: latlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-      }
-      function marcacaoEndereco(lat, lng){
-        var ponto = new google.maps.LatLng(lat,lng);
-        var marker = new google.maps.Marker({position: ponto, map: map});
-      }
-    }
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrcCnCC71lEBRbj-hM5KwlHcSppnenBI&callback=initialize"async defer></script>
-
-    
 
     <div class="panel" style="padding:0px 10px 70px 10px;">
       <center>
@@ -199,6 +139,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
         <a href="<?php echo $href;?>" class="btn btn-primary col-xs-12 col-md-12 disable">Efetuar Doação</a>
       </center>
     </div>
+
     <?php
     if(SistemaController::getInstance()->verificarCampanhaMonetaria($campanha->getIdCampanha())){
       ?>
@@ -207,24 +148,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
       $valores = $campanha->getValores();?>
       <div class="panel panel-default">
         <h2 class="page-header">Doacao Monetária</h2>
-        <!--
-        <div class="row">
-        <div class="col-md-3">
-        <button type="button" id="valor1" class="btn-primary btn btn-lg" value="<?php echo $valores[0].".00";?>" name="valor"><?php echo $valores[0]." R$"; ?></button>
-      </div>
-      <div class="col-md-3">
-      <button type="button" class="btn-primary btn btn-lg" value="<?php echo $valores[1].".00";?>" name="valor"><?php echo $valores[1]." R$"; ?></button>
-    </div>
-    <div class="col-md-3">
-    <button type="button" class="btn-primary btn btn-lg" value="<?php echo $valores[2].".00";?>" name="valor"><?php echo $valores[2]." R$"; ?></button>
-  </div>
-  <div class="col-md-3">
-  <div class="form-group">
-  <label>Valor a ser doado: <font color="FF0000">*</font></label>
-  <input id="valordoado" type="number" class="form-control" name="valordoado" placeholder="Valor da doação">
-</div></div>
-</div>
--->
+
 <div class=" text-center img-responsive center-block ">
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_donations">
