@@ -92,6 +92,17 @@
 
     }
 
+	public function removerMetasCampanha($idCampanha){
+		try{
+			$sql = Sql::getInstance()->removerMetaSQL();
+			$p_sql = ConexaoDB::getConexaoPDO()->prepare($sql);
+			$p_sql->bindParam(1, $idCampanha);
+			$p_sql->execute();
+		}catch (Exception $e){
+			echo "Erro: Código: " . $e->getCode() . " Mensagem: " . $e->getMessage();
+		}
+	}
+
   }
 
  ?>
