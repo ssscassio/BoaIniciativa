@@ -22,7 +22,7 @@
           <h2 class="page-header">
       <?php
       if($idInsercao!=0){
-        echo " Doação realizada com sucesso.";
+        echo "Doação realizada com sucesso. Você deve se dirigir a um dos postos de coleta dessa campanha, com seu cpf, e levar os itens que deseja doar até a data de encerramento desta campanha.";
       }else{
         echo "Erro ao realizar doação.";
       }?>
