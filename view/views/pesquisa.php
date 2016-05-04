@@ -8,7 +8,7 @@ if( (isset($_SESSION['cpf'])) && (isset ($_SESSION['senha'])) ){//Verifica se jÃ
 
 ?>
 
-<br><br><br>
+<br><br>
 
 <div class="container">
   <!-- Marketing Icons Section -->

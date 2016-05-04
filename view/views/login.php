@@ -10,9 +10,9 @@
     <div class="row">
 
     <div class="row">
-      <div class="col-lg-6 panel panel-default">
+      <div class="col-xs-12 col-md-6 panel panel-default">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-md-12">
             <h1 class="page-header">Entrar
             </h1>
           </div>
@@ -50,16 +50,16 @@
   </div>
 
 
-      <div class="col-lg-6 panel panel-default">
+      <div class="col-xs-12 col-md-6 panel panel-default">
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-md-12">
             <h1 class="page-header">Novo cadastro
             </h1>
           </div>
         </div>
 
         <form method="post" id="formcadastro" name="formcadastro">
-          <div class="panel panel-default col-lg-6">
+          <div class="panel panel-default col-md-6">
             <h4 class="page-header">Informações da conta</h4>
           <div class="form-group">
             <label>Nome Completo: <font color="FF0000">*</font> </label>
@@ -99,7 +99,7 @@
           </div>
         </div>
 
-          <div class="panel panel-default col-lg-6">
+          <div class="panel panel-default col-md-6">
             <h4 class="page-header">Endereço</h4>
             <div class="form-group">
               <label>CEP: <font color="FF0000">*</font> </label>
