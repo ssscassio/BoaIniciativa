@@ -10,6 +10,8 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
 }
 
 ?>
+<script type="text/javascript" src="../js/mapaPostos.js"></script>
+
 <br><br>
 <div class="container">
   <div class="row">
@@ -115,6 +117,27 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
       </div>
     </div>
 
+    <?php 
+      $atendentes = CriadorFacade::getInstance()->listarAtendentesCampanha($id);
+      $lat = array();
+      $long = array();
+      for ($i = 0; $i < count($atendentes); $i++) { 
+        $usr = CriadorFacade::getInstance()->buscarUsuario($atendentes[$i]);
+        $lat = $usr->getLatitude();
+        $long = $usr->getLongitude();
+      }
+      $lat = implode("|", $lat);
+      $long = implode("|", $long);
+    ?>
+    <script type='text/javascript'>
+      var lat = "<?php echo $lat;?>";
+      lat = lat.split("|");
+      var lng = "<?php echo $long;?>";
+      lng = lng.split("|");
+      alert(lat);
+      initialize(lat, lng);
+    </script>
+    <div id="mapaPostos"></div>
 
     <div class="panel" style="padding:0px 10px 70px 10px;">
       <center>

@@ -294,7 +294,7 @@
 
               <?php
                 $listaAtendentes = CriadorFacade::getInstance()->listarAtendentesCampanha($id);
-                $listaAtendentes = array();
+                $listaNomesAtendentes = array();
                 for ($i = 0; $i < count($listaAtendentes); $i++) { 
                   $listaNomesAtendentes = CriadorFacade::getInstance()->buscarUsuario($listaAtendentes[$i]);
                 }

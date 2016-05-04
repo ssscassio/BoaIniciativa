@@ -5,7 +5,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/TagDAO.php"
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MaterialDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/TagCampanhaDAO.php");
-
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/AtendenteCampanhaDAO.php");
 
 class  CriadorController
 {
