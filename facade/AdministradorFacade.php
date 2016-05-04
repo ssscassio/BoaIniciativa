@@ -206,7 +206,7 @@ echo'<div class="row">
         <div class="col-xs-6 col-md-4">
           <img src="';
           if($campanhas[$i]->getImagem() =="default" || $campanhas[$i]->getImagem() ==""){
-            echo 'img/logobi.png';
+            echo 'img/campanha.png';
           }else{
             echo $campanhas[$i]->getImagem();
           }
@@ -287,7 +287,7 @@ echo'<div class="row">
                 <div class="col-xs-5">
                   <img src="';
                   if($usuarios[$i]->getFoto() == "default.jpg"){
-                    echo 'img/logobi.png';
+                    echo 'img/usuario.png';
                   }else{
                     echo $usuarios[$i]->getFoto();
                   }
@@ -391,7 +391,7 @@ if($usuario->getCpf() ==null){
       <div class="col-md-6">
         <img src="';
         if($usuario->getFoto() == "default.jpg"){
-          echo 'img/logobi.png';
+          echo 'img/usuario.png';
         }else{
           echo $usuario->getFoto();
         }
