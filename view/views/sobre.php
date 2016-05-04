@@ -147,7 +147,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
                   <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-github-square fa-2x"></i></a>
+                  <a href="https://github.com/biabsantana"><i class="fa fa-github-square fa-2x"></i></a>
                 </li>
               </ul>
             </div>
@@ -223,7 +223,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
                   <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-github-square fa-2x"></i></a>
+                  <a href="https://github.com/JussaraGomes"><i class="fa fa-github-square fa-2x"></i></a>
                 </li>
               </ul>
             </div>
@@ -261,7 +261,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
                   <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-github-square fa-2x"></i></a>
+                  <a href="https://github.com/gordinh"><i class="fa fa-github-square fa-2x"></i></a>
                 </li>
               </ul>
             </div>
@@ -299,7 +299,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
                   <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-github-square fa-2x"></i></a>
+                  <a href="https://github.com/ssenn4"><i class="fa fa-github-square fa-2x"></i></a>
                 </li>
               </ul>
             </div>
@@ -337,7 +337,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
                   <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
                 </li>
                 <li>
-                  <a href="#"><i class="fa fa-github-square fa-2x"></i></a>
+                  <a href="https://github.com/atsantos12"><i class="fa fa-github-square fa-2x"></i></a>
                 </li>
               </ul>
             </div>
