@@ -34,7 +34,7 @@ class SistemaController
     'logradouro'=>$longradouro,
     'numero'=>$numero,
     'complemento'=>$complemento);
-    $usuario = new Usuario($nome, $cpf, $email, $senha, 'DEFAULT', $sexo, $nascimento, $endereco, 0, false, null);
+    $usuario = new Usuario($nome, $cpf, $email, $senha, 'default.jpg', $sexo, $nascimento, $endereco, 0, false, null);
 
     $confirmacao = UsuarioDAO::getInstance()->adicionarNovoUsuario($usuario);
     //tenta encontrar o usuario
@@ -69,9 +69,9 @@ class SistemaController
     return $materiais;
   }
 
-   function editarPerfil($nome, $email, $senha, $foto, $sexo, $nascimento, $classificacao, $cep, $estado, 
+   function editarPerfil($nome, $email, $senha, $foto, $sexo, $nascimento, $classificacao, $cep, $estado,
    $bairro, $cidade, $logadouro, $numero, $complemento, $cpf, $bloqueado, $dataBloqueio, $latitude, $longitude){
-	
+
 	 $endereco = array("cep"=> $cep,
                         "estado"=> $estado,
 						"bairro"=> $bairro,
@@ -79,16 +79,16 @@ class SistemaController
 						"logradouro"=> $logadouro,
 						"numero"=>$numero,
 						"complemento"=> $complemento);
-   
+
 	$usuario = new Usuario($nome, $cpf, $email, $senha, $foto, $sexo, $nascimento, $endereco, $classificacao, $bloqueado, $dataBloqueio);
     $usuario->setLatitude($latitude);
     $usuario->setLongitude($longitude);
     return UsuarioDao::getInstance()->editarPerfil($usuario);
   }
-	
-  function excluirPerfil($cpf){	
+
+  function excluirPerfil($cpf){
 	return UsuarioDao::getInstance()->deletarUsuario($cpf);
-  } 
+  }
 
 }
 

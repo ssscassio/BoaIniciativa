@@ -5,6 +5,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/DoadorCon
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."PHPMailer/PHPMailerAutoload.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/SistemaFacade.php");
 
 if(isset($_POST['botaoLogar'])){
   session_start();
@@ -12,7 +13,7 @@ if(isset($_POST['botaoLogar'])){
     $cpf = $_POST['cpf'];
     $senha =  $_POST['senha'];
 
-    $autenticado = UsuarioDAO::getInstance()->autenticarUsuariomd5($cpf, $senha);
+    $autenticado = UsuarioDAO::getInstance()->autenticarUsuario($cpf, $senha);
     $usuario = UsuarioDAO::getInstance()->buscarUsuario($cpf);
 
     if ($autenticado){
@@ -42,9 +43,7 @@ if(isset($_POST['botaoLogar'])){
   }
 }else if(isset($_POST['botaoCadastrar'])){
   $val ="";
-  if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){//Usuario já logado, mover para Home
-    header('location:home.php');
-  }else{ //Usuario deslogado, pode cadastrar
+   //Usuario deslogado, pode cadastrar
     if(isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['nascimento']) && isset($_POST['cep'])
     && isset($_POST['estado']) && isset($_POST['bairro']) && isset($_POST['cidade']) &&isset($_POST['logradouro']) && isset($_POST['numero']) && isset($_POST['complemento'])
     && isset($_POST['gender'])){
@@ -69,20 +68,22 @@ if(isset($_POST['botaoLogar'])){
         $confirma = false;
       }
       $usuario = UsuarioDAO::getInstance()->buscarUsuarioEmail($email);
-      if($usuario->getEmail() != ""){
+      if($usuario->getEmail() == $email){
         $val .= "<div class='alert alert-warning'> <strong>Erro no cadastro!</strong> Email já utilizado</div>";
         $confirma = false;
       }
-      $confirmacao = SistemaFacade::getInstance()->cadastrarNovoUsuario($nome,$cpf,$email,$senha,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento,$sexo);
-      if($confirmacao){
-        $val .= "<div class='alert alert-success'> <strong> Usuário cadastrado com sucesso!</strong> </div>";
+      if($confirma){
+        $confirmacao = SistemaFacade::getInstance()->cadastrarNovoUsuario($nome,$cpf,$email,$senha,$nascimento,$cep,$estado,$bairro,$cidade,$logradouro,$numero,$complemento,$sexo);
+        if($confirmacao){
+          $val .= "<div class='alert alert-success'> <strong> Usuário cadastrado com sucesso!</strong> </div>";
+        }
       }
     }else{
       $val .= "<div class='alert alert-warning'> <strong>Erro no cadastro!</strong> Preencha todos os campos</div>";
     }
     unset($_POST);
     echo json_encode( array( 'mensagem' => $val) );
-  }
+
 }else if(isset($_POST['botaoEditar'])){
   if(isset($_POST['cpf']) &&isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['sexo']) && isset($_POST['nascimento']) && isset($_POST['cep'])
   && isset($_POST['estado']) && isset($_POST['bairro']) && isset($_POST['cidade']) &&isset($_POST['logradouro']) && isset($_POST['numero']) && isset($_POST['complemento'])){
