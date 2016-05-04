@@ -1,5 +1,3 @@
-<br><br>
-<body>
 
   <?php
     session_start();
@@ -10,6 +8,7 @@
       include("cabecalho.php");
     }
   ?>
+  <body>
 
   <?php
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioController.php");
@@ -24,9 +23,9 @@
     <div class="row"><!-- parte Inicial do perfil-->
       <h2 class="page-header"><?php echo $usuario->getNome(); ?></h2>
     </div>
-    <div class="row col-xs-12">
-      <div class="col-md-5" >
-        <img class="img-responsive img-rounded" style="margin:15px;" src="
+    <div class="row ">
+      <div class="col-xs-12 col-md-5" >
+        <img class="img-responsive img-rounded center-block" style="margin:15px;" src="
         <?php if($usuario->getFoto()=="" || $usuario->getFoto()=="default.jpg"){
           echo "../img/usuario.png";
         }else{
@@ -41,8 +40,8 @@
 
 
 
-
-    <div class="container-fluid panel panel-success col-md-6" style="padding:20px;"><!-- parte Inicial do perfil-->
+  <div class="row">
+    <div class="panel panel-success col-md-6" style="padding:20px;"><!-- parte Inicial do perfil-->
       <h3 class="page-header">Campanhas Criadas</h3>
 
       <table class="table table-striped">
@@ -71,9 +70,7 @@
         </table>
 
       </div>
-      <br><br>
-      <hr>
-      <div class="container-fluid panel panel-success col-md-6" style="padding:20px;">
+      <div class="panel panel-success col-md-6" style="padding:20px;">
         <h3 class="page-header">Campanhas Participadas:</h3>
 
 
@@ -111,12 +108,13 @@
             </table>
             <?php } //fim do if ?>
           </div>
-          <br><br>
-          <hr>
+  </div>
         </div>
       </div>
 
     </div>
 
   </body>
+<div class="container">
   <?php include ('footer.php'); ?>
+</div>
