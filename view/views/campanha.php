@@ -10,7 +10,6 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
 }
 
 ?>
-<script type="text/javascript" src="../js/mapaPostos.js"></script>
 
 <br><br>
 <div class="container">
@@ -28,6 +27,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
     require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/UsuarioFacade.php");
     require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/SistemaController.php");
     require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/SistemaFacade.php");
+    require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/PerfilFacade.php");
 
     $id = $_GET['campanha'];
     $campanha = UsuarioFacade::getInstance()->verCampanha($id);
@@ -122,22 +122,62 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
       $lat = array();
       $long = array();
       for ($i = 0; $i < count($atendentes); $i++) { 
-        $usr = CriadorFacade::getInstance()->buscarUsuario($atendentes[$i]);
+        $usr = PerfilFacade::getInstance()->buscarUsuario($atendentes[$i]);
         $lat = $usr->getLatitude();
         $long = $usr->getLongitude();
       }
       $lat = implode("|", $lat);
       $long = implode("|", $long);
     ?>
+
+    <div id="mapaPostos"></div>
+
+
     <script type='text/javascript'>
+      var map;
+      function initialize(){
       var lat = "<?php echo $lat;?>";
       lat = lat.split("|");
       var lng = "<?php echo $long;?>";
       lng = lng.split("|");
-      alert(lat);
-      initialize(lat, lng);
-    </script>
-    <div id="mapaPostos"></div>
+      if(getLocation())
+        navigator.geolocation.getCurrentPosition(showPosition);
+      else{
+        var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
+        var options = {
+          zoom: 5,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+      }
+      map = new google.maps.Map(document.getElementById("mapaPostos"), options);
+      for (var i = 0; i < lat.length; i++) {
+        marcacaoEndereco(lat[i], lng[i]);
+      };      
+
+      function getLocation(){
+        if(navigator.getLocation)   
+          return true;
+        else
+          return false;
+      }
+      function showPosition(position){
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var options = {
+          zoom: 5,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+      }
+      function marcacaoEndereco(lat, lng){
+        var ponto = new google.maps.LatLng(lat,lng);
+        var marker = new google.maps.Marker({position: ponto, map: map});
+      }
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrcCnCC71lEBRbj-hM5KwlHcSppnenBI&callback=initialize"async defer></script>
+
+    
 
     <div class="panel" style="padding:0px 10px 70px 10px;">
       <center>
