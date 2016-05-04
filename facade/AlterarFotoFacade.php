@@ -20,6 +20,11 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/AlterarFo
   public function editarFoto($diretorio, $cpf){   
 	return AlterarFotoController::getInstance()->editarFoto($diretorio, $cpf);
   }
+
+  
+  public function editarFotoCampanha($diretorio, $id){   
+  return AlterarFotoController::getInstance()->editarFotoCampanha($diretorio, $id);
+  }
   
   }
 ?>

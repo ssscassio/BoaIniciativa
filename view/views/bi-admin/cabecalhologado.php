@@ -13,6 +13,9 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../js/jquery-1.12.3.min.js" type="text/javascript"></script>
+    <script src="../../js/modernizr.js"></script> <!-- Modernizr -->
+    <script src="../../js/bootstrap.min.js"></script>
 
     <!-- Custom CSS -->
     <link href="../../css/modern-business.css" rel="stylesheet">

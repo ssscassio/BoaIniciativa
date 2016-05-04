@@ -1,32 +1,37 @@
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AdministradorFacade.php");
 
+		if(isset($_POST['botaoLoginAdm'])){//Botão Login
+    $val = "";
 
-		if(isset($_POST['botaoLogin'])){//Botão Login
-      session_start();
-      if(isset($_POST['cpf']) && isset($_POST['senha'])){
+
+          session_start();
+    if(isset($_POST['cpf']) && isset($_POST['senha'])){
+
         $cpf = $_POST['cpf'];
         $senha =  $_POST['senha'];
-
         $confirmacao = AdministradorFacade::getInstance()->autenticarAdm($cpf, $senha);
-        if ($confirmacao) {
+        $administrador = AdministradorDAO::getInstance()->buscarAdministrador($cpf);
+        if ($confirmacao){
           $_SESSION['cpfAdm'] = $cpf;
           $_SESSION['senhaAdm'] = $senha;
-          $_SESSION['nomeAdm'] = AdministradorDAO::getInstance()->buscarAdministrador($cpf)->getNome();
-          echo $_SESSION['cpfAdm'];
-          echo $_SESSION['senhaAdm'];
-          echo $_SESSION['nomeAdm'];
-          header('location:home.php');
-
+          $_SESSION['nomeAdm'] = $administrador->getNome();
+          $atualiza = true;
+          $val =  "<div class='alert alert-success'> <strong>Administrador logado com sucesso!</strong></div>";
         }else{
           unset($_SESSION['cpfAdm']);
           unset($_SESSION['senhaAdm']);
           unset($_SESSION['nomeAdm']);
-          header('location:index.php');
+          $atualiza = false;
+          if($administrador->getCpf() == ""){
+            $val = "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Usuario não cadastrado</div>";
+          }else{
+            $val = "<div class='alert alert-warning'> <strong>Erro na autenticação!</strong> Senha incorreta</div>";
+          }
         }
-      }else{
-
+      echo json_encode( array( 'mensagem' => $val, 'atualiza' => $atualiza) );
       }
+
     } else if(isset($_POST['botaoCadastrarAdm'])){//Botão Cadastro
       if(isset($_POST['nome']) && isset($_POST['cpf']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['nascimento']) && isset($_POST['gender'])){
          $sexo = ($_POST['gender']=='male')? 'M': 'F';

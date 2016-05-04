@@ -7,3 +7,7 @@
 ?>
 
 <?php include_once("login.php"); ?>
+
+<div class="container">
+  <?php include_once("footer.php"); ?>
+</div>

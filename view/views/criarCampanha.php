@@ -12,18 +12,18 @@
   <title>BoaIniciativa</title>
 
   <!-- Bootstrap Core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="css/modern-business.css" rel="stylesheet">
-  <link href="css/bootstrap-lavish.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/modern-business.css" rel="stylesheet">
+  <link href="../css/bootstrap-lavish.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-  <script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-1.12.3.min.js"></script>
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,7 +34,7 @@
   <![endif]-->
   <!-- script para funcoes de metamaterial -->
 
-  <script type="text/javascript" src="js/criarCampanha.js"></script>
+  <script type="text/javascript" src="../js/criarCampanha.js"></script>
   <?php
   //verifica se a sessao ja está criada
   session_start();
@@ -63,10 +63,9 @@
   }
 ?>
 
-
 </head>
   <body>
-  <?php include("cabecalhoLogado.php");?>
+    <?php include("cabecalhologado.php");?>
 
   <br><br><br>
 
@@ -88,7 +87,7 @@
               <div class="text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>1 - Seleciona uma categoria para sua campanha</strong>                    
+                    <h2><strong>1 - Seleciona uma categoria para sua campanha</strong></h2>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -104,12 +103,12 @@
                   </div>
                 </div>
               </div>
-              <br><br><br><br>
+              <br><br>
               <!-- PERGUNTA 2 -->
                 <div class="form-group text-center">
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>2- Qual o nome para sua campanha?</strong>                    
+                      <h2><strong>2- Qual o nome para sua campanha?</strong></h2>
                     </div>
                   </div>
                   <!-- caixa de  texto -->
@@ -124,7 +123,7 @@
                 <div class="form-group text-center">
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>3- Fale um pouco da sua campanha pra nós :)</strong>                    
+                      <h2><strong>3- Fale um pouco da sua campanha pra nós :)</strong></h2>
                     </div>
                   </div>
                   <!-- caixa de  texto -->
@@ -135,38 +134,35 @@
                     </div>
                   </div>
                 </div>     
-                <br><br><br><br>
+                <br>
                           <!-- PERGUNTA 4-->
-                   <br><br><br><br><br>  
                 <div class="form-group text-center">
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>4 - Qual tipo de arrecadação você quer para sua campanha? :)</strong>                    
+                      <h2><strong>4 - Qual tipo de arrecadação você quer para sua campanha? :)</strong></h2>                   
                     </div>
                   </div>
                   <br><br><br><br>
-                  <!-- caixa de  texto -->
-                  <div class="container">
-                    <div class="row">
+                <!-- caixa de  texto -->
+                <div class="container">
+                  <div class="row">
                       <p style="font-size: 1em; color: #696969;"><span><strong>Campanha Monetária</strong> - Arrecadação financeira para uma campanha!<br>
                       <strong>Campanha Material</strong> - Arrecadação material para uma campanha!</span></p>
-                    </div>
-                    <div class="row">
                       <label class="radio-inline text-center"><input id="money" type="radio" name="materialMonetaria" value="monetaria" onclick="mostrarOpcoes()">Monetária </label>                
                       <label class="radio-inline text-center"><input id="mat" type="radio" name="materialMonetaria" value="material"  onclick="mostrarOpcoes()">Material </label>                    
                     </div>
                   </div>
                 </div>
-                <br><br><br><br><br>
+                <br><br>
                 <!-- campanha monetaria// usuario vai colocar 3 valores padrões-->
                 <div class="form-group text-center" id="monetaria" style="display: none;">
                   <div class="col-lg-11 hard-form-label">
                     <!--cabeçalho -->
                     <div class="container">
-                      <strong>4.5 - Adicione 3 valores padrões para serem doados</strong>                    
+                      <h2><strong>4.5 - Adicione 3 valores padrões para serem doados</strong></h2>
                     </div>
                   </div>
-                  <br><br><br><br>
+                  <br><br>
                   <!-- valores padrões de doação -->
                   <div class="container" style="float: center;">
                   <!-- primeiro valor -->
@@ -195,14 +191,14 @@
                     </div>
                   </div>
                 </div>
-                <br><br><br><br><br>
+                <br><br>
 
 
                 <!--PERGUNTA 5 -->
                <div class="form-group text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>5 - Como você deseja encerrar sua campanha? :)</strong>                    
+                    <h2><strong>5 - Como você deseja encerrar sua campanha? :)</strong></h2>
                   </div>
                 </div>
                 <br><br><br><br>
@@ -216,24 +212,29 @@
                   </div>
                 </div>
               </div>   
-              <br><br><br><br><br>
+              <br><br>
 <script type="text/javascript">
     function mostrarOpcoes(){
       if(document.getElementById('money').checked){
         document.getElementById('monetaria').style.display = "block";
+        document.getElementById("adicionarAtendente").style.display = "none";
       }
       else if(document.getElementById('mat').checked){
         document.getElementById('monetaria').style.display = "none";
+        document.getElementById("adicionarAtendente").style.display = "block";
+
       }
       if(document.getElementById('money').checked && document.getElementById('idMeta').checked){
         document.getElementById("metaMonetaria").style.display = "block";
         document.getElementById("dataMonetaria").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
+        document.getElementById("adicionarAtendente").style.display = "none";
         document.getElementById("metaMaterial").style.display = "none"; 
         document.getElementById("dataMaterial").style.display = "none"; 
       }
       else if(document.getElementById('mat').checked && document.getElementById('idMeta').checked){
         document.getElementById("metaMaterial").style.display = "block"; 
+        document.getElementById("adicionarAtendente").style.display = "block";
         document.getElementById("dataMaterial").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
         document.getElementById("metaMonetaria").style.display = "none";
@@ -241,6 +242,7 @@
       }         
       else if(document.getElementById('money').checked && document.getElementById('idData').checked){
         document.getElementById("dataMonetaria").style.display = "block";
+        document.getElementById("adicionarAtendente").style.display = "none";
         document.getElementById("metaMonetaria").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
         document.getElementById("metaMaterial").style.display = "none"; 
@@ -249,6 +251,7 @@
       else if(document.getElementById('mat').checked && document.getElementById('idData').checked){
         document.getElementById("dataMaterial").style.display = "block"; 
         document.getElementById("ddataMaterial").style.display = "block";
+        document.getElementById("adicionarAtendente").style.display = "block";
         document.getElementById("metaMaterial").style.display = "none";  
         document.getElementById("metaMonetaria").style.display = "none";
         document.getElementById("dataMonetaria").style.display = "none";
@@ -263,7 +266,7 @@
                 <div id="metas">
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>5.5 - Defina a meta a ser alcançada</strong>
+                      <h2><strong>5.5 - Defina a meta a ser alcançada</strong></h2>
                     </div>
                   </div> <!-- fim cabeçalho -->
                   <!-- corpo da meta -->
@@ -277,15 +280,14 @@
                     </div>
                   </div><!-- fim do corpo da meta -->
                 </div>
-              </div>
-              <br><br><br><br> <!-- FIM META MONETARIA -->
+              </div><!-- FIM META MONETARIA -->
 
                <!-- data monetaria -->
               <div class="form-group text-center" id="dataMonetaria" style="display: none;">
                 <!-- cabeçalho -->
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>5.5 - Defina a data de término de sua campanha </strong>
+                      <h2><strong>5.5 - Defina a data de término de sua campanha </strong></h2>
                     </div>
                   </div> <!-- fim do cabeçalho -->
                   <br><br><br><br>
@@ -297,11 +299,9 @@
                         <label>Dia (Exemplo: <?php echo date("d")?>) : </label> <input type="text" id="dia" name="diaF" placeholder="Exemplo: 12" maxlength="2" ><br><br>
                         <label>Mês (Exemplo: <?php echo date("m")?>) : </label> <input type="text" id="mes" name="mesF" placeholder="Exemplo: 06" maxlength="2"><br><br>
                         <label>Ano (Exemplo: <?php echo date("Y")?>)  : </label> <input type="text" id="ano" name="anoF" placeholder="Exemplo: 1900" maxlength="4"><br><br>
-               
                     </div><!-- fim do campos de data -->
                   </div> <!-- fim corpo data -->
-              </div>
-              <br><br><br> <!-- FIM DATA MONETARIA -->
+              </div><!-- FIM DATA MONETARIA -->
 
 
               <!-- data material -->
@@ -309,7 +309,7 @@
                 <!-- cabeçalho -->
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>5.5 - Defina a data de término de sua campanha </strong>
+                     <h2><strong>5.5 - Defina a data de término de sua campanha </strong></h2>
                     </div>
                   </div> <!-- fim do cabeçalho -->
                   <br><br><br><br>
@@ -324,25 +324,24 @@
                
                     </div><!-- fim do campos de data -->
                   </div> <!-- fim corpo data -->
-              </div>
-              <br><br><br> <!-- FIM DATA MATERIAL -->
+              </div><!-- FIM DATA MATERIAL -->
 
               <!-- meta material -->
               <div class="form-group text-center" id="metaMaterial" style="display: none;">
                 <!-- cabeçalho -->
-                  <div class="col-lg-11 hard-form-label">
+                  <div class="col-md-8 hard-form-label">
                     <div class="container">
-                      <strong>5.5 - Escolha os itens e quantidade a serem arrecados</strong>
+                      <h2><strong>5.5 - Escolha os itens e quantidade a serem arrecados</strong></h2>
                     </div>
                   </div> <!-- fim cabeçalho -->
                   <!-- corpo da meta material -->
-                  <div class="col-lg-10" id="pai">              
+                  <div class="col-lg-10" id="pai">            
                     <div class="container" id="filho">
                       <div>  
                         <div class="row"> 
 
                           <!-- material -->
-                          <div style="float: left;" class="col-xs-3" id="selecionador">
+                          <div style="float: left;" class="col-md-3" id="selecionador">
                             <select id="itensMedidas" name="materialDoacao[]">
                               <option value="None">- Selecione uma material para ser doado</option>
                               <?php echo $opcoes;?>          
@@ -377,30 +376,29 @@
                     </div>
                   </div>
               </div> <!-- fim meta material -->
-               <br><br><br> <!-- FIM META MONETARIA -->
 
               <!-- data material -->
               <div class="form-group text-center" id="dataMaterial" style="display: none;">
                 <!-- cabeçalho -->
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>5.5 - Escolha os itens a serem arrecados</strong>
+                    <h2><strong>5.5 - Escolha os itens a serem arrecados</strong></h2>
                   </div>
                 </div> <!-- fim cabeçalho -->
                 <!-- corpo da meta material -->
-                <div class="col-lg-10" id="pai1">              
+                <div class="col-lg-10" id="pai1">           
                   <div class="container" id="filho1">
                     <div>  
                       <div class="row"> 
 
                         <!-- material -->
-                        <div style="float: left;" class="col-xs-3" id="selecionador">
+                        <div style="float: left;" class="col-md-3" id="selecionador">
                           <select id="itensMedidas" name="materialDoacao[]">
                             <option value="None">- Selecione uma uma material para ser doado</option>
                             <?php echo $opcoes;?>          
                           </select>                    
                         </div>                 
-                        <div class="col-xs-2" style="float: left;" id="botaopai1">
+                        <div class="col-md-2" style="float: left;" id="botaopai1">
                           <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisDataMaterial()"><i class="fa fa-plus"></i></button>
                         </div>
                       </div>    <!--fim da linha -->                      
@@ -422,8 +420,7 @@
                     </div>
                   </div>
                 </div>
-              </div> <!-- fim meta material -->
-              <br><br><br><br>  
+              </div> <!-- fim data material -->
 
 
               
@@ -431,7 +428,7 @@
               <div class="text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>6 - Vamos agradecer aos seus doadores</strong>                    
+                    <h2><strong>6 - Vamos agradecer aos seus doadores</strong></h2>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -442,14 +439,14 @@
                     </div>
                   </div>
               </div>
-              <br><br><br><br>
+              <br><br>
 
 
               <!-- PERGUNTA 6.5 -->
               <div class="text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>6.5 - Agora escreva sua mensagem</strong>                    
+                    <h2><strong>6.5 - Agora escreva sua mensagem</strong></h2>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -460,9 +457,37 @@
                   </div>
                 </div>
               </div>
-              <br><br><br><br>
+              <br><br>
 
-
+              <!-- PERGUNTA 7 -->
+              <div class="form-group text-center" id="adicionarAtendente" style="display: none;">
+                <div class="col-lg-11 hard-form-label">
+                  <div class="container">
+                    <h2><strong>7 - Adicione atendentes para sua campanha</strong></h2>
+                    <div class="col-lg-10">
+                      <p><span>Os atendentes são pessoas cadastradas no sistema que são indicadas, por você, para receber as doações materiais da sua campanha.</span></p>                                        
+                      <p><span> Atendentes são disponíveis, apenas, em campanhas <strong>materiais</strong>.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <!-- caixa de  texto -->
+                <div class="container" id="cadastramentoAtendente">
+                  <div class="row" id="cadastroAtendente" style="float: left;">
+                    <div class="col-lg-6">
+                      <input maxlength="11" size="60" name="cpfAtendente" placeholder="Digite o CPF do atendente" required>
+                    </div>
+                    <div class="col-lg-4">
+                      <div class="col-lg-2" style="float: left;">
+                        <button type="button" class="btn btn-link" id="removeatendente" onclick="removerAtendente(this)"><i class="fa fa-minus"></i></button>
+                      </div>
+                      <div class="col-lg-2" style="float: left;">
+                        <button type="button" class="btn btn-link" id="cadastreiatendente" onclick="addAtendente()"><i class="fa fa-plus"></i></button>
+                      </div>    
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br><br>
 
 
 
@@ -496,7 +521,7 @@
                             <label>Medida: <input type="text" name="medidaMaterial[]" placeholder="Escala"></label>
                           </div>
                           <div class="col-xs-4">
-                            <label>Quantidade: <input type="text" name="quantidadeMaterialCadastrado[]" placeholder="Quantidade"></label>
+                            <label>Qtd: <input type="text" name="quantidadeMaterialCadastrado[]" placeholder="Quantidade"></label>
                           </div>
                           <div class="col-xs-1" style="float: left;">
                             <button type="button" class="btn btn-link" id="removeCadastro" onclick="removerCadastro(this)"><i class="fa fa-minus"></i></button>

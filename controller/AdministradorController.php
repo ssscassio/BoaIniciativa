@@ -25,7 +25,7 @@ class  AdministradorController
   }
 
   public function autenticarAdm($cpfAdm, $senhaAdm){
-    return AdministradorDAO::getInstance()->autenticarAdministradorCpf($cpfAdm,$senhaAdm);
+    return AdministradorDAO::getInstance()->autenticarAdministrador($cpfAdm,$senhaAdm);
 
   }
 
