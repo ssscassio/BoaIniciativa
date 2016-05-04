@@ -3,7 +3,7 @@
   </h2>
       <div class="row">
         <div class="col-xs-6 col-md-12">
-          <a href="criarcampanha.php" class="btn btn-primary btn-block" name="criarCampanha">Criar Campanha</a>
+          <a href="criarCampanha.php" class="btn btn-primary btn-block" name="criarCampanha">Criar Campanha</a>
           <hr>
         </div>
         <div class="col-xs-6 col-md-12">

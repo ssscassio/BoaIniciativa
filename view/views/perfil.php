@@ -1,5 +1,5 @@
 <?php
-include('cabecalhoLogado.php');
+include('cabecalhologado.php');
 ?>
 <script>
 function funcao1(){

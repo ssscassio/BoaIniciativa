@@ -77,7 +77,7 @@
           <div class="col-lg-12 text-center">
             <h1 class="page-header">Criar Campanha</h1>
           </div>
-        </div> 
+        </div>
         <div class="container">
           <div class="col-lg-12 text-center">
             <div id="form">
@@ -88,7 +88,7 @@
               <div class="text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>1 - Seleciona uma categoria para sua campanha</strong>                    
+                    <strong>1 - Seleciona uma categoria para sua campanha</strong>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -98,8 +98,8 @@
                     <div>
                       <select name="categoria" required>
                         <option value="None">- Selecione uma categoria</option>
-                        <?php  echo $categoria;?>          
-                      </select>                    
+                        <?php  echo $categoria;?>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="form-group text-center">
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>2- Qual o nome para sua campanha?</strong>                    
+                      <strong>2- Qual o nome para sua campanha?</strong>
                     </div>
                   </div>
                   <!-- caixa de  texto -->
@@ -124,7 +124,7 @@
                 <div class="form-group text-center">
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>3- Fale um pouco da sua campanha pra nós :)</strong>                    
+                      <strong>3- Fale um pouco da sua campanha pra nós :)</strong>
                     </div>
                   </div>
                   <!-- caixa de  texto -->
@@ -134,14 +134,14 @@
                       <p style="font-size: 1em; color: #696969;"><span>Sua descrição deve conter no máximo 100 caracteres</span></p>
                     </div>
                   </div>
-                </div>     
+                </div>
                 <br><br><br><br>
                           <!-- PERGUNTA 4-->
-                   <br><br><br><br><br>  
+                   <br><br><br><br><br>
                 <div class="form-group text-center">
                   <div class="col-lg-11 hard-form-label">
                     <div class="container">
-                      <strong>4 - Qual tipo de arrecadação você quer para sua campanha? :)</strong>                    
+                      <strong>4 - Qual tipo de arrecadação você quer para sua campanha? :)</strong>
                     </div>
                   </div>
                   <br><br><br><br>
@@ -152,8 +152,8 @@
                       <strong>Campanha Material</strong> - Arrecadação material para uma campanha!</span></p>
                     </div>
                     <div class="row">
-                      <label class="radio-inline text-center"><input id="money" type="radio" name="materialMonetaria" value="monetaria" onclick="mostrarOpcoes()">Monetária </label>                
-                      <label class="radio-inline text-center"><input id="mat" type="radio" name="materialMonetaria" value="material"  onclick="mostrarOpcoes()">Material </label>                    
+                      <label class="radio-inline text-center"><input id="money" type="radio" name="materialMonetaria" value="monetaria" onclick="mostrarOpcoes()">Monetária </label>
+                      <label class="radio-inline text-center"><input id="mat" type="radio" name="materialMonetaria" value="material"  onclick="mostrarOpcoes()">Material </label>
                     </div>
                   </div>
                 </div>
@@ -163,14 +163,14 @@
                   <div class="col-lg-11 hard-form-label">
                     <!--cabeçalho -->
                     <div class="container">
-                      <strong>4.5 - Adicione 3 valores padrões para serem doados</strong>                    
+                      <strong>4.5 - Adicione 3 valores padrões para serem doados</strong>
                     </div>
                   </div>
                   <br><br><br><br>
                   <!-- valores padrões de doação -->
                   <div class="container" style="float: center;">
                   <!-- primeiro valor -->
-                    <div class="row">                  
+                    <div class="row">
                       <div class="input-group" style="width: 40%;">
                         <span class="input-group-addon">R$</span>
                         <input type="number" name="valor1" min="1" class="form-control" aria-label="Valor em reais a ser doado" placeholder="Primeiro valor em R$">
@@ -178,7 +178,7 @@
                       </div>
                     </div>
                   <!-- segundo valor -->
-                    <div class="row">                  
+                    <div class="row">
                       <div class="input-group" style="width: 40%;">
                         <span class="input-group-addon">R$</span>
                         <input type="number" name="valor2" min="1" class="form-control" aria-label="Valor em reais a ser doado" placeholder="Segundo valor em R$">
@@ -186,7 +186,7 @@
                       </div>
                     </div>
                   <!-- Terceiro valor -->
-                    <div class="row">                  
+                    <div class="row">
                       <div class="input-group" style="width: 40%;">
                         <span class="input-group-addon">R$</span>
                         <input type="number" name="valor3" min="1" class="form-control" aria-label="Valor em reais a ser doado" placeholder="Terceiro valor em R$">
@@ -202,7 +202,7 @@
                <div class="form-group text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>5 - Como você deseja encerrar sua campanha? :)</strong>                    
+                    <strong>5 - Como você deseja encerrar sua campanha? :)</strong>
                   </div>
                 </div>
                 <br><br><br><br>
@@ -211,11 +211,11 @@
                   <div class="row">
                     <p style="font-size: 1em; color: #696969;"><span><strong>Opção Data</strong> - Sua campanha se encerra apenas na data de término, independente de ter alcançado a meta ou não!<br>
                     <strong>Opção Meta</strong> - Sua campanha se encerra apenas quando a meta estipuladafor alcançada!</span></p>
-                    <label class="radio-inline text-center"><input type="radio" id="idMeta" name="metaData" value="meta" onclick="mostrarOpcoes()" required>Meta </label>                
+                    <label class="radio-inline text-center"><input type="radio" id="idMeta" name="metaData" value="meta" onclick="mostrarOpcoes()" required>Meta </label>
                     <label class="radio-inline text-center"><input type="radio" id="idData" name="metaData" value="data" onclick="mostrarOpcoes()">Data </label>
                   </div>
                 </div>
-              </div>   
+              </div>
               <br><br><br><br><br>
 <script type="text/javascript">
     function mostrarOpcoes(){
@@ -229,30 +229,30 @@
         document.getElementById("metaMonetaria").style.display = "block";
         document.getElementById("dataMonetaria").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
-        document.getElementById("metaMaterial").style.display = "none"; 
-        document.getElementById("dataMaterial").style.display = "none"; 
+        document.getElementById("metaMaterial").style.display = "none";
+        document.getElementById("dataMaterial").style.display = "none";
       }
       else if(document.getElementById('mat').checked && document.getElementById('idMeta').checked){
-        document.getElementById("metaMaterial").style.display = "block"; 
+        document.getElementById("metaMaterial").style.display = "block";
         document.getElementById("dataMaterial").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
         document.getElementById("metaMonetaria").style.display = "none";
         document.getElementById("dataMonetaria").style.display = "none";
-      }         
+      }
       else if(document.getElementById('money').checked && document.getElementById('idData').checked){
         document.getElementById("dataMonetaria").style.display = "block";
         document.getElementById("metaMonetaria").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
-        document.getElementById("metaMaterial").style.display = "none"; 
+        document.getElementById("metaMaterial").style.display = "none";
         document.getElementById("dataMaterial").style.display = "none";
       }
       else if(document.getElementById('mat').checked && document.getElementById('idData').checked){
-        document.getElementById("dataMaterial").style.display = "block"; 
+        document.getElementById("dataMaterial").style.display = "block";
         document.getElementById("ddataMaterial").style.display = "block";
-        document.getElementById("metaMaterial").style.display = "none";  
+        document.getElementById("metaMaterial").style.display = "none";
         document.getElementById("metaMonetaria").style.display = "none";
         document.getElementById("dataMonetaria").style.display = "none";
-      } 
+      }
     }
 
 </script>
@@ -297,7 +297,7 @@
                         <label>Dia (Exemplo: <?php echo date("d")?>) : </label> <input type="text" id="dia" name="diaF" placeholder="Exemplo: 12" maxlength="2" ><br><br>
                         <label>Mês (Exemplo: <?php echo date("m")?>) : </label> <input type="text" id="mes" name="mesF" placeholder="Exemplo: 06" maxlength="2"><br><br>
                         <label>Ano (Exemplo: <?php echo date("Y")?>)  : </label> <input type="text" id="ano" name="anoF" placeholder="Exemplo: 1900" maxlength="4"><br><br>
-               
+
                     </div><!-- fim do campos de data -->
                   </div> <!-- fim corpo data -->
               </div>
@@ -321,7 +321,7 @@
                         <label>Dia (Exemplo: <?php echo date("d")?>) : </label> <input type="text" id="dia" name="diaF" placeholder="Exemplo: 12" maxlength="2" ><br><br>
                         <label>Mês (Exemplo: <?php echo date("m")?>) : </label> <input type="text" id="mes" name="mesF" placeholder="Exemplo: 06" maxlength="2"><br><br>
                         <label>Ano (Exemplo: <?php echo date("Y")?>)  : </label> <input type="text" id="ano" name="anoF" placeholder="Exemplo: 1900" maxlength="4"><br><br>
-               
+
                     </div><!-- fim do campos de data -->
                   </div> <!-- fim corpo data -->
               </div>
@@ -336,40 +336,40 @@
                     </div>
                   </div> <!-- fim cabeçalho -->
                   <!-- corpo da meta material -->
-                  <div class="col-lg-10" id="pai">              
+                  <div class="col-lg-10" id="pai">
                     <div class="container" id="filho">
-                      <div>  
-                        <div class="row"> 
+                      <div>
+                        <div class="row">
 
                           <!-- material -->
                           <div style="float: left;" class="col-xs-3" id="selecionador">
                             <select id="itensMedidas" name="materialDoacao[]">
                               <option value="None">- Selecione uma material para ser doado</option>
-                              <?php echo $opcoes;?>          
-                            </select>                    
+                              <?php echo $opcoes;?>
+                            </select>
                           </div>
                           <!-- quantidade -->
                           <div class="col-xs-6" style="float: center;" id="quantidade">
                             <input type="number" min="1" size="60" name="quantidadeMaterial[]]" placeholder="quantidade">
-                          </div>                   
+                          </div>
                           <div class="col-xs-2" style="float: left;" id="botaopai">
                             <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisMaterial()"><i class="fa fa-plus"></i></button>
-                            
+
                           </div>
                         </div>    <!--fim da linha -->
-                        
+
                       <br><br>
-                      </div>                  
-                    </div>    <!-- FIM DE FILHO -->  
+                      </div>
+                    </div>    <!-- FIM DE FILHO -->
                   </div>  <!-- FIM DE PAI -->
                   <div class="col-lg-10" id="dad">
                     <div class="container" id="son">
                       <div>
                         <div class="row">
-                          <div>                      
+                          <div>
                             <button class="btn btn-info" type="button" onclick="cadastrarMaterial()">Adicionar um material não cadastrado</button>
                             <br><br>
-                          </div>  
+                          </div>
                           <div id="cadastro">
                           </div>
                         </div>
@@ -388,34 +388,34 @@
                   </div>
                 </div> <!-- fim cabeçalho -->
                 <!-- corpo da meta material -->
-                <div class="col-lg-10" id="pai1">              
+                <div class="col-lg-10" id="pai1">
                   <div class="container" id="filho1">
-                    <div>  
-                      <div class="row"> 
+                    <div>
+                      <div class="row">
 
                         <!-- material -->
                         <div style="float: left;" class="col-xs-3" id="selecionador">
                           <select id="itensMedidas" name="materialDoacao[]">
                             <option value="None">- Selecione uma uma material para ser doado</option>
-                            <?php echo $opcoes;?>          
-                          </select>                    
-                        </div>                 
+                            <?php echo $opcoes;?>
+                          </select>
+                        </div>
                         <div class="col-xs-2" style="float: left;" id="botaopai1">
                           <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisDataMaterial()"><i class="fa fa-plus"></i></button>
                         </div>
-                      </div>    <!--fim da linha -->                      
+                      </div>    <!--fim da linha -->
                     <br><br>
-                    </div>                  
-                  </div>                  
+                    </div>
+                  </div>
                 </div>
                 <div class="col-lg-10" id="dad">
                   <div class="container" id="son">
                     <div>
                       <div class="row">
-                        <div>                      
+                        <div>
                           <button class="btn btn-info" type="button" onclick="cadastrarMaterialData()">Adicionar um material não cadastrado</button>
                           <br><br>
-                        </div>  
+                        </div>
                         <div id="cadastroData">
                         </div>
                       </div>
@@ -423,15 +423,15 @@
                   </div>
                 </div>
               </div> <!-- fim meta material -->
-              <br><br><br><br>  
+              <br><br><br><br>
 
 
-              
+
               <!-- PERGUNTA 6 -->
               <div class="text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>6 - Vamos agradecer aos seus doadores</strong>                    
+                    <strong>6 - Vamos agradecer aos seus doadores</strong>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -449,7 +449,7 @@
               <div class="text-center">
                 <div class="col-lg-11 hard-form-label">
                   <div class="container">
-                    <strong>6.5 - Agora escreva sua mensagem</strong>                    
+                    <strong>6.5 - Agora escreva sua mensagem</strong>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -490,7 +490,7 @@
                       <div class="container">
                         <div class="row">
                           <div class="col-xs-3">
-                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>                          
+                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>
                           </div>
                           <div class="col-xs-3">
                             <label>Medida: <input type="text" name="medidaMaterial[]" placeholder="Escala"></label>
@@ -511,7 +511,7 @@
                       <div class="container">
                         <div class="row">
                           <div class="col-xs-3">
-                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>                          
+                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>
                           </div>
                           <div class="col-xs-3">
                             <label>Medida: <input type="text" name="medidaMaterial[]" placeholder="Escala"></label>
