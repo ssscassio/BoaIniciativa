@@ -49,7 +49,11 @@ class  DoadorController
 
   public function cancelarDoacao($idDoacao){
     return DoacaoDAO::getInstance()->excluirDoacao($idDoacao);
-    
+
+  }
+
+  public function verificarMeta($idcampanha){
+    $todasmetas = MetaDAO::getInstance()->buscarMetasCampanha($idcampanha);
   }
 
 

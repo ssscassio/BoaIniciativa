@@ -97,7 +97,7 @@
 
           ?>
           <div class="col-xs-4">
-            <a href="campanha?campanha=<?php echo $campanha->getIdCampanha(); ?>">
+            <a href="campanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>">
               <img class="img-responsive img-portfolio img-hover" src="<?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
                 echo "../img/campanha.png";
               }else{
