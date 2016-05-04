@@ -1,15 +1,15 @@
 var map;
 function initialize(pontosLat, pontosLng){
-	alert(pontosLng);
 	if(getLocation())
 		navigator.geolocation.getCurrentPosition(showPosition);
-	var latlng = new google.maps.LatLng(latdAtual, lngAtual);
-	var options = {
-		zoom: 5,
-		center: latlng,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	};
-
+	else{
+		var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
+		var options = {
+			zoom: 5,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+	}
 	map = new google.maps.Map(document.getElementById("mapaPostos"), options);
 	for (var i = 0; i < pontosLat.length; i++) {
 		marcacaoEndereco(pontosLat[i], pontosLng[i]);
@@ -23,7 +23,12 @@ function initialize(pontosLat, pontosLng){
 			return false;
 	}
 	function showPosition(position){
-		marcacaoEndereco(position.coords.latitude, position.coords.longitude);
+		var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		var options = {
+			zoom: 5,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
 	}
 
 
