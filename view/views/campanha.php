@@ -123,6 +123,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
           if($_SESSION['cpf'] == $campanha->getCriadorCpf()){
             echo "<a href='editarCampanha.php?campanha=".$campanha->getIdCampanha()."' class='btn btn-primary col-xs-12 col-md-12 disable'>Editar Campanha</a>";
             echo "<a href='gerarRelatorio.php?campanha=".$campanha->getIdCampanha()."' class='btn btn-primary col-xs-12 col-md-12 disable'>Gerar Relatórios</a>";
+            echo "<a href='excluirCampanha.php?campanha=".$campanha->getIdCampanha()."' class='btn btn-primary col-xs-12 col-md-12 disable'>Excluir Campanha</a>";
           }
         }
         if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){

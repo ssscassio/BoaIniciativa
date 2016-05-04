@@ -98,6 +98,11 @@ class  CriadorController
     return MaterialDAO::getInstance()->buscarMaterial($codigo);
   }
 
+  function excluirCampanha($idCampanha){
+
+    CampanhaDAO::getInstance()->deletarCampanha($idCampanha);
+  }
+
 
 }
 

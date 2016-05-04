@@ -65,6 +65,10 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
       return CriadorController::getInstance()->buscarMetasCampanha($idCampanha);
     }
 
+    public function excluirCampanha($idCampanha){
+      return CriadorController::getInstance()->excluirCampanha($idCampanha);      
+    }
+
 
   }
 ?>
