@@ -189,4 +189,6 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
 </div>
 </div>
 
+<div class="container">
 <?php include("footer.php"); ?>
+</div>
