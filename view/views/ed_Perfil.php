@@ -1,7 +1,7 @@
 ﻿<script>
 	function edicaoTrue() {
-		var answer = confirm ("Perfil editado com sucesso!")
-		window.location="logout.php"
+		var answer = confirm ("Perfil editado com sucesso!!")
+		window.location="perfil.php"
 	}
 
 	function edicaoFalse() {
@@ -11,9 +11,15 @@
 </script>
 
 <?php
+
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioController.php");
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/AlterarFotoFacade.php");
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/SistemaFacade.php");
- 
+
+	if(!isset($_SESSION)){
+	  session_start();
+	}
+  
     if(isset($_POST['botaoEditar'])){
 	
         if(isset($_POST['nome'])       && isset($_POST['email'])      && isset($_POST['nascimento'])
@@ -35,7 +41,7 @@
 			   $numero = $_POST['numero'];
 			   $complemento = $_POST['complemento'];
                
-			   $usuario = UsuarioDao::getInstance()->buscarUsuario($_SESSION['cpf']); 
+			   $usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
 			       
 			//	($nome, $email, $senha, $usuario->getFoto(), $sexo, $nascimento, $usuario->getClassificacao(), $cep, $estado, $bairro, $cidade, $longradouro,$numero, $complemento, $cpf,  $usuario->getBloqueado(),$usuario->getDataBloqueio())
 						   
@@ -59,8 +65,10 @@
 			   
 			    $uploaddir = "../uploads/".$usuario->getCpf();
 			    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+				$fotoUsuario = $usuario->getFoto();
 			    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-					AlterarFotoFacade::getInstance()->editarFoto($uploadfile,$usuario->getCpf());	
+					AlterarFotoFacade::getInstance()->editarFoto($uploadfile,$usuario->getCpf());
+					unlink($fotoUsuario);
 				}
          }      
     }

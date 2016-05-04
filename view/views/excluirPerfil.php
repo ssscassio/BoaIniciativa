@@ -12,14 +12,25 @@ function excluirFalse() {
 </script>
 
 <?php
-  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/EditarPerfilFacade.php");
-   
-	$confirmacaoExcluir = EditarPerfilFacade::getInstance()->excluirPerfil($_SESSION['cpf']); // PEGAR SESSd
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/UsuarioController.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/SistemaFacade.php");
+	
+	if(!isset($_SESSION)){
+		session_start();
+	}
+	
+	$usuario = UsuarioController::buscarUsuario($_SESSION['cpf']);
+	
+	$fotoUsuario = $usuario->getFoto();
+	
+	$confirmacaoExcluir = SistemaFacade::getInstance()->excluirPerfil($usuario->getCpf()); 
 	
 	if($confirmacaoExcluir){
 		echo '<script>';
 		echo "excluirTrue();";  
 		echo '</script>';
+		
+		unlink($fotoUsuario); 
 	}else{
 	    echo '<script>';
 		echo "excluirFalse();";  
