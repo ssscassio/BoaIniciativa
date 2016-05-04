@@ -117,11 +117,11 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
       </div>
     </div>
 
-    <?php 
+    <?php
       $atendentes = CriadorFacade::getInstance()->listarAtendentesCampanha($id);
       $lat = array();
       $long = array();
-      for ($i = 0; $i < count($atendentes); $i++) { 
+      for ($i = 0; $i < count($atendentes); $i++) {
         $usr = PerfilFacade::getInstance()->buscarUsuario($atendentes[$i]);
         $lat = $usr->getLatitude();
         $long = $usr->getLongitude();
@@ -153,10 +153,10 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
       map = new google.maps.Map(document.getElementById("mapaPostos"), options);
       for (var i = 0; i < lat.length; i++) {
         marcacaoEndereco(lat[i], lng[i]);
-      };      
+      };
 
       function getLocation(){
-        if(navigator.getLocation)   
+        if(navigator.getLocation)
           return true;
         else
           return false;
@@ -177,7 +177,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtrcCnCC71lEBRbj-hM5KwlHcSppnenBI&callback=initialize"async defer></script>
 
-    
+
 
     <div class="panel" style="padding:0px 10px 70px 10px;">
       <center>
