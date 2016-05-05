@@ -5,8 +5,10 @@ require_once("ConexaoDB.php");
 require_once("Sql.php");
 require_once("MaterialDAO.php");
 
+
 /**
-* Classe referente a Personificação da Doação Material do Banco de Dados
+*Classe DoacaoMaterialDAO
+* Classe referente a manipulação de uma doação material no banco de dados
 */
 class DoacaoMaterialDAO{
 
@@ -22,7 +24,11 @@ class DoacaoMaterialDAO{
     return self::$instance;
   }
 
-
+  /** Método responsável por adicionar um material a uma doação
+  * @param $idDoacao id da doação
+  * @param $codMaterial código do material
+  * @param $quantidade quantidade do material a ser adicionado
+  */
   public function adicionarMaterialDoacao($idDoacao,$codMaterial,$quantidade){
     try {
       $sql = Sql::getInstance()->adicionarMaterialDoacaoSQL();
@@ -33,10 +39,14 @@ class DoacaoMaterialDAO{
 
       $stmt->execute();
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por listar os materiais de uma doação
+  * @param $idDoacao id da doação
+  * @return retorna uma lista de materiais
+  */
   public function listarMateriaisDaDoacao($idDocao){
     try{
       $sql = Sql::getInstance()->listarMateriaisDaDoacaoSQL();
@@ -59,13 +69,17 @@ class DoacaoMaterialDAO{
       return $arrayMateriais;
 
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
 
   }
 
 
-
+  /** Método responsável por remover os materiais de uma doação
+  * @param $doacaoId id da doação
+  * @param $codMaterial material a ser removido
+  * @return verifica se o script do banco de dados rodou corretamente
+  */
   public function removerMaterialDoacao($doacaoId, $codMaterial){
     try {
       $sql = Sql::getInstance()->removerMaterialDoacaoSQL();

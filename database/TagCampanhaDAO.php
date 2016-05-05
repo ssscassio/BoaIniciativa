@@ -4,7 +4,8 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/CampanhaTag.ph
 require_once("CampanhaDAO.php");
 require_once("Sql.php");
 /**
-* Classe que manipula os dados que relacionam uma campanha a uma TAG
+*Classe TagCampanhaDAO
+* Classe referente a manipulação da tag de uma campanha no banco de dados
 */
 class TagCampanhaDAO
 {
@@ -21,7 +22,10 @@ class TagCampanhaDAO
     return self::$instance;
   }
 
-
+  /** Método responsável por associar uma campanha a uma tag
+  * @param $idTag identificador da tag
+  * @param $idCampanha identificador da campanha
+  */
   public function associarCampanhaTag($idTag, $idCampanha){
     if(!$this->verificarTagCampanha($idTag, $idCampanha)){
 
@@ -32,13 +36,18 @@ class TagCampanhaDAO
         $stmt->bindParam(2,$idTag);
         $stmt->execute();
       }catch (Exception $e){
-        echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
       }
     }else{
       echo "Campanha já associada a esta tag";
     }
   }
 
+  /** Método responsável por verificar a tag de uma campanha
+  * @param $idTag identificador da tag
+  * @param $idCampanha identificador da campanha
+  * @return verifica se a busca retornou algum objeto
+  */
   public function verificarTagCampanha($idTag,$idCampanha){
     try{
       $sql = Sql::getInstance()->verificarTagCampanhaSQL();
@@ -49,19 +58,19 @@ class TagCampanhaDAO
       return ($stmt->rowCount() > 0);
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
 
   }
-  /*
-  metodo para verificar total de campanhas de uma tag para esquematizacao da pesquisa de uma campanha
-  por tags
+
+  /** Método responsável por buscar uma determinada quantidade de campanhas de uma tag
+  * @param $nome da tag
+  * @param $inicio início da pesquisa
+  * @param $totalPorPagina total de campanhas que devem ter por pagina
+  * @return retorna uma lista de campanhas
   */
-
-
-
   public function buscarCampanhasPorTagLimite($nome, $inicio, $totalPorPagina){
-      try{
+    try{
       $sql = Sql::getInstance()->buscarCampanhasPorTagLimiteSQL($inicio, $totalPorPagina);
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
       $stmt->bindParam(1, $nome);
@@ -75,10 +84,14 @@ class TagCampanhaDAO
       }
       return $campanhas;
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar uma campanhas por uma tag
+  * @param $idTag identificador da tag
+  * @return retorna uma lista de campanhas
+  */
   public function buscarCampanhasPorTag($idTag){
     try{
       $sql = Sql::getInstance()->buscarCampanhasPorTagSQL();
@@ -92,16 +105,24 @@ class TagCampanhaDAO
       }
       return $campanhas;
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável pela personificação das informações da tabela tagCampanha como um objeto php
+  * @param $row array que contém as informações de uma linha onde as chaves são os nomes das colunas e os valores são referentes ao valor da coluna daquela linha
+  * @return objeto do tipo Administrador
+  */
   public function popularTagCampanha($row){
 
     return new CampanhaTag($row['idcampanha'],$row['idtag']);
 
   }
 
+  /** Método responsável por buscar tags de uma campanha
+  * @param $idCampanha identificador da campanha
+  * @return retorna uma lista de tag
+  */
   public function buscarTagsDaCampanha($idCampanha){
     try{
       $sql = Sql::getInstance()->buscarTagsDaCampanhaSQL();
@@ -115,7 +136,7 @@ class TagCampanhaDAO
       }
       return $tags;
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 }

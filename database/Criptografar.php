@@ -1,5 +1,7 @@
 <?php
-
+/**
+* Classe para criptografia de senhas
+*/
 class Criptografar {
 
     protected static $_saltPrefix = '2a';

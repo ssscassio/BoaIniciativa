@@ -29,9 +29,9 @@ class ConviteDao
   */
   private function popularConvite($row){
     return new Convite($row['cpf'],
-                       $row['codconvidado'],
-                       $row['idcampanha'],
-                       $row['data']);
+    $row['codconvidado'],
+    $row['idcampanha'],
+    $row['data']);
   }
 
 

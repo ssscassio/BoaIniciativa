@@ -6,8 +6,8 @@ require_once("Sql.php");
 
 
 /**
-* Classe responsável pela manipulação da tabela de Material
-*@author gordinh
+*Classe MaterialDAO
+* Classe referente a manipulação de um material no banco de dados
 */
 class MaterialDAO
 {
@@ -24,7 +24,10 @@ class MaterialDAO
     return self::$instance;
   }
 
-
+  /** Método responsável por adicionar um material
+  * @param $material informações do material a ser adicionado
+  * @return retorna o id do material que foi adicionado
+  */
   public function adicionarMaterial($material){
     //Verifica se não tem um material com o mesmo nome
     try {
@@ -37,10 +40,13 @@ class MaterialDAO
       return ConexaoDB::getConexaoPDO()->lastInsertId('BoaIniciativa.material_codmaterial_seq');
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por remover um material
+  * @param $codMaterial codigo do material a ser removido
+  */
   public function removerMaterial($codMaterial){
     try{
       $sql = Sql::getInstance()->removerMaterialSQL();
@@ -48,14 +54,21 @@ class MaterialDAO
       $p_sql->bindParam(1, $codMaterial);
       $p_sql->execute();
     }catch (Exception $e){
-      echo "Erro: Código: " . $e->getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
-
+  /** Método responsável pela personificação das informações da tabela material como um objeto php
+  * @param $row array que contém as informações de uma linha onde as chaves são os nomes das colunas e os valores são referentes ao valor da coluna daquela linha
+  * @return objeto do tipo Administrador
+  */
   public function popularMaterial($linha){
     return new Material( $linha['nome'], $linha['medida'], $linha['codmaterial']);
   }
 
+  /** Método responsável por buscar um material
+  * @param $codMaterial codigo do material a ser buscado
+  * @return informações do material buscado
+  */
   public function buscarMaterial($codMaterial){
     try{
       $sql = Sql::getInstance()->buscarMaterialSQL();
@@ -65,10 +78,14 @@ class MaterialDAO
       $mat = $this->popularMaterial($stmt->fetch(PDO::FETCH_ASSOC));
       return $mat;
     }catch (Exception $e){
-      echo '<br> Erro: Código: ' . $e->getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar um material por um nome
+  * @param $nome nome do material a ser buscado
+  * @return informações do material buscado
+  */
   public function buscarMaterialNome($nome){
     try{
       $sql = Sql::getInstance()->buscarMaterialNomeSQL();
@@ -77,10 +94,14 @@ class MaterialDAO
       $stmt->execute();
       return $this->popularMaterial($stmt->fetch(PDO::FETCH_ASSOC));
     }catch (Exception $e){
-      echo '<br> Erro: Código: ' . $e->getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar o código de um material por um nome
+  * @param $nome nome do material a ser buscado
+  * @return código do material buscado
+  */
   public function buscarCodMaterial($nome){
     try{
       $sql = Sql::getInstance()->buscarCodMaterialSQL();
@@ -91,12 +112,14 @@ class MaterialDAO
       return $row['codmaterial'];
 
     }catch (Exception $e){
-      echo '<br> Erro: Código: ' . $e->getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
 
-
+  /** Método responsável por listar todos os materiais
+  * @return lista com os materiais
+  */
   public function listarMateriais(){
     try{
       $sql = Sql::getInstance()->listarMateriaisSQL();
@@ -109,10 +132,14 @@ class MaterialDAO
       }
       return $listaMateriais;
     } catch (Exception $e){
-      echo '<br> Erro: Código: ' . $e->getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por verificar um material
+  * @param $nome nome do material a ser buscado
+  * @return verifica se foi encontrado algum material
+  */
   public function verificaMaterial($nome){
     try{
       $sql = Sql::getInstance()->buscarMaterialNomeSQL();
@@ -121,7 +148,7 @@ class MaterialDAO
       $stmt->execute();
       return ($stmt->rowCount() > 0);
     } catch (Exception $e){
-      echo '<br> Erro: Código: ' . $e->getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 }
