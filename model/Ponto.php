@@ -54,7 +54,7 @@ class Ponto{
 		$this->latitude = $latitude;
 	}
 
-	public function setLatitude($longitude){
+	public function setLongitude($longitude){
 		$this->longitude = $longitude;
 	}
 

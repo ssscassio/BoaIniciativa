@@ -50,7 +50,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
       CriadorController::getInstance()->cadastrarMetaMaterial($idCampanha, $codMaterial, $qtd);
     }
     public function criarCampanha($nome, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria){
-      return CriadorController::getInstance()->criarCampanha($nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
+      return CriadorController::getInstance()->criarCampanha($nome, $descricao, $dataInicio, 'default.png', $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
     }
     public function editarMetas($codMaterial, $qtd, $idCampanha){
       CriadorController::getInstance()->editarMetas($codMaterial, $qtd, $idCampanha);
@@ -67,6 +67,9 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
 
     public function excluirCampanha($idCampanha){
       return CriadorController::getInstance()->excluirCampanha($idCampanha);      
+    }
+    public function cadastrarEndereco($idCampanha, $endereco){
+      CriadorController::getInstance()->cadastrarEndereco($idCampanha, $endereco);
     }
 
 

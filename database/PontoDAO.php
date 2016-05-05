@@ -1,7 +1,7 @@
 <?php
 require_once("Sql.php");
 require_once('ConexaoDB.php');
-require_once('../model/Ponto.php');
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/Ponto.php");
   /*
    * Classe referente a Personificação do Ponto de Coleta do Banco de Dados
 

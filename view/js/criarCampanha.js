@@ -26,6 +26,15 @@
     pai.appendChild(clone);  
   };
 
+  cadastraPonto = function(){
+    var pai = document.getElementById('cadastramentoPonto');
+    var cadastro = document.getElementById('cadastroPonto');
+    cadastro.style.display = 'block';
+    var clone = cadastro.cloneNode(true);
+
+    pai.appendChild(clone);  
+  };
+
   cadastrarMaterialData = function(){
     var pai = document.getElementById('cadastroData');
     var cadastro = document.getElementById('cadastroEscondido');
@@ -72,6 +81,16 @@
 
     return false;
   };
+
+  removeEndereco = function(me){
+    var remove = $(me).closest('#cadastroPonto');
+    remove.fadeOut(400, function(){
+      remove.remove();
+    });
+
+    return false;
+  };
+
 
 })(jQuery);
 
