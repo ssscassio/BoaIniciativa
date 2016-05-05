@@ -6,6 +6,8 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MaterialDAO
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/UsuarioDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/TagCampanhaDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/AtendenteCampanhaDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/PontoDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/PontoCampanhaDAO.php");
 
 
 /**
@@ -186,6 +188,16 @@ class  CriadorController
   */
   function excluirCampanha($idCampanha){
     CampanhaDAO::getInstance()->deletarCampanha($idCampanha);
+  }
+
+  /** Método responsável por cadastrar os endereços dos pontos de coleta de uma campanha
+  *@param $idCampanha id da campanha a qual será adicionada os pontos de coleta
+  *@param $endereco uma string que contém o endereço do ponto de coleta
+  */
+
+  function cadastrarEndereco($idCampanha, $endereco){
+    $idPonto = PontoDAO::getInstance()->adicionarPonto($endereco);
+    PontoCampanhaDAO::getInstance()->adicionarCampanhaPonto($idPonto, $idCampanha);
   }
 
 

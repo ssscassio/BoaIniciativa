@@ -5,7 +5,8 @@ require_once("Sql.php");
 require_once('CampanhaDAO.php');
 require_once('UsuarioDAO.php');
 /**
-* Classe que manipula a tabela Que associa um atendente a uma Campanha
+*Classe AtendenteCampanhaDAO
+* Classe referente a manipulação de um administrador no banco de dados
 */
 class AtendenteCampanhaDAO {
 
@@ -22,7 +23,10 @@ class AtendenteCampanhaDAO {
   }
 
 
-  //deleta um convite de ser atendente em uma campanha
+  /** Método responsável por deletar um convite de ser atendente em uma campanha
+  * @param $cpfAtendente cpf do atendente
+  * @param $idCampanha identificador da campanha
+  */
   public function deletarAtendente ($cpfAtendente, $idCampanha){
     try {
       $sql = Sql::getInstance()->deletarAtendenteCampanhaSQL();
@@ -31,10 +35,15 @@ class AtendenteCampanhaDAO {
       $stmt->bindParam(2, $cpfAtendente);
       $stmt->execute();
     } catch (Exception $e) {
-      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por autenticar um atendente em uma campanha
+  * @param $cpf cpf do atendente
+  * @param $idCampanha identificador da campanha
+  * @return retorna se o atendente foi autenticado ou não
+  */
   public function autenticarAtendente($cpf, $idCampanha){
     try {
       $sql = Sql::getInstance()->autenticarAtendenteSQL();
@@ -44,11 +53,15 @@ class AtendenteCampanhaDAO {
       $stmt->execute();
       return ($stmt->rowCount() > 0);
     } catch (Exception $e) {
-      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
-
-
   }
+
+
+  /** Método responsável por listar convites para um usuario ser atendente em determinada campanha
+  * @param $usuarioCpf cpf do usuário
+  * @return retorna uma lista de campanhas
+  */
   public function listarConfirmacoesPendentes($usuarioCpf){
     try{
       $sql = Sql::getInstance()->listarConfirmacoesPendentesSQL();
@@ -69,36 +82,50 @@ class AtendenteCampanhaDAO {
       return $arrayCampanhas;
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por confirmar a participação de um atendente em determinada campanha
+  * @param $usuarioCpf cpf do usuário
+  * @param $idCampanha id de uma campanha
+  * @return retorna se o script do banco foi rodado corretamente
+  */
   public function confirmarParticipacaoAtendente($usuarioCpf, $idCampanha){
     try {
-    $sql = Sql::getInstance()->aceitarConviteSQL();
-    $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-    $stmt->bindParam(1,$usuarioCpf);
-    $stmt->bindParam(2,$idCampanha);
-    return $stmt->execute();
+      $sql = Sql::getInstance()->aceitarConviteSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1,$usuarioCpf);
+      $stmt->bindParam(2,$idCampanha);
+      return $stmt->execute();
 
     } catch (Exception $e) {
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por cancelar a participação de um atendente em determinada campanha
+  * @param $usuarioCpf cpf do usuário
+  * @param $idCampanha id de uma campanha
+  * @return retorna se o script do banco foi rodado corretamente
+  */
   public function cancelarParticipacaoAtendente($usuarioCpf, $idCampanha){
     try {
-    $sql = Sql::getInstance()->cancelarConviteSQL();
-    $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-    $stmt->bindParam(1,$usuarioCpf);
-    $stmt->bindParam(2,$idCampanha);
-    return $stmt->execute();
+      $sql = Sql::getInstance()->cancelarConviteSQL();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParam(1,$usuarioCpf);
+      $stmt->bindParam(2,$idCampanha);
+      return $stmt->execute();
 
     } catch (Exception $e) {
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por listar campanhas de um determinado atendente
+  * @param $usuarioCpf cpf do usuário
+  * @return retorna uma lista de campanhas
+  */
   public function listarCampanhasAtendente($usuarioCpf){
     try{
       $sql = Sql::getInstance()->listarCampanhasAtendenteSQL();
@@ -119,10 +146,14 @@ class AtendenteCampanhaDAO {
       return $arrayCampanhas;
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por listar atendentes de um determinado campanha
+  * @param $idCampanha id de uma campanha
+  * @return retorna uma lista de atendentes
+  */
   public function listarAtendentesCampanha($idCampanha){
 
     try{
@@ -145,11 +176,16 @@ class AtendenteCampanhaDAO {
       return $arrayAtendentes;
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
 
   }
 
+  /** Método responsável por adicionar um atendentes em determinado campanha
+  * @param $idCampanha id de uma campanha
+  * @param $CpfAtendente cpf de um usuário
+  * @return retorna um booleado que indica se o usuário foi adicionado ou não
+  */
   public function adicionarAtendenteCampanha($idCampanha, $CpfAtendente){
     try{
 
@@ -183,7 +219,7 @@ class AtendenteCampanhaDAO {
       }
 
     }catch (Exception $e){
-      echo "<br> Exception: Codigo: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
 
   }

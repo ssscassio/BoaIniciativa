@@ -4,7 +4,8 @@ require_once("Sql.php");
 require_once('../model/Convidado.php');
 
 /**
-* Classe que manipula os dados na tabela de Convidado
+*Classe ConvidadoDAO
+* Classe referente a manipulação de um convidado no banco de dados
 */
 class ConvidadoDAO{
 
@@ -24,6 +25,10 @@ class ConvidadoDAO{
     return new Convidado($row['email'], $row['classificacao'], $row['codconvidado']);
   }
 
+  /** Método responsável por buscar um convidado pelo seu email
+  * @param $email email do convidado a ser buscado
+  * @return retorna informações do convidado buscado
+  */
   public function buscarConvidadoPorEmail($email){
     try{
       $sql = Sql::getInstance()->buscarConvidadoPorEmailSQL();
@@ -33,10 +38,14 @@ class ConvidadoDAO{
       return $this->popularConvidado($stmt->fetch(PDO::FETCH_ASSOC));
 
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por adicionar um convidado
+  * @param $convidado informações do convidado a ser adicionado
+  * @return retorna o id do convidado adicionado
+  */
   public function adicionarConvidado ($convidado){
     try{
       $sql = Sql::getInstance()->adicionarConvidadoSQL();
@@ -47,9 +56,10 @@ class ConvidadoDAO{
       return ConexaoDB::getConexaoPDO()->lastInsertId('BoaIniciativa.convidado_codconvidado_seq');
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
+
 
   public function buscarEmailConvidado($codConvidado){
     try{
@@ -60,10 +70,14 @@ class ConvidadoDAO{
       return $this->popularConvidado($stmt->fetch(PDO::FETCH_ASSOC));
 
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável verificar um convidado cadastrado
+  * @param $email email do convidado
+  * @return true caso o email seja de um usuário que já foi convidado
+  */
   public function verificaConvidadoCadastrado($email){
     try{
       $sql = Sql::getInstance()->verificarConvidadoCadastradoSQL();
@@ -73,7 +87,7 @@ class ConvidadoDAO{
       return ($stmt->rowCount() > 0); //True = email já utilizado, False = cadastro liberado
 
     } catch (Excepetion $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
     return FALSE;
   }

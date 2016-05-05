@@ -4,7 +4,8 @@ require_once('ConexaoDB.php');
 require_once("Sql.php");
 
 /**
-* Classe referente ao acesso a tabela campanha no banco de dados
+*Classe CampanhaDAO
+* Classe referente a manipulação de uma campanha no banco de dados
 */
 class CampanhaDAO
 {
@@ -16,10 +17,14 @@ class CampanhaDAO
 
   public static function getInstance() {
     if (!isset(self::$instance))
-      self::$instance = new CampanhaDAO();
+    self::$instance = new CampanhaDAO();
     return self::$instance;
   }
 
+  /** Método responsável por adicionar uma campanha
+  * @param $campanha informações da campanha a ser adicionada
+  * @return retorna o id da campanha inserida
+  */
   public function adicionarCampanha($campanha){
     try{
       $sql = Sql::getInstance()->adicionarCampanhaSQL();
@@ -48,6 +53,10 @@ class CampanhaDAO
     }
   }
 
+  /** Método responsável por buscar uma campanha
+  * @param $idCampanha id da campanha a ser buscada
+  * @return retorna informações da campanha buscada
+  */
   public function buscarCampanha($idCampanha){
     try{
       $sql = Sql::getInstance()->buscarCampanhaSQL();
@@ -58,10 +67,14 @@ class CampanhaDAO
       return $this->popularCampanha($stmt->fetch(PDO::FETCH_ASSOC));
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar campanhas em destaque
+  * @param $quantidade quantidade de campanhas que devem ser buscadas
+  * @return retorna uma lista de campanhas
+  */
   public function buscarCampanhasDestaque($quantidade){
     try{
       $sql = Sql::getInstance()->buscarCampanhasDestaqueSQL();
@@ -76,10 +89,14 @@ class CampanhaDAO
 
       return $listaCampanha;
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar campanhas de forma aleatória
+  * @param $quantidade quantidade de campanhas que devem ser buscadas
+  * @return retorna uma lista de campanhas
+  */
   public function buscarCampanhasAleatorias($quantidade){
 
     try{
@@ -95,28 +112,40 @@ class CampanhaDAO
 
       return $listaCampanha;
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar o id de uma campanha através do seu nome
+  * @param $nomeCampanha nome da campanha buscada
+  * @return retorna o id da campanha
+  */
   public function buscarIdCampanha($nomeCampanha){
     try{
       return $this->procurarCampanha($nomeCampanha)->getIdCampanha();
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável pela personificação das informações da tabela Campanha como um objeto php
+  * @param $row array que contém as informações de uma linha onde as chaves são os nomes das colunas e os valores são referentes ao valor da coluna daquela linha
+  * @return objeto do tipo Administrador
+  */
   private function popularCampanha($linha){
     $campanha = new Campanha ($linha['idcampanha'],$linha['nome'],$linha['descricao'],$linha['datainicio'],$linha['imagem'],
-                              $linha['criadorcpf'],$linha['finalizapordata'],$linha['datafim']);
+    $linha['criadorcpf'],$linha['finalizapordata'],$linha['datafim']);
     $campanha->setTituloAgradecimento($linha['tituloagradecimento']);
     $campanha->setAgradecimento($linha['mensagemagradecimento']);
     $campanha->setValores(array($linha['valor1'], $linha['valor2'], $linha['valor3']));
     return $campanha;
   }
 
+  /** Método responsável por buscar uma campanha através do seu nome
+  * @param $nome nome da campanha buscada
+  * @return retorna um objeto com  informações sobre a campanha buscada
+  */
   public function procurarCampanha($nome){
     try{
       $sql = Sql::getInstance()->procurarCampanhaSQL();
@@ -127,10 +156,14 @@ class CampanhaDAO
       return $this->popularCampanha($stmt->fetch(PDO::FETCH_ASSOC));
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar campanhas que contenham determinado caracter em seu nome
+  * @param $nome nome da campanha buscada
+  * @return retorna uma lista de campanhas
+  */
   public function procurarCampanhaNome($nome){
     try{
       $nome = strtolower($nome);
@@ -147,10 +180,13 @@ class CampanhaDAO
 
       return $listaCampanha;
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por editar uma campanha
+  * @param $campanha informações da campanha que deve ser editada
+  */
   public function editarCampanha($campanha){
     try{
       $sql = Sql::getInstance()->editarCampanhaSQL();
@@ -165,10 +201,14 @@ class CampanhaDAO
 
 
     } catch (Exception $e) {
-      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por encerrar uma campanha
+  * @param $idCampanha id da campanha a ser encerrada
+  * @param $data data atual do encerramento que será registrada no banco
+  */
   public function encerrarCampanha($idCampanha, $data){
     try{
       $sql = Sql::getInstance()->encerrarCampanhaSQL();
@@ -177,10 +217,13 @@ class CampanhaDAO
       $stmt->bindParam(2, $idCampanha);
       $stmt->execute();
     } catch (Exception $e) {
-      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por listar todas campanha
+  * @return uma lista de campanhas
+  */
   public function listarCampanhas(){
     try{
       $sql = Sql::getInstance()->listarCampanhasSQL();
@@ -192,10 +235,14 @@ class CampanhaDAO
       }
       return $listaCampanha;
     } catch (Exception $e){
-      echo '<br> Erro: Código: ' . $e->getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por buscar campanhas de determinado criador
+  * @param $cpfCriador cpf do criador
+  * @return uma lista de campanhas
+  */
   public function buscarCampanhaPorCriador($cpfCriador){
     try{
       $sql = Sql::getInstance()->buscarCampanhaPorCriadorSQL();
@@ -217,12 +264,15 @@ class CampanhaDAO
       return $arrayCampanhas;
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
 
-
+  /** Método responsável por verificar campanhas cadastradas através do nome
+  * @param $nome nome da campanha a ser verificada
+  * @return uma verificação se a execução do script banco de dados deu certo ou não
+  */
   public function verificaCampanhaCadastrada($nome){
     try{
       $sql = Sql::getInstance()->verificarCampanhaCadastradaSQL();
@@ -233,11 +283,14 @@ class CampanhaDAO
       return ($stmt->rowCount() > 0);
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
       return false;
     }
   }
 
+  /** Método responsável por deletar uma campanha através do seu id
+  * @param $idCampanha id da campanha
+  */
   public function deletarCampanha($idCampanha){
     try {
       $sql = Sql::getInstance()->deletarCampanhaSQL();
@@ -246,10 +299,13 @@ class CampanhaDAO
       $stmt->execute();
 
     } catch (Exception $e) {
-      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por deletar uma campanha através do seu nome
+  * @param $nomeCampanha nome da campanha
+  */
   public function deletarCampanhas($nomeCampanha){
     try{
       $sql = Sql::getInstance()->deletarMuitasCampanhasSQL();
@@ -258,11 +314,8 @@ class CampanhaDAO
       $stmt->execute();
 
     } catch (Exception $e) {
-      echo "Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
-
 }
-
-
 ?>
