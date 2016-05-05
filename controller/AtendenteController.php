@@ -139,7 +139,7 @@ class AtendenteController
     $data = date('d/m/Y');
     DoacaoDAO::getInstance()->confirmarDoacao($data,$atendenteConfirma, $idDoacao);
 
-    enviarAgradecimento($idDoacao);
+    AtendenteController::getInstance()->enviarAgradecimento($idDoacao);
   }
 
   /**
@@ -150,7 +150,7 @@ class AtendenteController
     $doacao = DoacaoDAO::getInstance()->buscarDoacaoPorId($idDoacao);
     $campanha = CampanhaDAO::getInstance()->buscarCampanha($doacao->getIdCampanha());
 
-    $agradecimento = Agradecimento($campanha->getTituloAgradecimento(),$doacao->getCpfDoador(), $campanha->getAgradecimento(), '../img/agradecimento.png', $campanha->getidCampanha());
+    $agradecimento = new Agradecimento($campanha->getTituloAgradecimento(),$doacao->getCpfDoador(), $campanha->getAgradecimento(), '../img/agradecimento.png', $campanha->getidCampanha());
     AgradecimentoDAO::getInstance()->adicionarAgradecimento($agradecimento);
   }
 

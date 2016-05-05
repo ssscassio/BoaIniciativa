@@ -189,6 +189,7 @@ if(isset($_POST['botaoLogar'])){
 
     AtendenteController::getInstance()->receberMateriais($idDoacao, $materiaisDoados);
     AtendenteController::getInstance()->confirmarDoacao($idDoacao,$_POST['cpfAtendente']);
+    header('location:campanhasAtendente.php');
 
 
 }else if(isset($_POST['botaoSenha'])){
