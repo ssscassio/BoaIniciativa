@@ -4,7 +4,8 @@ require_once('ConexaoDB.php');
 require_once("Sql.php");
 
 /**
-*
+*Classe ConviteDAO
+* Classe referente a manipulação de um convite no banco de dados
 */
 class ConviteDao
 {
@@ -22,6 +23,10 @@ class ConviteDao
   }
 
 
+  /** Método responsável pela personificação das informações da tabela convite como um objeto php
+  * @param $row array que contém as informações de uma linha onde as chaves são os nomes das colunas e os valores são referentes ao valor da coluna daquela linha
+  * @return objeto do tipo Administrador
+  */
   private function popularConvite($row){
     return new Convite($row['cpf'],
                        $row['codconvidado'],
@@ -30,6 +35,10 @@ class ConviteDao
   }
 
 
+  /** Método responsável por adicionar um convite
+  * @param $convite informações do convite a ser adicionado
+  * @return retorna o id do convidado adicionado
+  */
   public function adicionarConvite($convite){
 
     try{
@@ -43,11 +52,15 @@ class ConviteDao
       $stmt->execute();
 
     }catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
 
   }
 
+  /** Método responsável por buscar convites de uma determinada campanha
+  * @param $idCampanha id da campanha
+  * @return retorna uma lista de convites
+  */
   public function buscarConvitesCampanha($idCampanha){
 
     try{
@@ -64,11 +77,15 @@ class ConviteDao
 
       return $arrayConvites;
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
 
+  /** Método responsável por buscar convites de um usuário
+  * @param $cpfConvidador cpf do usuário
+  * @return retorna uma lista de convites
+  */
   public function buscarConvitesUsuario($cpfConvidador){
     try{
       $sql = Sql::getInstance()->buscarConvitesCampanhaSQL();
@@ -83,10 +100,13 @@ class ConviteDao
       }
       return $arrayConvites;
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 
+  /** Método responsável por listar convites
+  * @return retorna uma lista de convites
+  */
   public function listarConvites(){
     try{
       $sql = Sql::getInstance()->listarConvitesSQL();
@@ -99,7 +119,7 @@ class ConviteDao
       }
       return $arrayConvites;
     } catch (Exception $e){
-      echo "<br> Erro: Código: " . $e-> getCode() . " Mensagem: " . $e->getMessage();
+
     }
   }
 }
