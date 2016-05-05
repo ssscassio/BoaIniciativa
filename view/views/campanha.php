@@ -119,7 +119,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
 
 
 
-    <div class="panel" style="padding:0px 10px 70px 10px;">
+    <div class="panel row" style="padding:0px 10px 70px 10px;">
       <center>
         <?php
         if(isset($_SESSION['cpf'])){

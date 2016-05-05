@@ -67,8 +67,8 @@
 
 
             <?php
+            echo '</div>';
           }
-          echo '</div>';
         }
         ?>
       </div>
@@ -80,4 +80,4 @@
   <?php
   include("footer.php");
   ?>
-</div>   
+</div>
