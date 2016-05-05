@@ -23,7 +23,7 @@ class  UsuarioController
 
   public static function getInstance() {
     if (!isset(self::$instance))
-      self::$instance = new UsuarioController();
+    self::$instance = new UsuarioController();
     return self::$instance;
   }
 
@@ -63,7 +63,7 @@ class  UsuarioController
     if(DenunciaDAO::getInstance()->adicionarDenuncia($denuncia) == null){
       return false;
     }else{
-    return true;
+      return true;
     }
 
 
@@ -78,4 +78,4 @@ class  UsuarioController
   }
 }
 
- ?>
+?>
