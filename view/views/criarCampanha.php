@@ -66,29 +66,26 @@
 </head>
   <body>
     <?php include("cabecalhologado.php");?>
-
+    
   <br><br><br>
 
 
     <div class="container">
-      <div class="col-lg-12 panel panel-default">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h1 class="page-header">Criar Campanha</h1>
-          </div>
-        </div> 
+      <div class="col-md-12 panel panel-default">
+        <?php include_once("painelCriador.php"); ?>
+        <div class="col-md-9 text-center">
+          <h1 class="page-header">Criar Campanha</h1>
+        </div>
         <div class="container">
-          <div class="col-lg-12 text-center">
+          <div class="col-md-9">
             <div id="form">
               <!-- Formulário -->
 
-              <form method="post" action="CriarCampanhaP2.php">
+              <form method="post" action="criarCampanhaP2.php">
               <!-- PERGUNTA 1 -->
-              <div class="text-center">
-                <div class="col-lg-11 hard-form-label">
-                  <div class="container">
-                    <h2><strong>1 - Seleciona uma categoria para sua campanha</strong></h2>
-                  </div>
+              <div>
+                <div class="container">
+                  <h2><strong>1-Seleciona uma categoria para sua campanha</strong></h2>
                 </div>
                 <!-- caixa de  texto -->
                 <div class="container">
@@ -103,13 +100,10 @@
                   </div>
                 </div>
               </div>
-              <br><br>
               <!-- PERGUNTA 2 -->
-                <div class="form-group text-center">
-                  <div class="col-lg-11 hard-form-label">
-                    <div class="container">
-                      <h2><strong>2- Qual o nome para sua campanha?</strong></h2>
-                    </div>
+                <div class="form-group">
+                  <div class="container">
+                    <h2><strong>2-Qual o nome para sua campanha?</strong></h2>
                   </div>
                   <!-- caixa de  texto -->
                   <div class="container">
@@ -118,14 +112,12 @@
                     </div>
                   </div>
                 </div>
-                <br><br><br><br>
                 <!-- PERGUNTA 3-->
-                <div class="form-group text-center">
-                  <div class="col-lg-11 hard-form-label">
-                    <div class="container">
-                      <h2><strong>3- Fale um pouco da sua campanha pra nós :)</strong></h2>
-                    </div>
+                <div class="form-group">
+                  <div class="container">
+                    <h2><strong>3-Fale um pouco da sua campanha pra nós </strong></h2>
                   </div>
+                  
                   <!-- caixa de  texto -->
                   <div class="container">
                     <div class="row">
@@ -136,13 +128,10 @@
                 </div>     
                 <br>
                           <!-- PERGUNTA 4-->
-                <div class="form-group text-center">
-                  <div class="col-lg-11 hard-form-label">
-                    <div class="container">
-                      <h2><strong>4 - Qual tipo de arrecadação você quer para sua campanha? :)</strong></h2>                   
-                    </div>
+                <div class="form-group">
+                  <div class="container">
+                    <h2><strong>4-Escolha um tipo de arrecadação</strong></h2>                   
                   </div>
-                  <br><br><br><br>
                 <!-- caixa de  texto -->
                 <div class="container">
                   <div class="row">
@@ -153,16 +142,12 @@
                     </div>
                   </div>
                 </div>
-                <br><br>
                 <!-- campanha monetaria// usuario vai colocar 3 valores padrões-->
-                <div class="form-group text-center" id="monetaria" style="display: none;">
-                  <div class="col-lg-11 hard-form-label">
-                    <!--cabeçalho -->
-                    <div class="container">
-                      <h2><strong>4.5 - Adicione 3 valores padrões para serem doados</strong></h2>
-                    </div>
+                <div class="form-group" id="monetaria" style="display: none;">
+                  <!--cabeçalho -->
+                  <div class="container">
+                    <h2><strong>4.5-Adicione 3 valores padrões para serem doados</strong></h2>
                   </div>
-                  <br><br>
                   <!-- valores padrões de doação -->
                   <div class="container" style="float: center;">
                   <!-- primeiro valor -->
@@ -195,13 +180,10 @@
 
 
                 <!--PERGUNTA 5 -->
-               <div class="form-group text-center">
-                <div class="col-lg-11 hard-form-label">
-                  <div class="container">
-                    <h2><strong>5 - Como você deseja encerrar sua campanha? :)</strong></h2>
-                  </div>
+               <div class="form-group">
+                <div class="container">
+                  <h2><strong>5-Como você deseja encerrar sua campanha? </strong></h2>
                 </div>
-                <br><br><br><br>
                 <!-- caixa de  texto -->
                 <div class="container">
                   <div class="row">
@@ -211,23 +193,25 @@
                     <label class="radio-inline text-center"><input type="radio" id="idData" name="metaData" value="data" onclick="mostrarOpcoes()">Data </label>
                   </div>
                 </div>
-              </div>   
-              <br><br>
+              </div> 
 <script type="text/javascript">
     function mostrarOpcoes(){
       if(document.getElementById('money').checked){
         document.getElementById('monetaria').style.display = "block";
         document.getElementById("adicionarAtendente").style.display = "none";
+        document.getElementById("adicionarPonto").style.display = "none";
       }
       else if(document.getElementById('mat').checked){
         document.getElementById('monetaria').style.display = "none";
         document.getElementById("adicionarAtendente").style.display = "block";
+        document.getElementById("adicionarPonto").style.display = "block";
 
       }
       if(document.getElementById('money').checked && document.getElementById('idMeta').checked){
         document.getElementById("metaMonetaria").style.display = "block";
         document.getElementById("dataMonetaria").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
+        document.getElementById("adicionarPonto").style.display = "none";
         document.getElementById("adicionarAtendente").style.display = "none";
         document.getElementById("metaMaterial").style.display = "none"; 
         document.getElementById("dataMaterial").style.display = "none"; 
@@ -235,15 +219,18 @@
       else if(document.getElementById('mat').checked && document.getElementById('idMeta').checked){
         document.getElementById("metaMaterial").style.display = "block"; 
         document.getElementById("adicionarAtendente").style.display = "block";
+        document.getElementById("adicionarPonto").style.display = "block";
         document.getElementById("dataMaterial").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
         document.getElementById("metaMonetaria").style.display = "none";
         document.getElementById("dataMonetaria").style.display = "none";
+        
       }         
       else if(document.getElementById('money').checked && document.getElementById('idData').checked){
         document.getElementById("dataMonetaria").style.display = "block";
         document.getElementById("adicionarAtendente").style.display = "none";
         document.getElementById("metaMonetaria").style.display = "none";
+        document.getElementById("adicionarPonto").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
         document.getElementById("metaMaterial").style.display = "none"; 
         document.getElementById("dataMaterial").style.display = "none";
@@ -252,6 +239,7 @@
         document.getElementById("dataMaterial").style.display = "block"; 
         document.getElementById("ddataMaterial").style.display = "block";
         document.getElementById("adicionarAtendente").style.display = "block";
+        document.getElementById("adicionarPonto").style.display = "block";
         document.getElementById("metaMaterial").style.display = "none";  
         document.getElementById("metaMonetaria").style.display = "none";
         document.getElementById("dataMonetaria").style.display = "none";
@@ -261,14 +249,12 @@
 </script>
 
               <!-- meta monetaria -->
-              <div class="form-group text-center" id="metaMonetaria" style="display: none;">
+              <div class="form-group" id="metaMonetaria" style="display: none;">
                 <!-- cabeçalho -->
                 <div id="metas">
-                  <div class="col-lg-11 hard-form-label">
-                    <div class="container">
-                      <h2><strong>5.5 - Defina a meta a ser alcançada</strong></h2>
-                    </div>
-                  </div> <!-- fim cabeçalho -->
+                  <div class="container">
+                    <h2><strong>5.5-Defina a meta a ser alcançada</strong></h2>
+                  </div><!-- fim cabeçalho -->
                   <!-- corpo da meta -->
                   <div class="container">
                     <div class="row">
@@ -283,14 +269,11 @@
               </div><!-- FIM META MONETARIA -->
 
                <!-- data monetaria -->
-              <div class="form-group text-center" id="dataMonetaria" style="display: none;">
+              <div class="form-group" id="dataMonetaria" style="display: none;">
                 <!-- cabeçalho -->
-                  <div class="col-lg-11 hard-form-label">
-                    <div class="container">
-                      <h2><strong>5.5 - Defina a data de término de sua campanha </strong></h2>
-                    </div>
+                  <div class="container">
+                    <h2><strong>5.5-Defina a data de término de sua campanha </strong></h2>
                   </div> <!-- fim do cabeçalho -->
-                  <br><br><br><br>
                   <!-- corpo data -->
                   <div class="container">
                     <!-- campos de data -->
@@ -305,14 +288,11 @@
 
 
               <!-- data material -->
-              <div class="form-group text-center" id="ddataMaterial" style="display: none;">
+              <div class="form-group" id="ddataMaterial" style="display: none;">
                 <!-- cabeçalho -->
-                  <div class="col-lg-11 hard-form-label">
-                    <div class="container">
-                     <h2><strong>5.5 - Defina a data de término de sua campanha </strong></h2>
-                    </div>
-                  </div> <!-- fim do cabeçalho -->
-                  <br><br><br><br>
+                  <div class="container">
+                    <h2><strong>5.5-Defina a data de término de sua campanha </strong></h2>
+                  </div><!-- fim do cabeçalho -->
                   <!-- corpo data -->
                   <div class="container">
                     <!-- campos de data -->
@@ -327,78 +307,70 @@
               </div><!-- FIM DATA MATERIAL -->
 
               <!-- meta material -->
-              <div class="form-group text-center" id="metaMaterial" style="display: none;">
+              <div class="form-group" id="metaMaterial" style="display: none;">
                 <!-- cabeçalho -->
-                  <div class="col-md-8 hard-form-label">
-                    <div class="container">
-                      <h2><strong>5.5 - Escolha os itens e quantidade a serem arrecados</strong></h2>
-                    </div>
-                  </div> <!-- fim cabeçalho -->
-                  <!-- corpo da meta material -->
-                  <div class="col-lg-10" id="pai">            
-                    <div class="container" id="filho">
-                      <div>  
-                        <div class="row"> 
-
-                          <!-- material -->
-                          <div style="float: left;" class="col-md-3" id="selecionador">
-                            <select id="itensMedidas" name="materialDoacao[]">
-                              <option value="None">- Selecione uma material para ser doado</option>
-                              <?php echo $opcoes;?>          
-                            </select>                    
-                          </div>
-                          <!-- quantidade -->
-                          <div class="col-xs-6" style="float: center;" id="quantidade">
-                            <input type="number" min="1" size="60" name="quantidadeMaterial[]]" placeholder="quantidade">
-                          </div>                   
-                          <div class="col-xs-2" style="float: left;" id="botaopai">
-                            <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisMaterial()"><i class="fa fa-plus"></i></button>
-                            
-                          </div>
-                        </div>    <!--fim da linha -->
-                        
-                      <br><br>
-                      </div>                  
-                    </div>    <!-- FIM DE FILHO -->  
-                  </div>  <!-- FIM DE PAI -->
-                  <div class="col-lg-10" id="dad">
-                    <div class="container" id="son">
-                      <div>
-                        <div class="row">
-                          <div>                      
-                            <button class="btn btn-info" type="button" onclick="cadastrarMaterial()">Adicionar um material não cadastrado</button>
-                            <br><br>
-                          </div>  
-                          <div id="cadastro">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div> <!-- fim meta material -->
-
-              <!-- data material -->
-              <div class="form-group text-center" id="dataMaterial" style="display: none;">
-                <!-- cabeçalho -->
-                <div class="col-lg-11 hard-form-label">
-                  <div class="container">
-                    <h2><strong>5.5 - Escolha os itens a serem arrecados</strong></h2>
-                  </div>
-                </div> <!-- fim cabeçalho -->
+                <div class="container">
+                  <h2><strong>5.5-Escolha os itens e quantidade a serem arrecados</strong></h2>
+                </div><!-- fim cabeçalho -->
                 <!-- corpo da meta material -->
-                <div class="col-lg-10" id="pai1">           
-                  <div class="container" id="filho1">
+                <div class="col-md-8" id="pai">            
+                  <div class="container" id="filho">
                     <div>  
                       <div class="row"> 
 
                         <!-- material -->
                         <div style="float: left;" class="col-md-3" id="selecionador">
                           <select id="itensMedidas" name="materialDoacao[]">
+                            <option value="None">- Selecione uma material para ser doado</option>
+                            <?php echo $opcoes;?>          
+                          </select>                    
+                        </div>
+                        <!-- quantidade -->
+                        <div class="col-md-4" style="float: center;" id="quantidade">
+                          <input type="number" min="1" size="60" name="quantidadeMaterial[]]" placeholder="quantidade">
+                        </div>                   
+                        <div class="col-md-1" style="float: left;" id="botaopai">
+                          <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisMaterial()"><i class="fa fa-plus"></i></button>
+                          
+                        </div>
+                      </div>    <!--fim da linha -->
+                      
+                    <br><br>
+                    </div>                  
+                  </div>    <!-- FIM DE FILHO -->  
+                </div>  <!-- FIM DE PAI -->
+                <br><br><br>
+                <div class="container" style="float: left;">
+                  <div class="row">
+                    <div>                      
+                      <button class="btn btn-info" type="button" onclick="cadastrarMaterial()">Adicionar um material não cadastrado</button>
+                      <br><br>
+                    </div>  
+                    <div id="cadastro"></div>
+                  </div>
+                </div>
+              </div> <!-- fim meta material -->
+
+              <!-- data material -->
+              <div class="form-group" id="dataMaterial" style="display: none;">
+                <!-- cabeçalho -->
+                <div class="container">
+                  <h2><strong>5.5-Escolha os itens a serem arrecados</strong></h2>
+                </div><!-- fim cabeçalho -->
+                <!-- corpo da meta material -->
+                <div id="pai1">           
+                  <div class="container" id="filho1">
+                    <div>  
+                      <div class="row col-md-8"> 
+
+                        <!-- material -->
+                        <div style="float: left;" class="col-md-4" id="selecionador">
+                          <select id="itensMedidas" name="materialDoacao[]">
                             <option value="None">- Selecione uma uma material para ser doado</option>
                             <?php echo $opcoes;?>          
                           </select>                    
                         </div>                 
-                        <div class="col-md-2" style="float: left;" id="botaopai1">
+                        <div class="col-md-2" style="float: right;" id="botaopai1">
                           <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisDataMaterial()"><i class="fa fa-plus"></i></button>
                         </div>
                       </div>    <!--fim da linha -->                      
@@ -406,7 +378,7 @@
                     </div>                  
                   </div>                  
                 </div>
-                <div class="col-lg-10" id="dad">
+                <div id="dad">
                   <div class="container" id="son">
                     <div>
                       <div class="row">
@@ -423,13 +395,10 @@
               </div> <!-- fim data material -->
 
 
-              
               <!-- PERGUNTA 6 -->
-              <div class="text-center">
-                <div class="col-lg-11 hard-form-label">
-                  <div class="container">
-                    <h2><strong>6 - Vamos agradecer aos seus doadores</strong></h2>
-                  </div>
+              <div class="form-group">
+                <div class="container">
+                  <h2><strong>6-Vamos agradecer aos seus doadores</strong></h2>
                 </div>
                 <!-- caixa de  texto -->
                 <div class="container">
@@ -439,15 +408,12 @@
                     </div>
                   </div>
               </div>
-              <br><br>
 
 
               <!-- PERGUNTA 6.5 -->
-              <div class="text-center">
-                <div class="col-lg-11 hard-form-label">
-                  <div class="container">
-                    <h2><strong>6.5 - Agora escreva sua mensagem</strong></h2>
-                  </div>
+              <div class="form-group">
+                <div class="container">
+                  <h2><strong>6.5-Agora escreva sua mensagem</strong></h2>
                 </div>
                 <!-- caixa de  texto -->
                 <div class="container">
@@ -457,40 +423,60 @@
                   </div>
                 </div>
               </div>
-              <br><br>
 
               <!-- PERGUNTA 7 -->
-              <div class="form-group text-center" id="adicionarAtendente" style="display: none;">
-                <div class="col-lg-11 hard-form-label">
-                  <div class="container">
-                    <h2><strong>7 - Adicione atendentes para sua campanha</strong></h2>
-                    <div class="col-lg-10">
-                      <p><span>Os atendentes são pessoas cadastradas no sistema que são indicadas, por você, para receber as doações materiais da sua campanha.</span></p>                                        
-                      <p><span> Atendentes são disponíveis, apenas, em campanhas <strong>materiais</strong>.</span></p>
-                    </div>
-                  </div>
+              <div class="form-group" id="adicionarAtendente" style="display: none;">
+                
+                <div class="container">
+                  <h2><strong>7-Adicione atendentes para sua campanha</strong></h2>
+                  <p><span>Atendentes são pessoas cadastradas no sistema que são indicadas, por você, para receber as doações materiais da sua campanha.</span></p>                                        
+                  <p><span>Atendentes são disponíveis, apenas, em campanhas <strong>materiais</strong>.</span></p>
+                
                 </div>
                 <!-- caixa de  texto -->
                 <div class="container" id="cadastramentoAtendente">
                   <div class="row" id="cadastroAtendente" style="float: left;">
-                    <div class="col-lg-6">
-                      <input maxlength="11" size="60" name="cpfAtendente" placeholder="Digite o CPF do atendente" required>
+                    <div class="col-md-5">
+                      <input maxlength="11" size="30" name="cpfAtendente" placeholder="Digite o CPF">
                     </div>
-                    <div class="col-lg-4">
-                      <div class="col-lg-2" style="float: left;">
+                    <div class="col-md-3">
+                      <div class="col-md-1" style="float: left;">
                         <button type="button" class="btn btn-link" id="removeatendente" onclick="removerAtendente(this)"><i class="fa fa-minus"></i></button>
                       </div>
-                      <div class="col-lg-2" style="float: left;">
+                      <div class="col-md-1" style="float: left;">
                         <button type="button" class="btn btn-link" id="cadastreiatendente" onclick="addAtendente()"><i class="fa fa-plus"></i></button>
                       </div>    
                     </div>
                   </div>
                 </div>
               </div>
-              <br><br>
+              <!-- PERGUNTA 8 -->
+              <div class="form-group" id="adicionarPonto" style="display: none;">
+                
+                <div class="container">
+                  <h2><strong>8-Informe o endereço do ponto de coleta</strong></h2>
+                  <p><span>Pontos de coleta são endereços que irão aparecer no mapa da campanha</span></p>
+                
+                </div>
+                <!-- caixa de  texto -->
+                <div class="container" id="cadastramentoPonto">
+                  <div class="row" id="cadastroPonto">
+                    <div class="col-md-5">
+                      <input maxlength="11" size="30" name="endereco[]" placeholder="Digite o endereco">
+                    </div>
+                    <div class="col-md-3">
+                      <div class="col-md-1" style="float: left;">
+                        <button type="button" class="btn btn-link" id="removerEndereco" onclick="removeEndereco(this)"><i class="fa fa-minus"></i></button>
+                      </div>
+                      <div class="col-md-1" style="float: left;">
+                        <button type="button" class="btn btn-link" id="cadastraEndereco" onclick="cadastraPonto()"><i class="fa fa-plus"></i></button>
+                      </div>    
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-
-
+              <input style="display:none;" value='<?php echo $_SESSION['cpf']?>' name="cpf">
 
 
 
