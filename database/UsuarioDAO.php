@@ -72,7 +72,7 @@ class UsuarioDAO{
     $stmt->bindParam(13,$endereco["numero"]);
     $stmt->bindParam(14,$endereco["complemento"]);
     $stmt->bindParam(15,$usuario->getFoto());
-    
+
     $stmt->execute();
 
     if($stmt->errorCode() != "00000"){//Bloco de erro
