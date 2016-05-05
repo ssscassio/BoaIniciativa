@@ -17,7 +17,7 @@ class  DoadorController
 
   public static function getInstance() {
     if (!isset(self::$instance))
-      self::$instance = new DoadorController();
+    self::$instance = new DoadorController();
     return self::$instance;
   }
 
@@ -29,25 +29,25 @@ class  DoadorController
   */
   public function listarDoacoes($cpf, $filtro){
     $todasdoacoes = DoacaoDAO::getInstance()->buscarDoacoesDoDoador($cpf);
-      if($filtro === "pendentes"){
-          $doacoespendentes = array();
-          for($i = 0 ; $i < sizeof($todasdoacoes) ; $i++){
-            if($todasdoacoes[$i]->getConfirmado()  == false){//se não foi confirmado
-              $doacoespendentes[] = $todasdoacoes[$i];
-            }
-          }
-          return $doacoespendentes;
-      }else if ($filtro === "confirmadas"){
-        $doacoesconfirmadas = array();
-        for($i = 0 ; $i < sizeof($todasdoacoes) ; $i++){
-          if($todasdoacoes[$i]->getConfirmado()  == true){//se está confirmada
-            $doacoesconfirmadas[] = $todasdoacoes[$i];
-          }
+    if($filtro === "pendentes"){
+      $doacoespendentes = array();
+      for($i = 0 ; $i < sizeof($todasdoacoes) ; $i++){
+        if($todasdoacoes[$i]->getConfirmado()  == false){//se não foi confirmado
+          $doacoespendentes[] = $todasdoacoes[$i];
         }
-        return $doacoesconfirmadas;
-      }else {// se não for nem ativa nem finalizada ou o filtro for errado
-        return $todasdoacoes;
       }
+      return $doacoespendentes;
+    }else if ($filtro === "confirmadas"){
+      $doacoesconfirmadas = array();
+      for($i = 0 ; $i < sizeof($todasdoacoes) ; $i++){
+        if($todasdoacoes[$i]->getConfirmado()  == true){//se está confirmada
+          $doacoesconfirmadas[] = $todasdoacoes[$i];
+        }
+      }
+      return $doacoesconfirmadas;
+    }else {// se não for nem ativa nem finalizada ou o filtro for errado
+      return $todasdoacoes;
+    }
   }
 
   /** Método responsável por adicionar doações de um determinado usuário
@@ -80,4 +80,4 @@ class  DoadorController
 
 }
 
- ?>
+?>
