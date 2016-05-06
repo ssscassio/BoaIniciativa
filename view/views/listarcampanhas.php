@@ -67,9 +67,12 @@ include("painelCriador.php");
            <div class="row panel panel-primary">
              <label class=""> Data Inicio:</label> <?php echo date("d/m/Y", strtotime($campanhas[$i]->getDataInicio())); ?>
            </div>
+
+           <?php if($campanhas[$i]->getFinalizaPorData() == "true"){ ?>
            <div class="row panel panel-primary">
              <label class=""> Data Fim:</label> <?php echo date("d/m/Y", strtotime($campanhas[$i]->getDataFim())); ?>
            </div>
+           <?php } ?>
          </div>
          <div class="col-xs-6 col-md-6 text-center">
            <a href="campanha.php?campanha=<?php echo $campanhas[$i]->getIdCampanha(); ?>" class="btn btn-primary btn-block" style="margin:5px 0px 5px 0px;"> Ver Campanha </a>

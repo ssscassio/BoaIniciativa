@@ -1,4 +1,4 @@
-<?php 
+<?php
   include('cabecalhologado.php');
 ?>
   <script type="text/javascript" src="js/criarCampanha.js"></script>
@@ -13,11 +13,10 @@
 
   if( !(isset($_SESSION['cpf'])) && !(isset ($_SESSION['senha'])) ){
     header('location:login.php'); //caso não esteja, redireciona o usuário para a página de index
-  }
-  else if($_SESSION['cpf'] != $campanha->getCriadorCpf(){
+  }else if($_SESSION['cpf'] != $campanha->getCriadorCpf()){
     header('location:campanha.php?campanha=$id');
   }
-  
+
 
   $itensMedidas = CriadorFacade::getInstance()->listarMateriais();
   $opcoes = "";
@@ -33,16 +32,14 @@
 </head>
   <body>
 
-  <br><br><br>
-
-
+  <br>
     <div class="container">
       <div class="col-md-9 panel panel-default">
         <div class="row">
           <div class="col-md-9 text-center">
             <h1 class="page-header">Editar Campanha</h1>
           </div>
-        </div> 
+        </div>
         <div class="container">
           <div class="col-md-9 text-center">
             <div id="form">
@@ -53,23 +50,23 @@
                 <div class="form-group text-center">
                   <div class="col-md-8 hard-form-label">
                     <div class="container">
-                      <strong>Editar imagem: </strong>                    
+                      <strong>Editar imagem: </strong>
                     </div>
                   </div>
                   <!-- caixa de  texto -->
                   <div class="container">
                     <div class="row">
                       <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-                      <input name="campfile" type="file" /><br>  
+                      <input name="campfile" type="file" /><br>
                     </div>
                   </div>
-                </div>     
+                </div>
                 <br><br><br><br>
 
                 <div class="form-group text-center">
                   <div class="col-md-8 hard-form-label">
                     <div class="container">
-                      <strong>Editar descrição: </strong>                    
+                      <strong>Editar descrição: </strong>
                     </div>
                   </div>
                   <!-- caixa de  texto -->
@@ -79,16 +76,16 @@
                       <p style="font-size: 1em; color: #696969;"><span>Sua descrição deve conter no máximo 100 caracteres</span></p>
                     </div>
                   </div>
-                </div>     
+                </div>
                 <br><br><br><br>
 
-              <?php 
+              <?php
 
                 $codMaterial = CriadorFacade::getInstance()->buscarMetasCampanha();
                 if ($codMaterial[0]->getCodMaterial() == 0 && !$campanha->getFinalizaPorData()) {
                   #monetaria por meta
                   $meta = $codMaterial[0]->getQuantidade();
-              ?>  
+              ?>
               <!-- meta monetaria -->
               <div class="form-group text-center" id="metaMonetaria" style="display: none;">
                 <!-- cabeçalho -->
@@ -114,7 +111,7 @@
               <?php
                 } #meta monetaria
                 elseif ($codMaterial[0]->getCodMaterial() != 0 && !$campanha->getFinalizaPorData()) {
-                  
+
               ?>
               <!-- meta material -->
               <div class="form-group text-center" id="metaMaterial" style="display: none;">
@@ -125,21 +122,21 @@
                     </div>
                   </div> <!-- fim cabeçalho -->
                   <?php
-                  for ($i = 0; $i < count($codMaterial); $i++) { 
+                  for ($i = 0; $i < count($codMaterial); $i++) {
                     $material = CriadorFacade::getInstance()->buscarMaterial($codMaterial[$i]);
                   ?>
                   <!-- corpo da meta material -->
-                  <div class="col-md-8" id="pai">              
+                  <div class="col-md-8" id="pai">
                     <div class="container" id="filho">
-                      <div>  
-                        <div class="row"> 
+                      <div>
+                        <div class="row">
 
                           <!-- material -->
                           <div style="float: left;" class="col-xs-3" id="selecionador">
                             <select id="itensMedidas" name="materialDoacao[]">
-                              <option value="<?php echo $codMaterial[$i]->getCodMaterial()?>">- <?php echo $material->getNome()."/"$material->getMedida()?></option>
-                              <?php echo $opcoes;?>          
-                            </select>                    
+                              <option value="<?php echo $codMaterial[$i]->getCodMaterial()?>">- <?php echo $material->getNome()."/".$material->getMedida();?></option>
+                              <?php echo $opcoes;?>
+                            </select>
                           </div>
                           <!-- quantidade -->
                           <div class="col-md-4" style="float: center;" id="quantidade">
@@ -147,15 +144,15 @@
                           </div>
                           <div class="col-md-1" style="float: left;">
                             <button type="button" class="btn btn-link" id="removeCadastroData" onclick="removeMaterial(this)"><i class="fa fa-minus"></i></button>
-                          </div> 
+                          </div>
                         </div>    <!--fim da linha -->
-                        
+
                       <br><br>
-                      </div>                  
-                    </div>    <!-- FIM DE FILHO -->  
+                      </div>
+                    </div>    <!-- FIM DE FILHO -->
                   </div>  <!-- FIM DE PAI -->
                   <?php
-                    }#fim do for  
+                    }#fim do for
                   ?>
                   <div class="col-md-8" id="dad">
                     <div class="container" id="son">
@@ -167,7 +164,7 @@
                           <div class="col-md-4" style="float: left;">
                             <button class="btn btn-info" type="button" onclick="cadastrarMaterial()">Adicionar um material <strong>não</strong> cadastrado</button>
                             <br><br>
-                          </div>  
+                          </div>
                           <div id="cadastro">
                           </div>
                         </div>
@@ -179,8 +176,7 @@
                <?php
                 }#fim material meta
                 elseif ($codMaterial[0]->getCodMaterial() != 0 && $campanha->getFinalizaPorData()) {
-                  # code...
-                }
+                  
                ?>
 
               <!-- data material -->
@@ -192,32 +188,32 @@
                   </div>
                 </div> <!-- fim cabeçalho -->
 
-                <?php 
-                for ($i = 0; $i < count($codMaterial); $i++) { 
+                <?php
+                for ($i = 0; $i < count($codMaterial); $i++) {
                   $material = CriadorFacade::getInstance()->buscarMaterial($codMaterial[$i]);
                 ?>
                 <!-- corpo da meta material -->
-                <div class="col-md-8" id="pai1">              
+                <div class="col-md-8" id="pai1">
                   <div class="container" id="filho1">
-                    <div>  
-                      <div class="row"> 
+                    <div>
+                      <div class="row">
 
                         <!-- material -->
                         <div style="float: left;" class="col-md-4" id="selecionador">
                           <select id="itensMedidas" name="materialDoacao[]">
-                            <option value="<?php echo $codMaterial[$i]->getCodMaterial()?>">- <?php echo $material->getNome()."/"$material->getMedida()?></option>
-                            <?php echo $opcoes;?>          
-                          </select>                    
+                            <option value="<?php echo $codMaterial[$i]->getCodMaterial()?>">- <?php echo $material->getNome()."/".$material->getMedida();?></option>
+                            <?php echo $opcoes;?>
+                          </select>
                         </div>
                         <div class="col-md-1" style="float: left;">
                           <button type="button" class="btn btn-link" id="removeCadastroData" onclick="removeMaterial1(this)"><i class="fa fa-minus"></i></button>
                         </div>
-                      </div>    <!--fim da linha -->                      
+                      </div>    <!--fim da linha -->
                     <br><br>
-                    </div>                  
-                  </div>                  
+                    </div>
+                  </div>
                 </div>
-                <?php 
+                <?php
                   }#fim do for
                 ?>
                 <div class="col-md-8" id="dad">
@@ -227,10 +223,10 @@
                         <div class="col-md-2" style="float: left;" id="botaopai1">
                           <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisDataMaterial()">Adicionar um material <strong>cadastrado</strong></button>
                         </div>
-                        <div class="col-md-2" style="float: left;">                      
+                        <div class="col-md-2" style="float: left;">
                           <button class="btn btn-info" type="button" onclick="cadastrarMaterialData()">Adicionar um material <strong>não</strong> cadastrado</button>
                           <br><br>
-                        </div>  
+                        </div>
                         <div id="cadastroData">
                         </div>
                       </div>
@@ -238,17 +234,17 @@
                   </div>
                 </div>
               </div> <!-- fim data material -->
-              <br><br><br><br>  
-              <?php 
+              <br>
+              <?php
                 }#fim data material
               ?>
 
-              
+
               <!-- PERGUNTA 6 -->
               <div class="text-center">
                 <div class="col-md-8 hard-form-label">
                   <div class="container">
-                    <strong>Editar título do seu agradecimento</strong>                    
+                    <strong>Editar título do seu agradecimento</strong>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -266,7 +262,7 @@
               <div class="text-center">
                 <div class="col-md-8 hard-form-label">
                   <div class="container">
-                    <strong>Editar agradecimento</strong>                    
+                    <strong>Editar agradecimento</strong>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -284,7 +280,7 @@
               <script type="text/javascript">
                 function atualizaCancela(v){
                   if (v == 1){
-                    document.getElementById('formulario').action = "atualizarCampanha.php";                  
+                    document.getElementById('formulario').action = "atualizarCampanha.php";
                   }
                   else if(v == 2){
                     document.getElementById('formulario').action = "campanha.php";
@@ -295,10 +291,10 @@
               <?php
                 $listaAtendentes = CriadorFacade::getInstance()->listarAtendentesCampanha($id);
                 $listaNomesAtendentes = array();
-                for ($i = 0; $i < count($listaAtendentes); $i++) { 
+                for ($i = 0; $i < count($listaAtendentes); $i++) {
                   $listaNomesAtendentes = CriadorFacade::getInstance()->buscarUsuario($listaAtendentes[$i]);
                 }
-                
+
               ?>
 
 
@@ -306,13 +302,13 @@
               <div class="text-center" >
                 <div class="col-md-8 hard-form-label">
                   <div class="container">
-                    <strong>Adicionar/Remover atendentes </strong>                    
+                    <strong>Adicionar/Remover atendentes </strong>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
                 <?php
-                  for ($i = 0; $i < count($listaAtendentes); $i++) { 
-                   
+                  for ($i = 0; $i < count($listaAtendentes); $i++) {
+
                 ?>
                 <div class="container" id="cadastramentoAtendente">
                   <div class="row" id="cadastroAtendente">
@@ -338,7 +334,7 @@
 
                       <div class="col-md-1" style="float: left;">
                         <button type="button" class="btn btn-link" id="adicionarAtendente" onclick="adicionarAtendente()"><i class="fa fa-plus"></i></button>
-                      </div>    
+                      </div>
               <!-- botao para atualizar campanha -->
               <button onclick="atualizaCancela(1)" class="btn btn-success" type="submit" style="margin-bottom: 0.5em; padding-bottom: 0.5em;">Atualizar campanha</button>
               <button onclick="atualizaCancela(2)" class="btn btn-success" type="submit" style="margin-bottom: 0.5em; padding-bottom: 0.5em;">Cancelar</button>
@@ -361,7 +357,7 @@
                       <div class="container">
                         <div class="row">
                           <div class="col-md-3">
-                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>                          
+                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>
                           </div>
                           <div class="col-md-3">
                             <label>Medida: <input type="text" name="medidaMaterial[]" placeholder="Escala"></label>
@@ -382,7 +378,7 @@
                       <div class="container">
                         <div class="row">
                           <div class="col-md-3">
-                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>                          
+                            <label>Nome: <input type="text" name="nomeMaterial[]" placeholder="Nome"></label>
                           </div>
                           <div class="col-md-3">
                             <label>Medida: <input type="text" name="medidaMaterial[]" placeholder="Escala"></label>

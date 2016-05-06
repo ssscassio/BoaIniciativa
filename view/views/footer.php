@@ -10,7 +10,7 @@
               <p>Ajude-nos a continuar funcionando. Faça uma contribuição ao Boa Iniciativa!</p>
           </div>
           <div class="col-md-4">
-              <a class="btn btn-lg btn-default btn-block" href="sobre.php">Ajude o boa Iniciativa</a>
+              <a class="btn btn-lg btn-default btn-block" href="sobre.php"><font color="FF0000">Ajude o Boa Iniciativa</font></a>
             </div>
       </div>
   </div>

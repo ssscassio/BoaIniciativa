@@ -61,10 +61,11 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
         <div class="col-xs-12">
           <h3>Data de inicio: <?php echo date("d/m/Y", strtotime($campanha->getDataInicio()));  ?></h3>
         </div>
+        <?php if($campanha->getFinalizaPorData() =="true"){ ?>
         <div class="col-xs-12">
           <h3>Data de Fim: <?php echo date("d/m/Y", strtotime($campanha->getDataFim()));?></h3>
         </div>
-        <?php if(!$campanha->getFinalizaPorData()){ ?>
+        <?php }else{ ?>
         <div class="col-xs-12">
           <h3>Meta:</h3>
           <?php SistemaFacade::getInstance()->printProgressMeta($campanha->getIdCampanha()); ?>
