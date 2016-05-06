@@ -200,7 +200,7 @@ class  CriadorController
   function cadastrarPontoCampanha($idCampanha, $cep, $estado, $bairro, $cidade, $logradouro, $numero, $complemento){
     $ponto = new Ponto ($cep, $estado, $bairro, $cidade, $logradouro, $numero, $complemento);
     $idPonto = PontoDAO::getInstance()->adicionarPonto($ponto);
-    PontoCampanhaDAO::getInstance()->adicionarPonto($idPonto, $idCampanha);
+    PontoCampanhaDAO::getInstance()->adicionarCampanhaPonto($idPonto, $idCampanha);
   }
 
   /**Método responsável por buscar usuários no banco de dados
