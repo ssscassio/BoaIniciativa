@@ -14,11 +14,12 @@
   $dataFim = null;
   if (isset($_POST['md'])){
     if ($_POST['md'] == 'data'){
-      $isData = TRUE;
+
+      $metaOuData = TRUE;
       $dataFim = $_POST['diaF'].'-'.$_POST['mesF'].'-'.$_POST['anoF'];
     }
     else if($_POST['md'] == "meta"){
-      $isData = FALSE;
+      $metaOuData = FALSE;
     }
 
   }
@@ -39,9 +40,9 @@
     $valores[1] = intval($_POST['valor2']);
     $valores[2] = intval($_POST['valor3']);
   }
-  $imagem = "";
-  $idCampanha = CriadorFacade::getInstance()->criarCampanha($nomeCampanha, $descricao, $dataInicio, $imagem, $cpf, $isData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
 
+  $imagem = "campanha.png";
+  $idCampanha = CriadorFacade::getInstance()->criarCampanha($nomeCampanha, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
 
 
   $materialMonetaria = "";
@@ -88,10 +89,17 @@
       }
     }
 
-    $endereco = $_POST['endereco'];
-    if($endereco != ""){
-      for ($i = 0; $i < count($endereco); $i++) {
-        CriadorFacade::getInstance()->cadastrarEndereco($idCampanha, $endereco[$i]);
+
+    $cep = $_POST['cep'];
+    $estado = $_POST['estado'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $logradouro = $_POST['logradouro'];
+    $numero = $_POST['numero'];
+    $complemento = $_POST['complemento'];
+    if($cep[0] != ""){
+      for ($i = 0; $i < count($cep); $i++) {
+        CriadorFacade::getInstance()->cadastrarPontoCampanha($idCampanha, $cep[$i], $estado[$i], $bairro[$i], $cidade[$i], $logradouro[$i], $numero[$i], $complemento[$i]);
       }
     }
 
@@ -112,7 +120,7 @@
     ?>
 
   <script type="text/javascript">
-    window.location=" campanha.php?campanha=<?php echo $idCampanha;?>";
+    window.location="campanha.php?campanha=<?php echo $idCampanha;?>";
   </script>
   <?php
 

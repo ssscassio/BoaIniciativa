@@ -59,12 +59,9 @@ class MetaDAO
     try{
       $sql = Sql::getInstance()->buscarmetasCampanhaSQL();
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-      $stmt->bindParam(1,$idCampanha);
+      $stmt->bindParam(1, $idCampanha);
       $stmt->execute();
 
-      if($stmt->rowCount()==0){
-        return null;
-      }
 
       $arrayMetas = array();
 
