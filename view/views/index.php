@@ -58,7 +58,7 @@
 
         ?>
 
-        <div class="col-md-4 col-xs-6">
+        <div class="col-md-4 col-xs-12">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4><?php echo $campanha->getNome();?></h4>
@@ -96,7 +96,7 @@
           $campanha = $arraybusca[$i];
 
           ?>
-          <div class="col-xs-4">
+          <div class="col-xs-6 col-sm-4">
             <a href="campanha.php?campanha=<?php echo $campanha->getIdCampanha(); ?>">
               <img class="img-responsive img-portfolio img-hover" src="<?php if($campanha->getImagem()=="" || $campanha->getImagem()=="default.jpg"){
                 echo "../img/campanha.png";

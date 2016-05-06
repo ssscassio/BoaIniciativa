@@ -18,9 +18,28 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
     <div class=" container">
       <div class="col-md-6">
         <h4>      Este é um site dedicado a permitir doações entre pessoas que precisam e pessoas que queiram ajudar. Se você é um deles, junte-se a nós. Aqui você poderá criar suas próprias campanhas, realizar doações e até mesmo participar como atendente em um posto de doação de uma campanha existente. Infinitas possibilidades, infinitas maneiras de ajudar a melhorar a vida de alguém. </h4>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class=" text-center img-responsive center-block ">
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_donations">
+                <input type="hidden" name="business" value="sss.cassio@gmail.com">
+                <input type="hidden" name="lc" value="BR">
+                <input type="hidden" name="item_name" value="Boa Iniciativa - Ajude-nos a continuar funcionando">
+                <input type="hidden" id="paypalvalue" name="amount" >
+                <input type="hidden" name="currency_code" value="BRL">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
+                <input type="image" src="https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - A maneira fácil e segura de enviar pagamentos online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-md-6">
         <img class="img-responsive" style="margin:20px;" src="../img/logobi.png" alt="">
+
       </div>
     </div>
   </div>

@@ -49,7 +49,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
     <div class="row">
 
       <!--Imagem-->
-      <div class="col-xs-6">
+      <div class="col-xs-12 col-sm-6">
         <?php if($campanha->getImagem() == "" || $campanha == "default.jpg"){
           echo '<img src="../img/campanha.png" class="img-responsive img-rounded" alt="" />';
         }else{
@@ -57,7 +57,7 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
         } ?>
       </div>
 
-      <div class="col-12-6 col-md-6">
+      <div class="col-xs-12 col-md-6">
         <div class="col-xs-12">
           <h3>Data de inicio: <?php echo date("d/m/Y", strtotime($campanha->getDataInicio()));  ?></h3>
         </div>
@@ -131,12 +131,16 @@ if( isset($_SESSION['cpf']) && isset ($_SESSION['senha']) ){//Verifica se já es
         }
         if(isset($_SESSION['cpf']) && isset($_SESSION['senha'])){
           $href = "doar.php?idCampanha=".$campanha->getIdCampanha()."&doadorcpf=".$_SESSION['cpf'];
+          $mensagem = "Efetuar Doação";
         }
         else{
           $href = "login.php";
+          $mensagem = "Cadastre-se para Doar";
         }
         ?>
-        <a href="<?php echo $href;?>" class="btn btn-primary col-xs-12 col-md-12 disable">Efetuar Doação</a>
+        <?php     if(!SistemaController::getInstance()->verificarCampanhaMonetaria($campanha->getIdCampanha())){ ?>
+        <a href="<?php echo $href;?>" class="btn btn-primary col-xs-12 col-md-12 disable"><?php echo $mensagem; ?></a>
+        <?php } ?>
       </center>
     </div>
 
