@@ -30,6 +30,7 @@ class CampanhaDAO
       $sql = Sql::getInstance()->adicionarCampanhaSQL();
 
       $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+
       $stmt->bindParam(1, $campanha->getNome());
       $stmt->bindParam(2, $campanha->getDataInicio());
       $stmt->bindParam(3, $campanha->getDataFim());
@@ -44,7 +45,8 @@ class CampanhaDAO
       $stmt->bindParam(11,$valores[1]);
       $stmt->bindParam(12,$valores[2]);
 
-      $stmt->execute();
+
+      $e = $stmt->execute();
 
       return ConexaoDB::getConexaoPDO()->lastInsertId('BoaIniciativa.campanha_idcampanha_seq');
 

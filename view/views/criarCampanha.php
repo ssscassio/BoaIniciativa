@@ -137,8 +137,8 @@
                   <div class="row">
                       <p style="font-size: 1em; color: #696969;"><span><strong>Campanha Monetária</strong> - Arrecadação financeira para uma campanha!<br>
                       <strong>Campanha Material</strong> - Arrecadação material para uma campanha!</span></p>
-                      <label class="radio-inline text-center"><input id="money" type="radio" name="materialMonetaria" value="monetaria" onclick="mostrarOpcoes()">Monetária </label>                
-                      <label class="radio-inline text-center"><input id="mat" type="radio" name="materialMonetaria" value="material"  onclick="mostrarOpcoes()">Material </label>                    
+                      <label class="radio-inline text-center"><input id="money" type="radio" onclick="mostrarOpcoes()">Monetária </label>                
+                      <label class="radio-inline text-center"><input id="mat" type="radio" onclick="mostrarOpcoes()">Material </label>                    
                     </div>
                   </div>
                 </div>
@@ -189,25 +189,30 @@
                   <div class="row">
                     <p style="font-size: 1em; color: #696969;"><span><strong>Opção Data</strong> - Sua campanha se encerra apenas na data de término, independente de ter alcançado a meta ou não!<br>
                     <strong>Opção Meta</strong> - Sua campanha se encerra apenas quando a meta estipuladafor alcançada!</span></p>
-                    <label class="radio-inline text-center"><input type="radio" id="idMeta" name="metaData" value="meta" onclick="mostrarOpcoes()" required>Meta </label>                
-                    <label class="radio-inline text-center"><input type="radio" id="idData" name="metaData" value="data" onclick="mostrarOpcoes()">Data </label>
+                    <label class="radio-inline text-center"><input type="radio" id="idMeta" onclick="mostrarOpcoes()" required>Meta </label>                
+                    <label class="radio-inline text-center"><input type="radio" id="idData" onclick="mostrarOpcoes()">Data </label>
                   </div>
                 </div>
               </div> 
+              <input style="display: none;" id="materialMonetaria" name="mm" > 
+              <input style="display: none;" id="metaData" name="md">
 <script type="text/javascript">
     function mostrarOpcoes(){
       if(document.getElementById('money').checked){
+        document.getElementById('materialMonetaria').value = "monetaria";        
         document.getElementById('monetaria').style.display = "block";
         document.getElementById("adicionarAtendente").style.display = "none";
         document.getElementById("adicionarPonto").style.display = "none";
       }
       else if(document.getElementById('mat').checked){
         document.getElementById('monetaria').style.display = "none";
+        document.getElementById('materialMonetaria').value = "material";
         document.getElementById("adicionarAtendente").style.display = "block";
         document.getElementById("adicionarPonto").style.display = "block";
 
       }
       if(document.getElementById('money').checked && document.getElementById('idMeta').checked){
+        document.getElementById('metaData').value = "meta";
         document.getElementById("metaMonetaria").style.display = "block";
         document.getElementById("dataMonetaria").style.display = "none";
         document.getElementById("ddataMaterial").style.display = "none";
@@ -217,6 +222,7 @@
         document.getElementById("dataMaterial").style.display = "none"; 
       }
       else if(document.getElementById('mat').checked && document.getElementById('idMeta').checked){
+        document.getElementById('metaData').value = "meta";
         document.getElementById("metaMaterial").style.display = "block"; 
         document.getElementById("adicionarAtendente").style.display = "block";
         document.getElementById("adicionarPonto").style.display = "block";
@@ -227,6 +233,7 @@
         
       }         
       else if(document.getElementById('money').checked && document.getElementById('idData').checked){
+        document.getElementById("metaData").value = "data";
         document.getElementById("dataMonetaria").style.display = "block";
         document.getElementById("adicionarAtendente").style.display = "none";
         document.getElementById("metaMonetaria").style.display = "none";
@@ -236,6 +243,7 @@
         document.getElementById("dataMaterial").style.display = "none";
       }
       else if(document.getElementById('mat').checked && document.getElementById('idData').checked){
+        document.getElementById("metaData").value = "data";
         document.getElementById("dataMaterial").style.display = "block"; 
         document.getElementById("ddataMaterial").style.display = "block";
         document.getElementById("adicionarAtendente").style.display = "block";
@@ -321,13 +329,13 @@
                         <!-- material -->
                         <div style="float: left;" class="col-md-3" id="selecionador">
                           <select id="itensMedidas" name="materialDoacao[]">
-                            <option value="None">- Selecione uma material para ser doado</option>
+                            <option value="-1">- Selecione uma material para ser doado</option>
                             <?php echo $opcoes;?>          
                           </select>                    
                         </div>
                         <!-- quantidade -->
                         <div class="col-md-4" style="float: center;" id="quantidade">
-                          <input type="number" min="1" size="60" name="quantidadeMaterial[]]" placeholder="quantidade">
+                          <input type="text" min="1" size="60" name="quantidadeMaterial[]]" placeholder="quantidade">
                         </div>                   
                         <div class="col-md-1" style="float: left;" id="botaopai">
                           <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisMaterial()"><i class="fa fa-plus"></i></button>
@@ -366,7 +374,7 @@
                         <!-- material -->
                         <div style="float: left;" class="col-md-4" id="selecionador">
                           <select id="itensMedidas" name="materialDoacao[]">
-                            <option value="None">- Selecione uma uma material para ser doado</option>
+                            <option value="-1">- Selecione uma uma material para ser doado</option>
                             <?php echo $opcoes;?>          
                           </select>                    
                         </div>                 
@@ -475,6 +483,7 @@
                   </div>
                 </div>
               </div>
+              
 
               <input style="display:none;" value='<?php echo $_SESSION['cpf']?>' name="cpf">
 

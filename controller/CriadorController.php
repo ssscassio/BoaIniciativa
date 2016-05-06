@@ -8,6 +8,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/TagCampanha
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/AtendenteCampanhaDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/PontoDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/PontoCampanhaDAO.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MetaDAO.php");
 
 
 /**
@@ -145,7 +146,8 @@ class  CriadorController
   * @return booleano se a operação deu certo ou não
   */
   function cadastrarMetaMaterial($idCampanha, $codMaterial, $qtd){
-    MetaDAO::getInstance()->adicionarMeta($idCampanha, $codMaterial, $qtd);
+    $meta = new Meta(intval($idCampanha), intval($codMaterial), intval($qtd));
+    MetaDAO::getInstance()->adicionarMeta($meta);
   }
 
 
@@ -165,11 +167,11 @@ class  CriadorController
   * @return id da campanha que acabou de ser cadastrada
   */
   function criarCampanha($nome, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria){
-    $campanha = new Campanha(null, $nome, $descricao, $dataInicio, 'default', $cpf, $metaOuData, $dataFim);
+    $campanha = new Campanha(null, $nome, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim);
     $campanha->setAgradecimento($agradecimento);
     $campanha->setTituloAgradecimento($titulo);
     $campanha->setValores($valores);
-
+    
     $id = CampanhaDAO::getInstance()->adicionarCampanha($campanha);
     TagCampanhaDAO::getInstance()->associarCampanhaTag($categoria, $id);
     return $id;

@@ -37,38 +37,15 @@ class MetaDAO
   public function adicionarMeta($meta){//Colocar para passar model Meta
 
     try{
-      $sql = Sql::getInstance()->adicionarMetaSQL();
-      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
-      $stmt->bindParam(1, $meta->getCodMaterial());
-      $stmt->bindParam(2, $meta->getIdCampanha());
-      $stmt->bindParam(3, $meta->getQuantidade());
+      if($meta->getCodMaterial() != -1){
+        $sql = Sql::getInstance()->adicionarMetaSQL();
+        $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+        $stmt->bindParam(1, $meta->getCodMaterial());
+        $stmt->bindParam(2, $meta->getIdCampanha());
+        $stmt->bindParam(3, $meta->getQuantidade());
 
-      // Talvez não precise verificar
-      $validar = ConexaoDB::getConexaoPDO()->prepare(Sql::getInstance()->validadeAdicionarMetaSQL());
-      $validar->bindParam(1,$meta->getCodMaterial());
-      $validar->bindParam(2,$meta->getIdCampanha());
-      $validar->execute();
-
-      if($validar->errorCode() != "00000"){
-        echo "Erro ao verificar existencia da Meta no Banco. Codigo Erro: ". $stmt->errorCode(). ":";
-        var_dump($validar->errorInfo());
-        return false;
-      }
-
-      if($validar->rowCount()==0){
         $stmt->execute();
-        if($stmt->errorCode() != "00000"){
-          echo "Erro ao Adicionar a Meta no Banco. Codigo Erro: ". $stmt->errorCode(). ":";
-          var_dump($stmt->errorInfo());
-          return false;
-        }
-        return true;
       }
-      else {
-        echo "<br> Esta meta ja existe!<br>";
-        return false;
-      }
-
     }catch(Exception $e){
 
     }

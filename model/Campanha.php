@@ -175,7 +175,9 @@ class Campanha{
 	}
 
 	public function getFinalizaPorData(){
-		return $this->finalizapordata;
+		if($this->finalizapordata)
+			return 'true';
+		return 'false';
 	}
 	public function setFinalizaPorData($finalizapordata){
 		$this->finalizapordata = $finalizapordata;

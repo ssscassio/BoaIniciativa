@@ -7,7 +7,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/Criptografa
 class Sql
 {
   public static $instance;
-  private $schema = "boainiciativa";
+  private $schema = "BoaIniciativa";
 
   protected function __construct(){
   }

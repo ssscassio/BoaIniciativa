@@ -10,16 +10,17 @@
 
   $descricao = $_POST['descricao'];
 
-  $dataInicio = date("Y-m-d");
-  $dataFim = "";
-  if (isset($_POST['metaData'])){
-    if ($_POST['metaData'] === 'meta') {
-      $metaOuData = false;
+  $dataInicio = date("d-m-Y");
+  $dataFim = null;
+  if (isset($_POST['md'])){
+    if ($_POST['md'] == 'data'){
+      $metaOuData = FALSE;
+      $dataFim = $_POST['diaF'].'-'.$_POST['mesF'].'-'.$_POST['anoF'];
     }
-    else if ($_POST['metaData'] === 'data'){
-      $metaOuData = true;
-      $dataFim = $_POST['anoF'].'-'.$_POST['mesF'].'-'.$_POST['diaF'];
+    else if($_POST['md'] == "meta"){
+      $metaOuData = TRUE;
     }
+
   }
 
   
@@ -34,37 +35,37 @@
   
   if(isset($_POST['valor1'])){
     $valorMeta = $_POST['metaMonetaria'];
-    $valores[0] = $_POST['valor1'];
-    $valores[1] = $_POST['valor2'];
-    $valores[2] = $_POST['valor3'];
+    $valores[0] = intval($_POST['valor1']);
+    $valores[1] = intval($_POST['valor2']);
+    $valores[2] = intval($_POST['valor3']);
   }
-$imagem = "default";
+  $imagem = "default";
   $idCampanha = CriadorFacade::getInstance()->criarCampanha($nomeCampanha, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
   
 
 
   $materialMonetaria = "";
 
-  if(!isset($_POST['materialMonetaria'])){
-    if ($_POST['materialMonetaria'] === 'monetaria') {
+  if(isset($_POST['mm'])){
+    if ($_POST['mm'] === 'monetaria') {
       $materialMonetaria = "monetaria";
       CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, 0, $valorMeta);
     }
-    elseif ($_POST['materialMonetaria'] === "material"){
+    elseif ($_POST['mm'] === "material"){
       $materialMonetaria = "material";
       #verificando se foram adicionados materiais nao cadastrados
       if (isset($_POST['nomeMaterial'])) {
         $nomeMaterial = $_POST['nomeMaterial'];
         $medidaMaterial = $_POST['medidaMaterial'];
-        if($metaOuData){ #por Meta
+        if($_POST['md'] == "meta"){ #por Meta
           $qtd = $_POST['quantidadeMaterial'];
-          for ($i = 0; $i < $nomeMaterial.length; $i++) { #cadastrando material com quantidade na meta #$idCampanha, $codMaterial, $qtd
+          for ($i = 0; $i < count($nomeMaterial); $i++) { #cadastrando material com quantidade na meta #$idCampanha, $codMaterial, $qtd
             $codMaterial = CriadorFacade::getInstance()->cadastrarMaterial($nomeMaterial[$i], $medidaMaterial[$i]);
             CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $codMaterial, $qtd[$i]);
           }
         }
-        else{
-          for ($i = 0; $i < $nomeMaterial.length; $i++) { #por data #$idCampanha, $codMaterial, $qtd
+        else if ($_POST['md'] == "data"){ #por data
+          for ($i = 0; $i < count($nomeMaterial); $i++) { #por data #$idCampanha, $codMaterial, $qtd
             $codMaterial = CriadorFacade::getInstance()->cadastrarMaterial($nomeMaterial[$i], $medidaMaterial[$i]);
             CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $codMaterial, 0);
           }
@@ -73,27 +74,24 @@ $imagem = "default";
       #verificando se foram adicionados materiais cadastrados
       if(isset($_POST['materialDoacao'])){
         $materialDoacao = $_POST['materialDoacao'];
-        
-
-        if($metaOuData){#por meta
+        if($_POST['md'] == "meta"){ #por Meta
           $qtdMaterial = $_POST['quantidadeMaterial'];
-          for ($i = 0; $i < $qtdMaterial.length ; $i++) { 
-            CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $materialDoacao[i], $qtdMaterial[i]);
+          for ($i = 0; $i < count($qtdMaterial) ; $i++) { 
+            CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $materialDoacao[$i], $qtdMaterial[$i]);
           }
         }
-        else{#por data
-          for ($i = 0; $i < $qtdMaterial.length ; $i++) { 
-            CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $materialDoacao[i], 0);
+        else if ($_POST['md'] == "data"){ #por data
+          for ($i = 0; $i < count($materialDoacao) ; $i++) { 
+            CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $materialDoacao[$i], 0);
           }
         }
       }
     }
 
-
-    if(isset($_POST['endereco'])){
-      $endereco = $_POST['endereco'];
+    $endereco = $_POST['endereco'];
+    if($endereco != ""){
       for ($i = 0; $i < count($endereco); $i++) { 
-        CriadorFacade::getInstance()->cadastrarEndereco($idCampanha, $endereco[i]);
+        CriadorFacade::getInstance()->cadastrarEndereco($idCampanha, $endereco[$i]);
       }
     }
 
@@ -114,7 +112,7 @@ $imagem = "default";
     ?>
 
   <script type="text/javascript">
-    window.location="http://campanha.php?campanha=<?php echo $idCampanha;?>";
+    //window.location="http://localhost/BoaIniciativaV3/view/views/campanha.php?campanha=<?php echo $idCampanha;?>";
   </script>
   <?php
 
