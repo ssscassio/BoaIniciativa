@@ -148,7 +148,7 @@
                   </div>
                     <div class="col-md-12">
                       <div class="radio">
-                        <label class="radio-inline text-center"><input name="tipo" id="money" type="radio" onclick="mostrarOpcoes()" checked>Monetária </label>
+                        <label class="radio-inline text-center"><input name="tipo" id="money" type="radio" onclick="mostrarOpcoes()">Monetária </label>
                       </div>
                       <div class="radio">
                         <label class="radio-inline text-center"><input name="tipo" id="mat" type="radio" onclick="mostrarOpcoes()">Material </label>
@@ -213,7 +213,7 @@
                     </div>
                     <div class="col-md-12">
                       <div class="radio">
-                        <label class="radio-inline text-center"><input name="tipoencerramento" type="radio" id="idMeta" onclick="mostrarOpcoes()" checked>Meta </label>
+                        <label class="radio-inline text-center"><input name="tipoencerramento" type="radio" id="idMeta" onclick="mostrarOpcoes()">Meta </label>
                       </div>
                       <div class="radio">
                         <label class="radio-inline text-center"><input name="tipoencerramento" type="radio" id="idData" onclick="mostrarOpcoes()">Data </label>
@@ -513,29 +513,52 @@
                     </div>
                   </div>
                 </div>
-                <!-- PERGUNTA 8 -->
-                <div class="form-group" id="adicionarPonto" style="display: none;">
-
-                  <div class="row">
-                    <div class="col-md-12">
-                      <h4><strong>8 - Informe o endereço do ponto de coleta</strong></h4>
+               <!-- PERGUNTA 8 -->
+              <div class="form-group" id="adicionarPonto" style="display: none;">
+                
+                <div class="container">
+                  <h2><strong>8-Informe o endereço do ponto de coleta</strong><font color="FF0000">*</font></h2>
+                  <p><span>Pontos de coleta são endereços que irão aparecer no mapa da campanha</span></p>
+                
+                </div>
+                <!-- caixa de  texto -->
+                <div class="container" id="cadastramentoPonto">
+                  <div class="row" id="cadastroPonto">
+                    <div class="form-group">
+                      <label>CEP: <font color="FF0000">*</font> </label>
+                      <input id="cepcadastro" type="text" class="form-control" name="cep[]"  placeholder="Informe seu CEP"  style="width: 40%;">
+                      <div id="cepcadastroerror"></div>
                     </div>
-                    <div class="col-md-12">
-                      <p><span>Pontos de coleta são endereços que irão aparecer no mapa da campanha</span></p>
+                    <div class="form-group">
+                      <label>Estado: <font color="FF0000">*</font> </label>
+                      <input id="estadocadastro" type="text" class="form-control" name="estado[]"  placeholder="Informe seu Estado"  style="width: 40%;">
+                      <div id="estadocadastroerror"></div>
                     </div>
-                  </div>
-                  <!-- caixa de  texto -->
-                  <div id="cadastramentoPonto">
-                    <div class="row" id="cadastroPonto">
-                      <div class="col-xs-10 col-md-5">
-                        <input maxlength="11" class="form-control" name="endereco[]" placeholder="Digite o endereco">
+                    <div class="form-group">
+                      <label>Bairro: <font color="FF0000">*</font> </label>
+                      <input id="bairrocadastro" type="text" class="form-control" name="bairro[]" placeholder="Informe seu Bairro" style="width: 40%;">
+                      <div id="bairrocadastroerror"></div>
+                    </div>
+                    <div class="form-group">
+                      <label>Cidade: <font color="FF0000">*</font> </label>
+                      <input id="cidadecadastro" type="text" class="form-control" name="cidade[]" placeholder="Informe sua Cidade" style="width: 40%;">
+                      <div id="cidadecadastroerror"></div>
+                    </div>
+                    <div class="form-group">
+                      <label>Logradouro: <font color="FF0000">*</font> </label>
+                      <input id="logradourocadastro" type="text" class="form-control" name="logradouro[]"  placeholder="Informe sua Rua" style="width: 40%;">
+                    <div id="logradourocadastroerror"></div>
+                    </div>
+                    <div class="form-group">
+                      <label>Numero: <font color="FF0000">*</font> </label>
+                      <input id="numerocadastro" type="number" class="form-control" name="numero[]" placeholder="Número de sua Casa" style="width: 40%;">
+                    <div id="numerocadastroerror"></div>
+                    </div>
+                    <div class="form-group">
+                      <label>Complemento: <font color="FF0000">*</font> </label>
+                      <input id="complementocadastro" type="text" class="form-control" name="complemento[]" placeholder=" ex.: Casa/ Apt ..."  style="width: 40%;">
+                    <div id="complementocadastroerror"></div>
                       </div>
-                        <div class="col-md-1 col-xs-1" >
-                          <button type="button" class="btn btn-link" id="removerEndereco" onclick="removeEndereco(this)"><i class="fa fa-minus"></i></button>
-                        </div>
-                        <div class="col-xs-1 col-md-1">
-                          <button type="button" class="btn btn-link" id="cadastraEndereco" onclick="cadastraPonto()"><i class="fa fa-plus"></i></button>
-                        </div>
                     </div>
                   </div>
                 </div>
