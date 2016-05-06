@@ -14,11 +14,11 @@
   $dataFim = null;
   if (isset($_POST['md'])){
     if ($_POST['md'] == 'data'){
-      $metaOuData = FALSE;
+      $metaOuData = TRUE;
       $dataFim = $_POST['diaF'].'-'.$_POST['mesF'].'-'.$_POST['anoF'];
     }
     else if($_POST['md'] == "meta"){
-      $metaOuData = TRUE;
+      $metaOuData = FALSE;
     }
 
   }
@@ -39,7 +39,7 @@
     $valores[1] = intval($_POST['valor2']);
     $valores[2] = intval($_POST['valor3']);
   }
-  $imagem = "default";
+  $imagem = "campanha.png";
   $idCampanha = CriadorFacade::getInstance()->criarCampanha($nomeCampanha, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
   
 
@@ -88,10 +88,16 @@
       }
     }
 
-    $endereco = $_POST['endereco'];
-    if($endereco != ""){
-      for ($i = 0; $i < count($endereco); $i++) { 
-        CriadorFacade::getInstance()->cadastrarEndereco($idCampanha, $endereco[$i]);
+    $cep = $_POST['cep'];
+    $estado = $_POST['estado'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $logradouro = $_POST['logradouro'];
+    $numero = $_POST['numero'];
+    $complemento = $_POST['complemento'];
+    if($cep[0] != ""){
+      for ($i = 0; $i < count($cep); $i++) { 
+        CriadorFacade::getInstance()->cadastrarPontoCampanha($idCampanha, $cep[$i], $estado[$i], $bairro[$i], $cidade[$i], $logradouro[$i], $numero[$i], $complemento[$i]);
       }
     }
 
@@ -112,7 +118,7 @@
     ?>
 
   <script type="text/javascript">
-    //window.location="http://localhost/BoaIniciativaV3/view/views/campanha.php?campanha=<?php echo $idCampanha;?>";
+    window.location="http://localhost/BoaIniciativaV3/view/views/campanha.php?campanha=<?php echo $idCampanha;?>";
   </script>
   <?php
 
