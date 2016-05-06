@@ -60,6 +60,30 @@ class PontoCampanhaDAO
     }
   }
 
+  public function buscarPontosCampanha($idCampanha){
+    try {
+      $sql = Sql::getInstance()->buscarPontosCampanhaSql();
+      $stmt = ConexaoDB::getConexaoPDO()->prepare($sql);
+      $stmt->bindParan(1, $idCampanha);
+      $stmt->execute();
+
+      $listaPontosCampanha = array();
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $ponto = $this->popularPonto($row);
+        $listaPontosCampanha[] = $ponto;
+      }
+      return $listaPontosCampanha;
+
+    } catch (Exception $e) {
+
+    }
+
+
+
+
+  }
+
+
   /** Método responsável por buscar pontos em determinada cidade
   * @param $cidade informações da cidade a ser buscada
   * @return retorna uma lista de pontos

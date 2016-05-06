@@ -191,7 +191,7 @@ class  AdministradorController
       $todasCampanhas = CampanhaDAO::getInstance()->listarCampanhas();
       $hoje = date('d/m/Y');
       for($i = 0; $i <sizeof($todasCampanhas);$i++){
-        if(strtotime($hoje) > strtotime($todasCampanhas[$i]->getDataFim())){//finalizada
+        if($todasCampanhas[$i]->getStatus() == false){//finalizada
           $campanhas[] = $todasCampanhas[$i];
         }
       }
