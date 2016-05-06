@@ -50,7 +50,7 @@
   if(isset($_POST['mm'])){
     if ($_POST['mm'] === 'monetaria') {
       $materialMonetaria = "monetaria";
-      CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, 0, $valorMeta);
+      CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, 1, $valorMeta);
     }
     elseif ($_POST['mm'] === "material"){
       $materialMonetaria = "material";
