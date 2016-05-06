@@ -9,7 +9,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/AtendenteCa
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/PontoDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/PontoCampanhaDAO.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."database/MetaDAO.php");
-
+require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/Ponto.php");
 
 /**
 *Classe CriadorController
@@ -197,11 +197,23 @@ class  CriadorController
   *@param $endereco uma string que contém o endereço do ponto de coleta
   */
 
-  function cadastrarEndereco($idCampanha, $endereco){
-    $idPonto = PontoDAO::getInstance()->adicionarPonto($endereco);
+  function cadastrarPontoCampanha($idCampanha, $cep, $estado, $bairro, $cidade, $logradouro, $numero, $complemento){
+    $ponto = new Ponto ($cep, $estado, $bairro, $cidade, $logradouro, $numero, $complemento);
+    $idPonto = PontoDAO::getInstance()->adicionarPonto($ponto);
     PontoCampanhaDAO::getInstance()->adicionarCampanhaPonto($idPonto, $idCampanha);
   }
 
+  /**Método responsável por buscar usuários no banco de dados
+  *@param $cpf cpf do usuário a ser buscado
+  */
+
+  function buscarUsuario($cpf){
+    return UsuarioDAO::getInstance()->buscarUsuario($cpf);
+  }
+
+  function removerMetasCampanha($id){
+    MetaDAO::getInstance()->removerMetasCampanha($id);
+  }
 
 }
 

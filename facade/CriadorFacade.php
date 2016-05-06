@@ -68,10 +68,16 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."controller/CriadorCo
     public function excluirCampanha($idCampanha){
       return CriadorController::getInstance()->excluirCampanha($idCampanha);      
     }
-    public function cadastrarEndereco($idCampanha, $endereco){
-      CriadorController::getInstance()->cadastrarEndereco($idCampanha, $endereco);
+    public function cadastrarPontoCampanha($idCampanha, $cep, $estado, $bairro, $cidade, $logradouro, $numero, $complemento){
+      CriadorController::getInstance()->cadastrarPontoCampanha($idCampanha, $cep, $estado, $bairro, $cidade, $logradouro, $numero, $complemento);
+    }    
+
+    public function buscarUsuario($cpf){
+      return CriadorController::getInstance()->buscarUsuario($cpf);
     }
 
-
+    public function removerMetasCampanha($id){
+      CriadorController::getInstance()->removerMetasCampanha($id);
+    }
   }
 ?>
