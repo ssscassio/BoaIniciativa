@@ -96,15 +96,15 @@ INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (11,8);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (12,2);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (13,6);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (14,5);
-INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (15,8);
+INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (15,1);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (16,6);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (17,3);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (18,8);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (19,3);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (20,8);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (21,2);
-INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (22,8);
-INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (23,8);
+INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (22,9);
+INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (23,1);
 INSERT INTO BoaIniciativa.Campanhatag (idcampanha,idtag) Values (24,2);
 
 /* Inserindo Dados na tabela Convidado */
