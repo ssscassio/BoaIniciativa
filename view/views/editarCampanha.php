@@ -6,7 +6,7 @@
   require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/CriadorFacade.php");
 
 
-  $id = $_POST['campanha'];
+  $id = $_GET['campanha'];
 
   $campanha = CriadorFacade::getInstance()->buscarCampanha($id);
 
@@ -34,91 +34,87 @@
 
   <br>
     <div class="container">
+
+      <?php include("painelCriador.php"); ?>
       <div class="col-md-9 panel panel-default">
         <div class="row">
-          <div class="col-md-9 text-center">
-            <h1 class="page-header">Editar Campanha</h1>
+          <div class="col-md-12">
+            <h1 class="page-header">Editar Campanha: "<?php echo $campanha->getNome(); ?>"</h1>
           </div>
         </div>
-        <div class="container">
-          <div class="col-md-9 text-center">
             <div id="form">
               <!-- Formulário -->
 
               <form id="formulario" method="post">
               <!-- Editar descrição -->
-                <div class="form-group text-center">
-                  <div class="col-md-8 hard-form-label">
-                    <div class="container">
-                      <strong>Editar imagem: </strong>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Editar imagem: </h4>
                     </div>
-                  </div>
-                  <!-- caixa de  texto -->
-                  <div class="container">
-                    <div class="row">
-                      <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-                      <input name="campfile" type="file" /><br>
-                    </div>
+                    <!-- caixa de  texto -->
+                      <div class="col-md-12">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+                        <input name="campfile" type="file" /><br>
+                      </div>
                   </div>
                 </div>
-                <br><br><br><br>
+                <br>
 
-                <div class="form-group text-center">
-                  <div class="col-md-8 hard-form-label">
-                    <div class="container">
-                      <strong>Editar descrição: </strong>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Editar descrição: </h4>
                     </div>
                   </div>
                   <!-- caixa de  texto -->
-                  <div class="container">
-                    <div class="row">
-                      <textarea name="descricao" maxlength="100" rows="3" cols="60" value="<?php echo $campanha->getDescricao();?>"></textarea>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <textarea name="descricao" maxlength="100" rows="3" class="form-control" value="<?php echo $campanha->getDescricao();?>"></textarea>
                       <p style="font-size: 1em; color: #696969;"><span>Sua descrição deve conter no máximo 100 caracteres</span></p>
                     </div>
                   </div>
                 </div>
-                <br><br><br><br>
+                <br>
 
               <?php
 
-                $codMaterial = CriadorFacade::getInstance()->buscarMetasCampanha();
+                $codMaterial = CriadorFacade::getInstance()->buscarMetasCampanha($id);
                 if ($codMaterial[0]->getCodMaterial() == 0 && !$campanha->getFinalizaPorData()) {
                   #monetaria por meta
                   $meta = $codMaterial[0]->getQuantidade();
               ?>
               <!-- meta monetaria -->
-              <div class="form-group text-center" id="metaMonetaria" style="display: none;">
+              <div class="form-group" id="metaMonetaria" style="display: none;">
                 <!-- cabeçalho -->
                 <div id="metas">
-                  <div class="col-md-8 hard-form-label">
-                    <div class="container">
-                      <strong>Editar a meta</strong>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Editar a meta da Campanha:</h4>
                     </div>
                   </div> <!-- fim cabeçalho -->
                   <!-- corpo da meta -->
-                  <div class="container">
                     <div class="row">
-                      <div class="input-group" style="width: 40%; float: center;">
+                      <div class="input-group col-md-6">
                         <span class="input-group-addon">R$</span>
                         <input type="number" name="metaMonetaria" min="1" class="form-control" aria-label="Meta em reais a ser alcançada" value="<?php echo $meta;?>">
                         <span class="input-group-addon">.00</span>
                       </div>
-                    </div>
                   </div><!-- fim do corpo da meta -->
                 </div>
               </div>
-              <br><br><br><br> <!-- FIM META MONETARIA -->
+              <br><br> <!-- FIM META MONETARIA -->
               <?php
                 } #meta monetaria
                 elseif ($codMaterial[0]->getCodMaterial() != 0 && !$campanha->getFinalizaPorData()) {
 
               ?>
               <!-- meta material -->
-              <div class="form-group text-center" id="metaMaterial" style="display: none;">
+              <div class="form-group" id="metaMaterial" style="display: none;">
                 <!-- cabeçalho -->
-                  <div class="col-md-8 hard-form-label">
-                    <div class="container">
-                      <strong>Editar materiais e quantidade:</strong>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Editar materiais e quantidade:</h4>
                     </div>
                   </div> <!-- fim cabeçalho -->
                   <?php
@@ -126,65 +122,58 @@
                     $material = CriadorFacade::getInstance()->buscarMaterial($codMaterial[$i]);
                   ?>
                   <!-- corpo da meta material -->
-                  <div class="col-md-8" id="pai">
-                    <div class="container" id="filho">
-                      <div>
+                  <div class="row" id="pai">
+                    <div class="col-md-12" id="filho">
                         <div class="row">
-
                           <!-- material -->
-                          <div style="float: left;" class="col-xs-3" id="selecionador">
-                            <select id="itensMedidas" name="materialDoacao[]">
+                          <div class="col-xs-3" id="selecionador">
+                            <select class="form-control" id="itensMedidas" name="materialDoacao[]">
                               <option value="<?php echo $codMaterial[$i]->getCodMaterial()?>">- <?php echo $material->getNome()."/".$material->getMedida();?></option>
                               <?php echo $opcoes;?>
                             </select>
                           </div>
                           <!-- quantidade -->
-                          <div class="col-md-4" style="float: center;" id="quantidade">
+                          <div class="col-xs-4" id="quantidade">
                             <input type="number" min="1" size="60" name="quantidadeMaterial[]]" value="<?php echo $codMaterial[$i]->getQuantidade();?>">
                           </div>
-                          <div class="col-md-1" style="float: left;">
+                          <div class="col-xs-1" >
                             <button type="button" class="btn btn-link" id="removeCadastroData" onclick="removeMaterial(this)"><i class="fa fa-minus"></i></button>
                           </div>
                         </div>    <!--fim da linha -->
-
-                      <br><br>
-                      </div>
                     </div>    <!-- FIM DE FILHO -->
                   </div>  <!-- FIM DE PAI -->
                   <?php
                     }#fim do for
                   ?>
-                  <div class="col-md-8" id="dad">
-                    <div class="container" id="son">
-                      <div>
+                  <div class="row" id="dad">
+                    <div class="col-md-12" id="son">
                         <div class="row">
-                          <div class="col-md-4" style="float: left;" id="botaopai">
+                          <div class="col-xs-4"  id="botaopai">
                             <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisMaterial()">Adicionar um material <strong>cadastrado</strong></button>
                           </div>
-                          <div class="col-md-4" style="float: left;">
+                          <div class="col-xs-12 col-md-4" >
                             <button class="btn btn-info" type="button" onclick="cadastrarMaterial()">Adicionar um material <strong>não</strong> cadastrado</button>
-                            <br><br>
+                            <br>
                           </div>
                           <div id="cadastro">
                           </div>
                         </div>
-                      </div>
                     </div>
                   </div>
               </div> <!-- fim meta material -->
-               <br><br><br> <!-- FIM META MONETARIA -->
+               <br> <!-- FIM META MONETARIA -->
                <?php
                 }#fim material meta
-                elseif ($codMaterial[0]->getCodMaterial() != 0 && $campanha->getFinalizaPorData()) {
-                  
+                elseif ($codMaterial[0]->getCodMaterial() != 0 && ($campanha->getFinalizaPorData() == "TRUE")) {
+
                ?>
 
               <!-- data material -->
-              <div class="form-group text-center" id="dataMaterial" style="display: none;">
+              <div class="form-group" id="dataMaterial" style="display: none;">
                 <!-- cabeçalho -->
-                <div class="col-md-8 hard-form-label">
-                  <div class="container">
-                    <strong>Editar materiais</strong>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Editar materiais</h4>
                   </div>
                 </div> <!-- fim cabeçalho -->
 
@@ -193,14 +182,13 @@
                   $material = CriadorFacade::getInstance()->buscarMaterial($codMaterial[$i]);
                 ?>
                 <!-- corpo da meta material -->
-                <div class="col-md-8" id="pai1">
-                  <div class="container" id="filho1">
+                <div class="row" id="pai1">
+                  <div class="col-md-12" id="filho1">
                     <div>
                       <div class="row">
-
                         <!-- material -->
-                        <div style="float: left;" class="col-md-4" id="selecionador">
-                          <select id="itensMedidas" name="materialDoacao[]">
+                        <div class="col-xs-6" id="selecionador">
+                          <select class="form-control" id="itensMedidas" name="materialDoacao[]">
                             <option value="<?php echo $codMaterial[$i]->getCodMaterial()?>">- <?php echo $material->getNome()."/".$material->getMedida();?></option>
                             <?php echo $opcoes;?>
                           </select>
@@ -209,21 +197,21 @@
                           <button type="button" class="btn btn-link" id="removeCadastroData" onclick="removeMaterial1(this)"><i class="fa fa-minus"></i></button>
                         </div>
                       </div>    <!--fim da linha -->
-                    <br><br>
+                    <br>
                     </div>
                   </div>
                 </div>
                 <?php
                   }#fim do for
                 ?>
-                <div class="col-md-8" id="dad">
-                  <div class="container" id="son">
+                <div class="row" id="dad">
+                  <div class="col-md-12" id="son">
                     <div>
                       <div class="row">
-                        <div class="col-md-2" style="float: left;" id="botaopai1">
+                        <div class="col-xs-2"id="botaopai1">
                           <button type="button" class="btn btn-link" id="adicionarMaisMaterial" onclick="butaoMaisDataMaterial()">Adicionar um material <strong>cadastrado</strong></button>
                         </div>
-                        <div class="col-md-2" style="float: left;">
+                        <div class="col-xs-12 col-md-6">
                           <button class="btn btn-info" type="button" onclick="cadastrarMaterialData()">Adicionar um material <strong>não</strong> cadastrado</button>
                           <br><br>
                         </div>
@@ -241,39 +229,39 @@
 
 
               <!-- PERGUNTA 6 -->
-              <div class="text-center">
-                <div class="col-md-8 hard-form-label">
-                  <div class="container">
-                    <strong>Editar título do seu agradecimento</strong>
+              <div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Editar título do seu agradecimento:</h4>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
-                <div class="container">
-                    <div class="row">
-                      <input maxlength="30" size="60" name="titulo" value="<?php $campanha->getTituloAgradecimento();?>" required>
+                <div class="row">
+                    <div class="col-md-12">
+                      <input maxlength="30" class="form-control" name="titulo" value="<?php $campanha->getTituloAgradecimento();?>" required>
                       <p><span>Vamos começar com um título pro seu agradecimento (Utilize apenas 30 caracteres)</span></p>
                     </div>
                   </div>
               </div>
-              <br><br><br><br>
+              <br>
 
 
               <!-- PERGUNTA 6.5 -->
-              <div class="text-center">
-                <div class="col-md-8 hard-form-label">
-                  <div class="container">
-                    <strong>Editar agradecimento</strong>
+              <div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Editar agradecimento</h4>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
-                <div class="container">
-                  <div class="row">
-                    <textarea name="agradecimento" value="<?php echo $campanha->getAgradecimento();?>" maxlength="100" rows="3" cols="60" required></textarea>
+                <div class="row">
+                  <div class="col-md-12">
+                    <textarea name="agradecimento" value="<?php echo $campanha->getAgradecimento();?>" maxlength="100" rows="3" class="form-control" required></textarea>
                     <p style="font-size: 1em; color: #696969;"><span>Seu agradecimento deve conter no máximo 100 caracteres</span></p>
                   </div>
                 </div>
               </div>
-              <br><br><br><br>
+              <br>
 
 
 
@@ -299,10 +287,10 @@
 
 
               <!-- Adicionar/Remover Atendentes-->
-              <div class="text-center" >
-                <div class="col-md-8 hard-form-label">
-                  <div class="container">
-                    <strong>Adicionar/Remover atendentes </strong>
+              <div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Adicionar/Remover atendentes </h4>
                   </div>
                 </div>
                 <!-- caixa de  texto -->
@@ -310,45 +298,50 @@
                   for ($i = 0; $i < count($listaAtendentes); $i++) {
 
                 ?>
-                <div class="container" id="cadastramentoAtendente">
+                <div class="row" id="cadastramentoAtendente">
                   <div class="row" id="cadastroAtendente">
-                    <div class="col-md-4">
-                      <input maxlength="11" size="60" name="cpfAtendente[]" value="<?php echo $listaAtendentes[$i].'-'.$listaNomesAtendentes[$i]?>" required>
+                    <div class="col-xs-11 col-md-5">
+                      <input maxlength="11" class="form-control" name="cpfAtendente[]" value="<?php echo $listaAtendentes[$i].'-'.$listaNomesAtendentes[$i]?>" required>
                         <p><span>Os atendentes são pessoas cadastradas no sistema que podem se disponibilizar para receber os materiais para sua campanha. Atendentes são apenas possíveis em campanhas <strong>materiais</strong></span></p>
                     </div>
-                    <div class="col-md-2">
-                      <div class="col-md-1" style="float: left;">
+                    <div class="col-xs-1">
                         <button type="button" class="btn btn-link" id="removerAtendente" onclick="removerAtendente(this)"><i class="fa fa-minus"></i></button>
-                      </div>
                     </div>
                   </div>
                   <?php
                 }#fim do for
                 ?>
-                <div class="col-md-4" style="float: left;">
-                  <button type="button" class="btn btn-link" id="adicionarAtendente" onclick="adicionarAtendente()">Adicionar atendente</button>
+                <div class="row">
+                  <div class="col-md-4" >
+                    <button type="button" class="btn btn-info" id="adicionarAtendente" onclick="adicionarAtendente()">Adicionar atendente</button>
+                  </div>
+                  <div class="col-md-1">
+                    <button type="button" class="btn btn-link" id="adicionarAtendente" onclick="adicionarAtendente()"><i class="fa fa-plus"></i></button>
+                  </div>
                 </div>
                 </div>
               </div>
-              <br><br><br><br>
 
-                      <div class="col-md-1" style="float: left;">
-                        <button type="button" class="btn btn-link" id="adicionarAtendente" onclick="adicionarAtendente()"><i class="fa fa-plus"></i></button>
-                      </div>
+
               <!-- botao para atualizar campanha -->
-              <button onclick="atualizaCancela(1)" class="btn btn-success" type="submit" style="margin-bottom: 0.5em; padding-bottom: 0.5em;">Atualizar campanha</button>
-              <button onclick="atualizaCancela(2)" class="btn btn-success" type="submit" style="margin-bottom: 0.5em; padding-bottom: 0.5em;">Cancelar</button>
+              <div class="row">
+                <br><br><br>
+                <div class="col-xs-12 col-md-6">
+                  <button onclick="atualizaCancela(1)" class="btn-block btn btn-primary" type="submit" style="margin-bottom: 0.5em; padding-bottom: 0.5em;">Atualizar campanha</button>
+                </div>
+              </div>
+              <!--<button onclick="atualizaCancela(2)" class="btn btn-success" type="submit" style="margin-bottom: 0.5em; padding-bottom: 0.5em;">Cancelar</button> -->
               <br><br>
 
 
             </form>
           </div>    <!-- div id form -->
-        </div>  <!-- div class lg 12 -->
-      </div> <!-- div class container -->
     </div>  <!-- div class lg 12 panel -->
   </div> <!-- div class container -->
 
+<div class="container">
   <?php include("footer.php");?>
+</div>
 
 
 <!-- armengues -->

@@ -1,7 +1,7 @@
 
-  <?php 
+  <?php
  require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."facade/CriadorFacade.php");
-  
+
 
   $categoria = $_POST['categoria'];
   $cpf = $_POST['cpf'];
@@ -14,16 +14,16 @@
   $dataFim = null;
   if (isset($_POST['md'])){
     if ($_POST['md'] == 'data'){
-      $metaOuData = FALSE;
+      $isData = TRUE;
       $dataFim = $_POST['diaF'].'-'.$_POST['mesF'].'-'.$_POST['anoF'];
     }
     else if($_POST['md'] == "meta"){
-      $metaOuData = TRUE;
+      $isData = FALSE;
     }
 
   }
 
-  
+
 
   $materialDoacao = $_POST['materialDoacao'];
   $quantidade = $_POST['quantidadeMaterial'];
@@ -32,16 +32,16 @@
 
   $titulo = $_POST['titulo'];
   $valores = array();
-  
+
   if(isset($_POST['valor1'])){
     $valorMeta = $_POST['metaMonetaria'];
     $valores[0] = intval($_POST['valor1']);
     $valores[1] = intval($_POST['valor2']);
     $valores[2] = intval($_POST['valor3']);
   }
-  $imagem = "default";
-  $idCampanha = CriadorFacade::getInstance()->criarCampanha($nomeCampanha, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
-  
+  $imagem = "";
+  $idCampanha = CriadorFacade::getInstance()->criarCampanha($nomeCampanha, $descricao, $dataInicio, $imagem, $cpf, $isData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
+
 
 
   $materialMonetaria = "";
@@ -76,12 +76,12 @@
         $materialDoacao = $_POST['materialDoacao'];
         if($_POST['md'] == "meta"){ #por Meta
           $qtdMaterial = $_POST['quantidadeMaterial'];
-          for ($i = 0; $i < count($qtdMaterial) ; $i++) { 
+          for ($i = 0; $i < count($qtdMaterial) ; $i++) {
             CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $materialDoacao[$i], $qtdMaterial[$i]);
           }
         }
         else if ($_POST['md'] == "data"){ #por data
-          for ($i = 0; $i < count($materialDoacao) ; $i++) { 
+          for ($i = 0; $i < count($materialDoacao) ; $i++) {
             CriadorFacade::getInstance()->cadastrarMetaMaterial($idCampanha, $materialDoacao[$i], 0);
           }
         }
@@ -90,7 +90,7 @@
 
     $endereco = $_POST['endereco'];
     if($endereco != ""){
-      for ($i = 0; $i < count($endereco); $i++) { 
+      for ($i = 0; $i < count($endereco); $i++) {
         CriadorFacade::getInstance()->cadastrarEndereco($idCampanha, $endereco[$i]);
       }
     }
@@ -107,12 +107,12 @@
 <head>
 </head>
 <body>
-<?php 
+<?php
   if(!is_null($idCampanha)){
     ?>
 
   <script type="text/javascript">
-    //window.location="http://localhost/BoaIniciativaV3/view/views/campanha.php?campanha=<?php echo $idCampanha;?>";
+    window.location=" campanha.php?campanha=<?php echo $idCampanha;?>";
   </script>
   <?php
 
@@ -122,7 +122,7 @@
     <script type="text/javascript">
       confirm("Não foi possível criar a campanha!");
       window.history.back();
-    </script>  
+    </script>
   <?php
   }
 ?>
