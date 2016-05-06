@@ -41,7 +41,7 @@
     $valores[2] = intval($_POST['valor3']);
   }
 
-  $imagem = "campanha.png";
+  $imagem = "../img/campanha.png";
   $idCampanha = CriadorFacade::getInstance()->criarCampanha($nomeCampanha, $descricao, $dataInicio, $imagem, $cpf, $metaOuData, $dataFim, $agradecimento, $titulo, $valores, $categoria);
 
 
