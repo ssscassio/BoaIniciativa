@@ -7,7 +7,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/BoaIniciativaV3/"."model/Ponto.php");
 *Classe PontoDAO
 * Classe referente a manipulação de um ponto de coleta no banco de dados
 */
-class PontoDAO
+class PontoCampanhaDAO
 {
   private static $instance;
 
@@ -17,7 +17,7 @@ class PontoDAO
 
   public static function getInstance() {
     if (!isset(self::$instance))
-    self::$instance = new PontoDAO();
+    self::$instance = new PontoCampanhaDAO();
     return self::$instance;
   }
 
@@ -52,7 +52,7 @@ class PontoDAO
       $stmt->bindParam(9,$ponto->getLongitude());
 
       $stmt->execute();
-      
+
       return ConexaoDB::getConexaoPDO()->lastInsertId("BoaIniciativa.ponto_idponto_seq");
 
     }catch (Exception $e){
